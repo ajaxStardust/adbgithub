@@ -1,0 +1,9 @@
+#navlist li a 
+{
+display: block;
+}
+ol#navlist li a:hover, ul#navlist li a:hover 
+{
+background-color: #e8e8ff;
+color: #cc3300;
+}

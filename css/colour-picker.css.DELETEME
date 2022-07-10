@@ -1,0 +1,307 @@
+#hueAndSaturationImg {
+cursor:crosshair;
+}
+
+#title-box span {
+ color:#24A31E;
+}
+
+#title-box {
+ font-weight:bold;
+ font-size:1.25em;
+ padding:5px;
+ border-bottom:1px solid #dedede;
+ background:#ECECEC;
+}
+
+#color-side-bar {
+ width:160px;
+ height:446px;
+ float:left;
+ border-top:1px solid #fff;
+ padding:0 0 10px 0;
+ border-right:1px solid #dedede;
+ background:#F1F1F1;
+ text-align:center;
+}
+
+#color-center-box {
+ border-top:1px solid #fff;
+ background:#F8F8F8;
+ height:446px;
+ width:360px;
+ float:left;
+ padding:5px 0;
+}
+
+#color-tabs span {
+ font-weight:bold;
+ padding:4px 2px;
+ margin:1px 1px 0 1px;
+ border-top:1px solid #EEE;
+ border-left:1px solid #EEE;
+ border-right:1px solid #CCC;
+ border-bottom:1px solid #CCC;
+ cursor:pointer;
+}
+
+#color-panels .panel {
+ margin:6px 1px;
+ width:357px;
+ height:425px;
+ background:#F8F8F8;
+ position:absolute;
+ border-top:1px solid #EEE;
+ border-left:1px solid #EEE;
+ border-right:1px solid #CCC;
+ border-bottom:1px solid #CCC;
+}
+
+#color-right-bar {
+ height:446px;
+ width:72px;
+ border-top:1px solid #fff;
+ padding:5px 10px;
+ float:right;
+ border-left:1px solid #dedede;
+ background:#F1F1F1;
+}
+
+#colour-picker img {
+ border:0;
+ padding:0;
+ background:transparent;
+ -moz-border-radius:0;
+}
+
+#colour-picker label {
+ font-size:11px;
+ display:block;
+ padding:4px 2px;
+ font-weight:bold;
+ clear:both;
+ font-family: Tahoma, sans-serf;
+}
+
+#colour-picker label input {
+ text-align:right;
+ float:right;
+}
+
+#colour-picker label span {
+ text-align:left;
+ float:left;
+ padding:3px 0;
+}
+
+#color-controls {
+ width:131px;
+ clear:both;
+ margin:7px;
+ padding:5px;
+ border-top:1px solid #DDD;
+ border-left:1px solid #DDD;
+ border-right:1px solid #FFF;
+ border-bottom:1px solid #FFF;
+ position:relative;
+ background:#F9F9F9;
+}
+
+#colour-picker {
+ font-family: Tahoma, sans-serf;
+ font-size:14px;
+ margin:5px auto;
+ width:615px;
+ position:relative;
+ background:#fff;
+ border:1px solid #dedede;
+}
+
+#colour-picker table {
+ width:auto;
+}
+
+option, select {
+ font-size:12px;
+}
+
+
+#color-panel {
+ width:230px;
+ font-size:0.75em;
+ margin:10px auto;
+ position:relative;
+}
+
+#input-boxes {
+ float:left;
+ max-width:100%;
+}
+
+#colour-box {
+ position:absolute;
+ top:0;
+ right:0;
+ border:1px solid #000;
+ height:90px;
+ width:90px;
+ clear:both;
+ margin:25px;
+}
+
+
+
+.clear {
+ clear:both;
+}
+
+#current-m4,
+#current-m6 {
+ clear:both;
+ cursor:pointer;
+}
+
+#current-m5 {
+ float:right;
+ cursor:pointer;
+}
+
+#current-color {
+ cursor:pointer;
+ clear:both;
+ width:141px;
+ float:left;
+ margin:10px 7px;
+ border-top:1px solid #DDD;
+ border-left:1px solid #DDD;
+ border-right:1px solid #FFF;
+ border-bottom:1px solid #FFF;
+ position:relative;
+ background:#F9F9F9;
+}
+
+* html #current-color {
+ margin:10px 4px;
+ width:142px;
+}
+
+.color-varient {
+ float:left;
+ width:35px;
+ height:35px;
+ margin:5px;
+ border:1px solid #000;
+}
+
+* html .color-varient {
+ margin:4px;
+}
+
+#color-scheme {
+ margin:20px auto;
+ height:210px;
+ width:210px;
+}
+
+em {
+ font-size:11px;
+}
+
+.color-hue-varient {
+ width:40px;
+ height:40px;
+ margin:4px;
+ float:left;
+ border:1px solid #000;
+ cursor:pointer;
+}
+
+#hsb {
+ width:300px;
+ margin:10px auto;
+ border-top:1px solid #E5E5E5;
+ padding:10px;
+}
+
+#hsb label {
+ width:270px;
+}
+
+#rgb input,
+#hsb input  {
+ text-align:right;
+}
+
+#rgb,#hc {
+ border-top:1px solid #E5E5E5;
+ clear:both;
+ margin-top:4px;
+}
+
+#colour-picker table {
+ border-collapse:collapse;
+ clear:both;
+ width:72px;
+}
+
+#colour-picker table td {
+ border:1px solid #fff;
+ height:10px;
+ width:12px;
+ padding:0;
+ cursor:pointer;
+}
+
+#tableHoverBox {
+ border:1px solid #000;
+ position:absolute;
+ width:16px;
+ height:14px;
+ display:none;
+}
+
+#colour-picker .spinner {
+ float:right;
+ display:inline;
+ padding:0;
+ position:relative;
+}
+
+#colour-picker .spinner button {
+ width:14px;
+ height:14px;
+ display:block;
+ padding:0;
+ margin:-2px 0 0;
+}
+* html #colour-picker .spinner button {
+ margin:-1px 0 0;
+}
+#nameColourSelect {
+ width:127px;
+}
+
+#colour-picker .spinner button > img {
+ padding:0;
+ margin:0;
+ position:relative;
+ left:-2px;
+ top:-7px;
+}
+
+#hueAndSaturationPoint {
+  position:absolute;
+}
+
+#brightnessPoint {
+  position:absolute;
+}
+
+#brightnessImg {
+ width:25px;
+ height:200px;
+}
+
+* html #brightnessImg {
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/webapps/brightness.png', sizingMethod='scale');
+}

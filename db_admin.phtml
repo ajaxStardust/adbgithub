@@ -1,0 +1,74 @@
+<?php
+/*
+** 	NOTE: THIS DOCUMENT IS DECLARED AS HTTP-EQUIV(Content-Type) "application/xml-html"
+** 	IF YOUR SERVER CONFIGURATION (i.e. .conf, .htaccess, php.ini, etc.) is set to
+**	parse HTML as XHTML (i.e. XML), in a strict manner, this document may not display,
+** 	instead, rendering as bad XML markup. In its original form, the XHTML below
+** 	should NOT cause a server error, but "never" is a heavy word in this business. ;-)
+**
+**	The recommended Content-type for the WWW as of 2009 is "text/html",
+**	albeit such use is a direct contradiction of the very philosophy of XHTML.
+*/
+/**
+* @see ./class/cwthumbs.class.php
+*/
+require_once 'class/cwthumbs.class.php';
+$cwThumbsClass = new cwThumbs;
+$cwThumbs = $cwThumbsClass->makeThumbs("css",$none=NULL);
+$imgDir = $cwThumbsClass->imagesDir;
+$imgNumber = $cwThumbsClass->thumbsCount;
+
+require 'class/urlchopper.class.php';
+$urlChopper = new urlChopper;
+$chopThis = $urlChopper->chopUrl($_SERVER['SCRIPT_NAME']);
+$c_subject = $urlChopper->chop_subject;
+$c_replace = $urlChopper->chop_replace;
+$c_search = $urlChopper->chop_search;
+$c_result = $urlChopper->chop_result;
+$c_url = $urlChopper->chop_url;
+$c_trim = $urlChopper->chop_trim;
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" >
+<head>
+<title>print $c_trim @ $chopThis: <?php print $c_trim . ' @ ' . $chopThis; ?></title>
+
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="content-type" content="application/xhtml+xml;charset=utf-8" />
+<!-- <script type="text/javascript" src="js/preview-comments.js" /></script> -->
+<script type="text/javascript" src="js/iframestuff.js"></script>
+<link href="css/iframestyle.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="css/last.fm_master.css" rel=style
+      type="text/css" media="screen" />
+</head>
+<body>
+<!--	^	id:pagewidth	^	-->
+<div id="pagewidth">
+	<!--	^	class:content	^	-->
+	<div class="content alignleft">
+	<?php
+	if(file_exists('inc/dbtablehtml.inc.php')){
+		require "inc/dbtablehtml.inc.php";
+	}
+	print '<div class="content" id="tempInfo">
+<pre class="prewrap">
+require \'class/urlchopper.class.php\';
+<span class="green underline">$urlChopper</span> = new <strong>urlChopper</strong>;
+	$chopThis = <span class="green underline">$urlChopper</span>-><span class="red" title="urlChopper is method of urlChopper class">urlChopper(</span><span class="violet bold">$_SERVER[\'SCRIPT_NAME\']</span><span class="red">);</span> : '. $chopThis .'
+	$chop_subject: <span class="violet">'.	$c_subject .'</span>
+	$chop_replace: ' .	$c_replace . '
+	$chop_search: ' . $c_search . '
+	$chop_result: '. 	$c_result . '
+	$chop_url: '. 	$c_url	. '
+	$chop_trim: '.	$c_trim . '
+</pre>
+</div>';
+	?>
+	</div>
+	<!--	$	class:content	$	-->
+</div>
+<!--	$	id:pagewidth	$	-->
+</body>
+</html>

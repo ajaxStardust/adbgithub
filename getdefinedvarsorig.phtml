@@ -1,0 +1,143 @@
+<?php
+
+/*
+** USE THIS FILE (I.E. INCLUDE IT)
+** FOR DISPLAYING THE CURRENT VALUES OF
+** ALL IF($PROCESS) LOCAL SCOPE VARIABLES
+*/
+ 
+require_once 'inc/processor.inc.php';
+require_once 'inc/nav.inc.php';
+
+//$localScope = array();
+$localScope[] = '<ul style="list-style-type:upper-roman;">
+	';
+$definedVarNames = get_defined_vars(); 
+
+foreach($definedVarNames as $thisKey => $thisValue){ 
+if(gettype($thisValue) == 'string'){
+		$thisValue = htmlentities($thisValue);
+	}
+	if($thisKey!=='localScope'){
+		break;
+	}
+
+
+/*
+if($thisKey=='pathFound'){
+	$localScope[] = '<li>Examine the replacement expressions (items 5-8, above): <br />';
+// 
+//	MAKE < PRE > SECTION
+//	BEWARE THE LINE BREAKS AND ESCAPED QUOTES ETC.
+//	ENDING AT APPROX LINE 38 (8 LINES BELOW THIS)
+// 
+	$localScope[] = '<pre id="lookDatCode">  <span class="red">$pathInfoDirname</span> = '.$definedVarNames["pathname"].';
+	<span class="red">$pathReplacement</span> = \'\';
+	<span class="red">$removePathPart</span> = \''.$removePathPart.'\';
+	<span class="red">$pathFound</span> = preg_replace('.$removePathPart.', "", '.$testPath.');
+	<span class="red">$pathNew</span> = str_replace("'.$definedVarNames["pathFound"].'", "", "'.$testPath.'");</pre>
+		'.
+	'</li>
+		';
+}
+*/
+if(!is_array($definedVarNames["$thisKey"])){
+	$localScope[] = '<li><strong>NOT AN ARRAY:</strong> <span class="keyStyle">$'.
+		$thisKey.'</span> = <span class="larger">&#x201c;</span>'. $thisValue .'<span class="larger">&#x201d;</span></li>
+			';
+	}
+	else	{
+//	while($thisKey == '30'){
+
+		/*$localScope[] = '<li class="listheader">'.$thisKey.':
+		'.
+		'    <ul style="list-style-type:lower-latin;">
+		';*/
+		$localScope[] = '<li class="listheader">'.$thisKey.' ';
+
+		foreach($definedVarNames["$thisKey"] as $multiDimTEST_key => $multiDimTEST_val){
+			if(is_array($multiDimTEST_val)){
+				$localScope[] = '<ul style="list-style-type:upper-latin">
+				';
+				foreach($multiDimTEST_val as $multiDim0_key => $multiDim0_val){
+					$localScope[] = '<li>$multiDim0_key[<span class="keyStyle">'.$multiDim0_key.']:</span>: '.$multiDim0_val.'</li>';
+				}
+				$localScope[] = '</ul>
+				';
+			}
+			else{
+				$localScope[] = ' <br />(<span class="keyStyle">'.$multiDimTEST_key.':</span>) <span class="sansSerif">'.$multiDimTEST_val.'</span>
+				';
+			}
+
+		}
+		/*
+			$localScope[] =  '</li>
+		'.
+		'</ul>
+				';
+		*/
+
+		$localScope[] = '</li>
+		';
+//	}
+}
+
+$localScope[] = '</ul>
+	';
+}
+
+// END LOCALSCOPE ARRAY FOR PRINTING LOCAL VARIABLE INFO
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title> Your Title Here </title>
+<meta name="Generator" content="Geany">
+<meta name="Description" content="PHP LocalScope Variable Informative">
+<meta name="Keywords" content="Localscope, php, scope, meta, meta, phpinfo, server-side, server">
+<style>
+/*<![CDATA[*/
+<?php
+print "\n @import 'css/iframestyle.css'; \n";
+print "\n @import '".CSS."'; \n";
+?>
+pre {
+	white-space: pre-wrap;
+}
+/*]]>*/
+</style>
+</head>
+
+<body>
+<div class="content">
+<div class="parchment">
+<h1>VS GetDefinedVars.phtml</h1>
+<h2>$currentUrlPath.$patharray['basename']; == <?php print $currentUrlPath.$patharray['basename']; ?></h2>
+<p>The Files <code>GetDefinedVarsOrig.phtml</code> and <code>GetDefinedVars.phtml</code> exist for the purpose of reviewing what values are assigned to various local-context PHP variables.<br />Note: <code>GetDefinedVars.phtml</code> attempts to hide any <em>private</em> data, should the developer choose to include it in a production environment, for example for demonstration purposes.</p>
+<h2>Origin of Data</h2>
+<p>Data shown here is obtained via the PHP built-in function get_defined_vars(), and extracted using a foreach loop after the returned values are assigned to an array-type symbol/ variable. </p>
+<blockquote>(i.e. <code>$definedVarNames = get_defined_vars();</code>)</blockquote>
+<p><strong>Note:</strong> Html tags which are part of any PHP variable value are rendered as HTML (e.g. the variable shown below, [ $bodyidtxt ], contains the HTML heading tag, &#x3C;H1&#x3E;</p>
+<p><strong>See <em>getdefinedvarsorig.phtml</em></strong> for viewing those values which are hidden in this public view. (i.e. to view values more appropriate for <em>development-server</em> viewing)</p>
+
+<?php
+foreach($localScope as $localScopePrint) {
+
+	print $localScopePrint;
+}
+echo '<br />$_SERVER["PHP_SELF"]:<br /><pre>';
+echo 'print_r(parse_url($_SERVER["PHP_SELF"]));<br />';
+print_r(parse_url($_SERVER['PHP_SELF']));
+echo '</pre>';
+
+echo '<br />get_defined_vars:<br /><pre>';
+echo 'print_r(get_defined_vars());<br />';
+print_r(get_defined_vars());
+echo '</pre>';
+
+?>
+</div>
+</div>
+</body>
+</html>

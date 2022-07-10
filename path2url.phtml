@@ -1,0 +1,550 @@
+<?php
+
+/*
+ *      path2url.phtml
+ *
+ *      Copyright 2010 NoviceNotes™ <learn@novicenotes.net>
+ *
+ *      This program is free software; you can redistribute it and/or modify
+ *      it under the terms of the GNU General Public License as published by
+ *      the Free Software Foundation; either version 2 of the License, or
+ *      (at your option) any later version.
+ *
+ *      This program is distributed in the hope that it will be useful,
+ *      but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *      GNU General Public License for more details.
+ *
+ *      You should have received a copy of the GNU General Public License
+ *      along with this program; if not, write to the Free Software
+ *      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ *      MA 02110-1301, USA.
+*/
+
+/** @overview resource path2url.phtml
+**
+**	PHP-powered HTML <FORM> with one <INPUT type="text" /> field 
+**	PURPOSE: convert a Qualified FileSystem PATH to valid HTTP URL Format
+**	HTTP_REQUEST via _GET makes possible the sending of PATH string as URL PARAMETER
+**	@IMPORTANT 
+**		For EXAMPLE, a WINDOWS® user might find the following syntax effective to 
+**		/AUTOMATICALLY/ PREVIEW ANY FILE UNDER http://server.name/
+**	RUN_or_CMD> YOUR_BROWSER.EXE http://server.name/AnnieDeBrowsa/path2url.phtml?path2url="%TEXT_EDITOR_FILENAME%"
+**
+**	@EXAMPLE 
+** 		TYPICAL, “FULLY QUALIFIED PATH” UNDER TESTING-SERVER 
+**			(e.g. under DOCUMENT_ROOT / localhost ):
+**
+**	#1 - MS WINDOWS® 	:	"C:\Apache\htdocs\myPhpProject\newFile.php"
+**	OR
+**	#2 - LINUX 			:	"/home/user/public_html/myPhpProject/newFile.php"
+**
+**  WILL BE TRANSFORMED to the valid HTTP URL:	
+**		http://localhost/myPhpProject/newFile.php )
+**
+**	@TODO
+** 		Program code for conditional logic such that OTHER FILESYSTEM URL FORMS *MIGHT* WORK AS WELL: 
+**		E.g. file://O:/Apache/htdocs/some/path_to/your.file
+*/
+
+require_once 'inc/processor.inc.php';
+
+/** @var $htmlConcat string
+*	concat very much HTML as a single string contained
+*	within htmlConcat variable
+*	this is precisely the bad-habit of string
+*	concatenation as so often marked for dissuaded practices.
+*
+*	Initialize the $htmlConcat var to avoid PHP Notice-level errors.
+**
+    */
+
+$htmlConcat = '';
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" >
+<head>
+	<meta charset="UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System File Path to HTTP URL Converter by NoviceNotes™    </title>
+<script type="text/javascript" src="js/iframestuff.js"></script>
+<link href="css/iframestyle.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+<!--	^	#pagewidth	^	-->
+<div id="pagewidth">
+
+	<div class="content">
+<?php
+  $transForm = '             <!--	^	.contentInner	^	-->
+<div class="contentInner">
+	<h3 id="wpFormHeader">Windows and Linux Path to URL Conversion Tool:</h3>
+	<h4 id="path2urlUPC">path2url by NoviceNotes™</h4>
+	<h5>Filename: <code class="code">[ '.$patharray["basename"].' ]</code></h5>
+		';
+
+if(empty($_GET)){
+	if(isset($_SESSION['path2url'])){
+		$phppath2url = $_SESSION['path2url'];
+	}
+	else{
+	$phppath2url='';
+	}
+$transForm .= '<p>In the text-area provided, enter the System Path to be converted into a viable HTTP URL.</p>
+<p class="italic red">Once converted, the HTTP URL will be displayed as a hyperlink which can be clicked for previewing in this browser, or to copy/ paste into the address bar of any preferred web browser.</p>
+	<form id="transForm" action="'.$_SERVER['PHP_SELF'].'" method="get">
+		
+		<input type="text" id="path2url" name="path2url" value="'.$phppath2url.'" /><br />
+		<input type="hidden" id="wpGo" name="wpGo" value="1" /><br />
+		<input type="submit" id="wpSubmit" name="wpSubmit" value="Convert Path!" /><br />
+	</form>
+	<p>The <em>path2url</em> convenience is most evident if the file path points to something from your <span class="underline">localhost</span> <em>testing server</em>.
+	<br />
+	(E.g. <code class="underline">O:&#x5c;Apache2&#x5c;htdocs&#x5c;Y&#x5c;our&#x5c;Path&#x5c;here.php</code>)</p>
+	<p>The <span class="black">NoviceNotes.Net <em>path2url</em></span> application uses conditioinal logic on the path submitted in attempt to return a viable HTTP URL.<br /><span class="smaller">NOTE: Should an unexpected System Path result in a <em>bad URL</em>, please submit it to NoviceNotes™ so the application logic will be improved. Thank you!</span></p>
+	</div>
+	<!--	$	.contentInner	$	-->
+	';
+}
+
+print $transForm;
+
+/** @var _GET[path2url]
+ * 		the User-submitted URL
+**/
+
+if(isset($_GET['path2url'])) {
+	$htmlConcat .= '<div><p>[<span id="urlPathTrigger" class="trigger" onclick="showHidePlus(\'urlPathContainer\',\'urlPathTrigger\')"> toggle </span>] detail view</p></div>
+		<div id="urlPathContainer" class="target keyTerms">
+		<h4>path2url Transformation Details</h4>
+		<ul class="larger">
+		<li><em>path2url</em> transformed the submitted system <em>path</em> into several smaller strings, each representing one of the containers which make up the path (i.e. each folder name along the path was extracted to a single string).</li>
+		<li>The individual container names are derived by PHP <code>preg_match()</code> when &#x201c; &#x2f; &#x201d; (a <em>slash</em>  character) is matched along the path.</li>
+		<li>With each consecutive match, the resulting character strings, naturally corresponding to each container, are stored in an array.</li>
+		</ul>
+		<p>The array, key/value pairs representing each portion of <code>?path2url=</code> is listed with a brief explanation which details whether it was used to build the http URL, or discarded.</p>
+		<p><strong>Trivial Note:</strong> Each array index-key is equal to the number of
+		slashes	preceding the path sub-section, as stored in that key&#x27;s
+		value, respectively.</p>
+		<p>Also, some additional processing info is hidden in the HTML source. If you&#x27;re using a Mozilla browser, try selecting from <em class="red">result: http://_..._</em> to the following <em class="red">key[x]</em>, then right-click, and choose "View <em>Selection</em> Source"</p>';
+
+	$path2url = $_GET['path2url'];
+	$origPath = $path2url;
+ 	$depthLevel = preg_match_all('@[^\x5c\x2f]+@', $path2url, $matches ) ;
+
+	$x = $depthLevel;
+$cloneOfMatches = $matches;
+	$matchArray = array();
+	for($j=0; $j < $x; $j++){
+		if(isset($cloneOfMatches[0][$j]))	{
+			$matchArray[$j] = $matches[0][$j];
+			$matchArray[$j] = preg_replace('@([\x5c\x2f])@', '/', $matchArray[$j]);
+		}
+	}
+
+
+
+	$path2url = 'http://localhost';
+$oneLess=$x-1;
+$ref=99;
+
+/**
+* 
+* @var $matchTest moved from forthcoming for loop and placed here 
+* 	due to logistical purpose of thought process in attempt to solve
+* 	for cygdrive in IF/THEN logic.
+* 
+*/
+// $matchTest=$matches[0] ? !is_array($matches[0]) : $matches[0][0] ;
+if (!is_array($matches[0])) {
+	$matchTest=$matches[0];
+}
+else {
+	$matchTest=$matches[0][0];
+}
+
+/**
+* 
+* @abstract RE following IF/ELSE constrcut:
+* 	moved IF/ELSE logic from FOR loop, just as $matchTest var above.
+* 
+*/
+if(isset($matchArray[0])) {
+	$dynaRootTest = preg_match('@file:@i', $matchArray[0]);
+	// still testing how to best guess for known paths here...
+	if($dynaRootTest){
+		$dynaRootDepth = 3;
+	}
+	else{
+		$dynaRootDepth = 2;
+	}
+
+}
+else {
+		$dynaRootDepth = 2;
+}
+
+for($i=0; $i < $depthLevel; $i++)	{
+	$switchVal = $matchArray[$i];
+
+
+
+/** @TODO
+*		PROVIDE A WAY FOR USERS TO INTERACT WITH THE MATCHING PROCESS
+*			1.) USERS COULD SUGGEST A FOLDER STRUCTURE BEFORE EXECUTION.
+*				e.g. "Q: Where is your server DOCUMENT_ROOT?"
+*						A: /home/linuxuser/public_html
+*						A: C:\Apache\htdocs\wwwroot
+*						etc.
+*			2.) IF ATYPICAL FOLDERS ARE DETECTED, BREAK REGULAR PROCESS, THEN 
+*					PROMPT USER FOR A BEST RECOMMENDED TRANSLATION INTO THE http:// URL	
+**/
+
+	if($i <= $dynaRootDepth) {
+
+		if(preg_match('@file@i',$switchVal,$segMatch)){
+			$test[$i] = __LINE__;
+			$test_error_line = $test[$i];
+
+			$path2url = $path2url;
+			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><span class="serif">It looks like you&#x27;re browsing the filesystem. I&#x27;m going to exclude <code>'.$switchVal.'</code> as I build the <code>http://</code> url, but it may fail anyway.</span>';
+			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
+				';
+		}
+		elseif(preg_match('@apache[\d\.]+$@i',$switchVal,$segMatch)){
+			$test[$i] = __LINE__;
+			$test_error_line = $test[$i];
+			$path2url = $path2url;
+			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
+			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
+				';
+
+		}
+		elseif(preg_match('@^\w{1}:$@i',$switchVal,$segMatch)){
+			$path2url = $path2url;
+			$test[$i]= __LINE__;
+			$test_error_line = $test[$i];
+			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><span class="serif">This looks like an MS O/S <em>Drive Letter</em>. I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
+			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
+				';
+		}
+		elseif(preg_match('@htdocs@i',$switchVal,$segMatch)){
+			$test[$i] = __LINE__;
+			$test_error_line = $test[$i];
+			$path2url = $path2url;
+			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
+			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
+				';
+		}
+		elseif(preg_match('@html@i',$switchVal,$segMatch)){
+			$test[$i] = __LINE__;
+			$test_error_line = $test[$i];
+			$path2url = $path2url;
+			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
+			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
+				';
+		}
+		elseif(preg_match('@cygdrive@i',$switchVal,$segMatch)){
+			$dynaRootDepth=$dynaRootDepth + 1;
+			$cygPath="u";
+			$test[$i] = __LINE__;
+			$test_error_line = $test[$i];
+			$path2url = $path2url;
+			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
+			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
+				';
+		}
+		elseif(preg_match('@[a-zA-Z]{1,1}@i',$switchVal,$segMatch)){
+			if(isset($cygPath) && ($cygPath == "u")){ 
+			$test[$i] = __LINE__;
+			$test_error_line = $test[$i];
+			$path2url = $path2url;
+			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
+			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
+				';
+			}
+		}
+		elseif(preg_match('@public_html@i',$switchVal,$segMatch)){
+			$test[$i] = __LINE__;
+			$test_error_line = $test[$i];
+			$path2url = $path2url;
+			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
+			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
+				';
+		}
+		elseif(preg_match('@html@i',$switchVal,$segMatch)){
+			$test[$i] = __LINE__;
+			$test_error_line = $test[$i];
+			$path2url = $path2url;
+			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
+			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
+				';
+		}
+		elseif(preg_match('@www@i',$switchVal,$segMatch)){
+			$test[$i] = __LINE__;
+			$test_error_line = $test[$i];
+			$path2url = $path2url;
+			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
+			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
+				';
+		}
+		elseif(preg_match('@var$@i',$switchVal,$segMatch)){
+			$test[$i] = __LINE__;
+			$test_error_line = $test[$i];
+			$path2url = $path2url;
+			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
+			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
+				';
+
+		}
+		elseif(preg_match('@usr$@i',$switchVal,$segMatch)){
+			$test[$i] = __LINE__;
+			$test_error_line = $test[$i];
+			$path2url = $path2url;
+			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
+			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
+				';
+
+		}
+		elseif(preg_match('@www$@i',$switchVal,$segMatch)){
+			$test[$i] = __LINE__;
+			$test_error_line = $test[$i];
+			$path2url = $path2url;
+			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
+			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
+				';
+
+		}
+		elseif(preg_match('@inetpub$@i',$switchVal,$segMatch)){
+			$test[$i] = __LINE__;
+			$test_error_line = $test[$i];
+			$path2url = $path2url;
+			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
+			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
+				';
+
+		}
+		elseif(preg_match('@wwwroot$@i',$switchVal,$segMatch)){
+			$test[$i] = __LINE__;
+			$test_error_line = $test[$i];
+			$path2url = $path2url;
+			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
+			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
+				';
+
+		}
+		elseif(preg_match('@webroot$@i',$switchVal,$segMatch)){
+			$test[$i] = __LINE__;
+			$test_error_line = $test[$i];
+			$path2url = $path2url;
+			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
+			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
+				';
+
+		}
+		elseif(($i < 1) && preg_match('@[\w_\-]+@i',$switchVal,$segMatch)) {
+			$test[$i] = __LINE__;
+			$test_error_line = $test[$i];
+			$path2url = $path2url;
+			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><span class="serif">I <em>think</em> this is a Linux User directory. Using my best guess, I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
+			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
+				';
+		}
+		else {
+			$test[$i] = __LINE__;
+			$test_error_line = $test[$i];
+			$htmlConcat .= '<br /><br /><img src="'.$xro.'css/stop.gif" alt="ERROR!" /> key['.$i.']:<br />
+				Not sure of the cause of this ERROR, yet, but I do know <code>$test{'.$i.'}</code> hit here!
+				<br />This chunk of the path, assigned to <code>$switchVal</code>: '.$switchVal.'<br />
+				<em>Now</em>, what does that tell you?<br />
+				';
+			if(is_array($segMatch)){
+				$htmlConcat .= '<strong><code>$segMatch</code> is an <em>array</em></strong>, at the following values
+					<br />';
+				foreach($segMatch as $segmentNow){
+					$htmlConcat .= '<code>$segMatch</code> : '.$segmentNow.'<br />';
+				}
+				$htmlConcat .= '<pre>PHP print_r($segMatch)
+					';
+					print_r($segMatch);
+				$htmlConcat .= '</pre>
+					<br />';
+			}
+			else {
+				$htmlConcat .= '<code>$segMatch</code> is NOT an array, and has value of '.$segMatch.'
+				<br />';
+			}
+		}
+	}
+
+	else{
+		$test[$i] = __LINE__;
+		$path2url .= '/'.$switchVal;
+		$htmlConcat .= '<br /><img src="'.$xro.'css/check_green.png" alt="Valid!" /> key['.$i.']: <span class="urlPathNoMatch">'.$switchVal.'</span> was used to build the HTTP URL.';
+		$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
+				';
+	}
+
+	if($i< $oneLess && preg_match('@(http://)@i',$matchTest)){
+		$path2url .= $matches[0];
+	}
+
+	if(isset($segMatch) && is_array($segMatch)){
+		$segMat_charCount = count($segMatch);
+		for($s=0; $s < $segMat_charCount; $s++){
+			unset($segMatch[$s]);
+		}
+		// unset($setMatch);
+	}
+	elseif(!empty($segMatch)){
+		unset($segMatch);
+	}
+	
+	if(isset($test_error_line)){
+		$htmlConcat .= '<br /><span class="hidden">$test{'.$i.'} happened at _line_'.$test_error_line.'_ in '.__FILE__.'</span>'."\n";
+	}
+} // END FOR LOOP @ ~154
+
+    if($path2url == FALSE){
+		$path2url = ' no matches';
+ 	}
+}
+
+if((isset($path2url) /* && isset($_GET['wpGo']) */) && $path2url != '') {
+
+	$htmlConcat .= '</div>
+		<p>The path2url URL transformation script has successfully executed from <code>'.$patharray["basename"].'</code>. The source file, <code>'.$patharray["basename"].'</code> , exists in the server-side folder corresponding to the current HTTP location.</p>
+		<p class="attn"><strong>'.$depthLevel.'</strong> separate strings were extracted on matching the delimeters in <span class="code red">'.$origPath.'</span>, the original path sent for processing. Each of the delimited sections are detailed further below.</p>
+		<hr class="hidden" />
+		<h4 class="blue">Resulting URL:</h4>
+		<p>The submitted path has been formatted as an HTTP URL, and assigned to the <code>href</code> attribute of the anchor below. The <code>target</code> attribute is set to open the link in a new window. Click to proceed.</p>
+		'.
+			// THE PROCESSED URL FORMATTED AS HYPERLINK
+		'<p><a class="path2urlanchor" href="'.$path2url.'" target="path2url">'.$path2url.'</a></p>
+        <form action="'.$_SERVER['PHP_SELF'].'" method="post">
+				<input type="submit" id="reloadForm" name="reloadForm" value="Blank Form" />    </form>'.
+		'<p><strong>Note:</strong> The HTTP URL has been created using basic <code>IF - THEN</code> flow control logic, where decisions about the result have been made based upon certain conditions known to be true of common system paths (including Linux, although the script title suggests otherwise).</p>
+		<p><span class="bold red">Important:</span> If the resulting link is invalid, or does not point to the desired location, please examine the processing notes above ( <em class="serif">Toggle Details</em> ) and have a look at the source code. Keep in mind that the only files which can resolve to a valid, HTTP-served URL via <em>path2url</em> are files located <em>under</em> the Server <code>DOCUMENT_ROOT</code> (unless your server has a dramatically different behaviour from Apache or IIS)</p>
+		<p> Please report feedback, recommendations, bug-fixes, etc., to the developer. Thank you for using <em class="smallcaps">NoviceNotes<sup>&#x2122;</sup> path2url</em>!</p>
+		';
+	$htmlConcat .= '<p class="innerContent smallcaps">The delimited values found in <span class="code red">'.$origPath.'</span>, as used in creating the URL above, are as follows:</p>
+	<pre>matches:
+	';
+		foreach ( $matches[0] as $htmKey => $htmVal ) {
+			if ( $htmKey < 1 ) {
+				$htmlConcat .= "[Parent Container&#xa0;@&#xa0;level($htmKey)]: $htmVal<br />\n";
+			}
+			else {
+				$htmlConcat .= "\t[Child Container&#xa0;&#xa0;@&#xa0;level($htmKey)]: $htmVal<br />\n";
+			}
+		}
+	$htmlConcat .= '</pre>
+	';
+	if ( isset($_GET['path2url']) ) {
+		$pathNow = $_GET['path2url'];
+	}
+	$htmlConcat .= '<p>If you wish to re-submit or modify the existing path, do it here:</p>
+			<form id="transForm" action="'.$_SERVER['PHP_SELF'].'" method="get">
+				<input type="text" id="path2url" name="path2url" value="'.$pathNow.'" size="50" /><br />
+				<input type="hidden" id="wpGo" name="wpGo" value="1" /><br />
+				<input type="submit" id="wpSubmit" name="wpSubmit" value="Convert Path" /><br />
+			</form>
+			';
+	$htmlConcat .= '<p>If you want to start over from the beginning, just click the <code>reset</code> button:</p>';
+	$htmlConcat .= '<form action="'.$_SERVER['PHP_SELF'].'" method="post">
+				<input type="submit" id="reloadForm" name="reloadForm" value="Blank Form" />
+			</form>
+			</div>	<!--	$	contentInner	$	-->
+			';
+
+
+	if(isset($count)){
+		$htmlConcat .= "<p>Count : ".$count."</p>";
+	}
+}
+elseif(isset($_GET['wpGo'])) {
+	$htmlConcat .= '<h4 class="smallCaps smallcaps">Error!</h4>
+		'.
+		'<p>I&#39;m sorry, but your RegEx didn&#39;t do what you expected. '.
+		'Please edit your PHP code.</p>
+		';
+}
+elseif(count($_GET) == 0) {
+	$htmlConcat .= '<h4 id="appReady01">FYI</h4>
+		';
+	$htmlConcat .= '<p>_GET is empty. The application is ready for your conversion data
+		</p>
+		';
+}
+else{
+	$htmlConcat .= '<h4 id="appFail01" class="smallcaps red">Fail!</h4>
+	';
+	$htmlConcat .= '<p class="serif red">The application has returned nothing for <br />
+	<code>&#x3c;FORM&#x3e;<br />
+	&#x3cINPUT id=path2url&#x3e;<br />
+	&#x3cINPUT id=wpGo&#x3e;<br />
+	&#x3c;/FORM&#x3e;</code><br />
+	The <span class="smallcaps">HTTP_REQUEST</span> returned the following:</p>
+	';
+
+	$htmlConcat .= '<div id="printrPost">print_r($_POST)<br />
+		';
+		print_r($_POST);
+	$htmlConcat .= '</div>';
+
+	$htmlConcat .= '<div id="printrGet">print_r($_GET)<br />
+		';
+		print_r($_GET);
+	$htmlConcat .= '</div>';
+
+	$htmlConcat .= '<div id="printrRequest">print_r($_REQUEST)<br />
+		';
+		print_r($_REQUEST);
+	$htmlConcat .= '</div>';
+
+	if(isset($_GET['path2url'])){
+	 session_start("PeeAaechPeaMeEyeDee1beU2PeePooPants");
+		$_SESSION['path2url'] = $_GET['path2url'];
+		$failedPath = $_GET['path2url'];
+	}
+	$htmlConcat .= '<p>Reset the form to convert another URL. (click the button)</p>';
+	$htmlConcat .= '<form action="'.$_SERVER['PHP_SELF'].'" method="post">
+				<input type="submit" value="reset" id="reloadForm" name="reloadForm" />
+			</form>
+		<p>...or, we <em>could</em> go ahead and try this again, right now, Joe-joe:</p>
+			<form id="transForm" action="'.$_SERVER['PHP_SELF'].'" method="get">
+				<input type="text" id="path2url" name="path2url" value="'.$failedPath.'" /><br />
+				<input type="hidden" id="wpGo" name="wpGo" value="1" /><br />
+				<input type="submit" id="wpSubmit" name="wpSubmit" value="Convert Path!" /><br />
+			</form>
+			';
+}
+print $htmlConcat;
+?>
+	</div>
+	<!--	$	.content	$	-->
+</div>
+<!--	$	#pagewidth	$	-->
+</body>
+</html>

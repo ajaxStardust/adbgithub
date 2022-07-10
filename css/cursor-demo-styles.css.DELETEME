@@ -1,0 +1,62 @@
+/* CASCADING STYLESHEET - MARCH 12 2007 */
+/* J. SABARESE - NOVICENOTES - DEMO *** */
+/* CSS 2.1 CURSOR PROPERTY VALUES ***** */
+/* ************************************ */
+
+/* *********** **
+**  BEGIN CSS  **
+** *********** */
+
+body {
+	font-family: 'times new roman', times, serif;
+	margin: 0 auto;
+}
+
+
+.cursor-auto {
+	cursor: auto;
+}
+
+.cursor-crosshair {
+	cursor: crosshair;
+}
+
+.cursor-default {
+	cursor: default;
+}
+
+.cursor-help {
+	cursor: help;
+}
+
+.cursor-move {
+	cursor: move;
+}
+
+.cursor-neresize {
+	cursor: ne-resize;
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.cursor-swresize {
+	cursor: sw-resize;
+}
+
+.cursor-wait {
+	cursor: wait;
+}
+
+#cursor-text {
+	cursor: text;
+}
+
+.cursor-custom {
+	cursor: url('cursor/cursor_pointer_em.png');
+}
+
+/* ********* **
+**	END CSS	 **
+** ********* */
