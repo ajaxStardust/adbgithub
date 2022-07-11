@@ -178,18 +178,20 @@ else{
 	**	the priority.
 	*/
 	$defaultFrameArray = array(
-		$xro."db_admin.phtml",
-		"default.phtml",
-		"Overview.html",
-		"Overview.htm",
-		"default.htm",
-		"toc.html",
-		"toc.htm",
+		$xro."default.phtml",
+		$xro."Overview.html",
+		$xro."Overview.htm",
+		$xro."default.htm",
+		$xro."toc.html",
+		$xro."toc.htm",
 		$xro."index.htm",
 		$xro."index.html",
 		$xro."readme.txt",
-		"default.html",
-		"graphic_design.php"
+		$xro."readme.md",
+		$xro."default.html",
+		$xro."db_admin.phtml",
+		$xro."graphic_design.php",
+		$xro."path2url.phtml"
 	);
 
 	foreach($defaultFrameArray as $thisIframe){
