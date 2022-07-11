@@ -26,8 +26,8 @@
  *				-----------------------
  *
  */
-require 'inc/dochead.inc.php';
-require 'inc/nav.inc.php';
+require_once 'inc/dochead.inc.php';
+require_once 'inc/nav.inc.php';
 ?>
 <div id="maincol">
 								<!--	^	id:maincol	^	-->
@@ -59,11 +59,7 @@ require 'inc/nav.inc.php';
 
 			    ?>
 		<!--	^	id:mainFrameContainer	^	-->
-		<div id="frameTitler">Currently Viewing:
-											<!--	^	id:frameTitler	^	-->
-			<span id="frameName"> 
-				<?php print $defaultIframe; ?>
-			</span>
+		<div id="frameTitler">Currently Viewing: <span id="frameName"><?php print $defaultIframe; ?></span>
 		</div>
 											<!--	$	id:frameTitler	$	-->
 		<iframe title="frame content as selected in main navigation" src="<?php print $defaultIframe; ?>" id="mainFrame">

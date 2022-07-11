@@ -862,6 +862,10 @@ ul.keyTermsList li sup {
 	border: 1px solid #808080;
 }
 
+#controList {
+	box-shadow: 0 0 0.5em #545454 inset;
+}
+
 #controList li {
 	border: 0.08em solid #FFFFFF;
 	display: block;
@@ -1248,7 +1252,7 @@ ul.keyTermsList li sup {
 #pageControls ul {
 	background-color: #F8F8F8;
 	border-radius: 1.5em 1em 1.5em 1em;
-	box-shadow: 0 0 2em #444444 inset;
+	box-shadow: 0 0 0.5em #444444 inset;
 	margin: 0;
 	padding: 0.5em 0 0.5em 0.7em;
 	position: relative;
