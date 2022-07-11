@@ -13,13 +13,13 @@
 
 // direct URL: http://localhost/AnnieDeBrowsa/css/masthead.php
 // define( 'MASTHEADLOCATION', dirname($_SERVER['SCRIPT_NAME']));
-define( 'MASTHEADLOCATION', file(__DIR__));
+define( 'MASTHEADLOCATION', __DIR__);
 
 if(defined("XRO")){
-	$xro = XRO;
+	$xro = '';
 }
 else {
-	$xro = '';
+	$xro = '../';
 }
 require $xro.'../class/urlchopper.class.php';
 // require '../class/urlchopper.class.php';
