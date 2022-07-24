@@ -12,27 +12,15 @@
 
 
 // direct URL: http://localhost/AnnieDeBrowsa/css/masthead.php
-// define( 'MASTHEADLOCATION', dirname($_SERVER['SCRIPT_NAME']));
-define( 'MASTHEADLOCATION', __DIR__);
 
-if(defined("XRO")){
-	$xro = '';
-}
-else {
-	$xro = '../';
-}
-require $xro.'../class/urlchopper.class.php';
-// require '../class/urlchopper.class.php';
+require '../class/urlchopper.class.php';
 
 $svgPathChopper = new urlChopper;
-
-// if(!$svgText){
 $svgTextRaw = $svgPathChopper->svgTextChopper($_SERVER['PHP_SELF']);
 $svgSubject = $svgTextRaw;
 $svgReplace = '';
 $svgPattern = '@.+/@';
 $svgText = preg_replace($svgPattern,$svgReplace,$svgSubject);
-// }
 
 if ( (strlen($svgText) < 1) ) {
     $svgText = $_SERVER["SERVER_NAME"];

@@ -30,6 +30,8 @@ foreach($footParse as $fPkey => $fPval){
 $footDir = __FILE__;
 $footReplace = '';
 $footHost = str_replace($footFile, $footReplace, $footRoot);
+// var_dump(get_defined_vars());
+// print_r(get_defined_vars());
 ?>
 
 	<div id="footer">	<!-- 	^	#footer 	^	-->

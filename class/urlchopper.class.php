@@ -13,7 +13,7 @@ class urlChopper {
 	public	$chop_search	= 	'';
 	public	$chop_result	= 	'';
 	public	$chop_url       = 	'';
-	public	$chop_trim	= 	'';
+	public	$chop_trim		= 	'';
 	public	$strokeWidth	=	'';
 	
 	function chopUrl($urlString=NULL){
@@ -33,7 +33,7 @@ class urlChopper {
 		
 		return preg_replace("/.*\//",'',$this->chop_url);
 	}
-	// END METHOD urlChopper
+	// END METHOD chopUrl
 	
 	function svgTextChopper($urlString=NULL){
 		/*
