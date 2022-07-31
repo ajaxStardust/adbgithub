@@ -46,7 +46,7 @@ if(file_exists($xro.'inc\nav.inc.php')) {
 	$search = '\inc\nav.inc.php';
 }
 elseif(file_exists($xro.'inc/nav.inc.php')) {
-	$search = '/inc/nav.inc.php/';
+	$search = '/inc/nav.inc.php';
 }
 $subject = $dir;
 $replace = '';
