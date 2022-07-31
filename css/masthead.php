@@ -12,17 +12,8 @@
 
 
 // direct URL: http://localhost/AnnieDeBrowsa/css/masthead.php
-// define( 'MASTHEADLOCATION', dirname($_SERVER['SCRIPT_NAME']));
-define( 'MASTHEADLOCATION', __DIR__);
 
-if(defined("XRO")){
-	$xro = '';
-}
-else {
-	$xro = '../';
-}
-require $xro.'../class/urlchopper.class.php';
-// require '../class/urlchopper.class.php';
+require '../class/urlchopper.class.php';
 
 $svgPathChopper = new urlChopper;
 

@@ -16,10 +16,10 @@
 define( 'MASTHEADLOCATION', __DIR__);
 
 if(defined("XRO")){
-	$xro = XRO;
+	$xro = '';
 }
 else {
-	$xro = '';
+	$xro = '../';
 }
 require $xro.'../class/urlchopper.class.php';
 // require '../class/urlchopper.class.php';
