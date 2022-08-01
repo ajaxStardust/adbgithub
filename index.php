@@ -2,7 +2,7 @@
 /*
  *		index.php
  *
- *		Copyright 2010 NoviceNotes™ <learn@novicenotes.net>
+ *		Developed by @ajaxStardust <novicenotes@gmail.com>
  *
  *		This program, a Web Application written in PHP, HTML, JavaScript,
  *		XML, SVG, and CSS (web programming languages and structured markup)
