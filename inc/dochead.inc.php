@@ -254,7 +254,24 @@ $frameTitle = $frameInfo['filename'];
 	type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
 </script>
+	<!-- Google Analytics 2022.07.24 -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-SE954SRMG8"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
 
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-SE954SRMG8');
+	</script>
+	<!-- Google Adsense -->
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2612637898892107" crossorigin="anonymous"></script>
+	<!-- Bootstrap Css v5 -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+	<link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" />
 <?php
 
 /*
