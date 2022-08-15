@@ -123,7 +123,7 @@ else {
 	$results = '';
 }
 
-if ($results != '') $backlinksHtml = ('<div id="backlinks">H&#xe4;nsel trail:
+if ($results != '') $backlinksHtml = ('<div id="hanseltrail">H&#xe4;nsel trail:
 '.$results.'
 <hr class="clear clearboth clearBoth" />
 </div>

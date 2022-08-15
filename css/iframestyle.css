@@ -3,7 +3,7 @@
 
 body,   html{
     background-color:       #fafafa;
-    background-image:       url(backgrounddiagonal.gif);
+    /* background-image:       url(backgrounddiagonal.gif); */
     color:                  #330;
     font-family:            "Liberation Sans","DejaVu Sans Condensed",Arial,Helvetica,sans-serif;
     font-size:              10pt;
@@ -20,7 +20,7 @@ body * {
 
 dl{
     background-color:       #fefefe;
-    background-image:       url("parchment-desat-bg.jpg");
+    /* background-image:       url("parchment-desat-bg.jpg"); */
     border:                 0.1em dashed #DDDDDD;
     margin:                 1em 0 2em 0.5em;
     padding:                1em;
@@ -46,12 +46,14 @@ dl dt{
     font-weight:            600;
     background-image:       none;
     background-color:       rgba(255,255,255,1.0);
+    /* font-family:            "Liberation Sans","DejaVu Sans Condensed",Arial,Helvetica, 
+    font-family:            "Liberation Serif", "DejaVu Serif Condensed", Georgia, serif;*/
 }
 
 h1,h2,h3,h4,h5,h6{
     border-right:           18pt solid #E3E7F7;
     color:                  rgb(51,51,0);
-    font-family:            "Liberation Serif", "DejaVu Serif Condensed", Georgia, serif;
+    /* font-family:            "Liberation Serif", "DejaVu Serif Condensed", Georgia, serif; */
     text-shadow:            0em 0.04em 0em rgba(255,255,255,0.9);
     padding:                0.5em 0.25em ;
     background-color:       #fefefe;
@@ -359,7 +361,7 @@ li.imgShowItem img {
 }
 
 .parchment{
-    background-image:url('parchmentlight.png');
+    /* background-image:url('parchmentlight.png'); */
 }
 
 .pseudocode {

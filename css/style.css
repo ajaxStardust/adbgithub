@@ -53,7 +53,7 @@ code {
 }
 
 dl {
-	background-image: url("parchment-desat-bg.jpg");
+	/* background-image: url("parchment-desat-bg.jpg"); */
 	border: 0.1em dashed #DDDDDD;
 	color: #333300;
 	font-family: sans-serif;
@@ -430,7 +430,7 @@ thead, tfoot {
 
 
 .parchment {
-	background-image: url("parchmosteven.jpg");
+	/* background-image: url("parchmosteven.jpg"); */
 }
 
 .pre {
@@ -828,7 +828,7 @@ ul.keyTermsList li sup {
 }
 
 #backlinks {
-	color: #DFDFEF;
+	/* color: #DFDFEF; */
 	margin-bottom: -1em;
     padding-top: 1em;
 }
@@ -838,9 +838,13 @@ ul.keyTermsList li sup {
 }
 
 #searchrec {
-	color: #DFDFEF;
+	/* color: #DFDFEF; */
 	text-align:center;
 	text-indent:3em;
+}
+
+#searchrec a {
+	color: blue;
 }
 
 #calContainer #calendarIframe {
@@ -948,10 +952,10 @@ ul.keyTermsList li sup {
 
 #footer {
 	background-color: rgba(255, 255, 255, 0.1);
-	background-image: url(adb_body_footer_bgimage_alphablackreflected_colorfilter.png);
+	/* background-image: url(adb_body_footer_bgimage_alphablackreflected_colorfilter.png); */
 	background-repeat: repeat-x;
 	clear: both;
-	color: rgb(210,233,251);
+	/* color: rgb(210,233,251); */
 	font-family: "Liberation Sans", "Droid Sans", "DejaVu Sans", arial, helvetica, sans-serif;
 	text-align: center;
 }
@@ -1005,7 +1009,8 @@ ul.keyTermsList li sup {
 }
 
 #header {
-	background-image: url("adb_body_header_bgimage_alphawhite.png");
+	background-image: url("head_bg_2022.png");
+	/* background-image: linear-gradient(up, #FFFFFF, #000000); */
 	background-position: center bottom;
 	clear: both;
 	color: #FFFFEE;
@@ -1015,6 +1020,7 @@ ul.keyTermsList li sup {
 	text-shadow: 0.08em 0.08em 0.06em;
 	vertical-align: middle;
 	z-index: 20;
+	outline: 1px solid #2D2090;
 }
 
 #headimage {
@@ -1129,7 +1135,7 @@ ul.keyTermsList li sup {
 }
 
 #maincol dl {
-	background-color: #F5F5FF;
+	/* background-color: #F5F5FF; */
 }
 
 #maincol dl dd {
@@ -1143,7 +1149,7 @@ ul.keyTermsList li sup {
 
 #maincol.centered dl,#maincol.center dl,#maincol.content dl {
 	background-color: #F0F0F0;
-	background-image: url("parchment-desat-bg.jpg");
+	/* background-image: url("parchment-desat-bg.jpg"); */
 	display: block;
 	margin: 0;
 	text-align: left;
@@ -1197,7 +1203,7 @@ ul.keyTermsList li sup {
     color:black;
 }
 
-#navList li ul li,#navList li,#pageControls ul li {
+#navList li ul li, #navList li, #pageControls ul li {
 	background-color: rgba(255, 255, 255, 0.1);
 	border-color: rgba(220, 220, 255, 0.7);
 	border-radius: 3em 3em 3em 3em;
@@ -1206,7 +1212,10 @@ ul.keyTermsList li sup {
 	padding: 0.1em; 
 	text-align: left;
 	text-indent: 1em;
+	font-size: 0.65rem;
 }
+
+
 
 #navlist li,ul.nobull li,li.nobull,li.nobull,ul.nobull li,#controList,#urlSplit {
 	list-style-type: none;
@@ -1233,9 +1242,10 @@ ul.keyTermsList li sup {
         color: #FAFAFA;
         padding: 0em 0em 1em 1.5em;
         font-size: 1.2em;
-        text-shadow: -0.025em 0.055em 0.2em rgba(20, 20, 20, 0.7);
+        text-shadow: -0.025em 0.055em 0.175em rgba(20, 20, 20, 0.85);
         vertical-align: middle;
         margin-top:-0.5em;
+		font-size:1rem;
 }
 
 #pageControlHeader:before {
@@ -1484,7 +1494,7 @@ ul#imgShow li.imgShowItem {
 }
 
 #footer p a:link {
-	color: #FFFFAA;
+	color: blue;
 }
 
 #footer p a:visited {

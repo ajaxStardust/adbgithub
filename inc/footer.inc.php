@@ -1,5 +1,5 @@
 <?php
-// ./inc/footer.inc.php
+// @filename ./inc/footer.inc.php
 //
 if(defined("XRO")){
 	$xro = XRO;
@@ -33,18 +33,20 @@ $footHost = str_replace($footFile, $footReplace, $footRoot);
  
 ?>
 
-	<div id="footer">	<!-- 	^	#footer 	^	-->
+	<div id="footer" class="container">	<!-- 	^	#footer 	^	-->
+		
 
 				<?php print $backlinksHtml; ?>
 
 	<div class="vertMid">						<!--	^	.vertMid	^	-->
-		<img src="css/adb_small_greyscale.png style="width:100%;height:100%;" class="floatLt" />
 		<p id="toTop" class="floatRt">
 			<a class="intraNav" href="#header">
 			<img src="css/arrow-up.gif" alt="jump to top" />[ Top ]
 			</a>
 		</p>
-		<p id="searchrec">Search privately: <a href="https://duckduckgo.com/goodies" title="Duck Duck Go does not keep tabs on your privacy. This is what you want!"><strong>Duck-Duck-Go-for-it!</strong></a>&trade;</p>
+		<p id="searchrec">Search privately: <a 
+			href="https://duckduckgo.com/goodies" 
+			title="Search privately">Duck-Duck-Go for it!</p>
 	</div>										<!--	$	.vertMid	$	-->
 
 	</div>

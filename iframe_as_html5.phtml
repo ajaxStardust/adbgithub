@@ -16,29 +16,6 @@ require 'class/adbfuncs.class.php';
 $frameControl = new adbFuncs;
 $frame_only = $frameControl->frame_only($setKickout=FALSE);
 
-// Required if your environment does not handle autoloading
-require __DIR__ . '/vendor/autoload.php';
-
-// Use the REST API Client to make requests to the Twilio REST API
-use Twilio\Rest\Client;
-
-// Your Account SID and Auth Token from twilio.com/console
-$sid = 'ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
-$token = 'your_auth_token';
-$client = new Client($sid, $token);
-
-// Use the client to do fun stuff like send text messages!
-$client->messages->create(
-    // the number you'd like to send the message to
-    '+15558675309',
-    [
-        // A Twilio phone number you purchased at twilio.com/console
-        'from' => '+15017250604',
-        // the body of the text message you'd like to send
-        'body' => 'Hey Jenny! Good luck on the bar exam!'
-    ]
-);
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,10 +27,14 @@ $client->messages->create(
         <title>
             frame_only() :: class/adbfuncs.class.php try forcing this.document into proj relative frame path
         </title>
-<?php print $frame_only; ?>
 
-</script>
-        <link href="css/iframestyle.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="css/iframestyle.css" rel="stylesheet" type="text/css" media="screen" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa">
+	<style>
+		html, body, div, p, li, dt, dd, h1, h2, h3, h4, h5, button {
+			font-family: Comfortaa;
+		}
+	</style>
     </head>
     <body>
         <!--    ^    id:pagewidth    ^    -->
