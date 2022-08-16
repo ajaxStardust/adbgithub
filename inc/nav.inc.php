@@ -221,7 +221,7 @@ else {
 
 	$htmlPrint[$oneMore] = '<li id="navTotal">Objects found: '.$totalObjects.'</li>
 		<li id="adb_small_logo"><img 
-		src="css/adb_small_greyscale.png" 
+		src="css/adb_logo_b.png" 
 		style="width:100px;height:80px;" 
 		class="floatLt" /></li>
 		</ul>
