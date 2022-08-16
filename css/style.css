@@ -844,7 +844,7 @@ ul.keyTermsList li sup {
 }
 
 #searchrec a {
-	color: blue;
+	color: blue !important;
 }
 
 #calContainer #calendarIframe {
@@ -1183,6 +1183,7 @@ ul.keyTermsList li sup {
 	margin-top: 1em;
 	text-align: left;
 	outline: 0.1em solid #FF8888;
+	padding: unset;
 }
 
 #navlist li {
@@ -1217,7 +1218,11 @@ ul.keyTermsList li sup {
 
 
 
-#navlist li,ul.nobull li,li.nobull,li.nobull,ul.nobull li,#controList,#urlSplit {
+/* #navlist li,ul.nobull li,li.nobull,li.nobull,ul.nobull li,#controList,#urlSplit {
+ 
+} 
+*/
+.nobull {
 	list-style-type: none;
 }
 
