@@ -187,6 +187,10 @@ else {
 			if(is_array($alphaNumVal)){
 				
 				$htmlPrint[$lc] .= ' [ view '.$toggleCount.' ]';
+
+// ############ ATTN 20220816 - THIS IS WHERE THE EMPTY LI is created. 
+// ############ FIX TO MAKE NAV not include EMPTY ITEMS!
+
 				$htmlPrint[$lc] .= '
 <ul id="ul_'.$alphaNumKey.'" class="alphaNumChildList target">';
 				foreach($alphaNumVal as $alphaNumSortedKey => $alphaNumSortedItem){
