@@ -1,0 +1,31 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"php.validate.executablePath": 
+		"/usr/bin/php",
+	
+		"open-php-html-js-in-browser.alternativeDocumentRootFolders": [
+			"\\\\mxlinux-21\\html\\adbgithub\\"
+		],
+		"open-php-html-js-in-browser.documentRootFolder": "/var/www/html/",
+		"open-php-html-js-in-browser.customHost": "10.0.0.38:80/adbgithub",
+		"open-php-html-js-in-browser.urlToOpen": "custom",
+		"hide-files.files": [],
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true,
+			"**/*.pnproj": true,
+			"**/*.csprj": true,
+			"**/*.pnps": true
+		},
+		"explorerExclude.backup": {}
+	}
+}
