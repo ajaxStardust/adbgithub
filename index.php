@@ -2,7 +2,7 @@
 /*
  *		index.php
  *
- *		Developed by @ajaxStardust <novicenotes@gmail.com>
+ *		Developed by @ajaxStardust <ajaxStardust@gmail.com>
  *
  *		This program, a Web Application written in PHP, HTML, JavaScript,
  *		XML, SVG, and CSS (web programming languages and structured markup)
@@ -22,7 +22,7 @@
 /*
  *
  *	DEVELOPMENT HTTP URL:
- *		 http://localhost/adb_20110514/index.php
+ *		 http://10.0.0.38/adbgithub/index.php
  *				-----------------------
  *
  */
@@ -50,7 +50,7 @@ require_once 'inc/nav.inc.php';
 
 			/**
 			   * 
-			   * printResults (urlchopper.class.php ) is a near worthless function which basically prints what Xdebug already knows
+			   * printResults (class-urlchopper.php ) is a near worthless function which basically prints what Xdebug already knows
 			   * 
 			   */
 			   	if (!isset($chopThis)) {

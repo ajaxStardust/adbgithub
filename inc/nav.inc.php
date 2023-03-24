@@ -4,10 +4,10 @@
 * URL Path ./inc/nav.inc.php
 */
 if(defined("XRO")){
-	$xro = XRO;
+    $xro = XRO;
 }
 else {
-	$xro = '';
+    $xro = '';
 }
 // initialize counter
 $objNmbr = 0;
@@ -26,7 +26,7 @@ $childItems = array();
 // $baseNameEQonePage = array();
 $specialExtn = array();
 /**
-*	@todo fix pmAllCollector
+*   @todo fix pmAllCollector
 * currently pmAllCollector records all extensions, including duplicates. we don't want duplicates.
 *' 
 * @var array pmAllCollector
@@ -43,10 +43,10 @@ require $xro.'inc/alphanumarray.inc.php';
 require $xro.'inc/basenamecleaner.inc.php';
 
 if(file_exists($xro.'inc\nav.inc.php')) {
-	$search = '\inc\nav.inc.php';
+    $search = '\inc\nav.inc.php';
 }
 elseif(file_exists($xro.'inc/nav.inc.php')) {
-	$search = '/inc/nav.inc.php';
+    $search = '/inc/nav.inc.php';
 }
 $subject = $dir;
 $replace = '';
@@ -59,8 +59,8 @@ $dir = str_ireplace($search, $replace, $subject);
  */
 
 if(empty($parseUrl)){
-	$parseUrl = parse_url($nav_pathInfo['dirname'], PHP_URL_PATH);
-	$bodyid=rtrim(".",$parseUrl) ? empty($bodyid) : $bodyid = $bodyid;
+    $parseUrl = parse_url($nav_pathInfo['dirname'], PHP_URL_PATH);
+    $bodyid=rtrim(".",$parseUrl) ? empty($bodyid) : $bodyid = $bodyid;
         
         /**
          * WHAT IS GOING ON HERE - $bodyid is boolean -> false here?
@@ -76,15 +76,15 @@ $goUp["search"] = '@^(.*(?=(/).*))@';
 $goUp["result"] = preg_replace($goUp["search"], $goUp["replace"], $goUp["subject"]);
 $goUp["url"] = str_ireplace($goUp["result"], $goUp["replace"], $goUp["subject"]);
 if(strlen($goUp["url"]) < 1) {
-	$goUp["url"] = $serverUrl."/";
+    $goUp["url"] = $serverUrl."/";
 }
 
 /* if (is_dir($dir)) {
-	if ($dh0 = opendir($dir)) {
-		while (($sortDir[] = readdir($dh0)) !== false) {
-		    sort($sortDir);
-		    }
-  	}
+    if ($dh0 = opendir($dir)) {
+        while (($sortDir[] = readdir($dh0)) !== false) {
+            sort($sortDir);
+            }
+    }
 } */
 
 $concatSubdir = "/".$chopThis."/";
@@ -98,133 +98,180 @@ if (is_dir($concatDirs)) {
 else {
     $dh = opendir($dir);
 }
-	if ($dh) {
+    if ($dh) {
 
-		while (($thisObject = readdir($dh)) !== false) {
-			foreach($myPathInfo as $myKey => $myVal){
-				if(isset(${$myVal})){
-					unset(${$myVal});
-				}
-			}
-			$thisObject_pathInfo = pathinfo($thisObject);
+        while (($thisObject = readdir($dh)) !== false) {
+            foreach($myPathInfo as $myKey => $myVal){
+                if(isset(${$myVal})){
+                    unset(${$myVal});
+                }
+            }
+            $thisObject_pathInfo = pathinfo($thisObject);
 
-			foreach($thisObject_pathInfo as $pathKey => $pathVal) {
-				${$pathKey} = $pathVal;
-			}
+            foreach($thisObject_pathInfo as $pathKey => $pathVal) {
+                ${$pathKey} = $pathVal;
+            }
 
-			if($dirname == '.' && empty($thisObject_pathInfo['extension'])) {
-				$dirname = $basename;
-			}
-			if($dirname=='.') {
-				if($dirname.$extension==$basename){
-					if(strlen($filename) < 1){
-						// REACH THIS POINT? THEN MUST BE SIMILAR TO:
-						// '.buildpath'
-						// IN WHICH CASE WE can define list item as hiddenitem
-						// HOW ABOUT THE FOLLOWING:
+            if($dirname == '.' && empty($thisObject_pathInfo['extension'])) {
+                $dirname = $basename;
+            }
+            if($dirname=='.') {
+                if($dirname.$extension==$basename){
+                    if(strlen($filename) < 1){
+                        // REACH THIS POINT? THEN MUST BE SIMILAR TO:
+                        // '.buildpath'
+                        // IN WHICH CASE WE can define list item as hiddenitem
+                        // HOW ABOUT THE FOLLOWING:
 
-						if(isset($extension) && strlen($extension) < 1){
-							unset($extension);
-							$dirname = $basename;
-						}
-/* 						else{
-							 // $dirname = $basename;
-						} */
-					}
-				}
-			}
-			if (($basename != ".") && ($basename != "..")) {
-				$objNmbr ++;
-			    if( 
-			    	!is_dir($thisObject) 
-			    	&& (isset($extension) && strlen($extension) > 0) 
-			    	&& ($extension != 'htaccess' && $extension != 'htpasswd') 
-			    ) {
-			// POPULATE THE ELUSIVE ALPHANUMARRY
-					// continued in ./arrayobjectparser.inc.php
-					require $xro.'inc/arrayobjectparser.inc.php';
+                        if(isset($extension) && strlen($extension) < 1){
+                            unset($extension);
+                            $dirname = $basename;
+                        }
+/*                      else{
+                             // $dirname = $basename;
+                        } */
+                    }
+                }
+            }
+            if (($basename != ".") && ($basename != "..")) {
+                $objNmbr ++;
+                if( 
+                    !is_dir($thisObject) 
+                    && (isset($extension) && strlen($extension) > 0) 
+                    && ($extension != 'htaccess' && $extension != 'htpasswd') 
+                ) {
+            // POPULATE THE ELUSIVE ALPHANUMARRY
+                    // continued in ./arrayobjectparser.inc.php
+                    require $xro.'inc/arrayobjectparser.inc.php';
 
 
-				} // 	ENDIF- LARGEST CONTAINER CLOSED HERE
+                } //    ENDIF- LARGEST CONTAINER CLOSED HERE
 
-			require $xro.'inc/arrayobjectanchors.inc.php';
-			addAlphaNum($basename,$alphaNumArray,$childItems[$objNmbr]);
-			}
+            require $xro.'inc/arrayobjectanchors.inc.php';
+            addAlphaNum($basename,$alphaNumArray,$childItems[$objNmbr]);
+            }
 
-			 // 	ENDIF  ( pathinfo != "." or "..")
+             //     ENDIF  ( pathinfo != "." or "..")
 
-		}
-		 	 // ENDWHILE
-		closedir($dh);
-	}
+        }
+             // ENDWHILE
+        closedir($dh);
+    }
 // comment 20220604 - dangling brace }
 
  $htmlPrint = array();
 
-/* 	for($i=0;$i<=$objNmbr;$i++) {
-		if(isset($childItems[$i])) {
-			$htmlPrint[$i] = $childItems[$i];
-		}
-	} */
+/*  for($i=0;$i<=$objNmbr;$i++) {
+        if(isset($childItems[$i])) {
+            $htmlPrint[$i] = $childItems[$i];
+        }
+    } */
 
-	$lc = 0;
-	$htmlPrint[$lc] = "<div id=\"leftcol\"> \n <ul id=\"navlist\"> \n";
-	if(isset($goUp["url"])){
-		$htmlPrint[$lc] .= "<li id=\"goUpItem\" class=\"nav\"><a href=\""
-			.$goUp["url"]."\">".$goUp["url"]."</a></li> \n";
-	}
+    $lc = 0;
+    $htmlPrint[$lc] = "<div id=\"leftcol\"> \n <ul id=\"navlist\"> \n";
+    if(isset($goUp["url"])){
+        $htmlPrint[$lc] .= "<li id=\"goUpItem\" class=\"nav\"><a href=\""
+            .$goUp["url"]."\">".$goUp["url"]."</a></li> \n";
+    }
 
-	$totalObjects = $objNmbr;
-	foreach($alphaNumArray as $alphaNumKey => $alphaNumVal){
-		$lc++;
-		$htmlPrint[$lc] = '';
+    $totalObjects = $objNmbr;
+    foreach($alphaNumArray as $alphaNumKey => $alphaNumVal) {
+		/**
+		 * @var int $lc
+		 * 	think _L_ist _C_ount
+		 * 	or _L_eft _C_olumn items
+		 * 	$lc is an incremental counter for distinguishing
+		 * 	and matching corresponding numbered, separate array items.
+		**/
+        $lc++;
+        $htmlPrint[$lc] = '';
+			/**
+			 *	@var array $jQueryHoverArray
+			 *	build a string for printing to HTML head
+			 *	used for controlling onHover handlers in ul#leftcol
+			 *	at each li child. Note resulting effect on mouse hover
+			 *	at navigation left column.
+			 **/
+		$jQueryHoverArray[$lc] = '';
+			/**
+			 * @var array $jQ_click_LoadFrameArray
+			 * similar to $jQueryHoverArray, $jQ_click_LoadFrameArray
+			 * builds an array of strings for placement into HTML head
+			 * for loading iframe contents onClick of <a> elements within
+			 * the ul#leftcol li elements.
+			 **/
+		
+		if($alphaNumVal != '') {
+			/**
+			 * BEGIN Build $jQueryHoverArray
+			 **/			
+			$jQueryHoverArray[$lc] .= '
+			$(document).ready(function() {
+				$("#li_'.$alphaNumKey.'").hover(function() {
+					$("#ul_'.$alphaNumKey.'").css("display", "block");
+				},function(){
+				$("#ul_'.$alphaNumKey.'").css("display", "none");
+				});
+			});';
+			/**
+			 * END $jQueryHoverArray
+			 **/
 
-		if(is_array($alphaNumVal) && $alphaNumVal !== ''){
+        if(is_array($alphaNumVal) && $alphaNumVal !== ''){
                     $toggleCount = count($alphaNumVal);
                     if($toggleCount != 0){
-			$htmlPrint[$lc] .= '<li onclick="showHide(\'ul_'.$alphaNumKey.'\')" id="li_'.$alphaNumKey.'" class="toggler"><span style="font-weight:bold;">'.$alphaNumKey.'</span>:';
+            $htmlPrint[$lc] .= '<li onclick="showHide(\'ul_'.$alphaNumKey.'\')" id="li_'.$alphaNumKey.'" class="toggler"><span style="font-weight:bold;">'.$alphaNumKey.'</span>:';
 
-			if(is_array($alphaNumVal)){
-				
-				$htmlPrint[$lc] .= ' [ view '.$toggleCount.' ]';
-				$htmlPrint[$lc] .= '
+            if(is_array($alphaNumVal)){
+                ksort($alphaNumVal, SORT_STRING  );
+                $htmlPrint[$lc] .= ' [ view '.$toggleCount.' ]';
+
+// ############ ATTN 20220816 - THIS IS WHERE THE EMPTY LI is created. 
+// ############ FIX TO MAKE NAV not include EMPTY ITEMS!
+
+                $htmlPrint[$lc] .= '
 <ul id="ul_'.$alphaNumKey.'" class="alphaNumChildList target">';
-				foreach($alphaNumVal as $alphaNumSortedKey => $alphaNumSortedItem){
-					if($alphaNumSortedItem != ''){
-						$htmlPrint[$lc] .= $alphaNumSortedItem;
-					}
-				}
-				$htmlPrint[$lc] .= '</ul>
-				';
+                foreach($alphaNumVal as $alphaNumSortedKey => $alphaNumSortedItem){
+                    if($alphaNumSortedItem != ''){
+                        $htmlPrint[$lc] .= $alphaNumSortedItem;
+                    }
+                }
+                $htmlPrint[$lc] .= '</ul>
+                ';
                                 }
-			}
+            }
                 
-			elseif(!is_array($alphaNumVal) && $alphaNumVal != '') {
-			 $htmlPrint[$lc] .= ' string:';
-				$htmlPrint[$lc] .= '<ul id="ul_'.$alphaNumKey.'" class="alphaNumChildList target">
-					<li style="white-space:pre;">$['.$alphaNumKey.'] &#x3d;&gt; '.$alphaNumVal.'</li>
-					</ul>
-					';
-			}
-//			else{
-//				$htmlPrint[$lc] .= ' <!-- line '.__LINE__.': -->&#x3d;&gt; '.$alphaNumVal;
-//			}
-			$htmlPrint[$lc] .= '';
-		} /* WHY IS THERE no ELSE or ELSEIF here? - this doesn't make much sense */
-		else {
-		unset($htmlPrint[$lc]);
-		}
-	}
- 	//$totalObjects = $lc;
-	//$oneMore = $i++;
-	$oneMore = $lc++;
+            elseif(!is_array($alphaNumVal) && $alphaNumVal != '') {
+             $htmlPrint[$lc] .= ' string:';
+                $htmlPrint[$lc] .= '<ul id="ul_'.$alphaNumKey.'" class="alphaNumChildList target">
+                    <li style="white-space:pre;">$['.$alphaNumKey.'] &#x3d;&gt; '.$alphaNumVal.'</li>
+                    </ul>
+                    ';
+            }
+//          else{
+//              $htmlPrint[$lc] .= ' <!-- line '.__LINE__.': -->&#x3d;&gt; '.$alphaNumVal;
+//          }
+            $htmlPrint[$lc] .= '';
+        } /* WHY IS THERE no ELSE or ELSEIF here? - this doesn't make much sense */
+        else {
+        unset($htmlPrint[$lc]);
+        }
+    }
+    }
+    //$totalObjects = $lc;
+    //$oneMore = $i++;
+    $oneMore = $lc++;
 
-	$htmlPrint[$oneMore] = '<li id="navTotal">Objects found: '.$totalObjects.'</li>
-		</ul>
-		<!-- close navlist -->
-		</div>
-		<!-- close leftcol -->
-		';
-	ksort($htmlPrint);
+    $htmlPrint[$oneMore] = '<li id="navTotal">Objects found: '.$totalObjects.'</li>
+        <li id="adb_small_logo"><img 
+        src="css/adb_logo_b.png" 
+        style="width:100px;height:80px;" 
+        class="floatLt" alt="small decorative logo"></li>
+        </ul>
+        <!-- close navlist -->
+        </div>
+        <!-- close leftcol -->
+        ';
+    ksort($htmlPrint, SORT_NATURAL    );
 
 ?>

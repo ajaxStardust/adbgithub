@@ -4,8 +4,8 @@
 *		per-item, multi-line comments such as those in loadIframe()
 **/
 
-//var window = navigator.window;
-//var document = window.document;
+var window = navigator.window;
+var document = window.document;
 
 function initLoaders() {
 
@@ -18,15 +18,15 @@ function initLoaders() {
 
     firebugLite = document.createElement('script');
     firebugLite.setAttribute('type', "text/javascript");
-    firebugLite.setAttribute('src', 'js/fbl/firebug-lite.js');
+    firebugLite.setAttribute('src', 'js/fbl/firebug-lite-debug.js');
 
     fbloader.onclick = function() {
         docHead.appendChild(firebugLite);
         if (firebug) {
 			firebug.init();
 		}
-        firebugLite.init();
-    };
+ 
+    }
 }
 
 

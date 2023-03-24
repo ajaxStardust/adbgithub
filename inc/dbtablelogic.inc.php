@@ -5,11 +5,11 @@
 **	first trials of of adbSettings
 */
 
-if(file_exists('class/main-db.class.php')) {
-	require_once 'class/main-db.class.php';
+if(file_exists('class/class-main-db.php')) {
+	require_once 'class/class-main-db.php';
 }
 else {
-	require_once "../class/main-db.class.php";	
+	require_once "../class/class-main-db.php";	
 }
 
 $showDomains = new domainTables;
@@ -34,7 +34,7 @@ if(isset($_POST['gettable'])) {
 		$invokeAdbSetup = $showSettings->htmlConcat;
 	}
 	else {
-		$db	=	'anniedebrowsa';
+		$db	=	'xiola_adbdba_anniedebrowsa';
 		$field = '*';
 		$other = "url_name";
 		$selectorDrop = $showDomains->dropSelect($_POST['tableName'], $field, $other);
@@ -43,7 +43,7 @@ if(isset($_POST['gettable'])) {
 	
 }
 else {
-	$db	=	'anniedebrowsa';
+	$db	=	'xiola_adbdba_anniedebrowsa';
 	$tableSelect = $showDomains->showTables($db);
 	$tableSel4Input = $showDomains->showTables($db);
 }
@@ -71,9 +71,9 @@ else{
 		session_start();
 		$table = $_SESSION['tableName'];
 		$urlid = $_POST['url_id'];
-		require_once "class/main-db.class.php";
+		require_once "class/class-main-db.php";
 		$rowData = new domainTables;
-		$dbName = "anniedebrowsa";
+		$dbName = "xiola_adbdba_anniedebrowsa";
 		$rowArray = $rowData->getUrlDetails($dbName, $table, $urlid);
 
 	}
@@ -81,13 +81,13 @@ else{
 		session_start();
 		$table = $_SESSION['tableName'];
 		$urlid = $_POST['url_id'];
-		require_once "class/main-db.class.php";
+		require_once "class/class-main-db.php";
 		$delObj = new domainTables;
 		$delRow = $delObj->deleteRow($table, $urlid);
 	}
 	elseif(isset($_POST['reload']) && $_POST['reload']=="view"){
 		session_start();
-		require_once "class/main-db.class.php";
+		require_once "class/class-main-db.php";
 		$showDomains = new domainTables;
 		$table = $_SESSION['tableName'];
 		$field = '*';
@@ -102,10 +102,10 @@ else{
 		foreach($_POST as $postKey => $postVal){
 			$_SESSION[$postKey] = $postVal;
 		}
-		require_once "class/main-db.class.php";
+		require_once "class/class-main-db.php";
 
 		$showDomains = new domainTables;
-		$db	=	'anniedebrowsa';
+		$db	='xiola_adbdba_anniedebrowsa';
 		$field = '*';
 		$other = "url_name";
 		$updateSeldrop = $showDomains->urlNames($_SESSION['tableName'], $field, $other);

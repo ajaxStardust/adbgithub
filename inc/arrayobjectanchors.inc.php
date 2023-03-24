@@ -89,34 +89,34 @@ else {
 	$switchFilename = strtolower($cleanBasename);
 	switch($switchFilename) {
 			case "inc":
-				$childItems[$objNmbr] = '<li class="forbidden" title="' . $cleanBasename . '"><!-- '.__LINE__.' --><a href="' . $cleanBasename . '" title="' . $cleanBasename . '">' . $cleanBasename . '</a></li>' . "\n";
+				$childItems[$objNmbr] = '<!-- li class="forbidden" title="' . $cleanBasename . '"><a href="' . $cleanBasename . '" title="' . $cleanBasename . '">' . $cleanBasename . '</a></li -->' . "\n";
 				break;
 			case "class":
-				$childItems[$objNmbr] = '<li class="forbidden" title="' . $cleanBasename . '"><!-- '.__LINE__.' --><a href="' . $cleanBasename . '" title="' . $cleanBasename . '">' . $cleanBasename . '</a></li>' . "\n";
+				$childItems[$objNmbr] = '<!-- li class="forbidden" title="' . $cleanBasename . '"><a href="' . $cleanBasename . '" title="' . $cleanBasename . '">' . $cleanBasename . '</a></li -->' . "\n";
 				break;
 			case "error_log":
-				$childItems[$objNmbr] = '<li class="forbidden" title="' . $cleanBasename . '"><!-- '.__LINE__.' --><a href="' . $cleanBasename . '" title="' . $cleanBasename . '">' . $cleanBasename . '</a></li>' . "\n";
+				$childItems[$objNmbr] = '<!-- li class="forbidden" title="' . $cleanBasename . '"><a href="' . $cleanBasename . '" title="' . $cleanBasename . '">' . $cleanBasename . '</a></li -->' . "\n";
 				break;
 			case "css":
-				$childItems[$objNmbr] = '<li class="forbidden" title="' . $cleanBasename . '"><!-- '.__LINE__.' --><a href="' . $cleanBasename . '" title="' . $cleanBasename . '">' . $cleanBasename . '</a></li>' . "\n";
+				$childItems[$objNmbr] = '<!-- li class="forbidden" title="' . $cleanBasename . '"><a href="' . $cleanBasename . '" title="' . $cleanBasename . '">' . $cleanBasename . '</a></li -->' . "\n";
 				break;
 			case "js":
-				$childItems[$objNmbr] = '<li class="forbidden" title="' . $cleanBasename . '"><!-- '.__LINE__.' --><a href="' . $cleanBasename . '" title="' . $cleanBasename . '">' . $cleanBasename . '</a></li>' . "\n";
+				$childItems[$objNmbr] = '<!-- li class="forbidden" title="' . $cleanBasename . '"><a href="' . $cleanBasename . '" title="' . $cleanBasename . '">' . $cleanBasename . '</a></li -->' . "\n";
 				break;
 			case '.settings':
-				$childItems[$objNmbr] = '<li class="hiddenitem" title="' . $cleanBasename . '"><!-- '.__LINE__.' --><a href="' . $cleanBasename . '" title="' . $cleanBasename . '">' . $cleanBasename . '</a></li>' . "\n";
+				$childItems[$objNmbr] = '<!-- li class="hiddenitem" title="' . $cleanBasename . '"><a href="' . $cleanBasename . '" title="' . $cleanBasename . '">' . $cleanBasename . '</a></li -->' . "\n";
 				break;
 			case '.svn':
-				$childItems[$objNmbr] = '<li class="hiddenitem" title="' . $cleanBasename . '"><!-- '.__LINE__.' --><a href="' . $cleanBasename . '" title="' . $cleanBasename . '">' . $cleanBasename . '</a></li>' . "\n";
+				$childItems[$objNmbr] = '<!-- li class="hiddenitem" title="' . $cleanBasename . '"><a href="' . $cleanBasename . '" title="' . $cleanBasename . '">' . $cleanBasename . '</a></li -->' . "\n";
 				break;
 			case '.buildpath':
-				$childItems[$objNmbr] = '<li class="hiddenitem" title="' . $cleanBasename . '"><!-- '.__LINE__.' --><a href="' . $cleanBasename . '" title="' . $cleanBasename . '">' . $cleanBasename . '</a></li>' . "\n";
+				$childItems[$objNmbr] = '<!-- li class="hiddenitem" title="' . $cleanBasename . '"><a href="' . $cleanBasename . '" title="' . $cleanBasename . '">' . $cleanBasename . '</a></li -->' . "\n";
 				break;
 			case 'images':
-				$childItems[$objNmbr] = '<li class="hiddenitem" title="' . $cleanBasename . '"><!-- '.__LINE__.' --><a href="' . $cleanBasename . '" title="' . $cleanBasename . '">' . $cleanBasename . '</a></li>' . "\n";
+				$childItems[$objNmbr] = '<li class="hiddenitem" title="' . $cleanBasename . '"><a href="' . $cleanBasename . '" title="' . $cleanBasename . '">' . $cleanBasename . '</a></li>' . "\n";
 				break;
 			case 'resources':
-				$childItems[$objNmbr] = '<li class="hiddenitem" title="' . $cleanBasename . '"><!-- '.__LINE__.' --><a href="' . $cleanBasename . '" title="' . $cleanBasename . '">' . $cleanBasename . '</a></li>' . "\n";
+				$childItems[$objNmbr] = '<!-- li class="hiddenitem" title="' . $cleanBasename . '"><a href="' . $cleanBasename . '" title="' . $cleanBasename . '">' . $cleanBasename . '</a></li -->' . "\n";
 				break;
 			case 'htaccess':
 			    $childItems[$objNmbr] = '';

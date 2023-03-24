@@ -23,7 +23,7 @@ else{
 		session_start();
 		$table = $_SESSION['tableName'];
 		$urlid = $_POST['url_id'];
-		require_once "class/main-db.class.php";
+		require_once "class/class-main-db.php";
 		$rowData = new domainTables;
 		$rowArray = $rowData->getUrlDetails($table, $urlid);
 
@@ -32,13 +32,13 @@ else{
 		session_start();
 		$table = $_SESSION['tableName'];
 		$urlid = $_POST['url_id'];
-		require_once "class/main-db.class.php";
+		require_once "class/class-main-db.php";
 		$delObj = new domainTables;
 		$delRow = $delObj->deleteRow($table, $urlid);
 	}
 	elseif(isset($_POST['reload']) && $_POST['reload']=="view"){
 		session_start();
-		require_once "class/main-db.class.php";
+		require_once "class/class-main-db.php";
 		$showDomains = new domainTables;
 		$table = $_SESSION['tableName'];
 		$field = '*';
@@ -53,10 +53,10 @@ else{
 		foreach($_POST as $postKey => $postVal){
 			$_SESSION[$postKey] = $postVal;
 		}
-		require_once "class/main-db.class.php";
+		require_once "class/class-main-db.php";
 
 		$showDomains = new domainTables;
-		$db	=	'anniedebrowsa';
+		$db	='xiola_adbdba_anniedebrowsa';
 		$field = '*';
 		$other = "url_name";
 		$updateSeldrop = $showDomains->urlNames($_SESSION['tableName'], $field, $other);

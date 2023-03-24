@@ -2,8 +2,8 @@
 
 /**
 * @depends
-*	./class/urlchopper.class.php
-*	./css/style.css.php
+*   ./class/class-urlchopper.php
+*   ./css/style.css.php
 **/
 
 /**
@@ -24,11 +24,14 @@
 // MODIFIED by JS 2013-11-14 14.42.24
 // COPIED FROM dochead.inc.php 
 
-define( 'ABSOLUTELOCATION', dirname(__FILE__) . '../' );
+
+if (!defined('ABSOLUTELOCATION')) {
+    define('ABSOLUTELOCATION', rtrim(dirname(__FILE__),"inc"));
+}
 $abspath = ABSOLUTELOCATION;
 $rootCss = FALSE;
 
-require 'class/urlchopper.class.php';
+require 'class/class-urlchopper.php';
 
 $testPath = $_SERVER['SCRIPT_NAME'];
 
@@ -45,20 +48,20 @@ $c_trim = $urlChopper->chop_trim;
 $pi=pathinfo($testPath);
 
 foreach($pi as $piKey => $piVal){
-	switch($piKey){
-		case 'basename' :
-		$pathInfoBasename = $piVal;
-		break;
-		case 'dirname' :
-		$pathInfoDirname = $piVal;
-		break;
-		case 'extension' :
-		$pathInfoExtension = $piVal;
-		break;
-		case 'filename' :
-		$pathinfoFilename = $piVal;
-		break;
-	}
+    switch($piKey){
+        case 'basename' :
+        $pathInfoBasename = $piVal;
+        break;
+        case 'dirname' :
+        $pathInfoDirname = $piVal;
+        break;
+        case 'extension' :
+        $pathInfoExtension = $piVal;
+        break;
+        case 'filename' :
+        $pathinfoFilename = $piVal;
+        break;
+    }
 }
 
 $bodyid = $pathinfoFilename;
@@ -66,42 +69,42 @@ $bodyid = $pathinfoFilename;
 
 
 if(isset($_SERVER['SERVER_NAME'])){
-	$serverName = $_SERVER['SERVER_NAME'];
+    $serverName = $_SERVER['SERVER_NAME'];
 }
 else{
-	$serverName = 'localhost';
+    $serverName = 'localhost';
 }
 $serverUrl = 'http://' . $serverName;
 $currentUrlPath = $serverUrl.$c_url;
 if(!preg_match("@^.*/$@",$currentUrlPath)){
-	$currentUrlPath = $currentUrlPath.'/';
+    $currentUrlPath = $currentUrlPath.'/';
 }
 
 $solidusCount = substr_count($currentUrlPath,"/");
 if(is_int($solidusCount)) {
-	$solidusDepth = ($solidusCount - 3);
+    $solidusDepth = ($solidusCount - 3);
 }
 else {
-	$solidusDepth = 0;
+    $solidusDepth = 0;
 }
 $depthString = '';
 for($sd = 0;$sd < $solidusDepth;$sd++){
-	$depthString .= "../";
+    $depthString .= "../";
 }
 
 if(!defined('CSS')) {
-	if($rootCss==TRUE){
-		if(file_exists($depthString.'css/style.css')){
-               	define('CSS', $depthString.'css/style.css');
+    if($rootCss==TRUE){
+        if(file_exists($depthString.'css/style.css')){
+                define('CSS', $depthString.'css/style.css');
                 define('CSSPATH', $depthString.'css/');
-       	}
-	}
-	else{
-		if(file_exists('css/style.css')){
-			define('CSS','css/style.css');
-			define('CSSPATH','css/');
-		}
-	}
+        }
+    }
+    else{
+        if(file_exists('css/style.css')){
+            define('CSS','css/style.css');
+            define('CSSPATH','css/');
+        }
+    }
 }
 
 /**
@@ -112,37 +115,39 @@ if(!defined('CSS')) {
 $xro = "./";
 
 if(file_exists("favicon.ico")){
-	$favicon = "favicon.ico";
-	$favtype = "image/ico";
+    $favicon = "favicon.ico";
+    $favtype = "image/ico";
 }
 else {
-	/*
-	**	@var array $defaultIconArray
-	**		guess the shortcut icon name (i.e. Favicon.ico )
-	**		from an array of common names
-	**	@var array $iconExtnsArray
-	**		guess icon type from array of common image formats
-	*/
+    /*
+    **  @var array $defaultIconArray
+    **      guess the shortcut icon name (i.e. Favicon.ico )
+    **      from an array of common names
+    **  @var array $iconExtnsArray
+    **      guess icon type from array of common image formats
+    */
 
-	$defaultIconArray = array("favicon", "siteicon", "icon", "shortcut");
-	$iconExtnsArray = array("ico", "png", "bmp");
+    $defaultIconArray = array("favicon", "siteicon", "icon", "shortcut");
+    $iconExtnsArray = array("ico", "png", "bmp");
 
-	foreach($defaultIconArray as $thisIconName){
-		foreach($iconExtnsArray as $thisIconExtn){
-			$testFavicon = $thisIconName . "." . $thisIconExtn;
-			if(file_exists($testFavicon)){
-				$favicon = $testFavicon;
-				$favtype = "image/" . $thisIconExtn;
-			}
-		}
-	}
-	if ( empty($favicon) ) {
-		$favicon = "favicon.ico";
-		$favtype = "image/ico";
-	}
+    foreach($defaultIconArray as $thisIconName){
+        foreach($iconExtnsArray as $thisIconExtn){
+            $testFavicon = $thisIconName . "." . $thisIconExtn;
+            if(file_exists($testFavicon)){
+                $favicon = $testFavicon;
+                $favtype = "image/" . $thisIconExtn;
+            }
+        }
+    }
+    if ( empty($favicon) ) {
+        $favicon = "favicon.ico";
+        $favtype = "image/ico";
+    }
 }
 
 $container = $urlChopper->chopUrl($_SERVER['PHP_SELF']);
 $patharray = pathinfo($testPath);
-	
+//echo "<h1>var_dump(container, patharray)</h2>";
+//echo "<br>".var_dump($container, $patharray)."</br>";
+    
 ?>

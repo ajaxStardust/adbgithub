@@ -1,0 +1,786 @@
+/* ***************************************************************** */
+
+/* -------- NOVICENOTES.NET UNIVERSAL FONTS SIDEBAR ---------------- */
+
+/* -------- STYLESHEET BY J. SABARESE OF NOVICENOTES.NET ----------- */
+
+/* ***************************************************************** */
+
+/* --- VISIT CENTREWEBDESIGN.COM FOR YOUR WEB DEVELOPMENT NEEDS ---- */
+
+/* --- LEARN TO PLAY GUITAR AT STATECOLLEGEGUITARLESSONS.COM ------- */
+
+/* ***************************************************************** */
+
+
+
+/* #################################################### */
+
+/* BEGIN CASCADING STYLESHEET - WITH ITEMIZED SELECTORS */
+
+/* #################################################### */
+
+
+
+/* *************** */
+
+/* PSEUDO-CLASSES  */ /* **************************** PSEUDO-CLASSES */
+
+/* *************** */
+
+
+
+p#stepFour a:link,
+
+ p#stepFour a:visited {
+
+	color: #FFFFFF;
+
+}
+
+p#stepFour strong span a:hover {color:#00c;}
+
+
+
+/* *********************************************** UNIVERSAL CLASSES */
+
+/* USE STYLES HERE ONLY WHICH ARE APPROPRIATE */
+
+/* FOR USE INDEPENDENT OF ANY ELEMENT *** */
+
+/** SPAN ** UNIVERSAL SELECTOR ** SPAN **/
+
+
+
+span.headgetsmaller {
+
+	font-size:50%;
+
+	/* TEMP COLOR  */
+
+	color:#aaa;
+
+	}
+
+
+
+/* *********************************************** GLOBAL ELEMENT COLORS */
+
+/* GLOBAL ELEMENT COLORS */
+
+
+
+/* *************************************************** BODY ID * BODY ID */
+
+/* BODY ID * DYNAMIC-CODE SPECIFIC TO EACH PAGE */
+
+
+
+body#safetyfonts {
+
+	/* none here */
+
+}
+
+
+
+
+
+/*** DO -NOT- MODIFY THE CODE between THIS LINE and LINE No. xx ***/
+
+/* * * WARNING: (in addition) DO NOT ADD PADDING IN SUCH A WAY THAT WILL AFFECT THE IDs directly BELOW! * * */
+
+
+
+
+
+/* HTML */
+
+
+
+
+
+
+
+/* ******************************************************** * BODY */
+
+/* BODY */
+
+body {
+
+	font-size:small;
+
+	background-color:#222;
+
+	color:#aaa;
+
+	font-family:"Trebuchet MS", Helvetica, sans-serif;
+
+}
+
+
+
+
+
+
+
+/* ****************************************************** * * * SPAN */
+
+/* SPAN */
+
+span.sansspan {font-family:monospace;}
+
+.smaller {font-size:smaller;color:#bbb;}
+
+span.heythere {font-weight:bold;color:#33CC66;}
+
+
+
+/* ******************************************************* * * * DIV */
+
+/* DIV */
+
+div#mainfonts {
+
+    width:200px;
+
+    }
+
+div#ampcredits {
+
+	font-size:x-small;
+
+	background-color:#000077;
+
+	color:#ee0;
+
+	font-family:Arial, Arial, Helvetica, sans-serif;
+
+	padding:0.2em;
+
+	text-align:left;
+
+}
+
+
+
+#dagger {font-variant:small-caps;}
+
+
+
+/* ******************************************************* H1 * H1 * H1 */
+
+/* *** HEADINGS **** HEADINGS *** */
+
+/* H1 */
+
+#mainfonts h1 {
+
+  color:#bce;
+
+  display:block;
+
+  border:1px solid #9ac;
+
+ }
+
+
+
+/* ******************************************************* H2 * H2 * H2 */
+
+/* H2 */
+
+
+
+/* H3 */
+
+#mainfonts h3 {color:#ccc;}
+
+
+
+/* ******************************************************* H4 * H4 * H4 */
+
+/* H4 */
+
+h4#headshow {text-align:center;margin:0 auto;color:#FFF6ED;}
+
+
+
+
+
+/* ******************************************************* P * P * P */
+
+/* PARAGRAPH */
+
+p#makebold {
+
+/*	cursor: url('cursor/strong-w60.svg'); */
+
+}
+
+
+
+p.toggitalic {
+
+	cursor: pointer;
+
+	text-decoration: underline;
+
+	color: #333;
+
+	background-color:#FCF8EF;
+
+}
+
+p.togglebold {
+
+	cursor:pointer;
+
+	text-decoration:underline;
+
+	color:#333;
+
+	background-color: #FCF8EF;
+
+}
+
+p#fin {
+
+	background-color:#623;
+
+	color:#eee;
+
+	font-family:Arial, Arial, Helvetica, sans-serif;
+
+	padding:0.2em;
+
+	text-align:left;
+
+	font-size:x-small;
+
+	border:1px solid #aaa;
+
+}
+
+
+
+
+
+
+
+/* ***************************************************** UL * UL * UL */
+
+/* UL **** UNORDERED LISTS */
+
+ul.nobull {
+
+	padding:0;
+
+	list-style-type: upper-roman;
+
+/*	list-style-image: url(../images/fonticonbest.gif); */
+
+	list-style-position: outside;
+
+	margin-left:-1em;
+
+}
+
+
+
+
+
+
+
+/* ***************************************************** OL * OL * OL */
+
+/* OL **** ORDERED LISTS */
+
+ol#olamplist {padding-left:0em;list-style-position:inside;outline:1px solid #444;}
+
+#amplanations ol#olamplist li.amplist {
+
+	padding-left:0em;
+
+	margin-left:0em;
+
+	border:none;
+
+	border-top:1px solid #555;
+
+	border-right:1px solid #444;
+
+
+
+}
+
+
+
+/* ****************************************************** LI * LI * LI */
+
+/* LIST ITEMS */
+
+li.lightgrey {
+
+	background-color: #eee;
+
+}
+
+li.darkgrey {
+
+	background-color: #fff;
+
+}
+
+
+
+li.serif {
+
+	list-style-position: outside;
+
+	font-family: serif; 	
+
+}
+
+li#georgia {font-family: Georgia, georgia, serif;}
+
+li#palatino {font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; }
+
+li#timesnewrom {font-family:"Times New Roman", Times, serif;}
+
+li#arial {font-family: Arial, Arial, Helvetica, sans-serif;}
+
+li#arialblack {font-family: Arial Black, Arial Black, Gadget, sans-serif;}
+
+li#impact{font-family: Impact, Impact, Charcoal, sans-serif;}
+
+li#lucida{font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;}
+
+li#tahoma{font-family: Tahoma, Geneva, sans-serif;}
+
+li#trebuchet{font-family: "Trebuchet MS", Helvetica, sans-serif; }
+
+li#verdana{font-family: Verdana, Verdana, Geneva, sans-serif;}
+
+li#comicsans{font-family: "Comic Sans MS", "Comic Sans MS", cursive;}
+
+li#couriernew {font-family: Courier New, Courier New, Courier6, monospace;}
+
+li#lucidacon {font-family: "Lucida Console", Monaco, monospace;}
+
+li#symbol {font-family:Symbol, Symbol;}
+
+li#webdings {font-family:Webdings, Webdings;}
+
+li#wingdings {font-family:Wingdings, "Zapf Dingbats";}
+
+li#fantasy {font-family:fantasy;}
+
+li#exceptMSSerif {font-family: "MS Serif", "New York", serif;}
+
+li#exceptMSSans {font-family: "MS Sans Serif", Geneva, sans-serif; }
+
+
+
+p.georgia {font-family: Georgia, georgia, serif;}
+
+p.palatino {font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; }
+
+p.timesnewrom {font-family:"Times New Roman", Times, serif;}
+
+p.arial {font-family: Arial, Arial, Helvetica, sans-serif;}
+
+p.arialblack {font-family: Arial Black, Arial Black, Gadget, sans-serif;}
+
+p.impact{font-family: Impact, Impact, Charcoal, sans-serif;}
+
+p.lucida{font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;}
+
+p.tahoma{font-family: Tahoma, Geneva, sans-serif;}
+
+p.trebuchet{font-family: "Trebuchet MS", Helvetica, sans-serif; }
+
+p.verdana{font-family: Verdana, Verdana, Geneva, sans-serif;}
+
+p.comicsans{font-family: "Comic Sans MS", "Comic Sans MS", cursive;}
+
+p.couriernew {font-family: Courier New, Courier New, Courier6, monospace;}
+
+p.lucidacon {font-family: "Lucida Console", Monaco, monospace;}
+
+p.symbol {font-family:Symbol, Symbol;}
+
+p.webdings {font-family:Webdings, Webdings;}
+
+p.wingdings {font-family:Wingdings, "Zapf Dingbats";}
+
+p.fantasy {font-family:fantasy;}
+
+p.exceptMSSerif {font-family: "MS Serif", "New York", serif;}
+
+p.exceptMSSans {font-family: "MS Sans Serif", Geneva, sans-serif; }
+
+
+
+.underline {text-decoration:underline;color:#c64;}
+
+/* li:before {
+
+    white-space: pre;
+
+    content: "    "
+
+} */
+
+li {
+
+	margin:0.5em 0;
+
+   border-top:2px solid #fff;
+
+   border-right:3px solid #555;
+
+   border-left:2px solid #fff;
+
+   border-bottom:4px solid #666;
+
+	width:90%;
+
+	padding:0.2em 0 0.2em 0.2em;
+
+}
+
+/* ****************************************************** DL * DL * DL */
+
+/* DL * *** * DEFINITION LISTS */
+
+dl {
+
+    background-color:#DDD;
+
+    padding:0em;
+
+/*  border:5px double #339; */
+
+    }
+
+dl#font-DL-one {
+
+	background-image: url(bg/parchmosteven.jpg);
+
+	background-attachment: scroll;
+
+	background-position: 0px 0px;
+
+	color:#000;
+
+}
+
+
+
+dl#customarea {background-image: url(bg/font-dl-custom.png);}
+
+dl#customarea dd strong {
+
+	 color:#00A;
+
+}
+
+dl#customarea dd strong.step {
+	background-color:#fff;
+	padding:0.1em 0.2em;
+	border:0.05em solid #55a;
+	}
+
+dl#customarea dd p {margin:0.8em;color:#000;}
+
+dl#customarea #disp {
+
+	background-color:#ffe;
+
+	font-size:150%;
+
+	padding:0.5em;
+
+	border:2px dashed #333;
+
+}
+
+
+
+dt#testinstruct:first-line {
+
+	color:#ff0;
+
+	text-indent: 1em;
+
+	word-spacing:-1px;
+
+	letter-spacing:-1px;
+
+	font-weight:bold;
+
+}
+
+dt#testinstruct {
+
+	color:#ff0;
+
+	text-indent: 1em;
+
+	word-spacing:-1px;
+
+	letter-spacing:-1px;
+
+	font-weight:normal;
+
+}
+
+
+
+p#customtells {color:#000;}
+
+p#whatfontnow {font-weight:bold;color:#339;}
+
+p#newfontname {
+
+	margin:0.2em;
+
+	text-align:center;
+
+	color:#339;
+
+	background-color:#c0c0c0;
+
+	font-size:18px;
+
+}
+
+
+
+/* ****************************************************** DT * DT * DT */
+
+/* DT * *** * DEF TERMS */
+
+dt {
+
+    font-size:1.5em;
+
+    font-weight:bold;
+
+    color:#C00;
+
+    background-color:transparent;
+
+	 margin-top:0.8em;
+
+    }
+
+dt#serifDT {
+
+	color:#D7423F;
+
+	font-family: serif;
+
+}
+
+dt#sansserifDT {
+
+	font-family: sans-serif;
+
+	color:#6A5ACD;
+
+}
+
+dt#cursiveDT {
+
+	font-family:"Comic Sans MS",Comic Sans MS, cursive;
+
+	color: #777;
+
+}
+
+dt#monotypeDT{
+
+	font-family:"Courier New", Courier New, Courier, monospace;
+
+    color:#0000CC;
+
+}
+
+dt#symbolsDT{color:#009900;}
+
+dt#exceptionDT{font-family:fantasy;color:#660099;}
+
+/* ****************************************************** DD * DD * DD */
+
+/* DD * *** * DEF DATA */
+
+dd {
+
+	width:85%;
+
+	background-color: #ccc;
+
+/*	outline:2px double #c33; */
+
+	padding:1px 0;
+
+}
+
+dd#cursiveDD{
+
+	background-color: #777;
+
+}
+
+dd#serifDD {
+
+	background-color: #D7423F;
+
+}
+
+dd#sansserifDD {
+
+	background-color:#9a8afd;
+
+}
+
+dd#monotypeDD {background-color:#0000CC;}
+
+dd#symbolsDD {background-color:#009900;}
+
+
+
+
+
+
+
+
+
+/* ********************************************** TABLE * TABLE * TABLE */
+
+/* TABLE */
+
+
+
+
+
+/* ******************************************************* FORM * FORM */
+
+/* FORMS */
+
+
+
+/* INPUT */
+
+input#inp {background-color:#ff0;}
+
+
+
+input#fontButton {
+
+	background-color: #ddF;
+
+	color: #FF0;
+
+	background-image: url(fonts-button.gif);
+
+	background-position: center;
+
+	background-repeat: no-repeat;
+
+}
+
+ 
+
+/* *********************************************************************** HR */
+
+/* HORIZONTAL RULE */
+
+
+
+
+
+/* ***************************************************** A * A * A * */
+
+/* HYPERLINKS - ANCHORS */
+
+
+
+a:link, a:visited {color:#ee0;}
+
+a:hover {color:#aaF;}
+
+
+
+
+
+/* IDs - MAIN PAGE LAYOUT * **************************** ID * MAIN LAYOUT */
+
+/* MAIN PAGE LAYOUT */
+
+
+
+
+
+/*** IE6 Fix ***/
+
+
+
+/* END MAIN (LISTED ABOVE) */
+
+
+
+
+
+/* *************************************************** IMG * IMG * IMG */
+
+/* IMAGES */
+
+
+
+img.toggleimg {
+
+	display: block; 
+
+	text-align: center;
+
+	margin:3px auto 1px auto;
+
+	padding:3px 0 0 0;
+
+}
+
+
+
+/* *********************************************** HEADER * DIV * HEADER */
+
+/* HEADER IDS */
+
+
+
+
+
+
+
+
+
+/* NAVCONTAINER ************************************************** */
+
+/* NAV */
+
+
+
+ /* ******************************************** FOOTER * DIV * FOOTER */
+
+/* FOOTER DIV */
+
+
+
+
+
+/* END FOOTER DIV */
+
+
+

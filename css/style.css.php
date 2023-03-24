@@ -8,7 +8,7 @@ else {
 if(isset($bodyid)){
 
 	print '
-<style type="text/css"><!--/*--><![CDATA[/*><!--*/
+<style><!--/*--><![CDATA[/*><!--*/
 /* style.css.php */
 
 	body#'.$bodyid.' li#'.$bodyid.'Nav a {
@@ -84,7 +84,7 @@ if(file_exists($xro.'./resources/GillSansMT-ExtraCondensedBold.ttf')){
 // $printSelectors = $cssPrint->selectorStyle;
 // print '
 // <style type="text/css"><!--/*--><![CDATA[/*><!--*/
-// /* dynamicstyle.class.php */
+// /* class-dynamicstyle.php */
 // ';
 // foreach($printSelectors as $csKey => $csVal){
 	// print $csVal;

@@ -17,12 +17,14 @@
 										<!--	^	id:chmodContainer	^	-->
 	<div id="chmodContainer" class="target">
 	<p>Ensure files and folders are assigned the proper user permissions:</p>
-	<table  summary="change mode helper script container" id="chmodTableOuter" class="width_200" cellspacing="0" cellpadding="0" border="0">
+	<table id="chmodTableOuter" class="width_200">
+		<caption>change mode helper script outer</caption>
 		<tbody>
 		<tr>
 		<td>
-			<form action="" name="chmod">
-				<table summary="change mode helper script content" id="chmodTableInner" cellspacing="0" cellpadding="2" border="0">
+			<form name="chmod">
+				<table id="chmodTableInner">
+				<caption>change mode helper script form</caption>
 				<colgroup>
 				<col class="width_200" />
 				<col class="width_200" />
@@ -33,9 +35,9 @@
 				<tbody><tr class="bg_grey">
 				<td class="bg_white right">
 				<p class="left"><b>Permissions</b></p></td>
-				<td class="width_40 center"><font size="1">owner</font></td>
-				<td class="width_40 center"><font size="1">group</font></td>
-				<td class="center width_40"><font size="1">other</font></td>
+				<td class="width_40 center">owner</td>
+				<td class="width_40 center">group</td>
+				<td class="center width_40">other</td>
 				</tr>
 
 				<tr class="bg_grey">

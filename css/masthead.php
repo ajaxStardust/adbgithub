@@ -2,7 +2,7 @@
 
 /**
  *	@copyright AnnieDeBrowsa™ resource filename: masthead.php
- *	© 2009 NoviceNotes™
+ *	© 2009 @ajaxStardust
  *	© 2009 j sabarese, NoviceNotes.Net
  *
  *	@overview
@@ -13,7 +13,7 @@
 
 // direct URL: http://localhost/AnnieDeBrowsa/css/masthead.php
 
-require '../class/urlchopper.class.php';
+require '../class/class-urlchopper.php';
 
 $svgPathChopper = new urlChopper;
 $svgTextRaw = $svgPathChopper->svgTextChopper($_SERVER['PHP_SELF']);

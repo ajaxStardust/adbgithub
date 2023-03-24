@@ -1,0 +1,136 @@
+body {
+	margin: 0 25% 35px 15%;
+	padding: 0;
+	background: WhiteSmoke;
+	color: Black;
+	font: normal x-small Verdana, Geneva, sans-serif;
+	/* x-small is the base font size *only* for IE 5.x */
+	voice-family: "\"}0{\""; /* hiding the following contents from IE 5.x using a well known CSS parse bug of this browser */
+	voice-family: inherit;
+	font-size: small; /* base font size for standards compliant browsers (including IE6) */
+}
+
+tbody { vertical-align: top; }
+
+img { border: 0; }
+
+p, li {
+	margin: 5px 0 10px;
+	font-size: 1em;
+}
+
+ul {
+	margin: 10px 0 10px 15px;
+	padding: 0;
+}
+
+ol {
+	margin: 10px 0 10px 25px;
+	padding: 0;
+}
+
+h1 {
+	margin: 25px 0 15px;
+	color: DarkSlateGray;
+	font: normal normal normal 2.05em 'Trebuchet MS', Helvetica, sans-serif;
+}
+
+h1#title {
+	font: normal normal normal 2.5em Impact, Charcoal, "Arial Black", sans-serif;
+}
+
+h2 {
+	margin: 25px 0 10px;
+	color: SteelBlue;
+	font: normal bold 1.5em "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+h3 {
+	margin: 20px 0 10px;
+	color: DarkSlateGray;
+	font: normal bold 1.15em Arial,Helvetica,sans-serif;
+}
+
+h4 {
+	margin: 10px 0 5px;
+	font: normal bold 1em Arial,Helvetica,sans-serif;
+}
+
+hr {
+	width: 100%;
+	height: 3px;
+	margin: 15px auto;	/* IE */
+	padding: 0;
+	border: 1px solid Black;
+	border-left: 0;
+	border-right: 0;
+	background-color: transparent;
+	color: WhiteSmoke;	/* IE */
+	text-align: center;	/* IE */
+}
+body>hr, div>hr { margin: 30px auto; } /* standards full compliant browsers (IE6 not included) */
+
+table {
+	width: 75%;
+	margin: 15px 0;
+	border: 2px solid Black;
+	border-collapse: collapse;
+}
+
+td, th {
+	padding: 3px 5px;
+	border: 1px solid Black;
+	text-align: left;
+}
+
+th {
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+pre, code {
+	margin: 15px 0 25px 0;
+	padding: 0;
+	font: normal 1.01em "Courier New", Courier, monospace;
+	color: MidnightBlue;
+	line-height: 135%;
+}
+
+acronym { border-bottom: 1px dotted Black; }
+
+a {
+	color: #D55000;
+	text-decoration: none;
+}
+a:visited { color: #C21B12; }
+a:hover { text-decoration: underline; }
+a.external {
+	padding-right: 15px;
+	background: transparent url(img/New-window.gif) no-repeat right center;
+}
+
+small { font-size: 0.85em; }
+.center { text-align: center; }
+.right { text-align: right; }
+.left { text-align: left; }
+.justify { text-align: justify; }
+.nowrap { white-space: nowrap }
+
+.tag {
+	color: #484884;
+	font-weight: bold;
+}
+
+.attrib {
+	color: MidnightBlue;
+	font-weight: normal;
+}
+.return { margin: 0 0 20px; }
+
+.ampersand { font-family: Arial, Helvetica, sans-serif }
+
+#footer {
+	margin: 35px 0 0;
+	text-align: center;
+}
+

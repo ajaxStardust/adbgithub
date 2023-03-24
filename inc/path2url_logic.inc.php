@@ -2,8 +2,8 @@
 error_reporting(E_ALL);
 $transForm = '							<!--	^	.contentInner	^	-->
 <div class="contentInner">
-	<h3 id="wpFormHeader">Windows Path to URL Conversion Tool:</h3>
-	<h4 id="winPathUPC">Winpath™ by NoviceNotes™</h4>
+	<h3 id="wpFormHeader">Windows &amp; Linux Path to URL Conversion Tool:</h3>
+	<h4 id="winPathUPC">path2url by @ajaxStardust</h4>
 	<h5>Filename: <code class="code">[ '.$patharray["basename"].' ]</code></h5>
 		';
 
@@ -38,7 +38,7 @@ if(isset($_GET['winpath'])) {
 		<div id="urlPathContainer" class="target keyTerms">
 		<h4>WinPath Transformation Details</h4>
 		<ul class="larger">
-		<li><em>WinPath™</em> transformed the submitted system <em>path</em> into several smaller strings, each representing one of the containers which make up the path (i.e. each folder name along the path was extracted to a single string).</li>
+		<li><em>path2url</em> transformed the submitted system <em>path</em> into several smaller strings, each representing one of the containers which make up the path (i.e. each folder name along the path was extracted to a single string).</li>
 		<li>The individual container names are derived by PHP <code>preg_match()</code> when &#x201c; &#x2f; &#x201d; (a <em>slash</em>  character) is matched along the path.</li>
 		<li>With each consecutive match, the resulting character strings, naturally corresponding to each container, are stored in an array.</li>
 		</ul>
@@ -271,7 +271,7 @@ for($i=0; $i < $depthLevel; $i++)	{
 if((isset($winpath) /* && isset($_GET['wpGo']) */) && $winpath != '') {
 
 	$htmlConcat .= '</div>
-		<p>The Winpath™ URL transformation script has successfully executed from <code>'.$patharray["basename"].'</code>. The source file, <code>'.$patharray["basename"].'</code> , exists in the server-side folder corresponding to the current HTTP location.</p>
+		<p>The path2url  URL transformation script has successfully executed from <code>'.$patharray["basename"].'</code>. The source file, <code>'.$patharray["basename"].'</code> , exists in the server-side folder corresponding to the current HTTP location.</p>
 		<p class="attn"><strong>'.$depthLevel.'</strong> separate strings were extracted on matching the delimeters in <span class="code red">'.$origPath.'</span>, the original path sent for processing. Each of the delimited sections are detailed further below.</p>
 		<hr class="hidden" />
 		<h4 class="blue">Resulting URL:</h4>
@@ -281,8 +281,8 @@ if((isset($winpath) /* && isset($_GET['wpGo']) */) && $winpath != '') {
 		'<p><a class="winpathanchor" href="'.$winpath.'" target="winpath">'.$winpath.'</a></p>
 		'.
 		'<p class="antihead"><strong>Note:</strong> The HTTP URL has been created using basic <code>IF - THEN</code> flow control logic, where decisions about the result have been made based upon certain conditions known to be true of common system paths (including Linux, although the script title suggests otherwise).</p>
-		<p><span class="bold red">Important:</span> If the resulting link is invalid, or does not point to the desired location, please examine the processing notes above ( <em class="serif">Toggle Details</em> ) and have a look at the source code. Keep in mind that the only files which can resolve to a valid, HTTP-served URL via <em>WinPath™</em> are files located <em>under</em> the Server <code>DOCUMENT_ROOT</code> (unless your server has a dramatically different behaviour from Apache or IIS)</p>
-		<p> Please report feedback, recommendations, bug-fixes, etc., to the developer. Thank you for using <em class="smallcaps">NoviceNotes<sup>&#x2122;</sup> WinPath™</em>!</p>
+		<p><span class="bold red">Important:</span> If the resulting link is invalid, or does not point to the desired location, please examine the processing notes above ( <em class="serif">Toggle Details</em> ) and have a look at the source code. Keep in mind that the only files which can resolve to a valid, HTTP-served URL via <em>path2url </em> are files located <em>under</em> the Server <code>DOCUMENT_ROOT</code> (unless your server has a dramatically different behaviour from Apache or IIS)</p>
+		<p> Please report feedback, recommendations, bug-fixes, etc., to the developer. Thank you for using <em class="smallcaps">@ajaxStardust path2url </em>!</p>
 		';
 	$htmlConcat .= '<p class="innerContent smallcaps">The delimited values found in <span class="code red">'.$origPath.'</span>, as used in creating the URL above, are as follows:</p>
 	<pre>matches:&#160;';

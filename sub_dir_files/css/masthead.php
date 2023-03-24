@@ -2,8 +2,8 @@
 
 /**
  *	@copyright AnnieDeBrowsa™ resource filename: masthead.php
- *	© 2009 NoviceNotes™
- *	© 2009 j sabarese, NoviceNotes.Net
+ *	© 2009 @ajaxStardust
+ *	© 2009 j sabarese, WordPressCenter.net
  *
  *	@overview
  *		process dynamic string for creation of SVG used as masthead image
@@ -19,8 +19,8 @@ if(defined("XRO")){
 else {
 	$xro = '../';
 }
-require $xro.'../class/urlchopper.class.php';
-// require '../class/urlchopper.class.php';
+require $xro.'../class/class-urlchopper.php';
+// require '../class/class-urlchopper.php';
 
 $svgPathChopper = new urlChopper;
 $svgTextRaw = $svgPathChopper->svgTextChopper($_SERVER['PHP_SELF']);
