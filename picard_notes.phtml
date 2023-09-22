@@ -1,0 +1,353 @@
+<?php
+// namespace Adbgithub;
+
+if(!isset($title)){
+  $title = 'MusicBrainz Picard - File Renaming Notes';
+}
+ 
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <?php echo $title; ?>
+  </title>
+  <link 
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" 
+    crossorigin="anonymous">
+  <link 
+    rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    crossorigin="anonymous">
+  <link 
+    href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" 
+    rel="stylesheet"
+    crossorigin="anonymous">
+  <link 
+    rel="stylesheet"
+    href="assets/css/notes.css">
+  <style>
+	/** <![CDATA[ // ONLY IF YOU NEED SOME CUSTOM STYLE YOU LAZY FAWK! ]]> */
+  </style>
+ </head>
+
+<body>
+	
+    <div id="pagewidth" class="container">
+    
+        <section id="header"> PREVIEW FILE TO SEE LAYOUT THEN DELTE ME (using bootstrap)
+            <br><strong>(section#pagewidth.container > div > section#header)</strong>
+            <h1 class="bg-dark text-light text-end pe-3">section#header (h1)</h1>
+            <p>(p) in section#header (after h1)</p>
+        </section>
+    
+        <section id="general_notes" class="container"> (section#genera_notes)
+    
+                <div class="notes">
+                <h2>from the picard user rename script dialog</h2>
+                <p><code class="code"><strong class="red">$add(x,y,...)</strong></code>
+Add y to x. Can be used with an arbitrary number of arguments.
+Example:
+<code><strong class="expression">$add(x,y,z) = ((x + y) + z)</strong></code>
+
+<code><strong class="expression">$and(x,y,...)</strong></code>
+<p class="tsw">Returns true if both x and y are not empty. Can be used with an arbitrary number of arguments. The result is true if ALL of the arguments are not empty.</p>
+<code><strong class="expression">$cleanmulti(name)</strong></code>
+<p class="tsw">Removes all empty string elements from the multi-value variable.</p>
+<strong class="red">Example:</strong>
+<code><strong class="expression">$setmulti(test,one; ; two; three)</strong></code>
+<code><strong class="expression">$cleanmulti(test)</strong></code>
+
+<p class="tsw">Result: Sets the value of &apos;test&apos; to [&quot;one&quot;, &quot;two&quot;, &quot;three&quot;].</p>
+<p>Since Picard 2.8</p>
+<code><strong>$copy(new,old)</strong></code>
+<p class="tsw">Copies metadata from variable old to new. The difference between $set(new,%old%) is that $copy(new,old) copies multi-value variables without flattening them.</p>
+<p>Since Picard 0.9</p>
+<code><strong>$copymerge(new,old[,keep_duplicates])</strong></code>
+<p class="tsw">Merges metadata from variable old into new, removing duplicates and appending to the end, so retaining the original ordering. Like $copy, this will also copy multi-valued variables without flattening them.
+If keep_duplicates is set, then the duplicates will not be removed from the result.</p>
+<p>Since Picard 1.0</p>
+<code><strong>$countryname(country_code,translate=&quot;&quot;)</strong></code>
+<p class="tsw">Returns the name of the country for the specified country code. If the country code is invalid an empty string will be returned. If translate is not blank, the output will be translated into the current locale language.</p>
+<code><strong class="expression">$dateformat(date,format=&quot;%Y-%m-%d&quot;,date_order=&quot;ymd&quot;)</strong></code>
+<p class="tsw">Returns the input date in the specified format, which is based on the standard Python strftime format codes. If no format is specified the date will be returned in the form 2020-02-05. If the date or format are invalid an empty string will be returned.
+The default order for the input date is &quot;ymd&quot;.  This can be changed by specifying
+either &quot;dmy&quot; or &quot;mdy&quot;.</p>
+<p class="tsw">
+Note: Platform-specific formatting codes should be avoided to help ensure the portability of scripts across the different platforms. These codes include: remove zero-padding (e.g. %-d and %-m on Linux or macOS, and their equivalent %#d and %#m on Windows); element length specifiers (e.g. %3Y); and hanging &apos;%&apos; at the end of the format string.</p>
+<p>Since Picard 2.7</p>
+<code><strong>$datetime(format=&quot;%Y-%m-%d %H:%M:%S&quot;)</strong></code>
+<p class="tsw">Returns the current date and time in the specified format, which is based on the standard Python strftime format codes. If no format is specified the date/time will be returned in the form 2020-02-05 14:26:32. Note: Platform-specific formatting codes should be avoided to help ensure the portability of scripts across the different platforms. These codes include: remove zero-padding (e.g. %-d and %-m on Linux or macOS, and their equivalent %#d and %#m on Windows); element length specifiers (e.g. %3Y); and hanging &apos;%&apos; at the end of the format string.</p>
+<code><strong class="expression">$day(date,date_order=&quot;ymd&quot;)</strong></code>
+<p class="tsw">Returns the day portion of the specified date. The default order is &quot;ymd&quot;. This can be changed by specifying either &quot;dmy&quot; or &quot;mdy&quot;. If the date is invalid an empty string will be returned.</p>
+<p>Since Picard 2.7</p>
+<code><strong>$delete(name)</strong></code>
+<p class="tsw">Unsets the variable name and marks the tag for deletion. This is similar to $unset(name) but also marks the tag for deletion. E.g. running $delete(genre) will actually remove the genre tag from a file when saving.</p>
+<p>Since Picard 2.1</p>
+<code><strong>$delprefix(text,prefix1,prefix2,...)</strong></code>
+<p class="tsw">Deletes the specified prefixes from the beginning of text. Multiple prefixes can be specified as separate parameters. If no prefix is specified &apos;A&apos; and &apos;The&apos; are used by default.</p>
+<strong class="red">Example:</strong>
+<code><strong class="expression">$delprefix(%albumartist%,A,An,The,La,Le,Les,Un,Une)</strong></code>
+
+<p>Since Picard 1.3</p>
+<code><strong>$div(x,y,...)</strong></code>
+<p class="tsw">Divides x by y. Can be used with an arbitrary number of arguments.</p>
+<strong class="red">Example:</strong>
+<code><strong class="expression">$div(x,y,z) = ((x / y) / z)</strong></code>
+
+<code><strong class="expression">$endswith(text,suffix)</strong></code>
+<p class="tsw">Returns true if text ends with suffix.</p>
+<p>Since Picard 1.4</p>
+<code><strong>$eq(x,y)</strong></code>
+Returns true if x equals y.
+<code><strong class="expression">$eq_all(x,a1,a2,...)</strong></code>
+<p class="tsw">Returns true if x equals a1 and a2 and ... Functionally equivalent to $and($eq(x,a1),$eq(x,a2),...).
+Example:</p>
+<code><strong class="expression">$if($eq_all(%albumartist%,%artist%,Justin Bieber),$set(engineer,Meat Loaf))</strong></code>
+
+<code><strong class="expression">$eq_any(x,a1,a2,...)</strong></code>
+<p class="tsw">Returns true if x equals a1 or a2 or ... Functionally equivalent to $or($eq(x,a1),$eq(x,a2),...). Functionally equivalent to the eq2 plugin.</p>
+<code><strong class="expression">$find(haystack,needle)</strong></code>
+<p class="tsw">Finds the location of one string within another. Returns the index of the first occurrence of needle in haystack, or &quot;&quot; if needle was not found.</p>
+<p class="tsw">Since Picard 2.3
+<strong class="red">Note</strong> that prior to Picard 2.3.2 $find returned &quot;-1&quot; if needle was not found.</p>
+<code><strong class="expression">$firstalphachar(text,nonalpha=&quot;#&quot;)</strong></code>
+<p class="tsw">Returns the first character of text. If text does not begin with an alphabetic character, then nonalpha is returned instead. If nonalpha is not specified, the default value &quot;#&quot; will be used.
+<strong class="red">Since Picard 0.12</strong></p>
+<code><strong class="expression">$firstwords(text,length)</strong></code>
+<p class="tsw">Like $truncate() except that it will only return the complete words from text which fit within length characters.
+Since Picard 0.12</p>
+<code><strong class="expression">$foreach(name,code,separator=&quot;; &quot;)</strong></code>
+<p class="tsw">Iterates over each element found in the multi-value tag name, executing code. For each loop, the element value is first stored in the tag _loop_value and the count is stored in the tag _loop_count. This allows the element or count value to be accessed within the code script. A literal value representing a multi-value can be substituted for name, using the separator (or &quot;; &quot; if not passed) to coerce the value into a proper multi-valued tag.</p>
+<code><strong class="expression">$get(name)</strong></code>
+<p class="tsw">Returns the variable name (equivalent to %name%).</p>
+<code><strong class="expression">$getmulti(name,index,separator=&quot;; &quot;)</strong></code>
+<p class="tsw">Gets the element at index from the multi-value tag name. A literal value representing a multi-value can be substituted for name, using the separator (or &quot;; &quot; if not passed) to coerce the value into a proper multi-valued tag.</p>
+<code><strong class="expression">$gt(x,y)</strong></code>
+Returns true if x is greater than y.
+<code><strong class="expression">$gte(x,y)</strong></code>
+Returns true if x is greater than or equal to y.
+<code><strong class="expression">$if(if,then,else)</strong></code>
+If if is not empty, it returns then, otherwise it returns else.
+<code><strong class="expression">$if2(a1,a2,a3,...)</strong></code>
+Returns first non empty argument.
+<code><strong class="expression">$in(x,y)</strong></code>
+Returns true, if x contains y.
+<code><strong class="expression">$initials(text)</strong></code>
+Returns the first character of each word in text, if it is an alphabetic character.
+Since Picard 0.12
+<code><strong class="expression">$inmulti(%x%,y)</strong></code>
+Returns true if multi-value variable x contains exactly y as one of its values.
+<p>Since Picard 1.0</p>
+<code><strong>$is_audio()</strong></code>
+Returns true, if the file processed is an audio file.
+<p>Since Picard 2.2</p>
+<code><strong>$is_complete()</strong></code>
+Returns true if every track in the album is matched to a single file. Only works in File Naming scripts.
+<code><strong class="expression">$is_multi(name)</strong></code>
+Returns &apos;1&apos; if the argument is a multi-value tag and there are more than one elements, otherwise an empty string.
+Example:
+<code><strong class="expression">$is_multi(%artists%)</strong></code>
+
+Result: 1 if there is more than one artist, otherwise &quot;&quot;.
+<p>Since Picard 2.7</p>
+<code><strong>$is_video()</strong></code>
+Returns true, if the file processed is an video file.
+<p>Since Picard 2.2</p>
+<code><strong>$join(name,text,separator=&quot;; &quot;)</strong></code>
+Joins all elements in name, placing text between each element, and returns the result as a string.
+<code><strong class="expression">$left(text,number)</strong></code>
+Returns the first number characters from text.
+<code><strong class="expression">$len(text)</strong></code>
+Returns the number of characters in text.
+<code><strong class="expression">$lenmulti(name,separator=&quot;; &quot;)</strong></code>
+Returns the number of elements in the multi-value tag name. A literal value representing a multi-value can be substituted for name, using the separator (or &quot;; &quot; if not passed) to coerce the value into a proper multi-valued tag.
+Example:
+<code><strong class="expression">$lenmulti(One; Two; Three) = 3</strong></code>
+
+<code><strong class="expression">$lower(text)</strong></code>
+Returns text in lower case.
+<code><strong class="expression">$lt(x,y)</strong></code>
+Returns true if x is less than y.
+<code><strong class="expression">$lte(x,y)</strong></code>
+Returns true if x is less than or equal to y.
+<code><strong class="expression">$map(name,code,separator=&quot;; &quot;)</strong></code>
+Iterates over each element found in the multi-value tag name and updates the value of the element to the value returned by code, returning the updated multi-value tag. For each loop, the element value is first stored in the tag _loop_value and the count is stored in the tag _loop_count. This allows the element or count value to be accessed within the code script.
+Empty elements are automatically removed.
+Example:
+<code><strong class="expression">$map(First:A; Second:B,$upper(%_loop_count%=%_loop_value%))</strong></code>
+
+Result: 1=FIRST:A; 2=SECOND:B
+<code><strong class="expression">$matchedtracks()</strong></code>
+Returns the number of matched tracks within a release. Only works in File Naming scripts.
+Since Picard 0.12
+<code><strong class="expression">$mod(x,y,...)</strong></code>
+Returns the remainder of x divided by y. Can be used with an arbitrary number of arguments.
+Example:
+<code><strong class="expression">$mod(x,y,z) = ((x % y) % z)</strong></code>
+
+<code><strong class="expression">$month(date,date_order=&quot;ymd&quot;)</strong></code>
+Returns the month portion of the specified date. The default order is &quot;ymd&quot;. This can be changed by specifying either &quot;dmy&quot; or &quot;mdy&quot;. If the date is invalid an empty string will be returned.
+<p>Since Picard 2.7</p>
+<code><strong>$mul(x,y,...)</strong></code>
+Multiplies x by y. Can be used with an arbitrary number of arguments.
+Example:
+<code><strong class="expression">$mul(x,y,z) = ((x * y) * z)</strong></code>
+
+<code><strong class="expression">$ne(x,y)</strong></code>
+Returns true if x does not equal y.
+<code><strong class="expression">$ne_all(x,a1,a2,...)</strong></code>
+Returns true if x does not equal a1 and a2 and ... Functionally equivalent to $and($ne(x,a1),$ne(x,a2),...). Functionally equivalent to the ne2 plugin.
+<code><strong class="expression">$ne_any(x,a1,a2,...)</strong></code>
+Returns true if x does not equal a1 or a2 or ... Functionally equivalent to $or($ne(x,a1),$ne(x,a2),...).
+Example:
+<code><strong class="expression">$if($ne_any(%albumartist%,%trackartist%,%composer%),$set(lyricist,%composer%))</strong></code>
+
+<code><strong class="expression">$noop(...)</strong></code>
+Does nothing (useful for comments or disabling a block of code).
+<code><strong class="expression">$not(x)</strong></code>
+Returns true if x is empty.
+<code><strong class="expression">$num(number,length)</strong></code>
+Returns number formatted to length digits (maximum 20).
+<code><strong class="expression">$or(x,y,...)</strong></code>
+Returns true if either x or y not empty. Can be used with an arbitrary number of arguments. The result is true if ANY of the arguments is not empty.
+<code><strong class="expression">$pad(text,length,char)</strong></code>
+Pads the text to the length provided by adding as many copies of char as needed to the beginning of the string.
+<code><strong class="expression">$performer(pattern=&quot;&quot;,join=&quot;, &quot;)</strong></code>
+Returns the performers where the performance type (e.g. &quot;vocal&quot;) matches pattern, joined by join. You can specify a regular expression in the format /pattern/flags. flags are optional. Currently the only supported flag is &quot;i&quot; (ignore case). For example $performer(/^guitars?$/i) matches the performance type &quot;guitar&quot; or &quot;Guitars&quot;, but not e.g. &quot;bass guitar&quot;.
+Since Picard 0.10
+<code><strong class="expression">$replace(text,search,replace)</strong></code>
+Replaces occurrences of search in text with value of replace and returns the resulting string.
+<code><strong class="expression">$replacemulti(name,search,replace,separator=&quot;; &quot;)</strong></code>
+Replaces occurrences of search with replace in the multi-value variable name. Empty elements are automatically removed.
+Example:
+<code><strong class="expression">$replacemulti(%genre%,Idm,IDM)</strong></code>
+
+<code><strong class="expression">$reverse(text)</strong></code>
+Returns text in reverse order.
+<code><strong class="expression">$reversemulti(name,separator=&quot;; &quot;)</strong></code>
+Returns a copy of the multi-value tag name with the elements in reverse order. This can be used in conjunction with the $sortmulti function to sort in descending order.
+Example:
+<code><strong class="expression">$reversemulti($sortmulti(B; A; C))</strong></code>
+
+Result: C; B; A
+<code><strong class="expression">$right(text,number)</strong></code>
+Returns the last number characters from text.
+<code><strong class="expression">$rreplace(text,pattern,replace)</strong></code>
+Regular expression replace.
+<code><strong class="expression">$rsearch(text,pattern)</strong></code>
+Regular expression search. This function will return the first matching group.
+<code><strong class="expression">$set(name,value)</strong></code>
+Sets the variable name to value.
+Note: To create a variable which can be used for the file naming string, but which will not be written as a tag in the file, prefix the variable name with an underscore. %something% will create a &quot;something&quot; tag; %_something% will not.
+<code><strong class="expression">$setmulti(name,value,separator=&quot;; &quot;)</strong></code>
+Sets the variable name to value, using the separator (or &quot;; &quot; if not passed) to coerce the value back into a proper multi-valued tag. This can be used to operate on multi-valued tags as a string, and then set them back as proper multi-valued tags.
+Example:
+<code><strong class="expression">$setmulti(genre,$lower(%genre%))</strong></code>
+
+<p>Since Picard 1.0</p>
+<code><strong>$slice(name,start,end,separator=&quot;; &quot;)</strong></code>
+Returns a multi-value variable containing the elements between the start and end indexes from the multi-value tag name. A literal value representing a multi-value can be substituted for name, using the separator (or &quot;; &quot; if not passed) to coerce the value into a proper multi-valued tag. Indexes are zero based. Negative numbers will be counted back from the end of the list. If the start or end indexes are left blank, they will default to the start and end of the list respectively.
+The following example will create a multi-value variable with all artists in %artists% except the first, which can be used to create a &quot;feat.&quot; list.
+Examples:
+<code><strong class="expression">$setmulti(supporting_artists,$slice(%artists%,1))</strong></code>
+<code><strong class="expression">$setmulti(supporting_artists,$slice(%artists%,1,-1))</strong></code>
+
+<code><strong class="expression">$sortmulti(name,separator=&quot;; &quot;)</strong></code>
+Returns a copy of the multi-value tag name with the elements sorted in ascending order.
+Example:
+<code><strong class="expression">$sortmulti(B; A; C)</strong></code>
+
+Result: A; B; C
+<code><strong class="expression">$startswith(text,prefix)</strong></code>
+Returns true if text starts with prefix.
+<p>Since Picard 1.4</p>
+<code><strong>$strip(text)</strong></code>
+Replaces all whitespace in text with a single space, and removes leading and trailing spaces. Whitespace characters include multiple consecutive spaces, and various other unicode characters.
+<code><strong class="expression">$sub(x,y,...)</strong></code>
+Subtracts y from x. Can be used with an arbitrary number of arguments.
+Example:
+<code><strong class="expression">$sub(x,y,z) = ((x - y) - z)</strong></code>
+
+<code><strong class="expression">$substr(text,start[,end])</strong></code>
+Returns the substring beginning with the character at the start index, up to (but not including) the character at the end index. Indexes are zero-based. Negative numbers will be counted back from the end of the string. If the start or end indexes are left blank, they will default to the start and end of the string respectively.
+<code><strong class="expression">$swapprefix(text,prefix1,prefix2,...)</strong></code>
+Moves the specified prefixes from the beginning to the end of text. Multiple prefixes can be specified as separate parameters. If no prefix is specified &apos;A&apos; and &apos;The&apos; are used by default.
+Example:
+<code><strong class="expression">$swapprefix(%albumartist%,A,An,The,La,Le,Les,Un,Une)</strong></code>
+
+Since Picard 1.3, previously as a plugin since Picard 0.13
+<code><strong class="expression">$title(text)</strong></code>
+Returns text in title case (first character in every word capitalized).
+Example:
+<code><strong class="expression">$set(album,$title(%album%))</strong></code>
+
+<p>Since Picard 2.1</p>
+<code><strong>$trim(text[,char])</strong></code>
+Trims all leading and trailing whitespaces from text. The optional second parameter char specifies the character to trim.
+<code><strong class="expression">$truncate(text,length)</strong></code>
+Truncate text to length.
+Since Picard 0.12
+<code><strong class="expression">$unique(name,case_sensitive=&quot;&quot;,separator=&quot;; &quot;)</strong></code>
+Returns a copy of the multi-value tag name with no duplicate elements. By default, a case-insensitive comparison of the elements is performed.
+Example 1:
+<code><strong class="expression">$setmulti(foo,a; A; B; b; cd; Cd; cD; CD; a; A; b)</strong></code>
+<code><strong class="expression">$unique(%foo%)</strong></code>
+
+Result: A; CD; b
+Example 2:
+<code><strong class="expression">$setmulti(foo,a; A; B; b; a; b; A; B, cd)</strong></code>
+<code><strong class="expression">$unique(%foo%,True)</strong></code>
+
+Result: A; B; a; b; cd
+<code><strong class="expression">$unset(name)</strong></code>
+Unsets the variable name. Allows for wildcards to unset certain tags (works with &quot;performer:*&quot;, &quot;comment:*&quot;, and &quot;lyrics:*&quot;). For example $unset(performer:*) would unset all performer tags.
+<code><strong class="expression">$upper(text)</strong></code>
+Returns text in upper case.
+<code><strong class="expression">$while(condition,code)</strong></code>
+Standard &apos;while&apos; loop. Executes code repeatedly until condition no longer evaluates to True. For each loop, the count is stored in the tag _loop_count. This allows the count value to be accessed within the code script. The function limits the maximum number of iterations to 1000 as a safeguard against accidentally creating an infinite loop.
+<code><strong class="expression">$year(date,date_order=&quot;ymd&quot;)</strong></code>
+Returns the year portion of the specified date. The default order is &quot;ymd&quot;. This can be changed by specifying either &quot;dmy&quot; or &quot;mdy&quot;. If the date is invalid an empty string will be returned.
+Since Picard 2.7 </p>
+            </div>  	<!--  $    div   .notes    $   -->
+        </section>  	<!--    $   section   #general_notes  .container    $   -->
+        
+	    <section class="container">
+       
+            <div id="_glossary">
+                <h3>H3 of div#_glossary</h3>
+       		
+	       		<dl id="glossary_defs">
+                    <dt class="dt_primary">dt.dt_primary of dl#_notes_dl</dt>
+                    <dd class="dd_primary">dd.dd_primary
+                        <ul class="ul_primary">
+                            <li>UL inside of DD</li>
+                            <li>2nd list item</li>
+                        </ul>
+       dd end
+                    </dd>
+	        	</dl>
+        	</div> <!-- $     div   #_glossary    $   -->
+        </section>	<!-- $	section .container			-->
+        			
+        <section id="footer">
+            <p class="content cite"> div.main > section#footer.container > p.content.cite: Notes Template by <a
+                    href="https://github.com/ajaxStardust" target="_blank" title="View original">@ajaxStardust</a>.
+                { <date>2022.11.18</date> }
+        </p>
+        </section>	<!-- $ section #footer 	-->
+        	
+      </div><!--    $ .content (former id.maincol)    $    -->
+    <script 
+    	  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    	  integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" 
+    	  crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

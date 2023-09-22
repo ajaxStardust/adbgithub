@@ -1,0 +1,93 @@
+<?php
+
+/**
+ * @tutorial vim tutorial pt1 https://youtu.be/ER5JYFKkYDg
+ */
+
+/**
+ * @method frame_only
+ * @param ENUM (TRUE,FALSE)
+ * @abstract
+ * 	use frame_only() to force the document into preferred frame, relative to project.
+ *
+ */
+require 'public/class/class-adbfuncs.php';
+
+// BY changing to setKickout=TRUE
+// SEND URL_Chopper to file_name only with $setKickout
+//E.G.: frame_only($setKicout=TRUE,$this_filename=$URL_Chopper_blah_blah...)
+// this will require modifying the adbFuncs class also
+
+$frameControl = new adbFuncs;
+$frame_only = $frameControl->frame_only($setKickout = FALSE);
+
+?>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        DistroTube Vim Tutorial
+    </title>
+    <link href="assets/css/iframestyle.css" rel="stylesheet" type="text/css" media="screen" />
+    	<!-- Global site tag (gtag.js) - Google Analytics 2022.07.24 -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-SE954SRMG8"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-SE954SRMG8');
+	</script>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2612637898892107" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+	<link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!--    ^    id:pagewidth    ^    -->
+    <section id="pagewidth" class="container">
+        <!--    ^    id:maincol    ^    -->
+        <div class="content">
+            <h1>The cURL Tutorial by DistroTube</h1>
+            <dl>
+                <dt>Basic functions</dt>
+                <dd>
+                    <ul>
+                        <li>curl wttr.in - returns a weather report</li>
+                        <li>curl ifconfig.co - returns (my) IP addr</li>
+                        <li>GET  THE WEATHER: curl wttr.in (or curl wttr.in/Berlin for city)</li>
+                        <li>GET YOUR IP ADDRESS - curl ifconfig.co</li>
+<li>GET YOUR LOCATION - curl ifconfig.co/country ( curl ifconfig.co/city )</li>
+<li>TINYURL URL SHORTENER - curl -s http://tinyurl.com/api-create.php?url...</li>
+
+<li>GETNEWS.TECH - curl getnews.tech curl getnews.tech/trump curl getnews.tech/nba+finals</li>
+
+<li>CHEAT SHEETS - curl cheat.sh/btrfs</li>
+
+<li>CRYPTOCURRENCY EXCHANGE RATES - curl rate.sx</li>
+
+<li>DICTIONARY - curl 'dict://dict.org/d:operating system'</li>
+
+<li>FUN WITH PARROTS - curl parrot.live
+(also checkout parrotsay: https://github.com/matheuss/parrotsay )</li>
+
+<li>FUN WITH RICK ASTLEY - https://github.com/keroserene/rickrollrc</li>
+                    </ul>
+                </dd>
+            </dl>
+
+        </div><!--    $    END class.content (former id.maincol)    $    -->
+    </section><!--    $    id:pagewidth    $    -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+
+</html>

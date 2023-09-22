@@ -1,0 +1,21 @@
+
+$nav_width: 1 * 18%;
+
+
+nav {
+	background-color: transparent;
+	display: block;
+	float: left;
+	font-family: "Trebuchet MS", "Trebuchet", sans-serif;
+	font-size: 0.9em;
+	position: relative;
+	width: 18%;
+	z-index: 10;
+}
+
+.navlist {
+    background: #1A4314;
+    font-family: Verdana;
+    font-size: 20px;
+    color: #CDCDCD;
+  }

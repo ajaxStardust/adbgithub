@@ -1,0 +1,508 @@
+<?php 
+date_default_timezone_set('EST');
+$page_heading = 'Embed Twitter Elements';
+$title = 'Twitter Feed Notes';
+$lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
+?>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <?php print $title; ?>
+  </title>
+  <link rel="icon" type="image/ico" href="favicon.ico">
+  <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+  <style>
+/** if needed add style here */
+  </style>
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" 
+        crossorigin="anonymous">    <!-- BOOTSTRAP STYLE -->
+    <link 
+        rel="stylesheet" 
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link 
+        href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" 
+        rel="stylesheet">
+    <link 
+        href="assets/css/notes.css" 
+        rel="stylesheet" 
+        type="text/css">
+</head>
+
+<body>
+  <!--    ^:begin    id:pagewidth    ^    -->
+  <section id="pagewidth" class="container">
+
+    <!--    ^:begin    class:content    ^    -->
+    <div class="">
+    <section id="header">  
+    <h1 class="bg-dark text-light text-end pe-3"><?php echo $title; ?></h1>
+</section>
+<section id="general_notes">
+      <div id="" class="notes"> <!-- ^:begin #general_notes ^ -->
+        <h2>General Notes</h2>
+        <p>Some note here...</p>
+</section>
+<div class="main-content__wrapper">
+          
+
+          
+          
+          <div class="dtc-docs__header  main-content__header">
+            <span id="dtc-docs__header-title" class="dtc-docs__header-title  chirp--bold-700  twtr-color--gray-900">Timelines</span>
+          </div>
+
+          
+
+
+
+
+    
+    
+    <div class="dtc09-callout-text">
+
+<div class="dtc09-callout-text">
+  <div class="dtc09__item">
+    <div class="dtc09__color  theme-bg-color--dark"></div>
+    <div class="dtc09__text">
+      
+
+
+
+
+    
+    
+    <div class="c01-rich-text-editor">
+
+<div class="is-table-default">
+  
+<p><b>Please note</b>:</p>
+<p>We are retiring the Likes, Collections, and Moments timelines on September 15, 2022. We recommend you use the&nbsp;<a href="/en/docs/twitter-for-websites/timelines/guides/profile-timeline">Profile</a>&nbsp;and&nbsp;<a href="/en/docs/twitter-for-websites/timelines/guides/list-timeline">Lists</a>&nbsp;timelines, which we’re updating to become faster, easier to use, and more up-to-date with Twitter features and functionality.</p>
+<p>You can learn more about this change in our&nbsp;<a href="https://twittercommunity.com/t/removing-support-for-embedded-like-collection-and-moment-timelines/150313">announcement</a>.</p>
+
+
+</div>
+</div>
+
+
+
+    </div>
+  </div>
+</div></div>
+
+
+    
+    
+    <div class="c01-rich-text-editor">
+
+<div class="is-table-default">
+  
+<h2>Embedded Timelines</h2>
+<p>Embedded timelines are an easy way to embed Tweets on your website in a compact, linear view.&nbsp;Choose between a profile timeline to get the latest Tweets from a Twitter account, or a List timeline containing a curated list of Tweets from your favorite Twitter accounts.</p>
+<p>An embedded timeline consists of two parts: including an embed code that links your webpage to the timeline on Twitter.com, and the Twitter for Websites JavaScript to transform the link into a fully-rendered timeline.</p>
+<p>&nbsp;</p>
+
+
+</div>
+</div>
+
+
+    
+    
+    <div class="c01-rich-text-editor">
+
+<div class="is-table-default">
+  
+<h2>Display styles</h2>
+<p>All timelines support a linear template display with theming customizations.</p>
+
+
+</div>
+</div>
+
+
+    
+    
+    <div class="b27-spacing">
+
+
+
+
+
+
+
+
+
+<div class="b27 twtr-spacing--mbr-300">
+</div></div>
+
+
+    
+    
+    <div class="d07-raw-html">
+
+<div class="d07">
+  <h3>Linear style example<a class="headerlink" href="#linear-style-example" title="Permalink to this headline">¶</a></h3>
+<br>
+<iframe id="twitter-widget-4" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-timeline twitter-timeline-rendered" style="position: static; visibility: visible; display: inline-block; width: 500px; height: 700px; padding: 0px; border: none; max-width: 100%; min-width: 180px; margin-top: 0px; margin-bottom: 0px; min-height: 200px;" data-widget-id="collection:539487832448843776" title="Twitter Timeline"></iframe> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div></div>
+
+
+    
+    
+    <div class="c01-rich-text-editor">
+
+<div class="is-table-default">
+  
+<h2>Timeline types</h2>
+<h3>Profile timeline</h3>
+<p>A&nbsp;<a href="/en/docs/twitter-for-websites/timelines/guides/profile-timeline" title="profile timeline">profile timeline</a>&nbsp;displays the latest Tweets from the specified (public) Twitter account.</p>
+
+
+</div>
+</div>
+
+
+    
+    
+    <div class="d07-raw-html">
+
+<div class="d07">
+  <div class="twitter-timeline twitter-timeline-rendered" style="display: flex; width: 500px; max-width: 100%; margin-top: 0px; margin-bottom: 0px;"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="" style="position: static; visibility: visible; width: 327px; height: 700px; display: block; flex-grow: 1;" title="Twitter Timeline" src="https://syndication.twitter.com/srv/timeline-profile/screen-name/TwitterDev?dnt=false&amp;embedId=twitter-widget-0&amp;frame=false&amp;hideBorder=false&amp;hideFooter=false&amp;hideHeader=false&amp;hideScrollBar=false&amp;lang=en&amp;maxHeight=700px&amp;origin=https%3A%2F%2Fdeveloper.twitter.com%2Fen%2Fdocs%2Ftwitter-for-websites%2Ftimelines%2Foverview&amp;sessionId=0ae65f95c14408ac66b7c56cfb52ea6da13d21eb&amp;showHeader=true&amp;showReplies=false&amp;transparent=false&amp;widgetsVersion=1c23387b1f70c%3A1664388199485"></iframe></div> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div></div>
+
+
+    
+    
+    <div class="c01-rich-text-editor">
+
+<div class="is-table-default">
+  
+<h3>Lists</h3>
+<p>A&nbsp;<a href="/en/docs/twitter-for-websites/timelines/guides/list-timeline" title="list timeline">list timeline</a>&nbsp;displays the latest Tweets from a curated, public list of Twitter accounts. The timeline includes a header displaying the list’s name, description, and curator. To create lists on Twitter.com, the Twitter app, or in TweetDeck,&nbsp;<a href="https://support.twitter.com/articles/76460">learn more here</a>.</p>
+
+
+</div>
+</div>
+
+
+    
+    
+    <div class="d07-raw-html">
+
+<div class="d07">
+  <div class="twitter-timeline twitter-timeline-rendered" style="display: flex; width: 500px; max-width: 100%; margin-top: 0px; margin-bottom: 0px;"><iframe id="twitter-widget-1" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="" style="position: static; visibility: visible; width: 327px; height: 700px; display: block; flex-grow: 1;" title="Twitter Timeline" src="https://syndication.twitter.com/srv/timeline-list/screen-name/TwitterDev/slug/national-parks?dnt=false&amp;embedId=twitter-widget-1&amp;frame=false&amp;hideBorder=false&amp;hideFooter=false&amp;hideHeader=false&amp;hideScrollBar=false&amp;lang=en&amp;maxHeight=700px&amp;origin=https%3A%2F%2Fdeveloper.twitter.com%2Fen%2Fdocs%2Ftwitter-for-websites%2Ftimelines%2Foverview&amp;sessionId=0ae65f95c14408ac66b7c56cfb52ea6da13d21eb&amp;showHeader=true&amp;transparent=false&amp;widgetsVersion=1c23387b1f70c%3A1664388199485"></iframe></div> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div></div>
+
+
+    
+    
+    <div class="c01-rich-text-editor">
+
+<div class="is-table-default">
+  
+<h2>How to add an embedded timeline to your website</h2>
+<p>Visit&nbsp;<a href="https://publish.twitter.com/">publish.twitter.com</a>&nbsp;to generate embed codes for profiles, lists, and&nbsp;<a href="/en/docs/twitter-for-websites/timelines/guides/collection" title="collections">collections</a>. You can also click “Embed this…” from the “•••” menu on timeline screens on Twitter.com, or the “Share” menu of a TweetDeck column.</p>
+
+
+</div>
+</div>
+
+
+    
+    
+    <div class="c01-rich-text-editor">
+
+<div class="is-table-default">
+  
+<h2>Dimensions</h2>
+<p>An embedded timeline automatically adjusts to the width of its parent element with a minimum width of 180 pixels and a maximum width of 520 pixels. The grid display has a minimum width of 220 pixels. Set the maximum width or the maximum height of an embedded timeline by adding a&nbsp;data-width&nbsp;or&nbsp;data-height&nbsp;attribute to the embed code anchor element.</p>
+
+
+</div>
+</div>
+
+
+    
+    
+    <div class="b19-code-snippet twtr-component-space--md">
+
+
+
+
+
+
+
+
+
+
+
+<div class="b19-snippet  b19__theme--light">
+  <!--Rendering snippet component with tabs-->
+  
+  <!--Rendering snippet component single code-->
+  
+  <!--To support legacy mode(initial version) of snippet component-->
+  
+  <div class="t05-inline-code-snippet  ">
+    <!--line-numbers and language are prismjs classes, these classes are used to render line numbers and code properly-->
+    <pre class="line-numbers language-bash" style="position: relative;">      <code tabindex="0" class="t05__copy language-bash"><span class="token operator">&lt;</span>a <span class="token assign-left variable">class</span><span class="token operator">=</span><span class="token string">"twitter-timeline"</span>
+  <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">"https://twitter.com/TwitterDev"</span>
+  data-width<span class="token operator">=</span><span class="token string">"300"</span>
+  data-height<span class="token operator">=</span><span class="token string">"300"</span><span class="token operator">&gt;</span>
+Tweets by @TwitterDev
+<span class="token operator">&lt;</span>/a<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code>
+    <div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+    
+  </div>
+
+</div>
+</div>
+
+
+    
+    
+    <div class="c01-rich-text-editor">
+
+<div class="is-table-default">
+  
+<h3>Customize widget components</h3>
+<h4>Custom chrome</h4>
+<h4>&nbsp;</h4>
+<p>Control the frame around the linear timeline by setting a&nbsp;<span class="code-inline">data-chrome</span>&nbsp;attribute with space-separated tokens for each chrome component.</p>
+
+
+</div>
+</div>
+
+
+    
+    
+    <div class="c01-rich-text-editor">
+
+<div class="is-table-default">
+  
+<table border="1">
+<tbody><tr><th>Token</th>
+<th>Description</th>
+</tr></tbody><tbody><tr><td><span class="code-inline">noheader</span></td>
+<td>Hides the timeline header. Implementing sites must add their own Twitter attribution, link to the source timeline, and comply with other Twitter&nbsp;<a href="https://about.twitter.com/company/display-requirements">display requirements</a>.</td>
+</tr><tr><td><span class="code-inline">nofooter</span></td>
+<td>Hides the timeline footer and Tweet composer link, if included in the timeline widget type.</td>
+</tr><tr><td><span class="code-inline">noborders</span></td>
+<td>Removes all borders within the widget including borders surrounding the widget area and separating Tweets.</td>
+</tr><tr><td><span class="code-inline">noscrollbar</span></td>
+<td>Crops and hides the main timeline scrollbar, if visible. Please consider that hiding standard user interface components can affect the accessibility of your website.</td>
+</tr><tr><td><span class="code-inline">transparent</span></td>
+<td>Removes the widget’s background color.</td>
+</tr></tbody></table>
+
+
+</div>
+</div>
+
+
+    
+    
+    <div class="c01-rich-text-editor">
+
+<div class="is-table-default">
+  
+<p>Example:</p>
+
+
+</div>
+</div>
+
+
+    
+    
+    <div class="b19-code-snippet twtr-component-space--md">
+
+
+
+
+
+
+
+
+
+
+
+<div class="b19-snippet  b19__theme--light">
+  <!--Rendering snippet component with tabs-->
+  
+  <!--Rendering snippet component single code-->
+  
+  <!--To support legacy mode(initial version) of snippet component-->
+  
+  <div class="t05-inline-code-snippet  ">
+    <!--line-numbers and language are prismjs classes, these classes are used to render line numbers and code properly-->
+    <pre class="line-numbers language-bash" style="position: relative;">      <code tabindex="0" class="t05__copy language-bash"><span class="token operator">&lt;</span>a <span class="token assign-left variable">class</span><span class="token operator">=</span><span class="token string">"twitter-timeline"</span>
+  <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">"https://twitter.com/TwitterDev"</span>
+  data-chrome<span class="token operator">=</span><span class="token string">"nofooter noborders"</span><span class="token operator">&gt;</span>
+Tweets by @TwitterDev
+<span class="token operator">&lt;</span>/a<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code>
+    <div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+    
+  </div>
+
+</div>
+</div>
+
+
+    
+    
+    <div class="d07-raw-html">
+
+<div class="d07">
+  <div class="twitter-timeline twitter-timeline-rendered" style="display: flex; width: 500px; max-width: 100%; margin-top: 0px; margin-bottom: 0px;"><iframe id="twitter-widget-2" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="" style="position: static; visibility: visible; width: 327px; height: 700px; display: block; flex-grow: 1;" title="Twitter Timeline" src="https://syndication.twitter.com/srv/timeline-profile/screen-name/TwitterDev?dnt=false&amp;embedId=twitter-widget-2&amp;frame=false&amp;hideBorder=false&amp;hideFooter=false&amp;hideHeader=false&amp;hideScrollBar=false&amp;lang=en&amp;maxHeight=700px&amp;origin=https%3A%2F%2Fdeveloper.twitter.com%2Fen%2Fdocs%2Ftwitter-for-websites%2Ftimelines%2Foverview&amp;sessionId=0ae65f95c14408ac66b7c56cfb52ea6da13d21eb&amp;showHeader=true&amp;showReplies=false&amp;transparent=false&amp;widgetsVersion=1c23387b1f70c%3A1664388199485"></iframe></div> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div></div>
+
+
+    
+    
+    <div class="c01-rich-text-editor">
+
+<div class="is-table-default">
+  
+<p data-emptytext="Text"></p>
+
+</div>
+</div>
+
+
+    
+    
+    <div class="c01-rich-text-editor">
+
+<div class="is-table-default">
+  
+<h3>Limiting the number of Tweets displayed</h3>
+<p>Display a specific number of items between 1 and 20 by customizing your embed HTML.</p>
+<p>Add a&nbsp;<span class="code-inline">data-tweet-limit</span>&nbsp;attribute to the embed code to specify a number of Tweets. The timeline will automatically adjust its height to display a specified number of Tweets. The timeline is fixed after display; it will not poll for new Tweets until the page is refreshed.</p>
+<p>Example:</p>
+
+
+</div>
+</div>
+
+
+    
+    
+    <div class="b19-code-snippet twtr-component-space--md">
+
+
+
+
+
+
+
+
+
+
+
+<div class="b19-snippet  b19__theme--light">
+  <!--Rendering snippet component with tabs-->
+  
+  <!--Rendering snippet component single code-->
+  
+  <!--To support legacy mode(initial version) of snippet component-->
+  
+  <div class="t05-inline-code-snippet  ">
+    <!--line-numbers and language are prismjs classes, these classes are used to render line numbers and code properly-->
+    <pre class="line-numbers language-bash" style="position: relative;">      <code tabindex="0" class="t05__copy language-bash"><span class="token operator">&lt;</span>a <span class="token assign-left variable">class</span><span class="token operator">=</span><span class="token string">"twitter-timeline"</span>
+  <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">"https://twitter.com/TwitterDev"</span>
+  data-tweet-limit<span class="token operator">=</span><span class="token string">"3"</span><span class="token operator">&gt;</span>
+Tweets by @TwitterDev
+<span class="token operator">&lt;</span>/a<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code>
+    <div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+    
+  </div>
+
+</div>
+</div>
+
+
+    
+    
+    <div class="d07-raw-html">
+
+<div class="d07">
+  <div class="twitter-timeline twitter-timeline-rendered" style="display: flex; width: 500px; max-width: 100%; margin-top: 0px; margin-bottom: 0px;"><iframe id="twitter-widget-3" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="" style="position: static; visibility: visible; width: 327px; height: 1492px; display: block; flex-grow: 1;" title="Twitter Timeline" src="https://syndication.twitter.com/srv/timeline-profile/screen-name/TwitterDev?dnt=false&amp;embedId=twitter-widget-3&amp;frame=false&amp;hideBorder=false&amp;hideFooter=false&amp;hideHeader=false&amp;hideScrollBar=false&amp;lang=en&amp;limit=3&amp;origin=https%3A%2F%2Fdeveloper.twitter.com%2Fen%2Fdocs%2Ftwitter-for-websites%2Ftimelines%2Foverview&amp;sessionId=0ae65f95c14408ac66b7c56cfb52ea6da13d21eb&amp;showHeader=true&amp;showReplies=false&amp;transparent=false&amp;widgetsVersion=1c23387b1f70c%3A1664388199485"></iframe></div> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div></div>
+
+
+    
+    
+    <div class="c01-rich-text-editor">
+
+<div class="is-table-default">
+  
+<h2>Accessibility: Override ARIA live politeness</h2>
+<p>An embedded timeline describes its content for screen readers and other assistive technologies using additional markup defined in&nbsp;<a href="http://www.w3.org/WAI/intro/aria.php">WAI-ARIA standards</a>. A timeline widget is a&nbsp;<a href="http://www.w3.org/WAI/PF/aria-practices/#liveprops">live region of a page</a>&nbsp;which will receive updates when new Tweets become available.</p>
+<p>By default, a timeline has a politeness value of&nbsp;<span class="code-inline">polite</span>&nbsp;by default; set a&nbsp;<span class="code-inline">data-aria-polite</span>&nbsp;attribute value of&nbsp;assertive&nbsp;to set the embedded timeline live region politeness to&nbsp;<span class="code-inline">assertive</span>, for example if you’re using the embedded Timeline as a primary source of live content in your page.</p>
+
+
+</div>
+</div>
+
+
+    
+    
+    <div class="b19-code-snippet twtr-component-space--md">
+
+
+
+
+
+
+
+
+
+
+
+<div class="b19-snippet  b19__theme--light">
+  <!--Rendering snippet component with tabs-->
+  
+  <!--Rendering snippet component single code-->
+  
+  <!--To support legacy mode(initial version) of snippet component-->
+  
+  <div class="t05-inline-code-snippet  ">
+    <!--line-numbers and language are prismjs classes, these classes are used to render line numbers and code properly-->
+    <pre class="line-numbers language-bash" style="position: relative;">      <code tabindex="0" class="t05__copy language-bash"><span class="token operator">&lt;</span>a <span class="token assign-left variable">class</span><span class="token operator">=</span><span class="token string">"twitter-timeline"</span>
+  <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">"https://twitter.com/TwitterDev"</span>
+  data-aria-polite<span class="token operator">=</span><span class="token string">"assertive"</span><span class="token operator">&gt;</span>
+Tweets by @TwitterDev
+<span class="token operator">&lt;</span>/a<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code>
+    <div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+    
+  </div>
+
+</div>
+</div>
+
+
+
+
+          
+
+<div id="twtr-article-embedded-survey" class="b32"><iframe id="embeddedIframe2315" title="Feedback Survey" scrolling="no" src="https://developer.twitter.com/medallia/2.41.1_20211116204941/liveApp/2.41.1/form-app-web.html?formId=2315&amp;type=live&amp;isMobile=false&amp;referrer=https%3A%2F%2Fdeveloper.twitter.com%2Fen%2Fdocs%2Ftwitter-for-websites%2Ftimelines%2Foverview&amp;region=digital-cloud-us-prem&amp;displayType=embedded&amp;isSeparateFormTemplateFromData=true" style="border: 0px; width: 100%; height: 248px; display: block;"></iframe></div>
+
+    <section class="footer px-4">                   <!--    .FOOTER     -->
+        <div class="row gx-5">
+            <div class="col"><div class="p-3 border bg-light"> Based on Notes by <a href="https://github.com/ajaxStardust" target="_blank" title="View original">@ajaxStardust</a> <em>Laravel</em> notes:</div></div>
+            <div class="col"><div class="p-3 border bg-light text-end"><kbd><?php echo $lastMod; ?></kbd></div></div>
+        </div>
+    </section>      
+  </div>                                            <!--    .content  -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+</html>

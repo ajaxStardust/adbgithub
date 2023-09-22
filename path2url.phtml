@@ -23,31 +23,31 @@
 
 /** @overview resource path2url.phtml
 **
-**	PHP-powered HTML <FORM> with one <INPUT type="text" /> field 
+**	PHP-powered HTML <FORM> with one <INPUT type="text" /> field
 **	PURPOSE: convert a Qualified FileSystem PATH to valid HTTP URL Format
 **	HTTP_REQUEST via _GET makes possible the sending of PATH string as URL PARAMETER
-**	@IMPORTANT 
-**		For EXAMPLE, a WINDOWS® user might find the following syntax effective to 
+**	@IMPORTANT
+**		For EXAMPLE, a WINDOWS® user might find the following syntax effective to
 **		/AUTOMATICALLY/ PREVIEW ANY FILE UNDER http://server.name/
 **	RUN_or_CMD> YOUR_BROWSER.EXE http://server.name/AnnieDeBrowsa/path2url.phtml?path2url="%TEXT_EDITOR_FILENAME%"
 **
-**	@EXAMPLE 
-** 		TYPICAL, “FULLY QUALIFIED PATH” UNDER TESTING-SERVER 
+**	@EXAMPLE
+** 		TYPICAL, “FULLY QUALIFIED PATH” UNDER TESTING-SERVER
 **			(e.g. under DOCUMENT_ROOT / localhost ):
 **
 **	#1 - MS WINDOWS® 	:	"C:\Apache\htdocs\myPhpProject\newFile.php"
 **	OR
 **	#2 - LINUX 			:	"/home/user/public_html/myPhpProject/newFile.php"
 **
-**  WILL BE TRANSFORMED to the valid HTTP URL:	
+**  WILL BE TRANSFORMED to the valid HTTP URL:
 **		http://localhost/myPhpProject/newFile.php )
 **
 **	@TODO
-** 		Program code for conditional logic such that OTHER FILESYSTEM URL FORMS *MIGHT* WORK AS WELL: 
+** 		Program code for conditional logic such that OTHER FILESYSTEM URL FORMS *MIGHT* WORK AS WELL:
 **		E.g. file://O:/Apache/htdocs/some/path_to/your.file
 */
 
-require_once 'inc/processor.inc.php';
+require_once 'public/inc/processor.inc.php';
 
 /** @var $htmlConcat string
 *	concat very much HTML as a single string contained
@@ -71,8 +71,8 @@ $htmlConcat = '';
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>System File Path to HTTP URL Converter by NoviceNotes™    </title>
-<script type="text/javascript" src="js/iframestuff.js"></script>
-<link href="css/iframestyle.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="assets/js/iframestuff.js"></script>
+<link href="assets/css/notes.css" rel="stylesheet" type="text/css" media="screen" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa">
 	<style>
 		html, body, div, p, dt, dd, h1, h2, h3, h4, h5, button {
@@ -103,7 +103,7 @@ if(empty($_GET)){
 $transForm .= '<p>In the text-area provided, enter the System Path to be converted into a viable HTTP URL.</p>
 <p class="italic red">Once converted, the HTTP URL will be displayed as a hyperlink which can be clicked for previewing in this browser, or to copy/ paste into the address bar of any preferred web browser.</p>
 	<form id="transForm" action="'.$_SERVER['PHP_SELF'].'" method="get">
-		
+
 		<input type="text" id="path2url" name="path2url" value="'.$phppath2url.'" /><br />
 		<input type="hidden" id="wpGo" name="wpGo" value="1" /><br />
 		<input type="submit" id="wpSubmit" name="wpSubmit" value="Convert Path!" /><br />
@@ -159,11 +159,11 @@ $oneLess=$x-1;
 $ref=99;
 
 /**
-* 
-* @var $matchTest moved from forthcoming for loop and placed here 
+*
+* @var $matchTest moved from forthcoming for loop and placed here
 * 	due to logistical purpose of thought process in attempt to solve
 * 	for cygdrive in IF/THEN logic.
-* 
+*
 */
 // $matchTest=$matches[0] ? !is_array($matches[0]) : $matches[0][0] ;
 if (!is_array($matches[0])) {
@@ -174,10 +174,10 @@ else {
 }
 
 /**
-* 
+*
 * @abstract RE following IF/ELSE constrcut:
 * 	moved IF/ELSE logic from FOR loop, just as $matchTest var above.
-* 
+*
 */
 if(isset($matchArray[0])) {
 	$dynaRootTest = preg_match('@file:@i', $matchArray[0]);
@@ -206,8 +206,8 @@ for($i=0; $i < $depthLevel; $i++)	{
 *						A: /home/linuxuser/public_html
 *						A: C:\Apache\htdocs\wwwroot
 *						etc.
-*			2.) IF ATYPICAL FOLDERS ARE DETECTED, BREAK REGULAR PROCESS, THEN 
-*					PROMPT USER FOR A BEST RECOMMENDED TRANSLATION INTO THE http:// URL	
+*			2.) IF ATYPICAL FOLDERS ARE DETECTED, BREAK REGULAR PROCESS, THEN
+*					PROMPT USER FOR A BEST RECOMMENDED TRANSLATION INTO THE http:// URL
 **/
 
 	if($i <= $dynaRootDepth) {
@@ -217,7 +217,7 @@ for($i=0; $i < $depthLevel; $i++)	{
 			$test_error_line = $test[$i];
 
 			$path2url = $path2url;
-			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><img src="'.$xro.'assets/css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
 			$htmlConcat .= '<br /><span class="serif">It looks like you&#x27;re browsing the filesystem. I&#x27;m going to exclude <code>'.$switchVal.'</code> as I build the <code>http://</code> url, but it may fail anyway.</span>';
 			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
 				';
@@ -226,7 +226,7 @@ for($i=0; $i < $depthLevel; $i++)	{
 			$test[$i] = __LINE__;
 			$test_error_line = $test[$i];
 			$path2url = $path2url;
-			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><img src="'.$xro.'assets/css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
 			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
 			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
 				';
@@ -236,7 +236,7 @@ for($i=0; $i < $depthLevel; $i++)	{
 			$path2url = $path2url;
 			$test[$i]= __LINE__;
 			$test_error_line = $test[$i];
-			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><img src="'.$xro.'assets/css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
 			$htmlConcat .= '<br /><span class="serif">This looks like an MS O/S <em>Drive Letter</em>. I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
 			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
 				';
@@ -245,7 +245,7 @@ for($i=0; $i < $depthLevel; $i++)	{
 			$test[$i] = __LINE__;
 			$test_error_line = $test[$i];
 			$path2url = $path2url;
-			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><img src="'.$xro.'assets/css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
 			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
 			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
 				';
@@ -254,7 +254,7 @@ for($i=0; $i < $depthLevel; $i++)	{
 			$test[$i] = __LINE__;
 			$test_error_line = $test[$i];
 			$path2url = $path2url;
-			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><img src="'.$xro.'assets/css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
 			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
 			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
 				';
@@ -265,17 +265,17 @@ for($i=0; $i < $depthLevel; $i++)	{
 			$test[$i] = __LINE__;
 			$test_error_line = $test[$i];
 			$path2url = $path2url;
-			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><img src="'.$xro.'assets/css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
 			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
 			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
 				';
 		}
 		elseif(preg_match('@[a-zA-Z]{1,1}@i',$switchVal,$segMatch)){
-			if(isset($cygPath) && ($cygPath == "u")){ 
+			if(isset($cygPath) && ($cygPath == "u")){
 			$test[$i] = __LINE__;
 			$test_error_line = $test[$i];
 			$path2url = $path2url;
-			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><img src="'.$xro.'assets/css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
 			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
 			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
 				';
@@ -285,7 +285,7 @@ for($i=0; $i < $depthLevel; $i++)	{
 			$test[$i] = __LINE__;
 			$test_error_line = $test[$i];
 			$path2url = $path2url;
-			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><img src="'.$xro.'assets/css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
 			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
 			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
 				';
@@ -294,7 +294,7 @@ for($i=0; $i < $depthLevel; $i++)	{
 			$test[$i] = __LINE__;
 			$test_error_line = $test[$i];
 			$path2url = $path2url;
-			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><img src="'.$xro.'assets/css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
 			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
 			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
 				';
@@ -303,7 +303,7 @@ for($i=0; $i < $depthLevel; $i++)	{
 			$test[$i] = __LINE__;
 			$test_error_line = $test[$i];
 			$path2url = $path2url;
-			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><img src="'.$xro.'assets/css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
 			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
 			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
 				';
@@ -312,7 +312,7 @@ for($i=0; $i < $depthLevel; $i++)	{
 			$test[$i] = __LINE__;
 			$test_error_line = $test[$i];
 			$path2url = $path2url;
-			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><img src="'.$xro.'assets/css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
 			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
 			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
 				';
@@ -322,7 +322,7 @@ for($i=0; $i < $depthLevel; $i++)	{
 			$test[$i] = __LINE__;
 			$test_error_line = $test[$i];
 			$path2url = $path2url;
-			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><img src="'.$xro.'assets/css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
 			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
 			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
 				';
@@ -332,7 +332,7 @@ for($i=0; $i < $depthLevel; $i++)	{
 			$test[$i] = __LINE__;
 			$test_error_line = $test[$i];
 			$path2url = $path2url;
-			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><img src="'.$xro.'assets/css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
 			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
 			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
 				';
@@ -342,7 +342,7 @@ for($i=0; $i < $depthLevel; $i++)	{
 			$test[$i] = __LINE__;
 			$test_error_line = $test[$i];
 			$path2url = $path2url;
-			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><img src="'.$xro.'assets/css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
 			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
 			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
 				';
@@ -352,7 +352,7 @@ for($i=0; $i < $depthLevel; $i++)	{
 			$test[$i] = __LINE__;
 			$test_error_line = $test[$i];
 			$path2url = $path2url;
-			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><img src="'.$xro.'assets/css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
 			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
 			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
 				';
@@ -362,7 +362,7 @@ for($i=0; $i < $depthLevel; $i++)	{
 			$test[$i] = __LINE__;
 			$test_error_line = $test[$i];
 			$path2url = $path2url;
-			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><img src="'.$xro.'assets/css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
 			$htmlConcat .= '<br /><span class="serif">I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
 			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
 				';
@@ -372,7 +372,7 @@ for($i=0; $i < $depthLevel; $i++)	{
 			$test[$i] = __LINE__;
 			$test_error_line = $test[$i];
 			$path2url = $path2url;
-			$htmlConcat .= '<br /><img src="'.$xro.'css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
+			$htmlConcat .= '<br /><img src="'.$xro.'assets/css/warning_transp.png" alt="Attention!" /> key['.$i.']: <code>preg_match(&#x27;/'.$segMatch[0].'/i&#x27;, &#x27;<strong class="red">'.$switchVal.'</strong>&#x27;)</code>'."\n";
 			$htmlConcat .= '<br /><span class="serif">I <em>think</em> this is a Linux User directory. Using my best guess, I&#x27;ll treat this as part of the server DOCUMENT_ROOT:</span>';
 			$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
 				';
@@ -380,7 +380,7 @@ for($i=0; $i < $depthLevel; $i++)	{
 		else {
 			$test[$i] = __LINE__;
 			$test_error_line = $test[$i];
-			$htmlConcat .= '<br /><br /><img src="'.$xro.'css/stop.gif" alt="ERROR!" /> key['.$i.']:<br />
+			$htmlConcat .= '<br /><br /><img src="'.$xro.'assets/css/stop.gif" alt="ERROR!" /> key['.$i.']:<br />
 				Not sure of the cause of this ERROR, yet, but I do know <code>$test{'.$i.'}</code> hit here!
 				<br />This chunk of the path, assigned to <code>$switchVal</code>: '.$switchVal.'<br />
 				<em>Now</em>, what does that tell you?<br />
@@ -407,7 +407,7 @@ for($i=0; $i < $depthLevel; $i++)	{
 	else{
 		$test[$i] = __LINE__;
 		$path2url .= '/'.$switchVal;
-		$htmlConcat .= '<br /><img src="'.$xro.'css/check_green.png" alt="Valid!" /> key['.$i.']: <span class="urlPathNoMatch">'.$switchVal.'</span> was used to build the HTTP URL.';
+		$htmlConcat .= '<br /><img src="'.$xro.'assets/css/check_green.png" alt="Valid!" /> key['.$i.']: <span class="urlPathNoMatch">'.$switchVal.'</span> was used to build the HTTP URL.';
 		$htmlConcat .= '<br /><span class="serif">result: <span class="green monospace urlSoFar">'.$path2url.'</span> &#x2026;</span>
 				';
 	}
@@ -426,7 +426,7 @@ for($i=0; $i < $depthLevel; $i++)	{
 	elseif(!empty($segMatch)){
 		unset($segMatch);
 	}
-	
+
 	if(isset($test_error_line)){
 		$htmlConcat .= '<br /><span class="hidden">$test{'.$i.'} happened at _line_'.$test_error_line.'_ in '.__FILE__.'</span>'."\n";
 	}

@@ -1,0 +1,296 @@
+<?php
+
+require 'public/class/class-adbfuncs.php';
+
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+<?php print __DIR__ ?>
+        </title>
+
+        <!-- link href="assets/css/quora_style.css" rel="stylesheet" type="text/css" media="screen" / -->
+        <link href="assets/css/iframestyle.css" rel="stylesheet" type="text/css" media="screen" />
+
+    </head>
+    <body>
+        <!--    ^    id:pagewidth    ^    -->
+        <div id="pagewidth">
+            <!--    ^    id:maincol    ^    -->
+            <div class="content">
+<div>
+    <p class="q-text qu-display--block qu-wordBreak--break-word qu-textAlign--start"
+        style="box-sizing: border-box; margin-bottom: 1em; overflow-wrap: anywhere; direction: ltr;">SSH is a secure shell that allows user to access files or directories at remote server. It allows user to connect securely over an unsecured network. One can do several task related to files or directories via SSH. SSH works on command line that means commands are used to perform task in SSH. So, here I will explain the procedure to transfer a website from one server to another using SSH by using commands.</p> <p class="q-text qu-display--block qu-wordBreak--break-word qu-textAlign--start" style="box-sizing: border-box; margin-bottom: 1em; overflow-wrap: anywhere; direction: ltr;">*You must have access of both the servers.</p>
+<ul class="q-box" style="box-sizing: border-box; direction: ltr; overflow-wrap: break-word; list-style: disc; margin-bottom: 1em; margin-right: 2em;">
+<li class="q-relative" style="box-sizing: border-box; position: relative; margin-left: 2em; padding-bottom: 0.7em;">Login to SSH client PuTTy with username and password of server1.</li>
+<li class="q-relative" style="box-sizing: border-box; position: relative; margin-left: 2em; padding-bottom: 0px;">Now, compress the directory public_html by using tar -cvzf command as directed.</li>
+</ul>
+<div class="q-relative qu-py--tiny qu-borderRadius--small qu-bg--gray_ultralight QTextCode___StyledRelative-sc-1j2dh40-0 iXxNjC" style="box-sizing: border-box; position: relative; margin-top: 1em; margin-bottom: 1em;">
+<pre class="q-box qu-overflowX--auto qu-whiteSpace--pre-wrap" style="box-sizing: border-box; margin-left: 0px; margin-right: 0px; overflow-wrap: normal;">
+<ol class="q-text" style="box-sizing: border-box; list-style-type: none; counter-reset: prettyprintlinenumber 0;">
+<div class="CssComponent-sc-1oskqb9-0 QTextCode___StyledCssComponent-sc-1j2dh40-1  jrABmp">
+<li class="q-text code-line qu-color--gray qu-textAlign--left" style="box-sizing: border-box; padding-left: 3em; position: relative; counter-increment: prettyprintlinenumber 1;">tar -cvzf public_html.tar.gz  public_html&nbsp;</li>
+</div>
+</ol>
+</pre>
+</div>
+<div class="q-box qu-mx--n_medium" style="box-sizing: border-box;">
+<div class="CssComponent-sc-1oskqb9-0 QTextImage___StyledCssComponent-sc-1yi3aau-0  cfUEeh">
+<div class="q-box unzoomed" tabindex="-1" style="box-sizing: border-box; margin-bottom: 1em;">
+<img class="q-image qu-display--block" src="https://qph.cf2.quoracdn.net/main-qimg-94de664aecac345d24a96c5ec25aeec0-pjlq" style="box-sizing: border-box; max-width: 100%; margin-left: auto; margin-right: auto;">
+</div>
+</div>
+</div>
+<ul class="q-box" style="box-sizing: border-box; direction: ltr; overflow-wrap: break-word; list-style: disc; margin-bottom: 1em; margin-right: 2em;">
+<li class="q-relative" style="box-sizing: border-box; position: relative; margin-left: 2em; padding-bottom: 0px;">It will take time to complete the task as it has maximum number of files.</li>
+</ul>
+<div class="q-box qu-mx--n_medium" style="box-sizing: border-box;">
+<div class="CssComponent-sc-1oskqb9-0 QTextImage___StyledCssComponent-sc-1yi3aau-0  cfUEeh">
+<div class="q-box unzoomed" tabindex="-1" style="box-sizing: border-box; margin-bottom: 1em;">
+<img class="q-image qu-display--block" src="https://qph.cf2.quoracdn.net/main-qimg-67c9260b89703e3cb0b5a097eca9e621-pjlq" style="box-sizing: border-box; max-width: 100%; margin-left: auto; margin-right: auto;">
+</div>
+</div>
+</div>
+<ul class="q-box" style="box-sizing: border-box; direction: ltr; overflow-wrap: break-word; list-style: disc; margin-bottom: 1em; margin-right: 2em;">
+<li class="q-relative" style="box-sizing: border-box; position: relative; margin-left: 2em; padding-bottom: 0.7em;">You have successfully compressed the directory public_html by using SSH command.</li>
+<li class="q-relative" style="box-sizing: border-box; position: relative; margin-left: 2em; padding-bottom: 0px;">Use ls command to check the presence of public_html.tar.gz or find command with filename for the same.</li>
+</ul>
+<div class="q-box qu-mx--n_medium" style="box-sizing: border-box;">
+<div class="CssComponent-sc-1oskqb9-0 QTextImage___StyledCssComponent-sc-1yi3aau-0  cfUEeh">
+<div class="q-box unzoomed" tabindex="-1" style="box-sizing: border-box; margin-bottom: 1em;">
+<img class="q-image qu-display--block" src="https://qph.cf2.quoracdn.net/main-qimg-f953d0b6604e8f7e7d519981c11fb618-pjlq" style="box-sizing: border-box; max-width: 100%; margin-left: auto; margin-right: auto;">
+</div>
+</div>
+</div>
+<ul class="q-box" style="box-sizing: border-box; direction: ltr; overflow-wrap: break-word; list-style: disc; margin-bottom: 1em; margin-right: 2em;">
+<li class="q-relative" style="box-sizing: border-box; position: relative; margin-left: 2em; padding-bottom: 0.7em;">Now, move this archived file to public_html so that it can be accessed easily via browser.</li>
+<li class="q-relative" style="box-sizing: border-box; position: relative; margin-left: 2em; padding-bottom: 0px;">Use mv command as directed to do the same.</li>
+</ul>
+<div class="q-relative qu-py--tiny qu-borderRadius--small qu-bg--gray_ultralight QTextCode___StyledRelative-sc-1j2dh40-0 iXxNjC" style="box-sizing: border-box; position: relative; margin-top: 1em; margin-bottom: 1em;">
+<pre class="q-box qu-overflowX--auto qu-whiteSpace--pre-wrap" style="box-sizing: border-box; margin-left: 0px; margin-right: 0px; overflow-wrap: normal;">
+<ol class="q-text" style="box-sizing: border-box; list-style-type: none; counter-reset: prettyprintlinenumber 0;">
+<div class="CssComponent-sc-1oskqb9-0 QTextCode___StyledCssComponent-sc-1j2dh40-1  jrABmp">
+<li class="q-text code-line qu-color--gray qu-textAlign--left" style="box-sizing: border-box; padding-left: 3em; position: relative; counter-increment: prettyprintlinenumber 1;">mv public_html.tar.gz  /homedir/public_html&nbsp;</li>
+</div>
+</ol>
+</pre>
+</div>
+<div class="q-box qu-mx--n_medium" style="box-sizing: border-box;">
+<div class="CssComponent-sc-1oskqb9-0 QTextImage___StyledCssComponent-sc-1yi3aau-0  cfUEeh">
+<div class="q-box unzoomed" tabindex="-1" style="box-sizing: border-box; margin-bottom: 1em;">
+<img class="q-image qu-display--block" src="https://qph.cf2.quoracdn.net/main-qimg-19a2f9ae02f405a937145526538cadc7-pjlq" style="box-sizing: border-box; max-width: 100%; margin-left: auto; margin-right: auto;">
+</div>
+</div>
+</div>
+<ul class="q-box" style="box-sizing: border-box; direction: ltr; overflow-wrap: break-word; list-style: disc; margin-bottom: 1em; margin-right: 2em;">
+<li class="q-relative" style="box-sizing: border-box; position: relative; margin-left: 2em; padding-bottom: 0.7em;">Get inside public_html to check if the file is present.</li>
+<li class="q-relative" style="box-sizing: border-box; position: relative; margin-left: 2em; padding-bottom: 0px;">Now, login to SSH of server2 where you want to transfer your website by using username and password.</li>
+</ul>
+<div class="q-box qu-mx--n_medium" style="box-sizing: border-box;">
+<div class="CssComponent-sc-1oskqb9-0 QTextImage___StyledCssComponent-sc-1yi3aau-0  cfUEeh">
+<div class="q-box unzoomed" tabindex="-1" style="box-sizing: border-box; margin-bottom: 1em;">
+<img class="q-image qu-display--block" src="https://qph.cf2.quoracdn.net/main-qimg-385a5587027b174fc456372669db01ea-pjlq" style="box-sizing: border-box; max-width: 100%; margin-left: auto; margin-right: auto;">
+</div>
+</div>
+</div>
+<ul class="q-box" style="box-sizing: border-box; direction: ltr; overflow-wrap: break-word; list-style: disc; margin-bottom: 1em; margin-right: 2em;">
+<li class="q-relative" style="box-sizing: border-box; position: relative; margin-left: 2em; padding-bottom: 0.7em;">To transfer the archived file to another server, we will use wget command which allows user to download any file from internet.</li>
+<li class="q-relative" style="box-sizing: border-box; position: relative; margin-left: 2em; padding-bottom: 0px;">Use the command with the filename as directed to do the same.</li>
+</ul>
+<div class="q-relative qu-py--tiny qu-borderRadius--small qu-bg--gray_ultralight QTextCode___StyledRelative-sc-1j2dh40-0 iXxNjC" style="box-sizing: border-box; position: relative; margin-top: 1em; margin-bottom: 1em;">
+<pre class="q-box qu-overflowX--auto qu-whiteSpace--pre-wrap" style="box-sizing: border-box; margin-left: 0px; margin-right: 0px; overflow-wrap: normal;">
+<ol class="q-text" style="box-sizing: border-box; list-style-type: none; counter-reset: prettyprintlinenumber 0;">
+<div class="CssComponent-sc-1oskqb9-0 QTextCode___StyledCssComponent-sc-1j2dh40-1  jrABmp">
+<li class="q-text code-line qu-color--gray qu-textAlign--left" style="box-sizing: border-box; padding-left: 3em; position: relative; counter-increment: prettyprintlinenumber 1;">wget https://domain.com/pathof/archievedfile&nbsp;</li>
+</div>
+</ol>
+</pre>
+</div>
+<div class="q-box qu-mx--n_medium" style="box-sizing: border-box;">
+<div class="CssComponent-sc-1oskqb9-0 QTextImage___StyledCssComponent-sc-1yi3aau-0  cfUEeh">
+<div class="q-box unzoomed" tabindex="-1" style="box-sizing: border-box; margin-bottom: 1em;">
+<img class="q-image qu-display--block" src="https://qph.cf2.quoracdn.net/main-qimg-29ee25b48e4b4b6a9c22707f8acd2d13-pjlq" style="box-sizing: border-box; max-width: 100%; margin-left: auto; margin-right: auto;">
+</div>
+</div>
+</div>
+<p class="q-text qu-display--block qu-wordBreak--break-word qu-textAlign--start" style="box-sizing: border-box; margin-bottom: 1em; overflow-wrap: anywhere; direction: ltr;">You have successfully transferred the website to other server.</p>
+<ul class="q-box" style="box-sizing: border-box; direction: ltr; overflow-wrap: break-word; list-style: disc; margin-bottom: 1em; margin-right: 2em;">
+<li class="q-relative" style="box-sizing: border-box; position: relative; margin-left: 2em; padding-bottom: 0.7em;">Now, create a directory to extract the tar.gz file.</li>
+<li class="q-relative" style="box-sizing: border-box; position: relative; margin-left: 2em; padding-bottom: 0px;">Use mkdir command as directed in the below image to do the same.</li>
+</ul>
+<div class="q-box qu-mx--n_medium" style="box-sizing: border-box;">
+<div class="q-box" style="box-sizing: border-box; position: relative; margin-bottom: 1em; transition-property: undefined; transition-duration: 1s; transition-timing-function: ease-out; filter: blur(0px);">
+<img class="q-image qu-cursor--default qu-display--block" src="https://qph.cf2.quoracdn.net/main-qimg-5a412884c239e6962296a992c974b67a" style="box-sizing: border-box; max-width: 100%; margin-left: auto; margin-right: auto;">
+</div>
+</div>
+<ul class="q-box" style="box-sizing: border-box; direction: ltr; overflow-wrap: break-word; list-style: disc; margin-bottom: 1em; margin-right: 2em;">
+<li class="q-relative" style="box-sizing: border-box; position: relative; margin-left: 2em; padding-bottom: 0.7em;">Move the tar file inside the created directory and then get inside the directory by using cd command.</li>
+<li class="q-relative" style="box-sizing: border-box; position: relative; margin-left: 2em; padding-bottom: 0px;">Now, extract the tar file by using tar xvf command.</li>
+</ul>
+<div class="q-box qu-mx--n_medium" style="box-sizing: border-box;">
+<div class="q-box" style="box-sizing: border-box; position: relative; margin-bottom: 1em; transition-property: undefined; transition-duration: 1s; transition-timing-function: ease-out; filter: blur(0px);">
+<img class="q-image qu-cursor--default qu-display--block" src="https://qph.cf2.quoracdn.net/main-qimg-379ef722855a1638ea275cf9f07493ad" style="box-sizing: border-box; max-width: 100%; margin-left: auto; margin-right: auto;">
+</div>
+</div>
+<ul class="q-box" style="box-sizing: border-box; direction: ltr; overflow-wrap: break-word; list-style: disc; margin-bottom: 1em; margin-right: 2em;">
+<li class="q-relative" style="box-sizing: border-box; position: relative; margin-left: 2em; padding-bottom: 0px;">Now, check the list of files by using ls command.</li>
+</ul>
+<div class="q-box qu-mx--n_medium" style="box-sizing: border-box;">
+<div class="CssComponent-sc-1oskqb9-0 QTextImage___StyledCssComponent-sc-1yi3aau-0  cfUEeh">
+<div class="q-box unzoomed" tabindex="-1" style="box-sizing: border-box; margin-bottom: 1em;">
+<img class="q-image qu-display--block" src="https://qph.cf2.quoracdn.net/main-qimg-ef16dc4c79c9f9bb23e5a4cc428c4dd3-pjlq" style="box-sizing: border-box; max-width: 100%; margin-left: auto; margin-right: auto;">
+</div>
+</div>
+</div>
+<p class="q-text qu-display--block qu-wordBreak--break-word qu-textAlign--start" style="box-sizing: border-box; margin-bottom: 1em; overflow-wrap: anywhere; direction: ltr;">You have successfully extracted the tar file. Thus, transfer your website from one server to another using SSH.</p> <p class="q-text qu-display--block qu-wordBreak--break-word qu-textAlign--start" style="box-sizing: border-box; margin-bottom: 1em; overflow-wrap: anywhere; direction: ltr;">*This procedure does not include backup of website database.</p> <p class="q-text qu-display--block qu-wordBreak--break-word qu-textAlign--start" style="box-sizing: border-box; margin-bottom: 0px; overflow-wrap: anywhere; direction: ltr;">In the hosting services of REDSERVERHOST, there are more such features that are provided to the users. If you are also looking for cost-effective and featured hosting services then I recommend you to opt the plans of REDSERVERHOST.</p>
+</span>
+</span>
+</div>
+<div>
+</div>
+</div>
+</div>
+<div class="q-text qu-dynamicFontSize--small qu-mt--small qu-color--gray_light qu-passColorToLinks" style="box-sizing: border-box;">
+<span>
+<span class="q-box qu-display--none" style="box-sizing: border-box;">
+</span>155 views � <span class="CssComponent-sc-1oskqb9-0 AbstractSeparatedItems___StyledCssComponent-sc-46kfvf-0  ytbFj">
+</span>
+</span>
+</div>
+<div class="q-box qu-zIndex--action_bar qu-mx--n_medium qu-bg--raised" style="box-sizing: border-box; position: sticky; bottom: 0px;">
+<div class="q-box qu-px--medium ActionBar___StyledBox-sc-1tz1b8b-0 dBvctg" style="box-sizing: border-box; transition-property: box-shadow; transition-duration: 250ms; transition-timing-function: ease-out; padding-bottom: env(safe-area-inset-bottom); box-shadow: rgba(0, 0, 0, 0.05) 0px -1px 0px 0px, rgba(0, 0, 0, 0.04) 0px -1px 1px;">
+<div class="q-flex qu-justifyContent--space-between qu-alignItems--center qu-flexWrap--nowrap qu-py--tiny" style="box-sizing: border-box; display: flex;">
+<div class="q-flex qu-alignItems--center" style="box-sizing: border-box; display: flex;">
+<div class="q-inlineFlex qu-mr--tiny" style="box-sizing: border-box; display: inline-flex;">
+<div class="q-inlineFlex qu-borderRadius--pill qu-alignItems--center" style="box-sizing: border-box; display: inline-flex; background-color: rgba(0, 0, 1, 0.03);">
+<div class="q-box qu-display--inline-block" tabindex="0" style="box-sizing: border-box; pointer-events: all;">
+<div class="q-relative puppeteer_popper_reference" style="box-sizing: border-box; position: relative;">
+<button class="q-click-wrapper ClickWrapper___StyledClickWrapperBox-zoqi4f-0 iyYUZT base___StyledClickWrapper-lx6eke-1 lomQTj puppeteer_test_votable_upvote_button  qu-borderTopLeftRadius--pill qu-borderBottomLeftRadius--pill qu-alignItems--center qu-justifyContent--center qu-whiteSpace--nowrap qu-userSelect--none qu-display--inline-flex qu-tapHighlight--white qu-textAlign--center qu-cursor--pointer qu-hover--bg--darken qu-hover--textDecoration--none" role="button" aria-label="Upvote" tabindex="0" style="box-sizing: border-box; font: inherit; padding: 0px 12px; height: 38px; transition-duration: 60ms; transition-timing-function: ease-out; border-width: 0px; outline: none; color: inherit; background-color: transparent;">
+<div class="q-relative qu-display--inline-flex" style="box-sizing: border-box; position: relative; z-index: 1;">
+<div class="q-box qu-display--inline-flex" style="box-sizing: border-box; transition: transform 0ms cubic-bezier(0.23, 0.19, 0.1, 1.34) 0ms;">
+<span class="q-inlineBlock" width="24px" name="Upvote" style="box-sizing: border-box; display: inline-block; width: 24px; height: 24px; flex-shrink: 0; line-height: 24px;">
+<span class="CssComponent__CssInlineComponent-sc-1oskqb9-1 Icon___StyledCssInlineComponent-sc-11tmcw7-0  cCkhhQ">
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 4 3 15h6v5h6v-5h6z" class="icon_svg-stroke icon_svg-fill" stroke-width="1.5" stroke="#666" fill="none" stroke-linejoin="round">
+</path>
+</svg>
+</span>
+</span>
+</div>
+</div>
+</button>
+</div>
+</div>
+<div class="q-box qu-borderRight qu-borderWidth--regular qu-height--24" style="box-sizing: border-box;">
+</div>
+<div class="q-box qu-display--inline-block" tabindex="0" style="box-sizing: border-box; pointer-events: all;">
+<div class="q-relative puppeteer_popper_reference" style="box-sizing: border-box; position: relative;">
+<button class="q-click-wrapper qu-borderTopRightRadius--pill qu-borderBottomRightRadius--pill qu-alignItems--center qu-justifyContent--center qu-whiteSpace--nowrap qu-userSelect--none ClickWrapper___StyledClickWrapperBox-zoqi4f-0 iyYUZT base___StyledClickWrapper-lx6eke-1 lomQTj qu-display--inline-flex qu-tapHighlight--white qu-textAlign--center qu-cursor--pointer qu-hover--bg--darken qu-hover--textDecoration--none" role="button" aria-label="Downvote" tabindex="0" style="box-sizing: border-box; font: inherit; padding: 0px 12px 0px 10px; height: 38px; transition-duration: 60ms; transition-timing-function: ease-out; border-width: 0px; outline: none; color: inherit; background-color: transparent;">
+<div class="q-box qu-display--inline-flex" style="box-sizing: border-box; transition: transform 0ms cubic-bezier(0.23, 0.19, 0.1, 1.34) 0ms;">
+<span class="q-inlineBlock" width="24px" name="Downvote" style="box-sizing: border-box; display: inline-block; width: 24px; height: 24px; flex-shrink: 0; line-height: 24px;">
+<span class="CssComponent__CssInlineComponent-sc-1oskqb9-1 Icon___StyledCssInlineComponent-sc-11tmcw7-0  itNdnf">
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="m12 20 9-11h-6V4H9v5H3z" class="icon_svg-stroke icon_svg-fill" stroke="#666" fill="none" stroke-width="1.5" stroke-linejoin="round">
+</path>
+</svg>
+</span>
+</span>
+</div>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="q-inlineFlex qu-mr--tiny" style="box-sizing: border-box; display: inline-flex;">
+<div class="q-box qu-display--inline-block" tabindex="0" style="box-sizing: border-box; pointer-events: all;">
+<div class="q-relative puppeteer_popper_reference" style="box-sizing: border-box; position: relative;">
+<button class="q-click-wrapper ClickWrapper___StyledClickWrapperBox-zoqi4f-0 iyYUZT base___StyledClickWrapper-lx6eke-1 cdVMwV puppeteer_test_answer_quora_share_button  qu-active--bg--darken qu-active--textDecoration--none qu-borderRadius--pill qu-alignItems--center qu-justifyContent--center qu-whiteSpace--nowrap qu-userSelect--none qu-display--inline-flex qu-tapHighlight--white qu-textAlign--center qu-cursor--pointer qu-hover--bg--darken qu-hover--textDecoration--none" role="button" aria-label="Share" tabindex="0" style="box-sizing: border-box; font: inherit; padding: 0px 6px; transition-property: box-shadow, background-color; transition-duration: 60ms; transition-timing-function: ease-out; height: 38px; min-width: 38px; position: relative; border-width: 0px; outline: none; color: inherit; background-color: transparent;">
+<div class="q-flex qu-alignItems--center qu-justifyContent--center" style="box-sizing: border-box; display: flex; max-width: 100%; transition-property: opacity; transition-duration: 60ms; transition-timing-function: ease-in-out;">
+<div class="q-box qu-display--inline-flex" style="box-sizing: border-box; transition: transform 0ms cubic-bezier(0.23, 0.19, 0.1, 1.34) 0ms;">
+<span class="q-inlineBlock" width="24px" name="Sync" aria-label="Share" style="box-sizing: border-box; display: inline-block; width: 24px; height: 24px; flex-shrink: 0; line-height: 24px;">
+<span class="CssComponent__CssInlineComponent-sc-1oskqb9-1 Icon___StyledCssInlineComponent-sc-11tmcw7-0  itNdnf">
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<g class="icon_svg-stroke" stroke="#666" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round">
+<path d="M19.748 10a8.003 8.003 0 0 0-15.496.002m.001 4.003a8.003 8.003 0 0 0 15.494 0">
+</path>
+<path d="m2.5 7.697 1.197 3.289 3.289-1.197m14.5 6.5L20.289 13 17 14.197">
+</path>
+</g>
+</svg>
+</span>
+</span>
+</div>
+</div>
+</button>
+</div>
+</div>
+</div>
+<div class="q-box qu-display--inline-block" tabindex="0" style="box-sizing: border-box; pointer-events: all;">
+<div class="q-relative puppeteer_popper_reference" style="box-sizing: border-box; position: relative;">
+<button class="q-click-wrapper ClickWrapper___StyledClickWrapperBox-zoqi4f-0 iyYUZT base___StyledClickWrapper-lx6eke-1 cdVMwV   qu-active--bg--darken qu-active--textDecoration--none qu-borderRadius--pill qu-alignItems--center qu-justifyContent--center qu-whiteSpace--nowrap qu-userSelect--none qu-display--inline-flex qu-tapHighlight--white qu-textAlign--center qu-cursor--pointer qu-hover--bg--darken qu-hover--textDecoration--none" role="button" aria-label="Comment" tabindex="0" style="box-sizing: border-box; font: inherit; padding: 0px 6px; transition-property: box-shadow, background-color; transition-duration: 60ms; transition-timing-function: ease-out; height: 38px; min-width: 38px; position: relative; border-width: 0px; outline: none; color: inherit; background-color: transparent;">
+<div class="q-flex qu-alignItems--center qu-justifyContent--center" style="box-sizing: border-box; display: flex; max-width: 100%; transition-property: opacity; transition-duration: 60ms; transition-timing-function: ease-in-out;">
+<div class="q-box qu-display--inline-flex" style="box-sizing: border-box; transition: transform 0ms cubic-bezier(0.23, 0.19, 0.1, 1.34) 0ms;">
+<span class="q-inlineBlock" width="24px" name="Comment" style="box-sizing: border-box; display: inline-block; width: 24px; height: 24px; flex-shrink: 0; line-height: 24px;">
+<span class="CssComponent__CssInlineComponent-sc-1oskqb9-1 Icon___StyledCssInlineComponent-sc-11tmcw7-0  itNdnf">
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.071 18.86c4.103 0 7.429-3.102 7.429-6.93C19.5 8.103 16.174 5 12.071 5s-7.429 3.103-7.429 6.93c0 1.291.379 2.5 1.037 3.534.32.501-1.551 3.058-1.112 3.467.46.429 3.236-1.295 3.803-.99 1.09.585 2.354.92 3.701.92Z" class="icon_svg-stroke icon_svg-fill" stroke="#666" stroke-width="1.5" fill="none">
+</path>
+</svg>
+</span>
+</span>
+</div>
+</div>
+</button>
+</div>
+</div>
+</div>
+<div class="q-flex qu-alignItems--center" style="box-sizing: border-box; display: flex;">
+<div class="q-inlineFlex qu-alignItems--flex-end PopoverMenu___StyledInlineFlex-sc-11ubalt-0 gKJElh" width="100%" style="box-sizing: border-box; display: inline-flex; width: 100%;">
+<div>
+<div class="q-relative puppeteer_popper_reference" style="box-sizing: border-box; position: relative;">
+<div class="q-box qu-display--inline-block" tabindex="0" style="box-sizing: border-box; pointer-events: all;">
+<div class="q-relative puppeteer_popper_reference" style="box-sizing: border-box; position: relative;">
+<button class="q-click-wrapper ClickWrapper___StyledClickWrapperBox-zoqi4f-0 iyYUZT base___StyledClickWrapper-lx6eke-1 cdVMwV   qu-active--bg--darken qu-active--textDecoration--none qu-borderRadius--pill qu-alignItems--center qu-justifyContent--center qu-whiteSpace--nowrap qu-userSelect--none qu-display--inline-flex qu-tapHighlight--white qu-textAlign--center qu-cursor--pointer qu-hover--bg--darken qu-hover--textDecoration--none" role="button" aria-label="More sharing options" aria-haspopup="menu" aria-expanded="false" tabindex="0" style="box-sizing: border-box; font: inherit; padding: 0px 6px; transition-property: box-shadow, background-color; transition-duration: 60ms; transition-timing-function: ease-out; margin-right: -6px; height: 38px; min-width: 38px; position: relative; border-width: 0px; outline: none; color: inherit; background-color: transparent;">
+<div class="q-flex qu-alignItems--center qu-justifyContent--center" style="box-sizing: border-box; display: flex; max-width: 100%; transition-property: opacity; transition-duration: 60ms; transition-timing-function: ease-in-out;">
+<div class="q-box qu-display--inline-flex" style="box-sizing: border-box; transition: transform 0ms cubic-bezier(0.23, 0.19, 0.1, 1.34) 0ms;">
+<span class="q-inlineBlock" width="24px" name="Share" style="box-sizing: border-box; display: inline-block; width: 24px; height: 24px; flex-shrink: 0; line-height: 24px;">
+<span class="CssComponent__CssInlineComponent-sc-1oskqb9-1 Icon___StyledCssInlineComponent-sc-11tmcw7-0  itNdnf">
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="m21 12-9.778-8v5.333c-1.926.45-3.5 1.172-4.722 2.167-1.222.995-2.389 2.495-3.5 4.5 1.333-.659 2.833-1.157 4.5-1.496 1.667-.34 2.908-.285 3.722.163V20L21 12Z" class="icon_svg-stroke" stroke="#666" fill="none" stroke-width="1.5" stroke-linejoin="round">
+</path>
+</svg>
+</span>
+</span>
+</div>
+</div>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="q-box" style="box-sizing: border-box;">
+</div>
+</div>
+</div>
+</div>
+<div class="q-box qu-borderRadius--small" style="box-sizing: border-box;">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    </body>
+</html>

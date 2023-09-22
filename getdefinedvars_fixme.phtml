@@ -5,16 +5,16 @@
 ** FOR DISPLAYING THE CURRENT VALUES OF
 ** ALL IF($PROCESS) LOCAL SCOPE VARIABLES
 */
- 
-require_once 'inc/processor.inc.php';
-require_once 'inc/nav.inc.php';
+
+require_once 'public/inc/processor.inc.php';
+require_once 'public/inc/nav.inc.php';
 
 //$localScope = array();
 $localScope[] = '<ul style="list-style-type:upper-roman;">
 	';
-$definedVarNames = get_defined_vars(); 
+$definedVarNames = get_defined_vars();
 
-foreach($definedVarNames as $thisKey => $thisValue){ 
+foreach($definedVarNames as $thisKey => $thisValue){
 if(gettype($thisValue) == 'string'){
 		$thisValue = htmlentities($thisValue);
 	}
@@ -26,11 +26,11 @@ if(gettype($thisValue) == 'string'){
 /*
 if($thisKey=='pathFound'){
 	$localScope[] = '<li>Examine the replacement expressions (items 5-8, above): <br />';
-// 
+//
 //	MAKE < PRE > SECTION
 //	BEWARE THE LINE BREAKS AND ESCAPED QUOTES ETC.
 //	ENDING AT APPROX LINE 38 (8 LINES BELOW THIS)
-// 
+//
 	$localScope[] = '<pre id="lookDatCode">  <span class="red">$pathInfoDirname</span> = '.$definedVarNames["pathname"].';
 	<span class="red">$pathReplacement</span> = \'\';
 	<span class="red">$removePathPart</span> = \''.$removePathPart.'\';
@@ -102,7 +102,7 @@ $localScope[] = '</ul>
 <style>
 /*<![CDATA[*/
 <?php
-print "\n @import 'css/iframestyle.css'; \n";
+print "\n @import 'assets/css/iframestyle.css'; \n";
 print "\n @import '".CSS."'; \n";
 ?>
 pre {

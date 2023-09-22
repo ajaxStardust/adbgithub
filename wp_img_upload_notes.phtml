@@ -1,0 +1,441 @@
+<?php
+// namespace Adbgithub;
+
+if(!isset($title)){
+  $title = 'TITLE! Don&apos;t forget';
+}
+ 
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <?php echo $title; ?>
+  </title>
+  <link 
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" 
+    crossorigin="anonymous">
+  <link 
+    rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    crossorigin="anonymous">
+  <link 
+    href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" 
+    rel="stylesheet"
+    crossorigin="anonymous">
+  <link 
+    rel="stylesheet"
+    href="assets/css/notes.css">
+  <style>
+	/** <![CDATA[ // ONLY IF YOU NEED SOME CUSTOM STYLE YOU LAZY FAWK! ]]> */
+  </style>
+ </head>
+
+<body>
+	
+    <div id="pagewidth" class="container">
+    
+        <section id="header"> PREVIEW FILE TO SEE LAYOUT THEN DELTE ME (using bootstrap)
+            <br><strong>(section#pagewidth.container > div > section#header)</strong>
+            <h1 class="bg-dark text-light text-end pe-3">section#header (h1)</h1>
+            <p>(p) in section#header (after h1)</p>
+        </section>
+    
+        <section id="general_notes" class="container"> (section#genera_notes)
+    
+                <div class="notes">
+<div class="article-left"><div class="article-box"><div class="user-votes"><div class="rounded">96<!-- -->%</div></div><div class="catch-code"><p class="short-des">I am developing my first wordpress plugin.  It only needs to allow a user to change a logo in a custom template and change a color scheme in the custom template.. I have made an admin options page and now want to add a field to allow a user to upload an image.  How can I upload an image to the wp-content/uploads folder.  So fa.  I have this within a table:. Find centralize.  trusted content and collaborate around the technologies you use most.<!-- --> </p><div class="catch-code-box"><div class="catch-des"><p><strong>Add this code to your global custom option function.</strong></p></div><div class="catch-pre"><pre class="code-block"><span class="hljs-keyword">if</span>(<span class="hljs-title function_">function_exists</span>( <span class="hljs-string">'wp_enqueue_media'</span> )){
+    <span class="hljs-title function_">wp_enqueue_media</span>();
+}<span class="hljs-keyword">else</span>{
+    <span class="hljs-title function_">wp_enqueue_style</span>(<span class="hljs-string">'thickbox'</span>);
+    <span class="hljs-title function_">wp_enqueue_script</span>(<span class="hljs-string">'media-upload'</span>);
+    <span class="hljs-title function_">wp_enqueue_script</span>(<span class="hljs-string">'thickbox'</span>);
+}
+
+&lt;p&gt;<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Header Logo Image URL:<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span></span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span></span>
+                <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"header_logo"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"&lt;?php echo get_option('header_logo'); ?&gt;"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"100"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"100"</span>/&gt;</span></span>
+                <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"header_logo_url"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"header_logo"</span> <span class="hljs-attr">size</span>=<span class="hljs-string">"60"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"&lt;?php echo get_option('header_logo'); ?&gt;"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"header_logo_upload"</span>&gt;</span>Upload<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>    
+
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+    <span class="hljs-title function_">jQuery</span>(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">ready</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">$</span>) {
+        $(<span class="hljs-string">'.header_logo_upload'</span>).<span class="hljs-title function_">click</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+            e.<span class="hljs-title function_">preventDefault</span>();
+
+            <span class="hljs-keyword">var</span> custom_uploader = wp.<span class="hljs-title function_">media</span>({
+                <span class="hljs-attr">title</span>: <span class="hljs-string">'Custom Image'</span>,
+                <span class="hljs-attr">button</span>: {
+                    <span class="hljs-attr">text</span>: <span class="hljs-string">'Upload Image'</span>
+                },
+                <span class="hljs-attr">multiple</span>: <span class="hljs-literal">false</span>  <span class="hljs-comment">// Set this to true to allow multiple files to be selected</span>
+            })
+            .<span class="hljs-title function_">on</span>(<span class="hljs-string">'select'</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+                <span class="hljs-keyword">var</span> attachment = custom_uploader.<span class="hljs-title function_">state</span>().<span class="hljs-title function_">get</span>(<span class="hljs-string">'selection'</span>).<span class="hljs-title function_">first</span>().<span class="hljs-title function_">toJSON</span>();
+                $(<span class="hljs-string">'.header_logo'</span>).<span class="hljs-title function_">attr</span>(<span class="hljs-string">'src'</span>, attachment.<span class="hljs-property">url</span>);
+                $(<span class="hljs-string">'.header_logo_url'</span>).<span class="hljs-title function_">val</span>(attachment.<span class="hljs-property">url</span>);
+
+            })
+            .<span class="hljs-title function_">open</span>();
+        });
+    });
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+</pre></div></div><div class="catch-code-box"><div class="catch-des"><p>You can use the inbuilt function of wordpress</p></div><div class="catch-pre"><pre class="code-block">&lt; ? php wp_handle_upload($file, $overrides, $time); ? &gt;</pre></div></div></div></div><div class="article-box"><div class="user-votes"><div class="rounded">86<!-- -->%</div></div><div class="catch-code"><p class="short-des">But if you continue reading this –&nbsp;below are 3 easy steps how to create an uploader button on your own.. Please write about how to upload multiple images dynamically as you shown in first image of client site.. Actually there is no reason to use raw JavaScrpt implementation because jQuery is included in WordPress admin in any case.<!-- --> </p><div class="catch-code-box"><div class="catch-pre"><pre class="code-block">if( $image = wp_get_attachment_image_src( $image_id ) ) {
+
+	echo '<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"misha-upl"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"' . $image[0] . '"</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+	      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"misha-rmv"</span>&gt;</span>Remove image<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+	      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"hidden"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"misha-img"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"' . $image_id . '"</span>&gt;</span>';
+
+} else {
+
+	echo '<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"misha-upl"</span>&gt;</span>Upload image<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+	      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"misha-rmv"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"display:none"</span>&gt;</span>Remove image<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+	      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"hidden"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"misha-img"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">""</span>&gt;</span>';
+
+} </pre></div></div><div class="catch-code-box"><div class="catch-pre"><pre class="code-block"><span class="hljs-title function_">jQuery</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">$</span>){
+
+	<span class="hljs-comment">// on upload button click</span>
+	$(<span class="hljs-string">'body'</span>).<span class="hljs-title function_">on</span>( <span class="hljs-string">'click'</span>, <span class="hljs-string">'.misha-upl'</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>){
+
+		e.<span class="hljs-title function_">preventDefault</span>();
+
+		<span class="hljs-keyword">var</span> button = $(<span class="hljs-variable language_">this</span>),
+		custom_uploader = wp.<span class="hljs-title function_">media</span>({
+			<span class="hljs-attr">title</span>: <span class="hljs-string">'Insert image'</span>,
+			library : {
+				<span class="hljs-comment">// uploadedTo : wp.media.view.settings.post.id, // attach to the current post?</span>
+				type : <span class="hljs-string">'image'</span>
+			},
+			<span class="hljs-attr">button</span>: {
+				<span class="hljs-attr">text</span>: <span class="hljs-string">'Use this image'</span> <span class="hljs-comment">// button label text</span>
+			},
+			<span class="hljs-attr">multiple</span>: <span class="hljs-literal">false</span>
+		}).<span class="hljs-title function_">on</span>(<span class="hljs-string">'select'</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) { <span class="hljs-comment">// it also has "open" and "close" events</span>
+			<span class="hljs-keyword">var</span> attachment = custom_uploader.<span class="hljs-title function_">state</span>().<span class="hljs-title function_">get</span>(<span class="hljs-string">'selection'</span>).<span class="hljs-title function_">first</span>().<span class="hljs-title function_">toJSON</span>();
+			button.<span class="hljs-title function_">html</span>(<span class="hljs-string">'&lt;img src="'</span> + attachment.<span class="hljs-property">url</span> + <span class="hljs-string">'"&gt;'</span>).<span class="hljs-title function_">next</span>().<span class="hljs-title function_">show</span>().<span class="hljs-title function_">next</span>().<span class="hljs-title function_">val</span>(attachment.<span class="hljs-property">id</span>);
+		}).<span class="hljs-title function_">open</span>();
+	
+	});
+
+	<span class="hljs-comment">// on remove button click</span>
+	$(<span class="hljs-string">'body'</span>).<span class="hljs-title function_">on</span>(<span class="hljs-string">'click'</span>, <span class="hljs-string">'.misha-rmv'</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>){
+
+		e.<span class="hljs-title function_">preventDefault</span>();
+
+		<span class="hljs-keyword">var</span> button = $(<span class="hljs-variable language_">this</span>);
+		button.<span class="hljs-title function_">next</span>().<span class="hljs-title function_">val</span>(<span class="hljs-string">''</span>); <span class="hljs-comment">// emptying the hidden field</span>
+		button.<span class="hljs-title function_">hide</span>().<span class="hljs-title function_">prev</span>().<span class="hljs-title function_">html</span>(<span class="hljs-string">'Upload image'</span>);
+	});
+
+});
+</pre></div></div><div class="catch-code-box"><div class="catch-pre"><pre class="code-block"><span class="hljs-title function_">add_action</span>(<span class="hljs-string">'admin_enqueue_scripts'</span>, <span class="hljs-string">'misha_include_js'</span>);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">misha_include_js</span>(<span class="hljs-params"></span>) {
+
+   <span class="hljs-comment">// I recommend to add additional conditions just to not to load the scipts on each page</span>
+
+   <span class="hljs-keyword">if</span> (!<span class="hljs-title function_">did_action</span>(<span class="hljs-string">'wp_enqueue_media'</span>)) {
+      <span class="hljs-title function_">wp_enqueue_media</span>();
+   }
+
+   <span class="hljs-title function_">wp_enqueue_script</span>(<span class="hljs-string">'myuploadscript'</span>, <span class="hljs-title function_">get_stylesheet_directory_uri</span>().
+      <span class="hljs-string">'/customscript.js'</span>, <span class="hljs-title function_">array</span>(<span class="hljs-string">'jquery'</span>));
+}</pre></div></div><div class="catch-code-box"><div class="catch-pre"><pre class="code-block">$(<span class="hljs-string">'body'</span>).<span class="hljs-title function_">on</span>(<span class="hljs-string">'click'</span>, <span class="hljs-string">'._add_gallery'</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+   e.<span class="hljs-title function_">preventDefault</span>();
+   <span class="hljs-keyword">var</span> btn_name = $(<span class="hljs-variable language_">this</span>).<span class="hljs-title function_">attr</span>(<span class="hljs-string">'data-name'</span>);
+   <span class="hljs-keyword">var</span> button = $(<span class="hljs-variable language_">this</span>),
+      custom_uploader = wp.<span class="hljs-title function_">media</span>({
+         <span class="hljs-attr">title</span>: <span class="hljs-string">'Insert image'</span>,
+         <span class="hljs-attr">library</span>: {
+            <span class="hljs-comment">// uncomment the next line if you want to attach image to the current post</span>
+            <span class="hljs-comment">// uploadedTo : wp.media.view.settings.post.id, </span>
+            <span class="hljs-attr">type</span>: <span class="hljs-string">'image'</span>
+         },
+         <span class="hljs-attr">button</span>: {
+            <span class="hljs-attr">text</span>: <span class="hljs-string">'Use this image'</span> <span class="hljs-comment">// button label text</span>
+         },
+         <span class="hljs-attr">multiple</span>: <span class="hljs-literal">true</span> <span class="hljs-comment">// for multiple image selection set to true</span>
+      }).<span class="hljs-title function_">on</span>(<span class="hljs-string">'select'</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) { <span class="hljs-comment">// it also has "open" and "close" events </span>
+         <span class="hljs-keyword">var</span> attachment = custom_uploader.<span class="hljs-title function_">state</span>().<span class="hljs-title function_">get</span>(<span class="hljs-string">'selection'</span>).<span class="hljs-title function_">first</span>().<span class="hljs-title function_">toJSON</span>();
+         <span class="hljs-keyword">var</span> attachments = frame.<span class="hljs-title function_">state</span>().<span class="hljs-title function_">get</span>(<span class="hljs-string">'selection'</span>),
+            attachment_ids = <span class="hljs-string">''</span>,
+            gallery_image;
+
+         attachments.<span class="hljs-title function_">each</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">attachment</span>) {
+            <span class="hljs-keyword">if</span> (attachment_ids == <span class="hljs-string">''</span>)
+               attachment_ids += attachment[<span class="hljs-string">'id'</span>];
+            <span class="hljs-keyword">else</span>
+               attachment_ids += <span class="hljs-string">','</span> + attachment[<span class="hljs-string">'id'</span>];
+            $(btn_name + <span class="hljs-string">'_image_container'</span>).<span class="hljs-title function_">append</span>(<span class="hljs-string">''</span>);
+         });
+         $(btn_name + <span class="hljs-string">'_hidden'</span>).<span class="hljs-title function_">val</span>(attachment_ids);
+      })
+      .<span class="hljs-title function_">open</span>();
+});</pre></div></div><div class="catch-code-box"><div class="catch-des"><p>yes. </p></div><div class="catch-pre"><pre class="code-block"><span class="hljs-attr">multiple</span>: <span class="hljs-literal">true</span></pre></div></div><div class="catch-code-box"><div class="catch-des"><p>and in this code (</p></div><div class="catch-pre"><pre class="code-block">frame.<span class="hljs-title function_">state</span>().<span class="hljs-title function_">get</span>(<span class="hljs-string">'selection'</span>)</pre></div></div><div class="catch-code-box"><div class="catch-des"><p>), i cann’t see where the </p></div><div class="catch-pre"><pre class="code-block">frame</pre></div></div><div class="catch-code-box"><div class="catch-des"><p>replace the keyword </p></div><div class="catch-pre"><pre class="code-block">frame</pre></div></div><div class="catch-code-box"><div class="catch-des"><p> from </p></div><div class="catch-pre"><pre class="code-block">custom_uploader</pre></div></div></div></div><div class="article-box"><div class="user-votes"><div class="rounded">76<!-- -->%</div></div><div class="catch-code"><p class="short-des">I need to upload a logo image and set other options on a custom settings page. I can’t retrieve the URL and upload the custom imag.  what is wrong with my code?. The topic ‘Image upload in custom theme settings page’ is closed to new replies.. Support » Developing with WordPress » Image upload in custom theme settings page<!-- --> </p><div class="catch-code-box"><div class="catch-des"><p>I need to upload a logo image and set other options on a custom settings page. I can’t retrieve the URL and upload the custom image, what is wrong with my code?</p></div><div class="catch-pre"><pre class="code-block">&lt;?php
+
+<span class="hljs-comment">/*** New menu item ***/</span>
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">my_admin_menu</span> () {
+   $page_title = <span class="hljs-string">'Theme Settings Page'</span>;
+   $menu_title = <span class="hljs-string">'Theme Settings'</span>;
+   $capability = <span class="hljs-string">'edit_posts'</span>;
+   $menu_slug = <span class="hljs-string">'theme_options_page'</span>;
+   $function = <span class="hljs-string">'my_theme_settings_page'</span>;
+   $icon_url = <span class="hljs-string">''</span>;
+   $position = <span class="hljs-number">110</span>;
+
+   <span class="hljs-title function_">add_menu_page</span>( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
+}
+
+<span class="hljs-title function_">add_action</span>(<span class="hljs-string">'admin_menu'</span>, <span class="hljs-string">'my_admin_menu'</span>);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">my_theme_settings_page</span>(<span class="hljs-params"></span>){
+
+<span class="hljs-comment">/*** New section ***/</span>
+
+?&gt;
+   <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Theme Settings Page<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>
+   &lt;?php <span class="hljs-title function_">settings_errors</span>(); ?&gt; 
+
+   <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"options.php"</span>&gt;</span>
+       &lt;?php settings_fields("ff_theme_options");?&gt;
+       &lt;?php do_settings_sections('theme_options')?&gt;
+       &lt;?php submit_button();?&gt;
+   <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span>
+
+&lt;?php
+}
+
+<span class="hljs-comment">/*** Options fields ***/</span>
+
+<span class="hljs-title function_">add_action</span>(<span class="hljs-string">'admin_init'</span>,<span class="hljs-string">'ff_custom_setting'</span>);
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">ff_custom_setting</span>(<span class="hljs-params"></span>){
+    <span class="hljs-title function_">register_setting</span>(<span class="hljs-string">'ff_theme_options'</span>, <span class="hljs-string">'phone_field'</span>);
+    <span class="hljs-title function_">register_setting</span>(<span class="hljs-string">"ff_theme_options"</span>, <span class="hljs-string">"logo"</span>, <span class="hljs-string">"handle_logo_upload"</span>); 
+    <span class="hljs-title function_">add_settings_section</span>(<span class="hljs-string">'ff_theme_options'</span>,<span class="hljs-string">'Theme Options'</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">'theme_options'</span>);
+    <span class="hljs-title function_">add_settings_field</span>(<span class="hljs-string">'theme-phone'</span>,<span class="hljs-string">'Phone Number'</span>,<span class="hljs-string">'theme_phone_func'</span>, <span class="hljs-string">'theme_options'</span>,<span class="hljs-string">'ff_theme_options'</span>);
+    <span class="hljs-title function_">add_settings_field</span>(<span class="hljs-string">'logo'</span>,<span class="hljs-string">'Website Logo'</span>,<span class="hljs-string">'logo_display'</span>, <span class="hljs-string">'theme_options'</span>,<span class="hljs-string">'ff_theme_options'</span>);
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">ff_theme_options</span>(<span class="hljs-params"></span>){
+    echo <span class="hljs-string">'Add your theme options'</span>;
+}
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">theme_phone_func</span>(<span class="hljs-params"></span>){
+    $phone = <span class="hljs-title function_">esc_attr</span>(<span class="hljs-title function_">get_option</span>( <span class="hljs-string">'phone_field'</span> )); 
+    echo <span class="hljs-string">'&lt;input type="text" name="phone_field" value="'</span>.<span class="hljs-property">$phone</span>.<span class="hljs-string">'" placeholder="Your Phone Number here"&gt;'</span>;
+}
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">logo_display</span>(<span class="hljs-params"></span>)
+{
+?&gt;
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"logo"</span> /&gt;</span></span> 
+    &lt;?php echo <span class="hljs-title function_">get_option</span>(<span class="hljs-string">'logo'</span>); ?&gt;
+&lt;?php
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">handle_logo_upload</span>(<span class="hljs-params"></span>)
+{
+    <span class="hljs-keyword">if</span>(!<span class="hljs-title function_">empty</span>($_FILES[<span class="hljs-string">"demo-file"</span>][<span class="hljs-string">"tmp_name"</span>]))
+    {           
+        require_once( <span class="hljs-variable constant_">ABSPATH</span> . <span class="hljs-string">'wp-admin/includes/file.php'</span> );
+        $urls = <span class="hljs-title function_">wp_handle_upload</span>($_FILES[<span class="hljs-string">"logo"</span>], <span class="hljs-title function_">array</span>(<span class="hljs-string">'test_form'</span> =&gt; <span class="hljs-literal">false</span>));
+        $temp = $urls[<span class="hljs-string">'url'</span>];
+        <span class="hljs-keyword">return</span> $temp;
+    }       
+    <span class="hljs-keyword">return</span> $option;     
+}
+</pre></div></div><div class="catch-code-box"><div class="catch-des"><p>Solved: I’ve added enctype=”multipart/form-data” to the form, and I modified the handle_logo_upload function:</p></div><div class="catch-pre"><pre class="code-block"><span class="hljs-keyword">function</span> <span class="hljs-title function_">handle_logo_upload</span>(<span class="hljs-params">$option</span>) {
+   <span class="hljs-keyword">if</span> (!<span class="hljs-title function_">empty</span>($_FILES[<span class="hljs-string">"logo"</span>][<span class="hljs-string">"tmp_name"</span>])) {
+      $urls = <span class="hljs-title function_">wp_handle_upload</span>($_FILES[<span class="hljs-string">"logo"</span>], <span class="hljs-title function_">array</span>(<span class="hljs-string">'test_form'</span> =&gt; <span class="hljs-variable constant_">FALSE</span>));
+      $temp = $urls[<span class="hljs-string">"url"</span>];
+      <span class="hljs-keyword">return</span> $temp;
+   }
+
+   <span class="hljs-keyword">return</span> $option;
+}</pre></div></div></div></div><div class="article-box"><div class="user-votes"><div class="rounded">66<!-- -->%</div></div><div class="catch-code"><p class="short-des">The better title for this would be: How to use the WordPress media uploader to upload images into settings page.. Once the uploader is workin.  you can now process the image field (input[name="logo"]) like any other settings field and save its value to your options.. 3- Now add a clickable button next to your image field to call the media uploader:<!-- --> </p><div class="catch-code-box"><div class="catch-des"><p>1- Add the necessary scripts to show the media uploader:</p></div><div class="catch-pre"><pre class="code-block"><span class="hljs-title function_">add_action</span>(<span class="hljs-string">'admin_footer'</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) { 
+
+    <span class="hljs-comment">/*
+    if possible try not to queue this all over the admin by adding your settings GET page val into next
+    if( empty( $_GET['page'] ) || "my-settings-page" !== $_GET['page'] ) { return; }
+    */</span>
+
+    ?&gt;
+
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+        <span class="hljs-title function_">jQuery</span>(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">ready</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">$</span>){
+
+            <span class="hljs-keyword">var</span> custom_uploader
+              , click_elem = <span class="hljs-title function_">jQuery</span>(<span class="hljs-string">'.wpse-228085-upload'</span>)
+              , target = <span class="hljs-title function_">jQuery</span>(<span class="hljs-string">'.wrap input[name="logo"]'</span>)
+
+            click_elem.<span class="hljs-title function_">click</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+                e.<span class="hljs-title function_">preventDefault</span>();
+                <span class="hljs-comment">//If the uploader object has already been created, reopen the dialog</span>
+                <span class="hljs-keyword">if</span> (custom_uploader) {
+                    custom_uploader.<span class="hljs-title function_">open</span>();
+                    <span class="hljs-keyword">return</span>;
+                }
+                <span class="hljs-comment">//Extend the wp.media object</span>
+                custom_uploader = wp.<span class="hljs-property">media</span>.<span class="hljs-property">frames</span>.<span class="hljs-property">file_frame</span> = wp.<span class="hljs-title function_">media</span>({
+                    <span class="hljs-attr">title</span>: <span class="hljs-string">'Choose Image'</span>,
+                    <span class="hljs-attr">button</span>: {
+                        <span class="hljs-attr">text</span>: <span class="hljs-string">'Choose Image'</span>
+                    },
+                    <span class="hljs-attr">multiple</span>: <span class="hljs-literal">false</span>
+                });
+                <span class="hljs-comment">//When a file is selected, grab the URL and set it as the text field's value</span>
+                custom_uploader.<span class="hljs-title function_">on</span>(<span class="hljs-string">'select'</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+                    attachment = custom_uploader.<span class="hljs-title function_">state</span>().<span class="hljs-title function_">get</span>(<span class="hljs-string">'selection'</span>).<span class="hljs-title function_">first</span>().<span class="hljs-title function_">toJSON</span>();
+                    target.<span class="hljs-title function_">val</span>(attachment.<span class="hljs-property">url</span>);
+                });
+                <span class="hljs-comment">//Open the uploader dialog</span>
+                custom_uploader.<span class="hljs-title function_">open</span>();
+            });      
+        });
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+
+    &lt;?php
+    });
+</pre></div></div><div class="catch-code-box"><div class="catch-des"><p>2- Embed the media uploader necessary scripts:</p></div><div class="catch-pre"><pre class="code-block"><span class="hljs-title function_">add_action</span>(<span class="hljs-string">'admin_enqueue_scripts'</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+   <span class="hljs-comment">/*
+   if possible try not to queue this all over the admin by adding your settings GET page val into next
+   if( empty( $_GET['page'] ) || "my-settings-page" !== $_GET['page'] ) { return; }
+   */</span>
+   <span class="hljs-title function_">wp_enqueue_media</span>();
+});</pre></div></div><div class="catch-code-box"><div class="catch-des"><p>3- Now add a clickable button next to your image field to call the media uploader:</p></div><div class="catch-pre"><pre class="code-block"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"logo"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"button wpse-228085-upload"</span>&gt;</span>Upload<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre></div></div></div></div><div class="article-box"><div class="user-votes"><div class="rounded">56<!-- -->%</div></div><div class="catch-code"><p class="short-des"> </p><div class="catch-code-box"><div class="catch-des"><p>Create a new directory name it /js/ inside your WordPress theme directory now create a new JS file with name theme_options.js or anything you need and save inside your /js folder. You have to add the following code in theme_options.js file.</p></div><div class="catch-pre"><pre class="code-block"><span class="hljs-title function_">jQuery</span>(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">ready</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">$</span>) {
+   <span class="hljs-keyword">var</span> custom_uploader;
+
+   $(<span class="hljs-string">'#upload_image_button'</span>).<span class="hljs-title function_">click</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+      e.<span class="hljs-title function_">preventDefault</span>();
+      <span class="hljs-comment">//If the uploader object has already been created, reopen the dialog</span>
+      <span class="hljs-keyword">if</span> (custom_uploader) {
+         custom_uploader.<span class="hljs-title function_">open</span>();
+         <span class="hljs-keyword">return</span>;
+      }
+
+      <span class="hljs-comment">//Extend the wp.media object</span>
+      custom_uploader = wp.<span class="hljs-property">media</span>.<span class="hljs-property">frames</span>.<span class="hljs-property">file_frame</span> = wp.<span class="hljs-title function_">media</span>({
+         <span class="hljs-attr">title</span>: <span class="hljs-string">'Choose Image'</span>,
+         <span class="hljs-attr">button</span>: {
+            <span class="hljs-attr">text</span>: <span class="hljs-string">'Choose Image'</span>
+         },
+         <span class="hljs-attr">multiple</span>: <span class="hljs-literal">false</span>
+      });
+
+      <span class="hljs-comment">//When a file is selected, grab the URL and set it as the text field's value</span>
+      custom_uploader.<span class="hljs-title function_">on</span>(<span class="hljs-string">'select'</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+         attachment = custom_uploader.<span class="hljs-title function_">state</span>().<span class="hljs-title function_">get</span>(<span class="hljs-string">'selection'</span>).<span class="hljs-title function_">first</span>().<span class="hljs-title function_">toJSON</span>();
+         $(<span class="hljs-string">'#upload_image'</span>).<span class="hljs-title function_">val</span>(attachment.<span class="hljs-property">url</span>);
+      });
+
+      <span class="hljs-comment">//Open the uploader dialog</span>
+      custom_uploader.<span class="hljs-title function_">open</span>();
+   });
+});</pre></div></div><div class="catch-code-box"><div class="catch-des"><p>Now you have created a JS file which have Jquery functions. Remember in your admin options panel WordPress already have inserted jQuery so you don’t need to put up that.</p></div><div class="catch-pre"><pre class="code-block"><span class="hljs-title function_">add_action</span>(<span class="hljs-string">'admin_enqueue_scripts'</span>, <span class="hljs-string">'uploader_javaScript'</span>);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">uploader_javaScript</span>(<span class="hljs-params"></span>) {
+   <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isset</span>($_GET[<span class="hljs-string">'page'</span>]) &amp;&amp; $_GET[<span class="hljs-string">'page'</span>] == <span class="hljs-string">'admin_options.php'</span>) {
+      <span class="hljs-title function_">wp_enqueue_media</span>();
+      <span class="hljs-title function_">wp_register_script</span>(<span class="hljs-string">'theme_options'</span>, <span class="hljs-title function_">bloginfo</span>(<span class="hljs-string">'template_directory'</span>).
+         <span class="hljs-string">'/wp-content/themes/yourtheme/js/my-admin.js'</span>, <span class="hljs-title function_">array</span>(<span class="hljs-string">'jquery'</span>));
+      <span class="hljs-title function_">wp_enqueue_script</span>(<span class="hljs-string">'theme_options'</span>);
+   }
+}</pre></div></div><div class="catch-code-box"><div class="catch-des"><p>Now finally you can add the following code inside your admin options Form that will work as you expect if you have done everything right.</p></div><div class="catch-pre"><pre class="code-block"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"upload_image"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">size</span>=<span class="hljs-string">"36"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"my_image"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">""</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"upload_image_button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Upload Image"</span> /&gt;</span></pre></div></div></div></div><div class="article-box"><div class="user-votes"><div class="rounded">46<!-- -->%</div></div><div class="catch-code"><p class="short-des">We will use the WordPress Media Uploader to upload the image or to pick an existing one so we will not have to worry about the whole process. We will also manage to upload the image to the right folder and we will attach it to the WordPress Media Library.. 
+                                We will use the WordPress Media Uploader to upload the image or to pick an existing one so we will not have to worry about the whole process. We will also manage to upload the image to the right folder and we will attach it to the WordPress Media Library.
+                            . In this window you can choose one of the previous uploaded images or upload a new one. Click on the “Insert into post” button and we will see this:<!-- --> </p><div class="catch-code-box"><div class="catch-pre"><pre class="code-block">/**
+ * Image Uploader
+ *
+ * author: Arthur Gareginyan www.arthurgareginyan.com
+ */
+function arthur_image_uploader( $name, $width, $height ) {
+
+    // Set variables
+    $options = get_option( 'RssFeedIcon_settings' );
+    $default_image = plugins_url('img/no-image.png', __FILE__);
+
+    if ( !empty( $options[$name] ) ) {
+        $image_attributes = wp_get_attachment_image_src( $options[$name], array( $width, $height ) );
+        $src = $image_attributes[0];
+        $value = $options[$name];
+    } else {
+        $src = $default_image;
+        $value = '';
+    }
+
+    $text = __( 'Upload', RSSFI_TEXT );
+
+    // Print HTML field
+    echo '
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"upload"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">data-src</span>=<span class="hljs-string">"' . $default_image . '"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"' . $src . '"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"' . $width . 'px"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"' . $height . 'px"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"hidden"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"RssFeedIcon_settings[' . $name . ']"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"RssFeedIcon_settings[' . $name . ']"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"' . $value . '"</span> /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"upload_image_button button"</span>&gt;</span>' . $text . '<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"remove_image_button button"</span>&gt;</span><span class="hljs-symbol">&amp;times;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    ';
+}
+</pre></div></div><div class="catch-code-box"><div class="catch-pre"><pre class="code-block"><span class="hljs-title function_">arthur_image_uploader</span>(<span class="hljs-string">'custom_image'</span>, $width = <span class="hljs-number">115</span>, $height = <span class="hljs-number">115</span>);</pre></div></div><div class="catch-code-box"><div class="catch-pre"><pre class="code-block"><span class="hljs-comment">/**
+ * Load scripts and style sheet for settings page
+ */</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">arthur_load_scripts_admin</span>(<span class="hljs-params"></span>) {
+
+   ...
+
+   <span class="hljs-comment">// WordPress library</span>
+   <span class="hljs-title function_">wp_enqueue_media</span>();
+
+   ...
+
+}
+<span class="hljs-title function_">add_action</span>(<span class="hljs-string">'admin_enqueue_scripts'</span>, <span class="hljs-string">'arthur_load_scripts_admin'</span>);</pre></div></div><div class="catch-code-box"><div class="catch-pre"><pre class="code-block"><span class="hljs-comment">// The "Upload" button</span>
+$(<span class="hljs-string">'.upload_image_button'</span>).<span class="hljs-title function_">click</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+   <span class="hljs-keyword">var</span> send_attachment_bkp = wp.<span class="hljs-property">media</span>.<span class="hljs-property">editor</span>.<span class="hljs-property">send</span>.<span class="hljs-property">attachment</span>;
+   <span class="hljs-keyword">var</span> button = $(<span class="hljs-variable language_">this</span>);
+   wp.<span class="hljs-property">media</span>.<span class="hljs-property">editor</span>.<span class="hljs-property">send</span>.<span class="hljs-property">attachment</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">props, attachment</span>) {
+      $(button).<span class="hljs-title function_">parent</span>().<span class="hljs-title function_">prev</span>().<span class="hljs-title function_">attr</span>(<span class="hljs-string">'src'</span>, attachment.<span class="hljs-property">url</span>);
+      $(button).<span class="hljs-title function_">prev</span>().<span class="hljs-title function_">val</span>(attachment.<span class="hljs-property">id</span>);
+      wp.<span class="hljs-property">media</span>.<span class="hljs-property">editor</span>.<span class="hljs-property">send</span>.<span class="hljs-property">attachment</span> = send_attachment_bkp;
+   }
+   wp.<span class="hljs-property">media</span>.<span class="hljs-property">editor</span>.<span class="hljs-title function_">open</span>(button);
+   <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+});
+
+<span class="hljs-comment">// The "Remove" button (remove the value from input type='hidden')</span>
+$(<span class="hljs-string">'.remove_image_button'</span>).<span class="hljs-title function_">click</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+   <span class="hljs-keyword">var</span> answer = <span class="hljs-title function_">confirm</span>(<span class="hljs-string">'Are you sure?'</span>);
+   <span class="hljs-keyword">if</span> (answer == <span class="hljs-literal">true</span>) {
+      <span class="hljs-keyword">var</span> src = $(<span class="hljs-variable language_">this</span>).<span class="hljs-title function_">parent</span>().<span class="hljs-title function_">prev</span>().<span class="hljs-title function_">attr</span>(<span class="hljs-string">'data-src'</span>);
+      $(<span class="hljs-variable language_">this</span>).<span class="hljs-title function_">parent</span>().<span class="hljs-title function_">prev</span>().<span class="hljs-title function_">attr</span>(<span class="hljs-string">'src'</span>, src);
+      $(<span class="hljs-variable language_">this</span>).<span class="hljs-title function_">prev</span>().<span class="hljs-title function_">prev</span>().<span class="hljs-title function_">val</span>(<span class="hljs-string">''</span>);
+   }
+   <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+});</pre></div></div></div></div></div>
+</section>
+
+        			
+        <section id="footer">
+            <p class="content cite"> div.main > section#footer.container > p.content.cite: Notes Template by <a
+                    href="https://github.com/ajaxStardust" target="_blank" title="View original">@ajaxStardust</a>.
+                { <date>2022.11.18</date> }
+        </p>
+        </section>	<!-- $ section #footer 	-->
+        	
+      </div><!--    $ .content (former id.maincol)    $    -->
+    <script 
+    	  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    	  integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" 
+    	  crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

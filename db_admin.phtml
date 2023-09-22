@@ -12,13 +12,13 @@
 /**
 * @see ./class/cwthumbs.class.php
 */
-require_once 'class/cwthumbs.class.php';
+require_once 'public/class/cwthumbs.class.php';
 $cwThumbsClass = new cwThumbs;
 $cwThumbs = $cwThumbsClass->makeThumbs("css",$none=NULL);
 $imgDir = $cwThumbsClass->imagesDir;
 $imgNumber = $cwThumbsClass->thumbsCount;
 
-require 'class/urlchopper.class.php';
+require 'public/class/urlchopper.class.php';
 $urlChopper = new urlChopper;
 $chopThis = $urlChopper->chopUrl($_SERVER['SCRIPT_NAME']);
 $c_subject = $urlChopper->chop_subject;
@@ -38,18 +38,18 @@ $c_trim = $urlChopper->chop_trim;
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>>$ctring: <?php print $c_trim . ' $chopThis: ' . $chopThis; ?></title>
-<link 
+<link
 	rel="icon"
     type="image/ico"
     href="favicon.ico">
-<link 
+<link
 	rel="shortcut icon"
 	type="image/ico"
 	href="favicon.ico">
 <meta http-equiv="Content-Style-Type" content="text/css" />
- <script type="text/javascript" src="js/preview-comments.js" /></script> 
-<script type="text/javascript" src="js/iframestuff.js"></script>
-<link href="css/iframestyle.css" rel="stylesheet" type="text/css" media="screen" />
+ <script type="text/javascript" src="assets/js/preview-comments.js" /></script>
+<script type="text/javascript" src="assets/js/iframestuff.js"></script>
+<link href="assets/css/notes.css" rel="stylesheet" type="text/css" media="screen" />
  	<!-- Google Analytics 2022.07.24 -->
 	 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SE954SRMG8"></script>
 	<script>
@@ -63,7 +63,7 @@ $c_trim = $urlChopper->chop_trim;
 		gtag('config', 'G-SE954SRMG8');
 	</script>
 	<!-- Google Adsense -->
-	 
+
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa">
 	<style>
 		* {
@@ -77,12 +77,12 @@ $c_trim = $urlChopper->chop_trim;
 	<!--	^	class:content	^	-->
 	<div class="content alignleft">
 	<?php
-	if(file_exists('inc/dbtablehtml.inc.php')){
-		require "inc/dbtablehtml.inc.php";
+	if(file_exists('public/inc/dbtablehtml.inc.php')){
+		require "public/inc/dbtablehtml.inc.php";
 	}
 	print '<div class="content" id="tempInfo">
 <pre class="prewrap">
-require \'class/urlchopper.class.php\';
+require \'public/class/urlchopper.class.php\';
 <span class="green underline">$urlChopper</span> = new <strong>urlChopper</strong>;
 	$chopThis = <span class="green underline">$urlChopper</span>-><span class="red" title="urlChopper is method of urlChopper class">urlChopper(</span><span class="violet bold">$_SERVER[\'SCRIPT_NAME\']</span><span class="red">);</span> : '. $chopThis .'
 	$chop_subject: <span class="violet">'.	$c_subject .'</span>

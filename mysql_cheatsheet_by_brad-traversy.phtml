@@ -7,10 +7,10 @@
  * 	use frame_only() to force the document into preferred frame, relative to project.
  *
  */
-require 'class/adbfuncs.class.php';
+require 'public/class/class-adbfuncs.php';
 
 // BY changing to setKickout=TRUE
-// SEND URL_Chopper to file_name only with $setKickout 
+// SEND URL_Chopper to file_name only with $setKickout
 //E.G.: frame_only($setKicout=TRUE,$this_filename=$URL_Chopper_blah_blah...)
 // this will require modifying the adbFuncs class also
 
@@ -29,7 +29,7 @@ $frame_only = $frameControl->frame_only($setKickout = FALSE);
     <title>
         Brad Traversy&apos;s MySQL Cheat Sheet
     </title>
-    <link href="css/iframestyle.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="assets/css/notes.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 
 <body>
@@ -42,11 +42,11 @@ $frame_only = $frameControl->frame_only($setKickout = FALSE);
                 <div class="repository-content gist-content">
 
                     <div>
-                         
+
 
                         <div class="js-gist-file-update-container js-task-list-container file-box">
                             <div id="file-mysql_cheat_sheet-md" class="file my-2">
-                               
+
                                 <div id="file-mysql_cheat_sheet-md-readme" class="Box-body readme blob js-code-block-container p-5 p-xl-6 gist-border-0">
                                     <article class="markdown-body entry-content container-lg" itemprop="text">
                                         <h1 dir="auto" class="h1" style="font-size:xx-large"><a id="user-content-mysql-cheat-sheet" class="anchor" aria-hidden="true" href="#mysql-cheat-sheet"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
@@ -391,7 +391,7 @@ id <span class="pl-k">INT</span> AUTO_INCREMENT,
                             </div>
                         </div>
 
-                        
+
                     </div>
                 </div>
             </div>
