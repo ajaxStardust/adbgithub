@@ -1,74 +1,104 @@
 <?php
 
+header('Access-Control-Allow-Origin: *'); // ENABLE CORS (Cross-Origin Request) policy allow all
+date_default_timezone_set('America/New_York');
+$page_heading = 'p2u2 - path 2 url 2';
+$title = 'path to url converter 2023';
+$lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
+
 if (!defined('ABSOLUTELOCATION')) {
     define('ABSOLUTELOCATION', rtrim(dirname(__FILE__), "inc"));
 }
 $abspath = ABSOLUTELOCATION;
+
 $page_heading = 'Convert System Path to HTTP URL';
 $title = 'p2u2 - ' . ABSOLUTELOCATION;
 $serversoftware = $_SERVER['SERVER_SOFTWARE'];
 $servername = $_SERVER['SERVER_NAME'];
+$server_addr = $_SERVER['SERVER_ADDR'];
+
+if(preg_match('@10\.0\.0\.\d+@',$server_addr)){
+    $abspath = '<code class="info">'.$abspath.'</code>';
+}
+else {
+    $abspath = 'is simply a PHP value which relies on server variables<code>define( ABSOLUTELOCATION , rtrim(dirname(__FILE__), inc))</code>';
+}
+
+
 
 function clean_url_chars($url_2_convert)
 {
-    // if(!preg_match('@/var/www/html@', $_GET['path2url'])){    
+    // if(!preg_match('@/var/www/html@', $_GET['path2url'])){
     if (!empty($_GET['path2url'])) {
 
-        $url_2_convert = preg_replace("/ /", "%20", $url_2_convert);
         $url_2_convert = preg_replace('/"/', "", $url_2_convert);
+        $url_2_convert = preg_replace("/ /", "%20", $url_2_convert);
+
         $url_2_convert  = str_ireplace('file://', '', $url_2_convert);
         $url_2_convert  = preg_replace('@([\x5c\x2f])@', '/', $url_2_convert);
     }
     return $url_2_convert;
 }
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <?php echo $title; ?>
-    </title>
-    <style>
-        /** if needed add style here */
-    </style>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" crossorigin="anonymous">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/notes.css">
-    <style>
-        /** <![CDATA[ // ONLY IF YOU NEED SOME CUSTOM STYLE YOU LAZY FAWK! ]]> */
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <?php print $title; ?>
+  </title>
+  <link rel="icon" type="image/ico" href="favicon.ico">
+  <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+  <style>
+/** if needed add style here */
+  </style>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+        crossorigin="anonymous">    <!-- BOOTSTRAP STYLE -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link
+        href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
+        rel="stylesheet">
+    <link
+        href="assets/css/notes.css"
+        rel="stylesheet"
+        type="text/css">
 </head>
 
-<body>
+<body class="text-body">
 
-    <div id="pagewidth" class="container">
+  <div id="pagewidth" class="container">
 
         <section id="header">
             <h1 class="bg-dark text-light text-end pe-3"><?php echo $page_heading; ?></h1>
-            <p>(remember how to use bootstrap?)</p>
-            <h2 id="wpFormHeader">Windows and Linux Path to URL Conversion Tool:</h2>
-            <h3 id="path2urlUPC">path2url by @ajaxStardust</h3>
+
+            <h2 id="wpFormHeader" class="text-h2">Windows and Linux Path to URL Conversion Tool:</h2>
 
 
         </section>
-
         <section id="general_notes" class="container">
-            <?php echo '<p>ABSOLUTELOCATION of <code class="code">path2url</code> script file: <br><strong><code>' . $abspath . '</code></strong></p>'; 
-            echo '<p>Server software: '.$serversoftware.'</p>
-                <p>Server Name: '.$servername .'</p>'; ?>
+            <?php echo '<p><strong>ABSOLUTELOCATION</strong>:</p><p style="margin-top:-1rem;">'.$abspath.'</p>';
+            echo '<div class="col text-center"><p class="bg-dark text-light">Served by: <span class="bg-dark text-warning">'.$serversoftware.'</span></p>
+
+                <p class="bg-dark text-light">PHP Version: <span class="text-warning">'.phpversion() .'</span></p>
+                <p class="bg-dark text-light">Server Name: <span class="text-info">'.$servername .'</span></p>
+                <p class="bg-dark text-light">Server Addr: <span class="text-info">'.$server_addr .'</span></p>
+                </div>'; ?>
             <div class="notes">
-                <p class="italic red">A convenient way to load files that require server-side scripting, such as PHP, if
-                    you don't already have a bookmark or other easy way to <em>browse</em> to it.</p>
-                <p class="italic red">Once converted, the <kbd>HTTP://</kbd> URL will be displayed as a hyperlink which
-                    you can click to view the file.</p>
-                <h4>p2u2 (path2url v2)</h4>
-                <p>Enter the System Path to the file you want to load in the browser.</p>
+                <!-- p class="italic red">A convenient way to load files that require server-side scripting, such as PHP, if
+                    you don't already have a bookmark or other easy way to <em>browse</em> to it.</p -->
+                <!-- p class="italic red">Once converted, the <kbd>HTTP://</kbd> URL will be displayed as a hyperlink which
+                    you can click to view the file.</p -->
+                <h3>path2url v2</h3>
+                <p class="text-secondary">Creat an HTTP URL from a Server Path:</p>
                 <form action="<?php $_SERVER['PHP_SELF']; ?>" id="p2u2">
                     <input type="text" name="path2url">
                     <input type="submit" name="convert">
@@ -95,34 +125,81 @@ function clean_url_chars($url_2_convert)
                             $strirep = str_ireplace('Z:\\', '', $strirep);
                             $servername = 'mxlinux-21';
                             break;
+                      case (preg_match('@[Ww]:[\\\/]@', $strirep) ? true : false):
+                            $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
+                            $strirep = str_ireplace('W:\\', '', $strirep);
+                            $servername = 'mx23';
+                            break;
                         case (preg_match('@/var/www/html@', $strirep)  ? true : false):
                             $strirep = str_ireplace('/var/www/html/', '', $strirep);
+
+                            if(preg_match('@^(\w:)@', $strirep)) {
+                                $strirep = preg_replace('@^(\w:)@','',$strirep);
+                                $server_addr = 'localhost';
+
+                            }
+
                             $servername = $server_addr;
                             break;
                         case (preg_match('/.*mxlinux.*/', $strirep) ? true : false):
                             $strirep = preg_replace('@([\x5c\x2f]*)(mxlinux\-21)([\x5c\x2f]*)(html)@', '\\', $strirep);
                             $servername = 'mxlinux-21';
                             break;
+                      case ((preg_match('/.*mx23.*/', $strirep)) ? true : false):
+                        if(preg_match('/[dD]evelopment[\x5c\x2f]/',$strirep)) {
+                        $pattern = '@([\x5c\x2f]{1,2})(mx23[\x5c\x2f]{1,2})(flux_mount[\x5c\x2f]{1,2})([Dd]evelopment)([\x5c\x2f]{1,2})(Apache2[\x5c\x2f]{1,2})(htdocs[\x5c\x2f]{0,2})@';
+                            $replace = '';
+                            $strirep = preg_replace($pattern, $replace, $strirep);
+                            $servername = 'devalt.mx23';
+                        }
+                        elseif(preg_match('/[dD]evel[\x5c\x2f]/',$strirep)) {
+                            $pattern = '@([\x5c\x2f]{1,2})(mx23[\x5c\x2f]{1,2})(flux_mount[\x5c\x2f]{1,2})([Dd]evel)([\x5c\x2f]{1,2})(Apache2[\x5c\x2f]{1,2})(htdocs[\x5c\x2f]{0,2})@';
+                            $replace = '';
+                            $strirep = preg_replace($pattern, $replace, $strirep);
+                            $servername = 'devel.mx23';
+                        }
+                        else{
+                            $strirep = preg_replace('@([\x5c\x2f]*)(mx23)([\x5c\x2f]*)(html)@', '\\', $strirep);
+                        }
+                            break;
                         case (preg_match('@[Hh]:[\\\/]@', $strirep)  ? true : false):
                             $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
-                            $strirep = str_ireplace('H:\\Apache2\\htdocs\\', '', $strirep);
-                            $servername = 'htdocsH.' . $server_addr;
+                            $strirep = preg_replace('/([hH]:)([\x5c\x2f]+)([aA]pache2?)([\x5c\x2f]+)(htdocs)(.*)/', '$6', $input_lines);
+                            $servername = 'htdocsH.localhost';
                             break;
                         case (preg_match('@[Ll]:[\\\/]@', $strirep)  ? true : false):
                             $strirep = preg_replace('@([\x5c\x2f])@', '/', $strirep);
-                            $strirep = str_ireplace('L:\\Apache2\\htdocs\\', '', $strirep);
-                            $servername = 'htdocsL.' . $server_addr;
+                            $strirep = preg_replace('/([lL]:)([\x5c\x2f]+)([aA]pache2?)([\x5c\x2f]+)(htdocs)(.*)/', '$6', $strirep);
+                            $servername = 'htdocsL.localhost';
                             break;
                         case (preg_match('@[Dd]:[\\\/]@', $strirep)  ? true : false):
                             $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
                             $strirep = str_ireplace('D:\\htdocs\\htdocs\\', '', $strirep);
-                            $servername = 'htdocsD.' . $server_addr;
+                            $servername = 'htdocsD.localhost';
                             break;
+                        case (preg_match('@[Vv]:[\x5c\x2f]{1,2}[Dd]evelopment@', $strirep)  ? true : false):
+                                $strirep = preg_replace('@([\x5c\x2f])@', '/', $strirep);
+                                $strirep = str_ireplace('V:/Development/Apache2/htdocs', '', $strirep);
+                                $strirep = str_ireplace('V:\\Development\\Apache2\\htdocs', '', $strirep);
+                                $servername = 'devalt.mx23';
+                                break;
+                        case (preg_match('@[Vv]:[\x5c\x2f]{1,2}[Dd]evel@', $strirep)  ? true : false):
+                            $strirep = preg_replace('@([\x5c\x2f])@', '/', $strirep);
+                            $strirep = str_ireplace('V:/Devel/Apache2/htdocs', '', $strirep);
+                            $strirep = str_ireplace('V:\\Devel\\Apache2\\htdocs', '', $strirep);
+                            $servername = 'devel.mx23';
+                            break;
+
                         case (preg_match('@[Cc]:[\\\/]@', $strirep)  ? true : false):
                             if (preg_match('@[Cc]:[\\\/]Apache2@', $strirep)) {
                                 $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
                                 $strirep = str_ireplace('C:\\Apache2\\htdocs\\', '', $strirep);
-                                $servername = 'localhost';
+                                $servername = 'beelink.localhost';
+                            } elseif (preg_match('@[Cc]:[\\\/]Users@', $strirep)) {
+                                $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
+                                $strirep = str_ireplace('C:\\Users\\jsaba\\OneDrive\\Documents\\GitHub\\', '', $strirep);
+                                $servername = 'github.localhost';
+
                             } else {
                                 $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
                                 $strirep = str_ireplace('C:\\Portable\\_temp_\\_Global_Bak_Text_n_IDE\\', '', $strirep);
@@ -142,50 +219,25 @@ function clean_url_chars($url_2_convert)
                 <p>The <em>path2url</em> convenience is most evident if the file path points to something from your
                     <span class="underline">localhost</span> <em>testing server</em>.
                     <br>
-                    (E.g. <code class="underline">C:\Apache2\htdocs\Y\our\Path\here.php</code>)
+                    (E.g. <code class="underline">C:\xampp\htdocs\Y\our\Path\here.php</code>)
                 </p>
-                <p>The <span class="black">WordPressCenter.net <em>path2url</em></span> application uses conditioinal
-                    logic on the path submitted in attempt to return a viable HTTP URL.<br><span class="smaller">NOTE:
-                        Should an unexpected System Path result in a <em>bad URL</em>, please submit it to @ajaxStardust
-                        so the application logic will be improved. Thank you!</span></p>
-                <p>If it didnt give you what you wanted. <strong>Too fuckin’ bad</strong>. This author doesn’t care
-                    about much anymore. <span class="red">Certainly <strong>not</strong> you</span>.</p>
+                <p>The <span class="black">WordPressCenter.net <em>path2url</em></span> application uses conditioinal logic on the path submitted in attempt to return a viable HTTP URL.<br><span class="smaller">NOTE: Should an unexpected System Path result in a <em>bad URL</em>, please submit it to @ajaxStardust so the application logic will be improved. Thank you!</span></p>
+                <p>If it didnt give you what you wanted, and you think you know why, <span class="red">you are welcome to <strong>reach out and provide feedback</strong> </span>.</p>
 
             </div> <!--  $    div   .notes    $   -->
         </section> <!--    $   section   #general_notes  .container    $   -->
 
         <section class="container">
 
-            <div id="_glossary">
-                <h2>Visual Studio Code</h2>
-                <h3>Extensions</h3>
-                <h4>Open PHP With...</h4>
-                <p>Remember: this config works for the &#x201c;Open PHP With&#x201d; extension, if you set the child
-                    folder from /document_root as shown:</p>
-                <p><strong>Note:</strong> It is required to set the <strong>Custom HOST</strong> IP address as well, and
-                    the <em>Custom URL To Open</em> path as well</p>
-                <img src="images/p2u2_vscode.png" alt="just a reminder" title="remember something about dev" />
-                <h3>Themes</h3>
-                <h4>Dark Theme</h4>
-                <p>Preferred (today) for various reasons as indicated in attached image:</p>
-                <h5>Blueloco Dark <em>Italic</em></h5>
-                <img src="images/vs-code-reminders-theme-blue-loco.png" title="bluelogo dark italic">
-                <h5>Dracula</h5>
-                <p>Note the red comments part. I found this useful momentarily</p>
-                <img src="images/p2u2_vscode_theme-note.png" title="bluelogo dark italic">
-            </div> <!-- $     div   #_glossary    $   -->
+
         </section> <!-- $  section .container          -->
-
-        <section id="footer">
-            <p class="content footer cite"> div.main &#x3e; section#footer.container &#x3e; p.content.cite: Based on
-                Notes Template by <a href="https://github.com/ajaxStardust" target="_blank" title="View original">@ajaxStardust</a>.
-                { <kbd>2022.11.18</kbd> }
-            </p>
-        </section> <!-- $ section #footer  -->
-
-    </div><!--    $ .content (former id.maincol)    $    -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
-    </script>
+    <section class="footer px-4">                   <!--    .FOOTER     -->
+        <div class="row gx-5">
+            <div class="col"><div class="p-3 border bg-light"> Based on Notes by <a href="https://github.com/ajaxStardust" target="_blank" title="View original">@ajaxStardust</a> <em>Laravel</em> notes:</div></div>
+            <div class="col"><div class="p-3 border bg-light text-end"><kbd><?php echo $lastMod; ?></kbd></div></div>
+        </div>
+    </section>
+  </div>                                            <!--    .content  -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
-
 </html>
