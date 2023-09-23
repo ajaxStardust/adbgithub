@@ -11,7 +11,47 @@
   </title>
   <link href="iframestyle.css" rel="stylesheet" type="text/css" media="screen" />
   <style>
-/** if you need custom styles put it here */
+    #_notes_dl dt {
+      text-transform: uppercase;
+      font-weight: bold;
+      /* border-right:           9pt solid #e5e5e5; */
+      border-left:           4pt solid #F9322C;
+      padding-left: 1em;
+    }
+
+    #_notes_dl dd dl dt {
+        /* border-right:           6pt solid #e5e5e5; */
+        border-left:           6pt solid #e5e5e5;
+    }
+
+    dl dd {
+      margin: 1em 0 2em 2em;
+    }
+
+    .dd_div {
+      margin: 0.5em;
+    }
+
+    .code {
+      background-color: #101010;
+      color: #F0F0F9;
+      padding: 0.5em;
+      white-space: pre-wrap;
+    }
+
+    .code:before {
+      content: 'user@laragigs $> ';
+      color:lawngreen;
+    }
+    h2 {
+        border-right-width: 1pt;
+    }
+    h3 {
+        border-right: 0;
+    }
+    .content code {
+        background-color: #EAEAEA;
+    }
   </style>
   	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
@@ -37,19 +77,15 @@
         <dl id="_notes_dl">
             <dt id="routing"> Def Title...</dt>
             <dd>Something about  folder structure...
-                <pre>#       C:/xampp/htdocs/smsgroupnotify/wp-content/plugins/sms-notify-groups
-#       |-- sms-notify-groups.php 
-#       |-- ./admin/class-sms-notify-groups-admin.php
-#       |-- ./admin/partials/sms-notify-groups-admin-display.php
-#       |   ./includes/{index.php, class-sms-notify-groups-{activator,deactivator,i18n,loader}.php}
-#       |-- ./includes/class-sms-notify-groups.php
-#       |-- ./twiliosdk
-#       |-- 
-#       |-- 
+                <pre>#       /var/www/html/framework_name/
+#       |-- some.file
+#       |-- some.ts
+#       |-- some.json
+#       |-- some.js</pre>
 
         </dl>
         </div> <!-- $ :end #_glossary -->
-        <p class="content footer cite">Based on Directory Structure as of &apos;s <a href="https://github.com/ajaxStardust" target="_blank" title="View original">2022.10.15</a>, a Saturday afternoon.
+        <p class="content footer cite">Based on Brad Traversy&apos;s <a href="https://github.com/bradtraversy/-crash-2021" target="_blank" title="View original"></a> Crash Course.
         </p>
       </div><!--    $ :end    END class.content (former id.maincol)    $    -->
   </section>
