@@ -150,6 +150,7 @@ li.sourceLine:after {
 
 /*
 typography */
+<<<<<<< HEAD
 li#font_demo_serif {
   font-family: Argesta, Didot, "Playfair Display", Lora, Cambria, "Times New Roman", times, serif !important;
   font-size: 2rem !important;
@@ -177,6 +178,8 @@ li#font_demo_sans::before {
   font-size: 1rem;
   clear: both;
 }
+=======
+>>>>>>> a5636a2cd6d8c43da9e4d060ab7e8791e9c73ddf
 
 body {
   background-attachment: fixed;
@@ -785,6 +788,7 @@ kbd {
   box-shadow: 0 0.1em 0 rgba(0, 0, 0, 0.2), 0 0 0 0.2em #fff inset;
 }
 
+<<<<<<< HEAD
 /*
 list
 typography */
@@ -826,6 +830,8 @@ body {
   margin: 0;
 }
 
+=======
+>>>>>>> a5636a2cd6d8c43da9e4d060ab7e8791e9c73ddf
 li.ds_storeicon,
 li.dsstore {
   list-style-image: url(ds_store-icon.png);
@@ -843,6 +849,10 @@ li.htmlicon::before {
   font-weight: 900;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a5636a2cd6d8c43da9e4d060ab7e8791e9c73ddf
 li.cfgicon,
 li.conficon,
 li.iniicon {
@@ -970,6 +980,7 @@ li.xcficon {
   white-space: pre;
 }
 
+<<<<<<< HEAD
 li.sqlicon::before {
   content: "☳";
   color: #FF5;
@@ -982,6 +993,8 @@ li.sqlicon::before {
   font-weight: 900;
 }
 
+=======
+>>>>>>> a5636a2cd6d8c43da9e4d060ab7e8791e9c73ddf
 li.bz2icon,
 li.gzicon,
 li.raricon,
@@ -1648,7 +1661,11 @@ ul#imgShow li.imgShowItem {
 #urlSplit:before {
   background-color: #fafafa;
   color: #30f;
+<<<<<<< HEAD
   content: "Showing: \d\a($matches as $matchKey->matchVal): ";
+=======
+  content: "Showing: D A ($ matches as$ matchKey-> matchVal): ";
+>>>>>>> a5636a2cd6d8c43da9e4d060ab7e8791e9c73ddf
   font-family: monospace;
   font-weight: 800;
   padding: 0.2em;
@@ -1705,14 +1722,18 @@ dl dd dl dt:first-letter {
   vertical-align: baseline;
 }
 
+<<<<<<< HEAD
 li.comicon::before,
 li.infoicon::before,
 li.neticon::before,
 li.orgicon::before,
+=======
+>>>>>>> a5636a2cd6d8c43da9e4d060ab7e8791e9c73ddf
 li.com:before,
 li.info:before,
 li.net:before,
 li.org:before {
+<<<<<<< HEAD
   content: "⛬";
   color: #dafac0;
   margin-left: -3rem;
@@ -1721,6 +1742,9 @@ li.org:before {
   font-size: 1.5rem;
   float: left;
   font-weight: 900;
+=======
+  content: "www.";
+>>>>>>> a5636a2cd6d8c43da9e4d060ab7e8791e9c73ddf
 }
 
 ol#navlist li.phpicon a:hover,
@@ -1759,4 +1783,37 @@ li#adb_small_logo img {
   height: 80px;
   margin-left: 2rem;
   margin-top: 1rem;
+<<<<<<< HEAD
 }
+=======
+}
+
+li#font_demo_serif {
+  font-family: Argesta, Didot, "Playfair Display", Lora, Cambria, "Times New Roman", times, serif !important;
+  font-size: 2rem !important;
+  font-variant: normal !important;
+  white-space: wrap !important;
+  text-align: start !important;
+}
+
+li#font_demo_serif::before {
+  content: "Serif ⇒";
+  font-size: 1rem;
+  clear: both;
+}
+
+
+li#font_demo_sans {
+  font-family: "Open Sans", "Segoe UI", Ubuntu, Cantarell,  system-ui, -apple-system, Roboto, Oxygen, BlinkMac, SystemFont, "Helvetica Neue", sans-serif !important;
+  font-size: 2rem !important;
+  font-variant: normal !important;
+  white-space: wrap !important;
+  text-align: start !important;
+}
+
+li#font_demo_sans::before {
+  content: "Sans ⇒";
+  font-size: 1rem;
+  clear: both;
+}
+>>>>>>> a5636a2cd6d8c43da9e4d060ab7e8791e9c73ddf
