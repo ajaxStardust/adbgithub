@@ -17,16 +17,9 @@ $serversoftware = $_SERVER['SERVER_SOFTWARE'];
 $server_name = $_SERVER['SERVER_NAME'];
 $server_addr = $_SERVER['SERVER_ADDR'];
 $servername = $server_name;
-<<<<<<< HEAD
 if (preg_match('@10\.0\.0\.\d+@', $server_addr)) {
     $abspath = '<code class="info">' . $abspath . '</code>';
 } else {
-=======
-if(preg_match('@10\.0\.0\.\d+@',$server_addr)){
-    $abspath = '<code class="info">'.$abspath.'</code>';
-}
-else {
->>>>>>> 4f8a8a16b898daa24f10d4b707822d888a28198d
     $abspath = 'is simply a PHP value which relies on server variables<code>define( ABSOLUTELOCATION , rtrim(dirname(__FILE__), inc))</code>';
 }
 
@@ -153,7 +146,6 @@ function clean_url_chars($url_2_convert)
                         if (preg_match('@([\x5c\x2f]{1,2})(wsl\.localhost[\x5c\x2f]{1,2})([^\x5c\x2f]+)@', $strirep)) {
                             $strirep = preg_replace('@([\x5c\x2f])(wsl\.localhost[\x5c\x2f])([^\x5c\x2f]+)@', '', $strirep);
 
-<<<<<<< HEAD
                             $servername = 'wsldebian';
                         } else {
                             $servername = !empty($servername) ? $servername : $server_addr;
@@ -228,114 +220,10 @@ function clean_url_chars($url_2_convert)
                                 break;
 
                             case (preg_match('@[Vv]:[\x5c\x2f]{1,2}[Dd]evelopment@', $strirep) ? true : false):
-=======
-                        $servername = 'wsldebian';
-                    } else {
-                        $servername = !empty($servername) ? $servername : $server_addr;
-
-                        $servername = empty($server_name) ? $servername : $server_name;
-
-                    }
-                    switch ($strirep) {
-
-                        case (preg_match('@[Zz]:[\\\/]@', $strirep) ? true : false):
-                            $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
-                            $strirep = str_ireplace('Z:\\', '', $strirep);
-                            $servername = 'mxlinux-21';
-                        $servername = !empty($servername) ? $servername : $server_addr;
-                        $servername = empty($server_name) ? $servername : $server_name;
-                        break;
-                      case (preg_match('@[Ww]:[\\\/]@', $strirep) ? true : false):
-                            $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
-                            $strirep = str_ireplace('W:\\', '', $strirep);
-                            $servername = 'mx23';
-                                                $servername = !empty($servername) ? $servername : $server_addr;
-
-                        $servername = empty($server_name) ? $servername : $server_name;
-                            break;
-                        case (preg_match('@/var/www/html@', $strirep)  ? true : false):
-                            $strirep = str_ireplace('/var/www/html/', '', $strirep);
-
-                            if(preg_match('@^([Yy]:)@', $strirep)) {
-                                $strirep = preg_replace('@^(\w:)@','',$strirep);
-                                $servername = 'wsldebian';
-                                                    $servername = !empty($servername) ? $servername : $server_addr;
-
-                        $servername = empty($server_name) ? $servername : $server_name;
-
-                            }
-else{
-
-                                                    $servername = !empty($servername) ? $servername : $server_addr;
-
-                        $servername = empty($server_name) ? $servername : $server_name;
-}
-
-
-                            break;
-                        case (preg_match('/.*mxlinux.*/', $strirep) ? true : false):
-                            $strirep = preg_replace('@([\x5c\x2f]*)(mxlinux\-21)([\x5c\x2f]*)(html)@', '\\', $strirep);
-                            $servername = 'mxlinux-21';
-                                                $servername = !empty($servername) ? $servername : $server_addr;
-
-                        $servername = empty($server_name) ? $servername : $server_name;
-                        break;
-
-                      case ((preg_match('/.*mx23.*/', $strirep)) ? true : false):
-                        if(preg_match('/[dD]evelopment[\x5c\x2f]/',$strirep)) {
-                        $pattern = '@([\x5c\x2f]{1,2})(mx23[\x5c\x2f]{1,2})(flux_mount[\x5c\x2f]{1,2})([Dd]evelopment)([\x5c\x2f]{1,2})(Apache2[\x5c\x2f]{1,2})(htdocs[\x5c\x2f]{0,2})@';
-                            $replace = '';
-                            $strirep = preg_replace($pattern, $replace, $strirep);
-                            $servername = 'devalt.mx23';
-                                                $servername = !empty($servername) ? $servername : $server_addr;
-
-                        $servername = empty($server_name) ? $servername : $server_name;
-                        }
-                        elseif(preg_match('/[dD]evel[\x5c\x2f]/',$strirep)) {
-                            $pattern = '@([\x5c\x2f]{1,2})(mx23[\x5c\x2f]{1,2})(flux_mount[\x5c\x2f]{1,2})([Dd]evel)([\x5c\x2f]{1,2})(Apache2[\x5c\x2f]{1,2})(htdocs[\x5c\x2f]{0,2})@';
-                            $replace = '';
-                            $strirep = preg_replace($pattern, $replace, $strirep);
-                            $servername = 'devel.mx23';
-                                                $servername = !empty($servername) ? $servername : $server_addr;
-
-                        $servername = empty($server_name) ? $servername : $server_name;
-                        }
-                        else{
-                            $strirep = preg_replace('@([\x5c\x2f]*)(mx23)([\x5c\x2f]*)(html)@', '\\', $strirep);
-                            $servername = 'mx23';
-                                                $servername = !empty($servername) ? $servername : $server_addr;
-
-                        $servername = empty($server_name) ? $servername : $server_name;
-                        }
-                            break;
-                        case (preg_match('@[Hh]:[\\\/]@', $strirep)  ? true : false):
-                            $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
-                            $strirep = preg_replace('/([hH]:)([\x5c\x2f]+)([aA]pache2?)([\x5c\x2f]+)(htdocs)(.*)/', '$6', $input_lines);
-                            $servername = 'htdocsH.localhost';
-                                                $servername = !empty($servername) ? $servername : $server_addr;
-
-                        $servername = empty($server_name) ? $servername : $server_name;
-                            break;
-                        case (preg_match('@[Ll]:[\\\/]@', $strirep)  ? true : false):
-                            $strirep = preg_replace('@([\x5c\x2f])@', '/', $strirep);
-                            $strirep = preg_replace('/([lL]:)([\x5c\x2f]+)([aA]pache2?)([\x5c\x2f]+)(htdocs)(.*)/', '$6', $strirep);
-                            $servername = 'htdocsL.localhost';
-                            break;
-                        case (preg_match('@[Dd]:[\\\/]@', $strirep)  ? true : false):
-                            $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
-                            $strirep = str_ireplace('D:\\htdocs\\htdocs\\', '', $strirep);
-                            $servername = 'htdocsD.localhost';
-                                                $servername = !empty($servername) ? $servername : $server_addr;
-
-                        $servername = empty($server_name) ? $servername : $server_name;
-                            break;
-                        case (preg_match('@[Vv]:[\x5c\x2f]{1,2}[Dd]evelopment@', $strirep)  ? true : false):
->>>>>>> 4f8a8a16b898daa24f10d4b707822d888a28198d
                                 $strirep = preg_replace('@([\x5c\x2f])@', '/', $strirep);
                                 $strirep = str_ireplace('V:/Development/Apache2/htdocs', '', $strirep);
                                 $strirep = str_ireplace('V:\Development\Apache2\htdocs', '', $strirep);
                                 $servername = 'devalt.mx23';
-<<<<<<< HEAD
                                 $servername = !empty($servername) ? $servername : $server_addr;
 
                                 /* $servername = empty($server_name) ? $servername : $server_name; */
@@ -388,64 +276,6 @@ else{
                         $url_result = 'http://' . $servername . '/' . ltrim($strirep, '/');
                         echo '<br>new path: <a href="' . $url_result . '" title="' . $strirep . '" target="_blank">' . $url_result . '</a>';
                     }
-=======
-                                                    $servername = !empty($servername) ? $servername : $server_addr;
-
-                        $servername = empty($server_name) ? $servername : $server_name;
-                                break;
-                        case (preg_match('@[Vv]:[\x5c\x2f]{1,2}[Dd]evel@', $strirep)  ? true : false):
-                            $strirep = preg_replace('@([\x5c\x2f])@', '/', $strirep);
-                            $strirep = str_ireplace('V:/Devel/Apache2/htdocs', '', $strirep);
-                            $strirep = str_ireplace('V:\\Devel\\Apache2\\htdocs', '', $strirep);
-                            $servername = 'devel.mx23';
-                                                $servername = !empty($servername) ? $servername : $server_addr;
-
-                        $servername = empty($server_name) ? $servername : $server_name;
-                            break;
-
-                        case (preg_match('@[Cc]:[\\\/]@', $strirep)  ? true : false):
-                            if (preg_match('@[Cc]:[\\\/]Apache2@', $strirep)) {
-                                $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
-                                $strirep = str_ireplace('C:\\Apache2\\htdocs\\', '', $strirep);
-                                $servername = 'beelink.localhost';
-                                                    $servername = !empty($servername) ? $servername : $server_addr;
-
-                        $servername = empty($server_name) ? $servername : $server_name;
-                            } elseif (preg_match('@[Cc]:[\\\/]Users@', $strirep)) {
-                                $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
-                                $strirep = str_ireplace('C:\\Users\\jsaba\\OneDrive\\Documents\\GitHub\\', '', $strirep);
-                                $servername = 'github.localhost';
-                                                    $servername = !empty($servername) ? $servername : $server_addr;
-
-                        $servername = empty($server_name) ? $servername : $server_name;
-
-                            } else {
-                                $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
-                                $strirep = str_ireplace('C:\\Portable\\_temp_\\_Global_Bak_Text_n_IDE\\', '', $strirep);
-                                $servername = 'portable.localhost';
-                                                    $servername = !empty($servername) ? $servername : $server_addr;
-
-                        $servername = empty($server_name) ? $servername : $server_name;
-                            }
-
-                                                $servername = !empty($servername) ? $servername : $server_addr;
-
-                        $servername = empty($server_name) ? $servername : $server_name;
-                            break;
-                    }
-
-
-
-                    $strirep = preg_replace('@([\x5c\x2f]+)@', '/', $strirep);
-                                            $servername = !empty($servername) ? $servername : $server_addr;
-
-                        $servername = empty($server_name) ? $servername : $server_name;
-
-
-                    $url_result = 'http://' . $servername . '/' . ltrim($strirep, '/');
-                    echo '<br>new path: <a href="' . $url_result . '" title="' . $strirep . '" target="_blank">' . $url_result . '</a>';
-                }
->>>>>>> 4f8a8a16b898daa24f10d4b707822d888a28198d
                 ?>
                 <p>The <em>path2url</em> convenience is most evident if the file path points to something from your <span class="underline">localhost</span> <em>testing server</em>.
                     <br>

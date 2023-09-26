@@ -150,33 +150,6 @@ li.sourceLine:after {
 
 /*
 typography */
-li#font_demo_serif {
-  font-family: Argesta, Didot, "Playfair Display", Lora, Cambria, "Times New Roman", times, serif !important;
-  font-size: 2rem !important;
-  font-variant: normal !important;
-  white-space: wrap !important;
-  text-align: start !important;
-}
-
-li#font_demo_serif::before {
-  content: "Serif ⇒";
-  font-size: 1rem;
-  clear: both;
-}
-
-li#font_demo_sans {
-  font-family: Poppins, Roboto !important;
-  font-size: 2rem !important;
-  font-variant: normal !important;
-  white-space: wrap !important;
-  text-align: start !important;
-}
-
-li#font_demo_sans::before {
-  content: "Sans ⇒";
-  font-size: 1rem;
-  clear: both;
-}
 
 body {
   background-attachment: fixed;
@@ -801,6 +774,7 @@ li.htmlicon::before {
   float: left;
   font-weight: 900;
 }
+
 
 li.cfgicon,
 li.conficon,
@@ -1695,4 +1669,33 @@ li#adb_small_logo img {
   height: 80px;
   margin-left: 2rem;
   margin-top: 1rem;
+}
+
+li#font_demo_serif {
+  font-family: Argesta, Didot, "Playfair Display", Lora, Cambria, "Times New Roman", times, serif !important;
+  font-size: 2rem !important;
+  font-variant: normal !important;
+  white-space: wrap !important;
+  text-align: start !important;
+}
+
+li#font_demo_serif::before {
+  content: "Serif ⇒";
+  font-size: 1rem;
+  clear: both;
+}
+
+
+li#font_demo_sans {
+  font-family: "Open Sans", "Segoe UI", Ubuntu, Cantarell,  system-ui, -apple-system, Roboto, Oxygen, BlinkMac, SystemFont, "Helvetica Neue", sans-serif !important;
+  font-size: 2rem !important;
+  font-variant: normal !important;
+  white-space: wrap !important;
+  text-align: start !important;
+}
+
+li#font_demo_sans::before {
+  content: "Sans ⇒";
+  font-size: 1rem;
+  clear: both;
 }
