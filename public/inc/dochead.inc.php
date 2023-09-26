@@ -189,11 +189,17 @@ else{
         $xro."p2u2.phtml",
     );
 
+    if(file_exists($xro.'tree.html')){
+        $defaultIframe = $xro.'tree.html';
+    }
+else{
     foreach($defaultFrameArray as $thisIframe){
         if(file_exists($thisIframe)) {
             $defaultIframe = $thisIframe;
         }
     }
+}
+
 }
 
 $frameInfo = pathinfo($defaultIframe);
