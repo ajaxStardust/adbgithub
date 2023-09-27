@@ -1821,6 +1821,17 @@ li#font_demo_sans::before {
   clear: both;
 }
 
+.icoicon::before {
+  content: "∠";
+  color: #FFC;
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 900;
+}
+
 /* ;
 lists  */
 dl {
@@ -2701,36 +2712,6 @@ li.sourceline {
   vertical-align: middle;
 }
 
-li.bmp,
-li.bmpicon,
-li.gif,
-li.gificon,
-li.ico,
-li.icoicon,
-li.jpg,
-li.jpgicon,
-li.pdn,
-li.pdnicon,
-li.png,
-li.pngicon,
-li.psd,
-li.psdicon,
-li.svg,
-li.svgicon,
-li.tga,
-li.tgaicon,
-li.tif,
-li.tiff,
-li.tifficon,
-li.tificon,
-li.xcf,
-li.xcficon {
-  list-style-image: url(image-icon.gif);
-  margin-left: -0.5em;
-  padding-left: 0;
-  white-space: pre;
-}
-
 li.bz2icon,
 li.gzicon,
 li.raricon,
@@ -3497,4 +3478,39 @@ li#adb_small_logo img {
   height: 80px;
   margin-left: 2rem;
   margin-top: 1rem;
+}
+
+li.bmp::before::before,
+li.bmpicon::before,
+li.gif::before,
+li.gificon::before,
+li.ico::before,
+li.icoicon::before,
+li.jpg::before,
+li.jpgicon::before,
+li.pdn::before,
+li.pdnicon::before,
+li.png::before,
+li.pngicon::before,
+li.psd::before,
+li.psdicon::before,
+li.svg::before,
+li.svgicon::before,
+li.tga::before,
+li.tgaicon::before,
+li.tif::before,
+li.tiff::before,
+li.tifficon::before,
+li.tificon::before,
+li.xcf::before,
+li.xcficon {
+  list-style-image: none;
+  color: #ffc;
+  content: "∠";
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 900;
 }
