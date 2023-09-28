@@ -4,7 +4,7 @@ li#adb_small_logo img {
 	margin-left: 2rem;
 	margin-top: 1rem;
   }
-  
+
   li#font_demo_serif {
 	font-family: Argesta, Didot, "Playfair Display", Lora, Cambria, "Times New Roman", times, serif !important;
 	font-size: 2rem !important;
@@ -12,14 +12,14 @@ li#adb_small_logo img {
 	white-space: wrap !important;
 	text-align: start !important;
   }
-  
+
   li#font_demo_serif::before {
 	content: "Serif ⇒";
 	font-size: 1rem;
 	clear: both;
   }
-  
-  
+
+
   li#font_demo_sans {
 	font-family: Raleway, "Open Sans", "Segoe UI", Ubuntu, Cantarell,  system-ui, -apple-system, Roboto, Poppins, Oxygen, BlinkMac, SystemFont, "Helvetica Neue", sans-serif !important;
 	font-size: 2rem !important;
@@ -27,13 +27,13 @@ li#adb_small_logo img {
 	white-space: wrap !important;
 	text-align: start !important;
   }
-  
+
   li#font_demo_sans::before {
 	content: "Sans ⇒";
 	font-size: 1rem;
 	clear: both;
   }
-  
+
  $nav_width: 1 * 18%;
 
 
@@ -79,18 +79,18 @@ nav {
   font-size: 20px;
   color: #CDCDCD;
 }
- 
+
 li.nav {
-  list-style-image: url(bullet_square_grey.png);
+/*  list-style-image: url(bullet_square_grey.png);*/
   margin-left: -0.5em;
   padding-left: 0;
 }
 li.bakicon {
-  list-style-image: url(bakicon.gif);
+  list-style-image:  none;
   list-style-type: none;
 }
 
-li.mdicon::before {
+li.markdownicon, li.mdicon::before {
 	color:rgb(102, 204, 145);
 	  content:"\2211";
 	font-size:1.5rem;
@@ -104,8 +104,9 @@ li.mdicon::before {
 	float: left;
 	font-weight: 500;
   }
-  li.mdicon {
-	  list-style-type: none;
+
+  li.mdicon, li.markdownicon {
+	  list-style-image: none !important;
 	}
 
 li.cssicon::before {
@@ -131,7 +132,7 @@ li.imgShowItem img {
   width: 5em;
 }
 li.jsicon {
-  list-style-image: url(javascript-icon.png);
+  list-style-image:  none;
 }
 li.navnobull::before {
 	color:#00bfff;
@@ -142,13 +143,13 @@ li.navnobull::before {
 	font-size: 1.5rem;
 	float: left;
 	font-weight: 900;
-  
+
 }
 li.new_dirHandArr {
-  list-style-image: url(folder-new.gif);
+  list-style-image: none !important;
 }
 li.pdficon {
-  list-style-image: url(pdf.png);
+  list-style-image:  none;
 }
 li.phpicon::before {
   color: #ff46ff;
@@ -160,8 +161,44 @@ li.phpicon::before {
   float: left;
   font-weight: 900;
 }
+
+li.jsonicon, li.jsicon, li.shtmlicon, li.lockicon { list-style-image: none !important;}
+li.jsonicon::before, li.jsicon::before, li.shtmlicon::before, li.lockicon::before  {
+  color: #ff46ff;
+  content: "\26E7";
+  margin-left: -3.1rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 500;
+}
+
+li.xmlicon, li.ymlicon, li.yamlicon { list-style-image: none !important;}
+li.xmlicon::before, li.ymlicon::before, li.yamlicon::before {
+  color: #ffaabb;
+  content: "\26E5";
+  margin-left: -3.1rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 500;
+}
+
+li.pharicon { list-style-image: none !important; }
+li.pharicon::before {
+  color: #BBFFbb;
+  content: "♀";
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 900;
+}
 li.phtmlicon {
-  list-style-image: none;
+  list-style-image: none !important;
 }
 li.phtmlicon::before {
   color: #4646ff;
@@ -174,30 +211,42 @@ li.phtmlicon::before {
   font-weight: 500;
 }
 li.selicon {
-  list-style-image: url(sel-icon.png);
+  list-style-image:  none;
 }
 li.shortcutlink {
   list-style-image: url(link-icon.gif);
 }
 li.shtmlicon {
   display: none;
-  list-style-image: url(file.png);
+  list-style-image: none !important;
 }
 li.swficon {
-  list-style-image: url(swf-icon.gif);
+  list-style-image:  none;
 }
 li.thumbicon {
-  list-style-image: url(thumb-icon.gif);
+  list-style-image:  none;
   list-style-type: none;
 }
-li.txticon {
-  list-style-image: url(txt-icon.gif);
+li.txticon, li.logicon {
+  list-style-image: none !important;
 }
+
+li.txticon::before, li.logicon::before {
+content: "\1F5B9";
+color: hsl(0, 0%, 82%);
+margin-left: -3rem;
+padding-left: 0;
+white-space: pre;
+font-size: 1.5rem;
+float: left;
+font-weight: 500;
+}
+
 li.xmlicon {
-  list-style-image: url(xml-icon.png);
+  list-style-image:  none;
 }
 li.xpiicon {
-  list-style-image: url(xpiicon.png);
+  list-style-image:  none;
 }
 li.sourceLine:after {
   content: " ";
@@ -217,7 +266,7 @@ body {
 }
 
 code,
-code.codelite {
+coden::before,lite {
   background-color: #dafac0;
   color: #05c;
   line-height: 140%;
@@ -403,7 +452,7 @@ iframe html {
   font-size: 8pt !important;
 }
 
-code.codelite {
+coden::before,lite {
   background-color: #fffaef;
   color: #395;
   padding: 0.4em;
@@ -516,15 +565,15 @@ thead {
   text-align: center;
 }
 
-.code {
+n::before, {
   background-color: #eee;
   color: #337;
   display: inline-block;
   font-family: "Liberation Mono", "DejaVu Sans Mono", "Lucida Console", "monte carlo", monospace;
 }
 
-.codeComment,
-.codeHints {
+n::before,Comment,
+n::before,Hints {
   color: #c00;
   font-family: monospace;
   font-style: italic;
@@ -834,7 +883,7 @@ li.htmlicon::before {
 li.cfgicon,
 li.conficon,
 li.iniicon {
-  list-style-image: url(ini-icon.gif);
+  list-style-image:  none;
 }
 
 li.listHead li,
@@ -867,18 +916,18 @@ li.listheaditem {
 
 li.error_logicon,
 li.logicon {
-  list-style-image: url(log-icon.gif);
+  list-style-image:  none;
 }
 
 li.mp3,
 li.mp3icon {
-  list-style-image: url(mp3-icon.gif);
+  list-style-image:  none;
 }
 
 li.comicon,
 li.netcomicon,
 li.neticon {
-  list-style-image: url(netcomicon.png);
+  list-style-image:  none;
 }
 
 li.projectfile a,
@@ -895,9 +944,10 @@ li.pnprojicon,
 li.projectfile,
 li.projecticon,
 li.code-workspaceicon,
+li.workspaceicon,
 li.clpprjicon {
   list-style-type: none;
-  list-style-image: none;
+  list-style-image: none !important;
 }
 
 li.apficon::before,
@@ -907,16 +957,17 @@ li.nppsessionicon::before,
 li.pnprojicon::before,
 li.projectfile::before,
 li.projecticon::before,
+li.workspaceicon::before,
 li.code-workspaceicon::before,
 li.clpprjicon::before {
   color: #bb0;
   content: "☸";
   max-height: 16px;
   max-width: 16px;
-  margin-left: -3rem;
+  margin-left: -3.25rem;
   padding-left: 0;
   white-space: pre;
-  font-size: 2rem;
+  font-size: 1.75rem;
   float: left;
 }
 
@@ -928,7 +979,23 @@ li.sourceline {
   vertical-align: middle;
 }
 
-li.bmp::before::before,
+li.regicon { list-style-image:none !important;}
+li.regicon::before {
+
+	content:"\26BF";
+	color:#9f9;
+	max-height: 16px;
+	max-width: 16px;
+	margin-left: -3rem;
+	padding-left: 0;
+	white-space: pre;
+	font-size: 1.5rem;
+	float: left;
+	font-weight: 500;
+
+}
+
+li.bmp::before,
 li.bmpicon::before,
 li.gif::before,
 li.gificon::before,
@@ -952,7 +1019,7 @@ li.tifficon::before,
 li.tificon::before,
 li.xcf::before,
 li.xcficon {
-  list-style-image: none;
+  list-style-image: none !important;
   color:#ffc;
   content:"\2220";
   margin-left: -3rem;
@@ -960,7 +1027,7 @@ li.xcficon {
   white-space: pre;
   font-size: 1.5rem;
   float: left;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 li.bz2icon,
@@ -968,7 +1035,22 @@ li.gzicon,
 li.raricon,
 li.sevenzipicon,
 li.zipicon {
-  list-style-image: url(zip.png);
+  list-style-image:  none;
+}
+
+li.bz2icon::before,
+li.gzicon::before,
+li.raricon::before,
+li.sevenzipicon::before,
+li.zipicon::before {
+    color:#EfA;
+  content:"\262F";
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 500;
 }
 
 span.keyStyle {
