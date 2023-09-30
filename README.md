@@ -1,7 +1,7 @@
 ## ADB
 Annie DeBrowsa (ADB). Which is supposed to remind you of "Any Dir Browser".
 
-[![AjaxStardust GitHub stats](https://github-readme-stats.vercel.app/api?username=ajaxStardust)](https://github.com/anuraghazra/github-readme-stats)
+[![AjaxStardust GitHub stats](https://github-readme-stats.vercel.app/api?username=ajaxStardust&show_owner=true)](https://github.com/anuraghazra/github-readme-stats)
 
 
 ## Description
