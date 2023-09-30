@@ -2,7 +2,7 @@
 Annie DeBrowsa (ADB). Which is supposed to remind you of "Any Dir Browser".
 
 
-[![AjaxStardust GitHub stats]([https://github-readme-stats.vercel.app/api/pin/?username=ajaxStardust&repo=AnnieDeBrowsa)](https://github.com/anuraghazra/github-readme-stats)
+[![AjaxStardust GitHub stats]([https://github-readme-stats.vercel.app/api?username=ajaxStardust&repo=AnnieDeBrowsa&show_icons=true)](https://github.com/anuraghazra/github-readme-stats)
 
 
 ## Description
