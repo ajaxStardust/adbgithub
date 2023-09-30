@@ -1,10 +1,7 @@
 ## ADB
 Annie DeBrowsa (ADB). Which is supposed to remind you of "Any Dir Browser".
 
-[![Status](https://github-readme-stats.vercel.app/api/pin/?username=ajaxStardust&repo=AnnieDeBrowsa)](https://github-readme-stats.vercel.app)
-
-[![AjaxStardust GitHub stats]([https://github-readme-stats.vercel.app/api?username=ajaxStardust&repo=AnnieDeBrowsa&show_icons=true)](https://github.com/anuraghazra/github-readme-stats)
-
+[![Status](https://github-readme-stats.vercel.app/api/pin/?username=ajaxStardust&repo=AnnieDeBrowsa&show_owner=true)](https://github-readme-stats.vercel.app)
 
 ## Description
 This project was begun in the later 2000's bourne of my desire to have a means of previewing old website projects stored on a development server. Consider it a "static content management system". It's not a file manager. 
