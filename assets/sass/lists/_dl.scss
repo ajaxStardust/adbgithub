@@ -61,7 +61,7 @@ li {
     }
 
     &.cssicon {
-        list-style-image: url(css.png);
+        list-style-image: none;
     }
 
     &.imgShowItem {
@@ -77,7 +77,7 @@ li {
     }
 
     &.navnobull {
-        list-style-image: url(folder.gif);
+        list-style-image: none;
     }
 
     &.new_dirHandArr {
