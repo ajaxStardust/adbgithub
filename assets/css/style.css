@@ -3475,7 +3475,7 @@ ul#imgShow li.imgShowItem {
 #urlSplit:before {
   background-color: #fafafa;
   color: #30f;
-  content: "Showing: D A ($ matches as$ matchKey-> matchVal): ";
+  content: "Showing: \D\A (matches as matchKey-> matchVal): ";
   font-family: monospace;
   font-weight: 800;
   padding: 0.2em;
