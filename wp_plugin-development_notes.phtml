@@ -1,0 +1,4620 @@
+<?php 
+date_default_timezone_set('EST');
+$page_heading = 'Creating Maintainable WordPress (plugin)';
+$title = 'WordPress Plugin Devt';
+$lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
+?>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <?php print $title; ?>
+  </title>
+  <link rel="icon" type="image/ico" href="favicon.ico">
+  <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+  <style>
+/** if needed add style here */
+  </style>
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" 
+        crossorigin="anonymous">    <!-- BOOTSTRAP STYLE -->
+    <link 
+        rel="stylesheet" 
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link 
+        href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" 
+        rel="stylesheet">
+    <link 
+        href="assets/css/notes.css" 
+        rel="stylesheet" 
+        type="text/css">
+</head>
+
+<body>
+
+  <div id="pagewidth" class="container">
+ 
+    <section id="header">  <!-- #HEADER -->
+        <h1 class="bg-dark text-light text-end pe-3"><?php print $page_heading; ?></h1>
+    </section>
+    <section class="content">
+      <div class="notes">                           
+       <h3>Prepare The Directory</h3>
+<p>The thing that that we need to do is to stub out the directory structure that we'll be using for the project. You'll see a screenshot for this below after which I'll describe the purpose of each directory.</p>
+<figure><img><img><img></figure>
+<p>The root of the directory includes two files:</p>
+<ol>
+    <li>
+        <code>README.md</code> which is the standard <code>README</code> that comes with a WordPress plugin.
+    </li>
+    <li>
+        <code>authors-commentary.php</code> which is responsible for actually starting the plugin. This is the bootstrap file.
+    </li>
+</ol>
+<p>Next, we have the admin directory. This directory includes:</p>
+<ol>
+    <li>
+        <code>assets</code> which includes subdirectories for both our JavaScript and CSS files (we'll be using vanilla CSS throughout this series.
+    </li>
+    <li>
+        <code>class-authors-commentary.php</code> which is going to be the primarily class than encapsulates much of our functionality.
+    </li>
+    <li>
+        <code>views</code> which includes a subdirectory named <code>partials</code>. The <code>views</code> directory will be responsible for rendering the tabs and including all of the content for each tab based on the partial. That is, the <code>partials</code>&nbsp;directory include the content for each tab.
+    </li>
+</ol>
+<p>Note that we may be adding additional directories for the plugin as the series progresses. That is, this structure is subject to change in that we'll likely be adding or even moving a little bit of content based on how the plugin progresses, but this is the basic structure that we need to get started.&nbsp;</p>
+        <h3>Create The Files</h3>
+<p>Since we've got the basic directory structure laid out and the necessary files in place, we're ready to begin stubbing out some of the code. Note that although the plugin will be functional from an activation point of view, it won't actually be doing anything until we begin adding code in the next set of articles.</p>
+<p>With that said, we'll go ahead and populate the files that are necessary to get the plugin up and running in the WordPress dashboard.</p>
+<p>The first thing that we need to do is populate the header of the plugin so that it includes the necessary documentation block for WordPress to display the plugin in the dashboard:</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;?php</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre><span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre><span> * The plugin bootstrap file
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre><span> * This file is responsible for starting the plugin using the main plugin
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>6</pre>
+                </td>
+                <td>
+                    <pre><span> * class file.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>7</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>8</pre>
+                </td>
+                <td>
+                    <pre><span> * @link              http://.tutsplus.com/tutorials/creating-maintainable-wordpress-meta-boxes--cms-22189
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>9</pre>
+                </td>
+                <td>
+                    <pre><span> * @since             0.1.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>10</pre>
+                </td>
+                <td>
+                    <pre><span> * @package           Author_Commentary
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>11</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>12</pre>
+                </td>
+                <td>
+                    <pre><span> * @wordpress-plugin
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>13</pre>
+                </td>
+                <td>
+                    <pre><span> * Plugin Name:       Author Commentary
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>14</pre>
+                </td>
+                <td>
+                    <pre><span> * Plugin URI:        http://.tutsplus.com/tutorials/creating-maintainable-wordpress-meta-boxes--cms-22189
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>15</pre>
+                </td>
+                <td>
+                    <pre><span> * Description:       Allows authors to keep notes and track information and resources when drafting posts.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>16</pre>
+                </td>
+                <td>
+                    <pre><span> * Version:           0.1.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>17</pre>
+                </td>
+                <td>
+                    <pre><span> * Author:            Tom McFarlin
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>18</pre>
+                </td>
+                <td>
+                    <pre><span> * Author URI:        http://tommcfarlin.com
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>19</pre>
+                </td>
+                <td>
+                    <pre><span> * License:           GPL-2.0+
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>20</pre>
+                </td>
+                <td>
+                    <pre><span> * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>21</pre>
+                </td>
+                <td>
+                    <pre><span> * Text Domain:       author-commentary
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>22</pre>
+                </td>
+                <td>
+                    <pre><span> */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>23</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>24</pre>
+                </td>
+                <td>
+                    <pre><span>// If this file is called directly, abort.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>25</pre>
+                </td>
+                <td>
+                    <pre><span>if</span> <span>(</span> <span>!</span> <span>defined</span><span>(</span> <span>'WPINC'</span> <span>)</span> <span>)</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>26</pre>
+                </td>
+                <td>
+                    <pre>    <span>die</span><span>;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>27</pre>
+                </td>
+                <td>
+                    <pre><span>}</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>The final conditional makes sure that if anyone tries to access the file directly, that the script will abort execution.</p>
+<p>Next, we need to make sure that the core plugin file that we started above is aware of the primary class that we created in the previous step. To do this, we just need a simple <code>require_once</code> statement.</p>
+<p>But before we call <code>require_once</code>, we need a file to include, right? To that end, let's hop into the <code>admin</code> subdirectory and in the <code>class-author-commentary.php</code> class, we'll add the following code.</p>
+<p>The comments are self-explanatory, but I'll make sure to outline everything that's going on after the block of code has been completed:<br></p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;?php</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre><span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre><span> * The dashboard-specific functionality of the plugin.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>6</pre>
+                </td>
+                <td>
+                    <pre><span> * @link       http://tutsplus.com/tutorials/creating-maintainable-wordpress-meta-boxes--cms-22189
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>7</pre>
+                </td>
+                <td>
+                    <pre><span> * @since      1.0.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>8</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>9</pre>
+                </td>
+                <td>
+                    <pre><span> * @package    Author_Commentary
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>10</pre>
+                </td>
+                <td>
+                    <pre><span> * @subpackage Author_Commentary/admin
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>11</pre>
+                </td>
+                <td>
+                    <pre><span> */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>12</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>13</pre>
+                </td>
+                <td>
+                    <pre><span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>14</pre>
+                </td>
+                <td>
+                    <pre><span> * The dashboard-specific functionality of the plugin.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>15</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>16</pre>
+                </td>
+                <td>
+                    <pre><span> * Defines the plugin name, version, and two examples hooks for how to
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>17</pre>
+                </td>
+                <td>
+                    <pre><span> * enqueue the dashboard-specific stylesheet and JavaScript.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>18</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>19</pre>
+                </td>
+                <td>
+                    <pre><span> * @package    Author_Commentary
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>20</pre>
+                </td>
+                <td>
+                    <pre><span> * @subpackage Author_Commentary/admin
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>21</pre>
+                </td>
+                <td>
+                    <pre><span> * @author     Tom McFarlin &lt;tom@tommcfarlin.com&gt;
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>22</pre>
+                </td>
+                <td>
+                    <pre><span> */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>23</pre>
+                </td>
+                <td>
+                    <pre><span>class</span> <span>Author_Commentary_Admin</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>24</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>25</pre>
+                </td>
+                <td>
+                    <pre>    <span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>26</pre>
+                </td>
+                <td>
+                    <pre><span>  * The ID of this plugin.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>27</pre>
+                </td>
+                <td>
+                    <pre><span>  *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>28</pre>
+                </td>
+                <td>
+                    <pre><span>  * @since    0.1.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>29</pre>
+                </td>
+                <td>
+                    <pre><span>  * @access   private
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>30</pre>
+                </td>
+                <td>
+                    <pre><span>  * @var      string    $name    The ID of this plugin.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>31</pre>
+                </td>
+                <td>
+                    <pre><span>  */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>32</pre>
+                </td>
+                <td>
+                    <pre>   <span>private</span> <span>$name</span><span>;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>33</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>34</pre>
+                </td>
+                <td>
+                    <pre>   <span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>35</pre>
+                </td>
+                <td>
+                    <pre><span>  * The version of this plugin.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>36</pre>
+                </td>
+                <td>
+                    <pre><span>  *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>37</pre>
+                </td>
+                <td>
+                    <pre><span>  * @since    0.1.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>38</pre>
+                </td>
+                <td>
+                    <pre><span>  * @access   private
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>39</pre>
+                </td>
+                <td>
+                    <pre><span>  * @var      string    $version    The current version of this plugin.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>40</pre>
+                </td>
+                <td>
+                    <pre><span>  */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>41</pre>
+                </td>
+                <td>
+                    <pre>   <span>private</span> <span>$version</span><span>;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>42</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>43</pre>
+                </td>
+                <td>
+                    <pre>   <span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>44</pre>
+                </td>
+                <td>
+                    <pre><span>  * Initialize the class and set its properties.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>45</pre>
+                </td>
+                <td>
+                    <pre><span>  *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>46</pre>
+                </td>
+                <td>
+                    <pre><span>  * @since    0.1.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>47</pre>
+                </td>
+                <td>
+                    <pre><span>  * @var      string    $name       The name of this plugin.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>48</pre>
+                </td>
+                <td>
+                    <pre><span>  * @var      string    $version    The version of this plugin.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>49</pre>
+                </td>
+                <td>
+                    <pre><span>  */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>50</pre>
+                </td>
+                <td>
+                    <pre>   <span>public</span> <span>function</span> <span>__construct</span><span>(</span> <span>$name</span><span>,</span> <span>$version</span> <span>)</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>51</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>52</pre>
+                </td>
+                <td>
+                    <pre>       <span>$this</span><span>-&gt;</span><span>name</span> <span>=</span> <span>$name</span><span>;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>53</pre>
+                </td>
+                <td>
+                    <pre>       <span>$this</span><span>-&gt;</span><span>version</span> <span>=</span> <span>$version</span><span>;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>54</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>55</pre>
+                </td>
+                <td>
+                    <pre>   <span>}</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>56</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>57</pre>
+                </td>
+                <td>
+                    <pre><span>}</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>Notice that in the code above, all we've really done - aside from provide documentation for our class, properties, and constructor - is setup a constructor that accepts a <code>$name</code>&nbsp;and a <code>$version</code> parameter.</p>
+<p>These will be useful later when we're importing JavaScript dependencies and stylesheets. For now, however, this is all we need to get started.</p>
+<p>With that done, we can return to <code>authors-commentary.php</code> and write the code for starting up the plugin.</p>
+<p>First, we'll use <code>require_once</code> to import the class that we've just created:</p>
+    <h2>Planning <i>Author's Commentary</i>
+</h2>
+<p>In the previous post, we started working on a plugin called&nbsp;<i>Author's Commentary</i>. The idea behind the plugin is that it will allow post authors to leave various notes and assets associated with the post that were used either as inspiration, as thoughts&nbsp;<i></i>after the post was written and received, and other similar information.</p>
+<p>When writing a post, let's say that we want to capture three specific pieces of information:</p>
+<ol>
+    <li>Notes used when preparing the post</li>
+    <li>Assets and resources used throughout the post</li>
+    <li>Tweets and links to comments and feedback after the publication</li>
+</ol>
+<p>To be clear, we want to have a way to maintain the notes that went into creating the post before it was written, links to various assets - be it external articles, images, videos, code samples, and so on - and then maintain a list of tweets, links to comments, and various snippets from emails we've received.</p>
+<p>At this point, we have enough to go on in order to begin preparing the meta box and the tabbed layout for it.</p>
+<h3>The Meta Box Tabs</h3>
+<p>Before we actually begin writing any code, let's name the tabs that will be associated with each of the states of our post as listed above. Doing this will help us conceptually organize our input elements so they are logically grouped together.</p>
+<p>Granted, you can name these anything you'd like, but if you're following along with this tutorial and the provided source code, then this is what you can expect to see.</p>
+<ol>
+    <li>The first tab will be called&nbsp;<i>Draft</i>&nbsp;as it will contain all of the bullet points, sentences, and other notes that went into preparing the post.</li>
+    <li>The second tab will be called&nbsp;<i>Resources</i> as it will include information on other posts, links, videos, and so on that we may refer to in our post or that we may embed in our post.</li>
+    <li>The final tab will be called&nbsp;<i>Published&nbsp;</i>as it will contain links to comments, fields for email, and other information all of which are relevant to the post after it has been published.</li>
+</ol>
+<p>Straightforward enough, isn't it? We'll talk more about the input elements for each tab once we get to that point in the code, but for now we need to focus on creating the meta box and implementing the tabs.</p>
+<div>
+    <turbo-frame>
+        <div>
+            <div>
+                <div></div>
+                <div>Advertisement</div>
+            </div>
+        </div>
+    </turbo-frame>
+</div>
+<h2>Creating The Meta Box</h2>
+<p>To create the meta box, we'll take advantage of <a>the <code>add_meta_box</code> function</a> as documented in the WordPress Codex.&nbsp;To do this, we're going to be introducing a new class, updating the plugin's bootstrap file, and introducing some views that will be used to render markup in the browser.</p>
+<h3>The Meta Box Class</h3>
+<p>In order to make sure our code is well-encapsulated and that each class represents a single idea, we're going to create an <code>Authors_Commentary_Meta_Box</code> class. This class will be responsible for registering a hook with the <code>add_meta_box</code> action, setting up the meta box, and rendering its content.</p>
+<p>For those who aren't use to writing plugins in an object-oriented manner with WordPress, this approach allows us to segment our areas of responsibility - such as a meta box - and have a single class representing all that goes into creating one.</p>
+<p>To do this, first create <code>class-authors-commentary-meta-box.php</code> in the admin directory. Next, add the following code:</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;?php</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre><span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre><span> * Represents the Author's Commentary Meta Box.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>6</pre>
+                </td>
+                <td>
+                    <pre><span> * @link       http://code.tutsplus.com/tutorials/creating-maintainable-wordpress-meta-boxes-the-layout--cms-22208
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>7</pre>
+                </td>
+                <td>
+                    <pre><span> * @since      0.2.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>8</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>9</pre>
+                </td>
+                <td>
+                    <pre><span> * @package    Author_Commentary
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>10</pre>
+                </td>
+                <td>
+                    <pre><span> * @subpackage Author_Commentary/admin
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>11</pre>
+                </td>
+                <td>
+                    <pre><span> */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>12</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>13</pre>
+                </td>
+                <td>
+                    <pre><span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>14</pre>
+                </td>
+                <td>
+                    <pre><span> * Represents the Author's Commentary Meta Box.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>15</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>16</pre>
+                </td>
+                <td>
+                    <pre><span> * Registers the meta box with the WordPress API, sets its properties, and renders the content
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>17</pre>
+                </td>
+                <td>
+                    <pre><span> * by including the markup from its associated view.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>18</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>19</pre>
+                </td>
+                <td>
+                    <pre><span> * @package    Author_Commentary
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>20</pre>
+                </td>
+                <td>
+                    <pre><span> * @subpackage Author_Commentary/admin
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>21</pre>
+                </td>
+                <td>
+                    <pre><span> * @author     Tom McFarlin &lt;tom@tommcfarlin.com&gt;
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>22</pre>
+                </td>
+                <td>
+                    <pre><span> */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>23</pre>
+                </td>
+                <td>
+                    <pre><span>class</span> <span>Authors_Commentary_Meta_Box</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>24</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>25</pre>
+                </td>
+                <td>
+                    <pre>    <span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>26</pre>
+                </td>
+                <td>
+                    <pre><span>  * Register this class with the WordPress API
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>27</pre>
+                </td>
+                <td>
+                    <pre><span>  *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>28</pre>
+                </td>
+                <td>
+                    <pre><span>  * @since    0.2.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>29</pre>
+                </td>
+                <td>
+                    <pre><span>  */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>30</pre>
+                </td>
+                <td>
+                    <pre>   <span>public</span> <span>function</span> <span>__construct</span><span>()</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>31</pre>
+                </td>
+                <td>
+                    <pre>       <span>add_action</span><span>(</span> <span>'add_meta_boxes'</span><span>,</span> <span>array</span><span>(</span> <span>$this</span><span>,</span> <span>'add_meta_box'</span> <span>)</span> <span>);</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>32</pre>
+                </td>
+                <td>
+                    <pre>   <span>}</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>33</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>34</pre>
+                </td>
+                <td>
+                    <pre>   <span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>35</pre>
+                </td>
+                <td>
+                    <pre><span>  * The function responsible for creating the actual meta box.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>36</pre>
+                </td>
+                <td>
+                    <pre><span>  *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>37</pre>
+                </td>
+                <td>
+                    <pre><span>  * @since    0.2.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>38</pre>
+                </td>
+                <td>
+                    <pre><span>  */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>39</pre>
+                </td>
+                <td>
+                    <pre>   <span>public</span> <span>function</span> <span>add_meta_box</span><span>()</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>40</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>41</pre>
+                </td>
+                <td>
+                    <pre>       <span>add_meta_box</span><span>(</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>42</pre>
+                </td>
+                <td>
+                    <pre>           <span>'authors-commentary'</span><span>,</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>43</pre>
+                </td>
+                <td>
+                    <pre>           <span>"Author's Commentary"</span><span>,</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>44</pre>
+                </td>
+                <td>
+                    <pre>           <span>array</span><span>(</span> <span>$this</span><span>,</span> <span>'display_meta_box'</span> <span>),</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>45</pre>
+                </td>
+                <td>
+                    <pre>           <span>'post'</span><span>,</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>46</pre>
+                </td>
+                <td>
+                    <pre>           <span>'normal'</span><span>,</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>47</pre>
+                </td>
+                <td>
+                    <pre>           <span>'default'</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>48</pre>
+                </td>
+                <td>
+                    <pre>       <span>);</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>49</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>50</pre>
+                </td>
+                <td>
+                    <pre>   <span>}</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>51</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>52</pre>
+                </td>
+                <td>
+                    <pre>   <span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>53</pre>
+                </td>
+                <td>
+                    <pre><span>  * Renders the content of the meta box.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>54</pre>
+                </td>
+                <td>
+                    <pre><span>  *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>55</pre>
+                </td>
+                <td>
+                    <pre><span>  * @since    0.2.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>56</pre>
+                </td>
+                <td>
+                    <pre><span>  */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>57</pre>
+                </td>
+                <td>
+                    <pre>   <span>public</span> <span>function</span> <span>display_meta_box</span><span>()</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>58</pre>
+                </td>
+                <td>
+                    <pre>   <span>}</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>59</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>60</pre>
+                </td>
+                <td>
+                    <pre><span>}</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>The comments and the content of the class should make it relatively easy to understand. It does three things, but to be clear:</p>
+<ol>
+    <li>The constructor registers the <code>add_meta_box</code> function with the corresponding WordPress action.</li>
+    <li>The <code>add_meta_box</code> function defines the properties of the meta box.</li>
+    <li>The <code>display_meta_box</code> function doesn't do anything yet - we'll be working on this momentarily.</li>
+</ol>
+<p>Before we move on, there are a few changes we need to introduce to the rest of the plugin.</p>
+<p>First, we need to include this new file in the plugin's bootstrap file. In <code>authors-commentary.php</code>, add the following line of code above the current <code>require_once</code> statement:</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre><span> * The class that represents the meta box that will dispaly the navigation tabs and each of the
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre><span> * fields for the meta box.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre><span> */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre><span>require_once</span> <span>plugin_dir_path</span><span>(</span> <span>__FILE__</span> <span>)</span> <span>.</span> <span>'admin/class-authors-commentary-meta-box.php'</span><span>;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>We add this line above the initial code because the initial code depends on this particular file to run; therefore, it has to be loaded first.</p>
+<p>Next, we need to introduce a new property in side of <code>admin/class-authors-commentary.php</code> that will refer to an instance of the meta box:</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre><span> * A reference to the meta box.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre><span> * @since    0.2.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre><span> * @access   private
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>6</pre>
+                </td>
+                <td>
+                    <pre><span> * @var      Authors_Commentary_Meta_Box    $meta_box    A reference to the meta box for the plugin.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>7</pre>
+                </td>
+                <td>
+                    <pre><span> */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>8</pre>
+                </td>
+                <td>
+                    <pre><span>private</span> <span>$meta_box</span><span>;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>Finally, we need to instantiate the code in the constructor of the class:</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre><span> * Initialize the class and set its properties.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre><span> * @since    0.1.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre><span> * @var      string    $name       The name of this plugin.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>6</pre>
+                </td>
+                <td>
+                    <pre><span> * @var      string    $version    The version of this plugin.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>7</pre>
+                </td>
+                <td>
+                    <pre><span> */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>8</pre>
+                </td>
+                <td>
+                    <pre><span>public</span> <span>function</span> <span>__construct</span><span>(</span> <span>$name</span><span>,</span> <span>$version</span> <span>)</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>9</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>10</pre>
+                </td>
+                <td>
+                    <pre>    <span>$this</span><span>-&gt;</span><span>name</span> <span>=</span> <span>$name</span><span>;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>11</pre>
+                </td>
+                <td>
+                    <pre>   <span>$this</span><span>-&gt;</span><span>version</span> <span>=</span> <span>$version</span><span>;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>12</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>13</pre>
+                </td>
+                <td>
+                    <pre>   <span>$this</span><span>-&gt;</span><span>meta_box</span> <span>=</span> <span>new</span> <span>Authors_Commentary_Meta_Box</span><span>();</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>14</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>15</pre>
+                </td>
+                <td>
+                    <pre><span>}</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>At this point, you should be able to activate the plugin, navigate to a post page, and see an empty meta box:</p>
+<figure><img><img><img></figure>
+<p>Nothing too exciting, but we have&nbsp;what we need in order to begin introducing our tabbed navigation.</p>
+<div>
+    <turbo-frame>
+        <div>
+            <div>
+                <div>
+                    <div>
+                        <div></div>
+                    </div>
+                </div>
+                <div>Advertisement</div>
+            </div>
+        </div>
+        <div></div>
+    </turbo-frame>
+</div>
+<h3>Adding Tabs</h3>
+<p>At this point, we're ready to introduce the tabbed navigation portion of the meta box. Ultimately, our goal is to introduce the markup and styles for the tab in this post, and then implement the behavior an the elements in the next post in the series.</p>
+<p>With that said, let's first create a <code>views</code> subdirectory within the <code>admin</code> directory. Technically, we&nbsp;did this in the previous article; however, we didn't have content in the directory so it wasn't checked into source control (thus, the directory was not added - so if you're following along with the repository, now's the time to create the directory).</p>
+<p>Next, create a file within the views directory called <code>authors-commentary-navigation.php</code>. This file will primarily serve as markup; however, it will include a little bit of PHP by the time we're doing with this plugin.</p>
+<p>Add the following code to the file. We'll discuss it more in-depth after the block of code:</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;div</span> <span>id=</span><span>"authors-commentary-navigation"</span><span>&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre>    <span>&lt;h2</span> <span>class=</span><span>"nav-tab-wrapper current"</span><span>&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre>       <span>&lt;a</span> <span>class=</span><span>"nav-tab nav-tab-active"</span> <span>href=</span><span>"javascript:;"</span><span>&gt;</span>Draft<span>&lt;/a&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre>       <span>&lt;a</span> <span>class=</span><span>"nav-tab"</span> <span>href=</span><span>"javascript:;"</span><span>&gt;</span>Resources<span>&lt;/a&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre>       <span>&lt;a</span> <span>class=</span><span>"nav-tab"</span> <span>href=</span><span>"javascript:;"</span><span>&gt;</span>Published<span>&lt;/a&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>6</pre>
+                </td>
+                <td>
+                    <pre>   <span>&lt;/h2&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>7</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;/div&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>Once done, insert the following code into Authors_Commentary_Meta_Box, add the following code to import this particular piece of markup:</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;?php</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre><span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre><span> * Renders the content of the meta box.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>6</pre>
+                </td>
+                <td>
+                    <pre><span> * @since    0.2.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>7</pre>
+                </td>
+                <td>
+                    <pre><span> */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>8</pre>
+                </td>
+                <td>
+                    <pre><span>public</span> <span>function</span> <span>display_meta_box</span><span>()</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>9</pre>
+                </td>
+                <td>
+                    <pre>    <span>include_once</span><span>(</span> <span>'views/authors-commentary-navigation.php'</span> <span>);</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>10</pre>
+                </td>
+                <td>
+                    <pre><span>}</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>Aside from the <code>div</code> container that we have, notice the following:</p>
+<ul>
+    <li>We've wrapped three anchors in an <code>h2</code> element.&nbsp;The <code>h2</code> element contains class attributes of <code>nav-tab-wrapper</code> and <code>current</code>. This allows for us to inherit styles directly from WordPress without doing anything on our part.</li>
+    <li>Each anchor has a <code>nav-tab</code> class the first of which has the <code>nav-tab-active</code> class. This again gives us a bit of styling from which we inherit from WordPress.</li>
+    <li>Each anchor also has the <code>href</code> attribute of <code>javascript:;</code> because the anchors aren't actually going to be taking us anywhere. Instead, in a future tutorial, we'll be using JavaScript to control the tabs and the content that's displayed within each one.</li>
+</ul>
+<p>At this point, you should see the following:</p>
+<figure><img><img><img></figure>
+<p>Notice that all of the styles that are applied to the tabs have been provided by WordPress. The only thing that you may want to tweak is the margin that exists between the tabs and the horizontal line below them.&nbsp;</p>
+<p>Let's do that now.</p>
+<h3>Including a Stylesheet</h3>
+<p>In the <code>admin</code> directory, add another subdirectory called <code>assets</code> and within it a directory called&nbsp;<code>css</code>. Next,&nbsp;create an empty file called <code>admin.css</code>.</p>
+<p>After that, include the following lines in the CSS file:</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>a</span><span>.nav-tab</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre>    <span>margin-bottom</span><span>:</span> <span>-4px</span><span>;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre><span>}</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>Then be sure to include the following call in the constructor of <code>class-authors-commentary.php</code>:</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>add_action</span><span>(</span> <span>'admin_enqueue_scripts'</span><span>,</span> <span>array</span><span>(</span> <span>$this</span><span>,</span> <span>'enqueue_admin_styles'</span> <span>)</span> <span>);</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>Finally, add the following function - it's responsible for enqueuing the actual stylesheet:</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre><span> * Enqueues all files specifically for the dashboard.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre><span> * @since    0.2.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre><span> */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>6</pre>
+                </td>
+                <td>
+                    <pre><span>public</span> <span>function</span> <span>enqueue_admin_styles</span><span>()</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>7</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>8</pre>
+                </td>
+                <td>
+                    <pre>    <span>wp_enqueue_style</span><span>(</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>9</pre>
+                </td>
+                <td>
+                    <pre>       <span>$this</span><span>-&gt;</span><span>name</span> <span>.</span> <span>'-admin'</span><span>,</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>10</pre>
+                </td>
+                <td>
+                    <pre>       <span>plugins_url</span><span>(</span> <span>'authors-commentary/admin/assets/css/admin.css'</span> <span>),</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>11</pre>
+                </td>
+                <td>
+                    <pre>       <span>false</span><span>,</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>12</pre>
+                </td>
+                <td>
+                    <pre>       <span>$this</span><span>-&gt;</span><span>version</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>13</pre>
+                </td>
+                <td>
+                    <pre>   <span>);</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>14</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>15</pre>
+                </td>
+                <td>
+                    <pre><span>}</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>At this point, it should look much cleaner:</p>
+<figure><img><img><img></figure>
+<p>With that done, we've completed everything that we need to do for the basic foundation of the navigation tabs for our meta box.</p>
+<h2>Preparing To Move Forward</h2>
+<p>In the next article, we're going to introduce the content for each tab and we're going to work through the JavaScript that's necessary to toggle the tabs and each of their content.</p>
+<p>For those who are more experienced with WordPress, this series of articles may feel like it's moving at a slower pace, but that's the point - we're looking to be as exhaustive as possible when it comes not only to building our user interface, but also in explaining the rationale behind each of our decisions.</p>
+<p>In the meantime, don't forget to checkout the source code on GitHub, follow along, and leave any questions or comments in the feed below.</p>
+      </div>                                        <!--    .notes      -->
+    </section>
+    <section class="footer px-4">                   <!--    .FOOTER     -->
+        <div class="row gx-5">
+            <div class="col"><div class="p-3 border bg-light"> Based on Notes by <a href="https://github.com/ajaxStardust" target="_blank" title="View original">@ajaxStardust</a> <em>Laravel</em> notes:</div></div>
+            <div class="col"><div class="p-3 border bg-light text-end"><kbd><?php echo $lastMod; ?></kbd></div></div>
+    <h2>Tab Templates</h2>
+<p>Before we go about implementing the tabs that will toggle between all of the able options, we need to introduce partials, templates, views, or whatever you'd like to call them so that we have files specifically for handling our information.</p>
+<p>First, navigate to the <code>admin/views/partials</code> directory and add the following files (all of which can be empty, for now though I've provided some basic code below):</p>
+<ul>
+    <li><code>drafts.php</code></li>
+    <li><code>resources.php</code></li>
+    <li><code>published.php</code></li>
+</ul>
+<p>Each of these files will correspond to one of the tabs in the meta boxes interface. Let's go ahead and introduce some placeholder content for each of the tabs. Before we're done with the article, we'll implement the UI of the first tab, but this will give us something visual with which to work before we continue working on the actual tab functionality.</p>
+<h3>1. Drafts</h3>
+<p>Add the following code to <code>drafts.php</code>.</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;?php</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre><span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre><span> * Provides the 'Drafts' view for the corresponding tab in the Post Meta Box.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>6</pre>
+                </td>
+                <td>
+                    <pre><span> * @link       https://code.tutsplus.com/tutorials/creating-maintainable-wordpress-meta-boxes-the-front-end--cms-22383
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>7</pre>
+                </td>
+                <td>
+                    <pre><span> * @since      0.3.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>8</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>9</pre>
+                </td>
+                <td>
+                    <pre><span> * @package    Authors_Commentary
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>10</pre>
+                </td>
+                <td>
+                    <pre><span> * @subpackage Authors_Commentary/admin/partials
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>11</pre>
+                </td>
+                <td>
+                    <pre><span> */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>12</pre>
+                </td>
+                <td>
+                    <pre><span>?&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>13</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>14</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;div</span> <span>class=</span><span>"inside"</span><span>&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>15</pre>
+                </td>
+                <td>
+                    <pre>    <span>&lt;p&gt;</span>This is where the Draft content will reside.<span>&lt;/p&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>16</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;/div&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>We'll be taking a look at this partial later in the article.</p>
+<div>
+    <turbo-frame>
+        <div>
+            <div>
+                <div>
+                    <div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div>Advertisement</div>
+            </div>
+        </div>
+        <div></div>
+    </turbo-frame>
+</div>
+<h3>2. Resources</h3>
+<p>Add the following code to <code>resources.php</code>.</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;?php</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre><span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre><span> * Provides the 'Resources' view for the corresponding tab in the Post Meta Box.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>6</pre>
+                </td>
+                <td>
+                    <pre><span> * @link       http://code.tutsplus.com/tutorials/creating-maintainable-wordpress-meta-boxes-the-front-end--cms-22383
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>7</pre>
+                </td>
+                <td>
+                    <pre><span> * @since      0.3.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>8</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>9</pre>
+                </td>
+                <td>
+                    <pre><span> * @package    Authors_Commentary
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>10</pre>
+                </td>
+                <td>
+                    <pre><span> * @subpackage Authors_Commentary/admin/partials
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>11</pre>
+                </td>
+                <td>
+                    <pre><span> */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>12</pre>
+                </td>
+                <td>
+                    <pre><span>?&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>13</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>14</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;div</span> <span>class=</span><span>"inside"</span><span>&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>15</pre>
+                </td>
+                <td>
+                    <pre>    <span>&lt;p&gt;</span>This is where the Resources content will reside.<span>&lt;/p&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>16</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;/div&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>We'll be taking a look at this partial later in the series.<br></p>
+<h3>3. Published</h3>
+<p>Add the following code to<code>published.php</code>.</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;?php</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre><span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre><span> * Provides the 'Published' view for the corresponding tab in the Post Meta Box.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>6</pre>
+                </td>
+                <td>
+                    <pre><span> * @link       http://code.tutsplus.com/tutorials/creating-maintainable-wordpress-meta-boxes-the-front-end--cms-22383
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>7</pre>
+                </td>
+                <td>
+                    <pre><span> * @since      0.3.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>8</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>9</pre>
+                </td>
+                <td>
+                    <pre><span> * @package    Authors_Commentary
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>10</pre>
+                </td>
+                <td>
+                    <pre><span> * @subpackage Authors_Commentary/admin/partials
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>11</pre>
+                </td>
+                <td>
+                    <pre><span> */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>12</pre>
+                </td>
+                <td>
+                    <pre><span>?&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>13</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>14</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;div</span> <span>class=</span><span>"inside"</span><span>&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>15</pre>
+                </td>
+                <td>
+                    <pre>    <span>&lt;p&gt;</span>This is where the Published content will reside.<span>&lt;/p&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>16</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;/div&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>We'll also be taking a look at this partial later in the series.</p>
+<div>
+    <turbo-frame>
+        <div>
+            <div>
+                <div>
+                    <div>
+                        <div></div>
+                    </div>
+                </div>
+                <div>Advertisement</div>
+            </div>
+        </div>
+        <div></div>
+    </turbo-frame>
+</div>
+<h3>Update The Main View</h3>
+<p>We have one more thing to do before we test this out in the WordPress Dashboard: We need to actually include these files in the meta box view so that we can see the information.</p>
+<p>This is simple to do. First, open <code>authors-commentary-navigation.php</code>. Add the following code to the file (note that all of the new code is a series of <code>include_once</code> statements).</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;div</span> <span>id=</span><span>"authors-commentary-navigation"</span><span>&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre>    <span>&lt;h2</span> <span>class=</span><span>"nav-tab-wrapper current"</span><span>&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre>       <span>&lt;a</span> <span>class=</span><span>"nav-tab nav-tab-active"</span> <span>href=</span><span>"javascript:;"</span><span>&gt;</span>Draft<span>&lt;/a&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre>       <span>&lt;a</span> <span>class=</span><span>"nav-tab"</span> <span>href=</span><span>"javascript:;"</span><span>&gt;</span>Resources<span>&lt;/a&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>6</pre>
+                </td>
+                <td>
+                    <pre>       <span>&lt;a</span> <span>class=</span><span>"nav-tab"</span> <span>href=</span><span>"javascript:;"</span><span>&gt;</span>Published<span>&lt;/a&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>7</pre>
+                </td>
+                <td>
+                    <pre>   <span>&lt;/h2&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>8</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>9</pre>
+                </td>
+                <td>
+                    <pre>   <span>&lt;?php</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>10</pre>
+                </td>
+                <td>
+                    <pre>       <span>include_once</span><span>(</span> <span>'partials/drafts.php'</span> <span>);</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>11</pre>
+                </td>
+                <td>
+                    <pre>       <span>include_once</span><span>(</span> <span>'partials/resources.php'</span> <span>);</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>12</pre>
+                </td>
+                <td>
+                    <pre>       <span>include_once</span><span>(</span> <span>'partials/published.php'</span> <span>);</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>13</pre>
+                </td>
+                <td>
+                    <pre>   <span>?&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>14</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;/div&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>Assuming that you created all of your files and included them correctly, we're ready to take a look at the Dashboard. If all has been implemented correctly, you should see something like this:</p>
+<figure><img><img><img></figure>
+<p>Obviously, we don't want all of the content showing up in the first tab, so we need to make some changes. So let's do that.</p>
+<h2>Hide Inactivate Views</h2>
+<p>Ultimately, our goal is to use as built-in styles and functions that WordPress provides. Each time you introduce something that's outside the core WordPress functionality that's something that you're going to be responsible for maintaining over time.</p>
+<p>On top of that, you're also working to create a plugin that's as tightly integrated with the WordPress UI as possible. That end, we'll be using a combination of built-in styles and custom styles and JavaScript to achieve exactly what it is that we're hoping to achieve.</p>
+<p>We know that the first thing that we want to do is to hide everything except the first view (that is, everything except&nbsp;<i>Drafts</i>).&nbsp;</p>
+<p>To do this, we need to add a <code>class</code> attribute of <code>hidden</code> to the partials for the&nbsp;<i>Resources</i> tab and to the&nbsp;<i>Published</i> tab.</p>
+<p>Each of the following files should look like this:</p>
+<p><code>drafts.php</code>:</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;?php</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre><span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre><span> * Provides the 'Drafts' view for the corresponding tab in the Post Meta Box.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>6</pre>
+                </td>
+                <td>
+                    <pre><span> * @link       http://code.tutsplus.com/tutorials/creating-maintainable-wordpress-meta-boxes-the-front-end--cms-22383
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>7</pre>
+                </td>
+                <td>
+                    <pre><span> * @since      0.3.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>8</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>9</pre>
+                </td>
+                <td>
+                    <pre><span> * @package    Authors_Commentary
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>10</pre>
+                </td>
+                <td>
+                    <pre><span> * @subpackage Authors_Commentary/admin/partials
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>11</pre>
+                </td>
+                <td>
+                    <pre><span> */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>12</pre>
+                </td>
+                <td>
+                    <pre><span>?&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>13</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>14</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;div</span> <span>class=</span><span>"inside"</span><span>&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>15</pre>
+                </td>
+                <td>
+                    <pre>    <span>&lt;p&gt;</span>This is where the Draft content will reside.<span>&lt;/p&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>16</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;/div&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p><code>resources.php</code>:</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;?php</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre><span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre><span> * Provides the 'Resources' view for the corresponding tab in the Post Meta Box.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>6</pre>
+                </td>
+                <td>
+                    <pre><span> * @link       http://code.tutsplus.com/tutorials/creating-maintainable-wordpress-meta-boxes-the-front-end--cms-22383
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>7</pre>
+                </td>
+                <td>
+                    <pre><span> * @since      0.3.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>8</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>9</pre>
+                </td>
+                <td>
+                    <pre><span> * @package    Authors_Commentary
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>10</pre>
+                </td>
+                <td>
+                    <pre><span> * @subpackage Authors_Commentary/admin/partials
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>11</pre>
+                </td>
+                <td>
+                    <pre><span> */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>12</pre>
+                </td>
+                <td>
+                    <pre><span>?&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>13</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>14</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;div</span> <span>class=</span><span>"inside hidden"</span><span>&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>15</pre>
+                </td>
+                <td>
+                    <pre>    <span>&lt;p&gt;</span>This is where the Resources content will reside.<span>&lt;/p&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>16</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;/div&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p><code>published.php</code>:</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;?php</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre><span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre><span> * Provides the 'Published' view for the corresponding tab in the Post Meta Box.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>6</pre>
+                </td>
+                <td>
+                    <pre><span> * @link       http://code.tutsplus.com/tutorials/creating-maintainable-wordpress-meta-boxes-the-front-end--cms-22383
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>7</pre>
+                </td>
+                <td>
+                    <pre><span> * @since      0.3.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>8</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>9</pre>
+                </td>
+                <td>
+                    <pre><span> * @package    Authors_Commentary
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>10</pre>
+                </td>
+                <td>
+                    <pre><span> * @subpackage Authors_Commentary/admin/partials
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>11</pre>
+                </td>
+                <td>
+                    <pre><span> */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>12</pre>
+                </td>
+                <td>
+                    <pre><span>?&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>13</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>14</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;div</span> <span>class=</span><span>"inside hidden"</span><span>&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>15</pre>
+                </td>
+                <td>
+                    <pre>    <span>&lt;p&gt;</span>This is where the Published content will reside.<span>&lt;/p&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>16</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;/div&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>And the result of this minor change should be the following:</p>
+<figure><img><img><img></figure>
+<p>Easy, right? This is exactly why I recommend sticking with the core WordPress functionality and styles as much as possible.</p>
+<h2>Toggling The Tabs</h2>
+<p>Of course, we still need to introduce the code for toggling the data among the tabs, right? So let's do that now.</p>
+<p>First, we need to make sure that the first tab is mark as active. Assuming you've been following along with this tutorial and its corresponding GitHub repository, then your code should look like this:</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;h2</span> <span>class=</span><span>"nav-tab-wrapper current"</span><span>&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre>    <span>&lt;a</span> <span>class=</span><span>"nav-tab nav-tab-active"</span> <span>href=</span><span>"javascript:;"</span><span>&gt;</span>Draft<span>&lt;/a&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre>   <span>&lt;a</span> <span>class=</span><span>"nav-tab"</span> <span>href=</span><span>"javascript:;"</span><span>&gt;</span>Resources<span>&lt;/a&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre>   <span>&lt;a</span> <span>class=</span><span>"nav-tab"</span> <span>href=</span><span>"javascript:;"</span><span>&gt;</span>Published<span>&lt;/a&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;/h2&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>Which is great because it already marks your first tab as active with using the <code>nav-tab-active</code> class attribute. We have our work cut out for us:</p>
+<ol>
+    <li>When the user clicks on a tab, it marks the current tab as active and removes the active class from any other tabs. If you click on an active tab, nothing happens.</li>
+    <li>When a new active tab is selected, then the corresponding partial should display.</li>
+</ol>
+<p>Now, there are a number of ways to accomplish step two. We'll be doing it in one way that's documented and explained in the course of this article, but know that there&nbsp;<i>are</i> other alternatives that you're likely to see and that they are not necessarily wrong.</p>
+<p>The bottom line is there are a number of ways to handle this, we're handling it one of the many ways that are available.</p>
+<p>So first, let's add a JavaScript file to <code>admin/assets/js</code> and we'll call is <code>tabs.js</code>. The skeleton for the file should look like the following:</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>(</span><span>function</span><span>(</span> <span>$</span> <span>)</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre>    <span>'</span><span>use strict</span><span>'</span><span>;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre>   <span>$</span><span>(</span><span>function</span><span>()</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>6</pre>
+                </td>
+                <td>
+                    <pre>   <span>});</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>7</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>8</pre>
+                </td>
+                <td>
+                    <pre><span>})(</span> <span>jQuery</span> <span>);</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>Next, make sure that we're importing the JavaScript on post pages only. To do this, we introduce a hook into our constructor where we've already included some stylesheets. The full constructor is below:</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;?php</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre><span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre><span> * Initialize the class and set its properties.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>6</pre>
+                </td>
+                <td>
+                    <pre><span> * @since    0.1.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>7</pre>
+                </td>
+                <td>
+                    <pre><span> * @var      string    $name       The name of this plugin.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>8</pre>
+                </td>
+                <td>
+                    <pre><span> * @var      string    $version    The version of this plugin.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>9</pre>
+                </td>
+                <td>
+                    <pre><span> */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>10</pre>
+                </td>
+                <td>
+                    <pre><span>public</span> <span>function</span> <span>__construct</span><span>(</span> <span>$name</span><span>,</span> <span>$version</span> <span>)</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>11</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>12</pre>
+                </td>
+                <td>
+                    <pre>    <span>$this</span><span>-&gt;</span><span>name</span> <span>=</span> <span>$name</span><span>;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>13</pre>
+                </td>
+                <td>
+                    <pre>    <span>$this</span><span>-&gt;</span><span>version</span> <span>=</span> <span>$version</span><span>;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>14</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>15</pre>
+                </td>
+                <td>
+                    <pre>    <span>$this</span><span>-&gt;</span><span>meta_box</span> <span>=</span> <span>new</span> <span>Authors_Commentary_Meta_Box</span><span>();</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>16</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>17</pre>
+                </td>
+                <td>
+                    <pre>    <span>add_action</span><span>(</span> <span>'admin_enqueue_scripts'</span><span>,</span> <span>array</span><span>(</span> <span>$this</span><span>,</span> <span>'enqueue_admin_styles'</span> <span>)</span> <span>);</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>18</pre>
+                </td>
+                <td>
+                    <pre>    <span>add_action</span><span>(</span> <span>'admin_enqueue_scripts'</span><span>,</span> <span>array</span><span>(</span> <span>$this</span><span>,</span> <span>'enqueue_admin_scripts'</span> <span>)</span> <span>);</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>19</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>20</pre>
+                </td>
+                <td>
+                    <pre><span>}</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>And then we implement the function:</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;?php</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre><span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre><span> * Includes the JavaScript necessary to control the toggling of the tabs in the
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre><span> * meta box that's repretented by this class.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>6</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>7</pre>
+                </td>
+                <td>
+                    <pre><span> * @since    0.2.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>8</pre>
+                </td>
+                <td>
+                    <pre><span> */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>9</pre>
+                </td>
+                <td>
+                    <pre><span>public</span> <span>function</span> <span>enqueue_admin_scripts</span><span>()</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>10</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>11</pre>
+                </td>
+                <td>
+                    <pre>    <span>if</span> <span>(</span> <span>'post'</span> <span>===</span> <span>get_current_screen</span><span>()</span><span>-&gt;</span><span>id</span> <span>)</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>12</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>13</pre>
+                </td>
+                <td>
+                    <pre>       <span>wp_enqueue_script</span><span>(</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>14</pre>
+                </td>
+                <td>
+                    <pre>           <span>$this</span><span>-&gt;</span><span>name</span> <span>.</span> <span>'-tabs'</span><span>,</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>15</pre>
+                </td>
+                <td>
+                    <pre>           <span>plugins_url</span><span>(</span> <span>'authors-commentary/admin/assets/js/tabs.js'</span> <span>),</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>16</pre>
+                </td>
+                <td>
+                    <pre>           <span>array</span><span>(</span> <span>'jquery'</span> <span>),</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>17</pre>
+                </td>
+                <td>
+                    <pre>           <span>$this</span><span>-&gt;</span><span>version</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>18</pre>
+                </td>
+                <td>
+                    <pre>       <span>);</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>19</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>20</pre>
+                </td>
+                <td>
+                    <pre>   <span>}</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>21</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>22</pre>
+                </td>
+                <td>
+                    <pre><span>}</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>At this point, we have everything we need in order to implement the JavaScript to control the tabs. Below, you'll find the commented code for that and a short explanation following the code snippet, as well:</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>(</span><span>function</span><span>(</span> <span>$</span> <span>)</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre>    <span>'</span><span>use strict</span><span>'</span><span>;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre>   <span>$</span><span>(</span><span>function</span><span>()</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>6</pre>
+                </td>
+                <td>
+                    <pre>       <span>// Grab the wrapper for the Navigation Tabs
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>7</pre>
+                </td>
+                <td>
+                    <pre>       <span>var</span> <span>navTabs</span> <span>=</span> <span>$</span><span>(</span> <span>'</span><span>#authors-commentary-navigation</span><span>'</span><span>).</span><span>children</span><span>(</span> <span>'</span><span>.nav-tab-wrapper</span><span>'</span> <span>),</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>8</pre>
+                </td>
+                <td>
+                    <pre>           <span>tabIndex</span> <span>=</span> <span>null</span><span>;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>9</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>10</pre>
+                </td>
+                <td>
+                    <pre>       <span>/* Whenever each of the navigation tabs is clicked, check to see if it has the 'nav-tab-active'
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>11</pre>
+                </td>
+                <td>
+                    <pre><span>      * class name. If not, then mark it as active; otherwise, don't do anything (as it's already
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>12</pre>
+                </td>
+                <td>
+                    <pre><span>      * marked as active.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>13</pre>
+                </td>
+                <td>
+                    <pre><span>      *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>14</pre>
+                </td>
+                <td>
+                    <pre><span>      * Next, when a new tab is marked as active, the corresponding child view needs to be marked
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>15</pre>
+                </td>
+                <td>
+                    <pre><span>      * as visible. We do this by toggling the 'hidden' class attribute of the corresponding variables.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>16</pre>
+                </td>
+                <td>
+                    <pre><span>      */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>17</pre>
+                </td>
+                <td>
+                    <pre>       <span>navTabs</span><span>.</span><span>children</span><span>().</span><span>each</span><span>(</span><span>function</span><span>()</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>18</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>19</pre>
+                </td>
+                <td>
+                    <pre>           <span>$</span><span>(</span> <span>this</span> <span>).</span><span>on</span><span>(</span> <span>'</span><span>click</span><span>'</span><span>,</span> <span>function</span><span>(</span> <span>evt</span> <span>)</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>20</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>21</pre>
+                </td>
+                <td>
+                    <pre>               <span>evt</span><span>.</span><span>preventDefault</span><span>();</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>22</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>23</pre>
+                </td>
+                <td>
+                    <pre>               <span>// If this tab is not active...
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>24</pre>
+                </td>
+                <td>
+                    <pre>               <span>if</span> <span>(</span> <span>!</span> <span>$</span><span>(</span> <span>this</span> <span>).</span><span>hasClass</span><span>(</span> <span>'</span><span>nav-tab-active</span><span>'</span> <span>)</span> <span>)</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>25</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>26</pre>
+                </td>
+                <td>
+                    <pre>                   <span>// Unmark the current tab and mark the new one as active
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>27</pre>
+                </td>
+                <td>
+                    <pre>                   <span>$</span><span>(</span> <span>'</span><span>.nav-tab-active</span><span>'</span> <span>).</span><span>removeClass</span><span>(</span> <span>'</span><span>nav-tab-active</span><span>'</span> <span>);</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>28</pre>
+                </td>
+                <td>
+                    <pre>                   <span>$</span><span>(</span> <span>this</span> <span>).</span><span>addClass</span><span>(</span> <span>'</span><span>nav-tab-active</span><span>'</span> <span>);</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>29</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>30</pre>
+                </td>
+                <td>
+                    <pre>                   <span>// Save the index of the tab that's just been marked as active. It will be 0 - 3.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>31</pre>
+                </td>
+                <td>
+                    <pre>                   <span>tabIndex</span> <span>=</span> <span>$</span><span>(</span> <span>this</span> <span>).</span><span>index</span><span>();</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>32</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>33</pre>
+                </td>
+                <td>
+                    <pre>                   <span>// Hide the old active content
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>34</pre>
+                </td>
+                <td>
+                    <pre>                   <span>$</span><span>(</span> <span>'</span><span>#authors-commentary-navigation</span><span>'</span> <span>)</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>35</pre>
+                </td>
+                <td>
+                    <pre>                       <span>.</span><span>children</span><span>(</span> <span>'</span><span>div:not( .inside.hidden )</span><span>'</span> <span>)</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>36</pre>
+                </td>
+                <td>
+                    <pre>                       <span>.</span><span>addClass</span><span>(</span> <span>'</span><span>hidden</span><span>'</span> <span>);</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>37</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>38</pre>
+                </td>
+                <td>
+                    <pre>                   <span>$</span><span>(</span> <span>'</span><span>#authors-commentary-navigation</span><span>'</span> <span>)</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>39</pre>
+                </td>
+                <td>
+                    <pre>                       <span>.</span><span>children</span><span>(</span> <span>'</span><span>div:nth-child(</span><span>'</span> <span>+</span> <span>(</span> <span>tabIndex</span> <span>)</span> <span>+</span> <span>'</span><span>)</span><span>'</span> <span>)</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>40</pre>
+                </td>
+                <td>
+                    <pre>                       <span>.</span><span>addClass</span><span>(</span> <span>'</span><span>hidden</span><span>'</span> <span>);</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>41</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>42</pre>
+                </td>
+                <td>
+                    <pre>                   <span>// And display the new content
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>43</pre>
+                </td>
+                <td>
+                    <pre>                   <span>$</span><span>(</span> <span>'</span><span>#authors-commentary-navigation</span><span>'</span> <span>)</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>44</pre>
+                </td>
+                <td>
+                    <pre>                       <span>.</span><span>children</span><span>(</span> <span>'</span><span>div:nth-child( </span><span>'</span> <span>+</span> <span>(</span> <span>tabIndex</span> <span>+</span> <span>2</span> <span>)</span> <span>+</span> <span>'</span><span>)</span><span>'</span> <span>)</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>45</pre>
+                </td>
+                <td>
+                    <pre>                       <span>.</span><span>removeClass</span><span>(</span> <span>'</span><span>hidden</span><span>'</span> <span>);</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>46</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>47</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>48</pre>
+                </td>
+                <td>
+                    <pre>               <span>}</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>49</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>50</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>51</pre>
+                </td>
+                <td>
+                    <pre>           <span>});</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>52</pre>
+                </td>
+                <td>
+                    <pre>       <span>});</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>53</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>54</pre>
+                </td>
+                <td>
+                    <pre>   <span>});</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>55</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>56</pre>
+                </td>
+                <td>
+                    <pre><span>})(</span> <span>jQuery</span> <span>);</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>Just in case the code comments aren't clear, the above code setups up an event handler for all of the tabs. When a tab is clicked, it looks to see if it has the <code>nav-tab-active</code> class. If so, then nothing happens.</p>
+<p>Otherwise, we toggle the tab and hide the content that&nbsp;<i>was</i> active and display the new content by removing the <code>hidden</code> class name that we added earlier in the article.</p>
+<p>By now, you should be able to switch between tabs and see each of the three different implementations without any problem. With that said, let's go ahead and move on to implementing the functionality for the first tab.&nbsp;</p>
+<div>
+    <turbo-frame>
+        <div>
+            <div>
+                <div>
+                    <div>
+                        <div></div>
+                    </div>
+                </div>
+                <div>Advertisement</div>
+            </div>
+        </div>
+        <div></div>
+    </turbo-frame>
+</div>
+<div>
+    <turbo-frame>
+        <div>
+            <div>
+                <div></div>
+                <div>Advertisement</div>
+            </div>
+        </div>
+    </turbo-frame>
+</div>
+<h2>Adding The <i>Drafts</i> UI</h2>
+<p>Though we won't complete the full functionality during this tutorial, we'll have our work cut out for us in the following article. Let's assume that for the purposes of this plugin, the&nbsp;<i>Drafts</i> UI will &nbsp;be a place where the user simply treats it like a scratch pad for ideas.</p>
+<p>It may include links to articles, links to tweets, short notes about the outline, a few sentences, and so on. Generally, it serves as a "catch-all" for all of the artifacts that the author may be using throughout his or her post.</p>
+<p>To that end, we're going to use a simple, single <code>textarea</code>. Furthermore, we don't want to introduce any more UI elements than are necessary so we will&nbsp;<i>not</i> be introducing a submit button. Instead, we'll save the data whenever the user clicks "Update" on the post editor.</p>
+<p>That way, everything is saved all at the same time.</p>
+<p>Again, we won't be getting into the validation, sanitization, and serialization process, but we will be placing a text area within the&nbsp;<i></i><i>Drafts</i> partial to get us in a nice place for the follow up article.</p>
+<p>Open <code>drafts.php</code>, add the following code, and your final code should look like this:</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;?php</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre><span>/**
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre><span> * Provides the 'Drafts' view for the corresponding tab in the Post Meta Box.
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>5</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>6</pre>
+                </td>
+                <td>
+                    <pre><span> * @link       http://code.tutsplus.com/tutorials/creating-maintainable-wordpress-meta-boxes-the-front-end--cms-22383
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>7</pre>
+                </td>
+                <td>
+                    <pre><span> * @since      0.3.0
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>8</pre>
+                </td>
+                <td>
+                    <pre><span> *
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>9</pre>
+                </td>
+                <td>
+                    <pre><span> * @package    Authors_Commentary
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>10</pre>
+                </td>
+                <td>
+                    <pre><span> * @subpackage Authors_Commentary/admin/partials
+</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>11</pre>
+                </td>
+                <td>
+                    <pre><span> */</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>12</pre>
+                </td>
+                <td>
+                    <pre><span>?&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>13</pre>
+                </td>
+                <td>
+                    <pre></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>14</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;div</span> <span>class=</span><span>"inside"</span><span>&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>15</pre>
+                </td>
+                <td>
+                    <pre>    <span>&lt;textarea</span> <span>id=</span><span>"authors-commentary-drafts"</span><span>&gt;&lt;/textarea&gt;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>16</pre>
+                </td>
+                <td>
+                    <pre><span>&lt;/div&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>After that, update the <code>admin.css</code> file to make sure the <code>textarea</code> fits in well with the rest of the meta box:</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <pre>1</pre>
+                </td>
+                <td>
+                    <pre><span>#authors-commentary-drafts</span> <span>{</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>2</pre>
+                </td>
+                <td>
+                    <pre>    <span>width</span><span>:</span>  <span>100%</span><span>;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>3</pre>
+                </td>
+                <td>
+                    <pre>    <span>height</span><span>:</span> <span>250px</span><span>;</span>
+</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre>4</pre>
+                </td>
+                <td>
+                    <pre><span>}</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>Now, when you view the meta box, you should see a well-formatted <code>textarea</code>&nbsp;with the meta box with tabs that function when clicked.</p>
+<h2>Coming Up Next...</h2>
+<p>In the next article, we'll continue to implement the user interface for each of the tabs that exist in the meta box.&nbsp;</p>
+<p>Then, we'll begin the process of sanitization, serialization, and validation as we begin to actually save information that the user puts into the meta box.&nbsp;We'll also move forward with introducing additional fields into the plugin.&nbsp;</p>
+<p>Until then, check out the GitHub&nbsp;repository&nbsp;(we're now up to 0.3.0 of the plugin), and please feel free&nbsp;to leave all comments and questions in the feed below and I'll follow-up as soon as possible.</p>
+        </div>
+    </section>      
+  </div>                                            <!--    .content  -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+</html>

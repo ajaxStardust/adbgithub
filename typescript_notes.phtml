@@ -1,0 +1,109 @@
+<?php 
+date_default_timezone_set('EST');
+$page_heading = 'W3Schools - Typescript';
+$title = 'TypeScript Tutorial from W3Schools';
+$lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
+?>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <?php print $title; ?>
+  </title>
+  <link rel="icon" type="image/ico" href="favicon.ico">
+  <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+  <style>
+/** if needed add style here */
+  </style>
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" 
+        crossorigin="anonymous">    <!-- BOOTSTRAP STYLE -->
+    <link 
+        rel="stylesheet" 
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link 
+        href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" 
+        rel="stylesheet">
+    <link 
+        href="assets/css/iframestyle.css" 
+        rel="stylesheet" 
+        type="text/css">
+</head>
+
+<body>
+
+  <div id="pagewidth" class="container">
+ 
+    <section id="header">  <!-- #HEADER -->
+        <h1 class="bg-dark text-light text-end pe-3"><?php print $page_heading; ?></h1>
+    </section>
+    <section class="content">
+      <div id="typescript" class="notes">                           <!-- ^ .notes ^ -->  
+      <h1>From w3schools.com TypeScript Introduction</h1>
+      <a href="https://www.w3schools.com/typescript/typescript_intro.php" title="" class="">Link to the original tutorial</a>
+       <h1>Optional:</h1>
+<div>
+    <p>Specify that the second <strong class="red">property</strong>, called model, should be <strong class="red">optional</strong>:</p>
+
+ 
+    <div class="tutorial code">
+<pre class="tutorial"><code class="code">        const car: { type: string, <strong class="red">model?</strong>: string } = {
+        type: "Toyota"
+        };</code></pre>
+    </div>
+</div>
+        <h1>Type | Type:</h1>
+<div>
+    <p>Specify that the paramater "myVar" for the function can be <strong class="red">either string or number</strong>:</p>
+
+ 
+    <div class="tutorial code">
+<pre class="tutorial"><code class="code">        function myFunc(myVar: <strong class="red">string | number</strong>) {
+        console.log(myVar)
+        }</code></pre>
+    </div>
+
+    <div class="tutorial code">
+<pre class="tutorial"><code class="code">        function myFunc(myVar: <strong class="red">number | string</strong>) {
+        console.log(myVar)
+        }</code></pre>
+    </div>
+</div>
+<div></div>
+<h1>Casting:</h1>
+<div>
+    <p><strong class="red">Cast the "unknown"</strong> variable myVar as a <strong class="red">string, using &lt; &gt;</strong>:</p>
+
+ 
+    <div>
+       <pre class="tutorial"><code class="code"> let myVar: unknown = "Hello world!";
+        console.log((<strong class="red">&lt;string&gt;</strong>myVar).length);</code></pre>
+    </div>
+</div>
+<div></div>
+ 
+</div>
+ <div class="exercisemenuinner">
+<div><div onclick="openmenuitems(0)" class="exmenuitemheader"><i style="position: absolute; left: 224px; padding-top: 4px; visibility: visible;" class="fa fa-check"></i>TypeScript Introduction </div><div class="exmenulinks" style="height: 0px;"><a class="exbtn" href="exercise.php?filename=exercise_intro1"><i class="fa fa-check" style="visibility: visible;"></i> Exercise 1</a><a class="exbtn" href="exercise.php?filename=exercise_intro2"><i class="fa fa-check" style="visibility: visible;"></i> Exercise 2</a><a class="exbtn clutterFree_existingDuplicate clutterFree_noIcon cf_div_theme_dark" href="https://www.w3schools.com/typescript/typescript_intro.php" target="_blank" style="font-size:80%;text-decoration:underline;">Go to TypeScript Introduction Tutorial</a></div></div><div><div onclick="openmenuitems(1)" class="exmenuitemheader active"><i style="position: absolute; left: 224px; padding-top: 4px; visibility: visible;" class="fa fa-check"></i>TypeScript Get Started </div><div class="exmenulinks active" style="height: 0px;"><a class="exbtn active" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_getstarted1" contenteditable="false"><i class="fa fa-check active" style="visibility: visible;"></i> Exercise 1</a><a class="exbtn" href="https://www.w3schools.com/typescript/typescript_getstarted.php" target="_blank" style="font-size:80%;text-decoration:underline;">Go to TypeScript Get Started Tutorial</a></div></div><div><div onclick="openmenuitems(2)" class="exmenuitemheader"><i style="position:absolute;left:224px;padding-top:4px;" class="fa fa-check"></i>TypeScript Simple Types </div><div class="exmenulinks" style="height: 0px;"><a class="exbtn clutterFree_existingDuplicate clutterFree_noIcon cf_div_theme_dark" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_simple_types1"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 1</a><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_simple_types2"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 2</a><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_simple_types3"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 3</a><a class="exbtn" href="https://www.w3schools.com/typescript/typescript_simple_types.php" target="_blank" style="font-size:80%;text-decoration:underline;">Go to TypeScript Simple Types Tutorial</a></div></div><div><div onclick="openmenuitems(3)" class="exmenuitemheader"><i style="position:absolute;left:224px;padding-top:4px;" class="fa fa-check"></i>TypeScript Special Types </div><div class="exmenulinks" style="height: 126px;"><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_special_types1"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 1</a><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_special_types2"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 2</a><a class="exbtn cf_div_theme_dark" href="https://www.w3schools.com/typescript/typescript_special_types.php" target="_blank" style="font-size:80%;text-decoration:underline;">Go to TypeScript Special Types Tutorial</a></div></div><div><div onclick="openmenuitems(4)" class="exmenuitemheader"><i style="position:absolute;left:224px;padding-top:4px;" class="fa fa-check"></i>TypeScript Arrays </div><div class="exmenulinks" style="height: 0px;"><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_arrays1"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 1</a><a class="exbtn" href="https://www.w3schools.com/typescript/typescript_arrays.php" target="_blank" style="font-size:80%;text-decoration:underline;">Go to TypeScript Arrays Tutorial</a></div></div><div><div onclick="openmenuitems(5)" class="exmenuitemheader"><i style="position:absolute;left:224px;padding-top:4px;" class="fa fa-check"></i>TypeScript Tuples </div><div class="exmenulinks" style="height: 0px;"><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_tuples1"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 1</a><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_tuples2"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 2</a><a class="exbtn" href="https://www.w3schools.com/typescript/typescript_tuples.php" target="_blank" style="font-size:80%;text-decoration:underline;">Go to TypeScript Tuples Tutorial</a></div></div><div><div onclick="openmenuitems(6)" class="exmenuitemheader"><i style="position:absolute;left:224px;padding-top:4px;" class="fa fa-check"></i>TypeScript Object Types </div><div class="exmenulinks" style="height: 0px;"><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_object_types1"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 1</a><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_object_types2"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 2</a><a class="exbtn" href="https://www.w3schools.com/typescript/typescript_object_types.php" target="_blank" style="font-size:80%;text-decoration:underline;">Go to TypeScript Object Types Tutorial</a></div></div><div><div onclick="openmenuitems(7)" class="exmenuitemheader"><i style="position:absolute;left:224px;padding-top:4px;" class="fa fa-check"></i>TypeScript Enums </div><div class="exmenulinks" style="height: 0px;"><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_enums1"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 1</a><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_enums2"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 2</a><a class="exbtn" href="https://www.w3schools.com/typescript/typescript_enums.php" target="_blank" style="font-size:80%;text-decoration:underline;">Go to TypeScript Enums Tutorial</a></div></div><div><div onclick="openmenuitems(8)" class="exmenuitemheader"><i style="position:absolute;left:224px;padding-top:4px;" class="fa fa-check"></i>TypeScript Aliases &amp; Interfaces </div><div class="exmenulinks" style="height: 0px;"><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_aliases_and_interfaces1"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 1</a><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_aliases_and_interfaces2"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 2</a><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_aliases_and_interfaces3"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 3</a><a class="exbtn" href="https://www.w3schools.com/typescript/typescript_aliases_and_interfaces.php" target="_blank" style="font-size:80%;text-decoration:underline;">Go to TypeScript Aliases &amp; Interfaces Tutorial</a></div></div><div><div onclick="openmenuitems(9)" class="exmenuitemheader"><i style="position:absolute;left:224px;padding-top:4px;" class="fa fa-check"></i>TypeScript Union Types </div><div class="exmenulinks" style="height: 0px;"><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_union_types1"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 1</a><a class="exbtn" href="https://www.w3schools.com/typescript/typescript_union_types.php" target="_blank" style="font-size:80%;text-decoration:underline;">Go to TypeScript Union Types Tutorial</a></div></div><div><div onclick="openmenuitems(10)" class="exmenuitemheader"><i style="position:absolute;left:224px;padding-top:4px;" class="fa fa-check"></i>TypeScript Functions </div><div class="exmenulinks" style="height: 0px;"><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_functions1"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 1</a><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_functions2"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 2</a><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_functions3"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 3</a><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_functions4"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 4</a><a class="exbtn" href="https://www.w3schools.com/typescript/typescript_functions.php" target="_blank" style="font-size:80%;text-decoration:underline;">Go to TypeScript Functions Tutorial</a></div></div><div><div onclick="openmenuitems(11)" class="exmenuitemheader"><i style="position:absolute;left:224px;padding-top:4px;" class="fa fa-check"></i>TypeScript Casting </div><div class="exmenulinks" style="height: 0px;"><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_casting1"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 1</a><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_casting2"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 2</a><a class="exbtn" href="https://www.w3schools.com/typescript/typescript_casting.php" target="_blank" style="font-size:80%;text-decoration:underline;">Go to TypeScript Casting Tutorial</a></div></div><div><div onclick="openmenuitems(12)" class="exmenuitemheader"><i style="position:absolute;left:224px;padding-top:4px;" class="fa fa-check"></i>TypeScript Classes </div><div class="exmenulinks" style="height: 0px;"><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_classes1"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 1</a><a class="exbtn" href="https://www.w3schools.com/typescript/typescript_classes.php" target="_blank" style="font-size:80%;text-decoration:underline;">Go to TypeScript Classes Tutorial</a></div></div><div><div onclick="openmenuitems(13)" class="exmenuitemheader"><i style="position:absolute;left:224px;padding-top:4px;" class="fa fa-check"></i>TypeScript Basic Generics </div><div class="exmenulinks" style="height: 0px;"><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_basic_generics1"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 1</a><a class="exbtn" href="https://www.w3schools.com/typescript/typescript_basic_generics.php" target="_blank" style="font-size:80%;text-decoration:underline;">Go to TypeScript Basic Generics Tutorial</a></div></div><div><div onclick="openmenuitems(14)" class="exmenuitemheader"><i style="position:absolute;left:224px;padding-top:4px;" class="fa fa-check"></i>TypeScript Utility Types </div><div class="exmenulinks" style="height: 0px;"><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_utility_types1"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 1</a><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_utility_types2"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 2</a><a class="exbtn" href="https://www.w3schools.com/typescript/exercise.php?filename=exercise_utility_types3"><i class="fa fa-check" style="visibility: hidden;"></i> Exercise 3</a><a class="exbtn" href="https://www.w3schools.com/typescript/typescript_utility_types.php" target="_blank" style="font-size:80%;text-decoration:underline;">Go to TypeScript Utility Types Tutorial</a></div></div><br>
+</div>
+      </div>                                        <!-- $ .notes     -->
+    </section>
+    <section id="footer px-4">
+        <div class="row gx-5">
+            <div class="col">
+                <div class="p-3 border bg-light"> Based on Notes by <a href="https://github.com/ajaxStardust" target="_blank" title="View original">@ajaxStardust</a> <em>Laravel</em> notes:</div>
+            </div>
+            <div class="col">
+                <div class="p-3 border bg-light text-end"><kbd><?php echo $lastMod; ?></kbd></div>
+            </div>
+        </div>
+    </section>      
+  </div>                                            <!--    .content  -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+</html>

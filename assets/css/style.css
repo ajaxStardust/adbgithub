@@ -2051,7 +2051,6 @@ li.sourceLine:after {
   content: " ";
 }
 
-
 body {
   background-attachment: fixed;
   background-color: #1e1e2e;
@@ -2679,8 +2678,7 @@ li.htmlicon::before {
   float: left;
   font-weight: 900;
 }
-
-
+ 
 li.cfgicon,
 li.conficon,
 li.iniicon {
@@ -2808,7 +2806,7 @@ li.sourceline {
   font-size: 0.5em;
   vertical-align: middle;
 }
-
+ 
 li.bz2icon,
 li.gzicon,
 li.raricon,
@@ -3475,7 +3473,6 @@ ul#imgShow li.imgShowItem {
 #urlSplit:before {
   background-color: #fafafa;
   color: #30f;
-  content: "Showing: \D\A (matches as matchKey-> matchVal): ";
   font-family: monospace;
   font-weight: 800;
   padding: 0.2em;
@@ -3532,11 +3529,22 @@ dl dd dl dt:first-letter {
   vertical-align: baseline;
 }
 
+li.comicon::before,
+li.infoicon::before,
+li.neticon::before,
+li.orgicon::before,
 li.com:before,
 li.info:before,
 li.net:before,
 li.org:before {
-  content: "www.";
+  content: "⛬";
+  color: #dafac0;
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 900;
 }
 
 ol#navlist li.phpicon a:hover,

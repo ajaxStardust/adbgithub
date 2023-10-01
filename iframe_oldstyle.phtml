@@ -1,0 +1,151 @@
+<?php
+/**
+ * @method frame_only
+ * @param ENUM (TRUE,FALSE)
+ * @abstract
+ * 	use frame_only() to force the document into preferred frame, relative to project.
+ *
+*/
+require 'public/class/class-adbfuncs.php';
+
+// BY changing to setKickout=TRUE
+// SEND URL_Chopper to file_name only with $setKickout
+//E.G.: frame_only($setKicout=TRUE,$this_filename=$URL_Chopper_blah_blah...)
+// this will require modifying the adbFuncs class also
+
+$frameControl = new adbFuncs;
+$frame_only = $frameControl->frame_only($setKickout=FALSE);
+
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            frame_only() :: class/class-adbfuncs.php try forcing this.document into proj relative frame path
+        </title>
+
+    <link href="assets/css/notes.css" rel="stylesheet" type="text/css" media="screen" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa">
+	<style>
+		html, body, div, p, li, dt, dd, h1, h2, h3, h4, h5, button {
+			font-family: Comfortaa;
+		}
+	</style>
+    </head>
+    <body>
+        <!--    ^    id:pagewidth    ^    -->
+        <div id="pagewidth">
+            <!--    ^    id:maincol    ^    -->
+            <div class="content">
+                <h1 class="indentOne">
+                    h1.indentOne
+                </h1>
+                <p>
+                    paragraph
+                </p>
+                <h2 class="indentOne">
+                    h2.indentOne
+                </h2>
+                <ul>
+                    <li>ul list item
+                    </li>
+                </ul>
+                <h3 class="indentOne">
+                    h3.indentOne
+                </h3>
+                <ol>
+                    <li>ol list item
+                    </li>
+                </ol>
+                <h4 class="indentOne">
+                    h4.indentOne
+                </h4>
+                <div class="content">
+                    <dl>
+                        <dt>
+                            #pagewidth .content .content &#x3e; dl &#x3e; dt
+                        </dt>
+                        <dd>
+                            this DL is child of div.content
+                        </dd>
+                    </dl>
+                </div>
+                <h5 class="indentOne">
+                    h5.indentOne
+                </h5>
+                <table>
+                    <caption>
+                        Table Caption
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Table Thead TH
+                            </th>
+                            <th>
+                                Table Thead TH
+                            </th>
+                            <th>
+                                Table Thead TH
+                            </th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <td>
+                                Tfoot TD
+                            </td>
+                            <td>
+                                Tfoot TD
+                            </td>
+                            <td>
+                                Tfoot TD
+                            </td>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr>
+                            <td>
+                                TD table row data
+                            </td>
+                            <td>
+                                TD table row data
+                            </td>
+                            <td>
+                                TD table row data
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                TD table row data
+                            </td>
+                            <td>
+                                TD table row data
+                            </td>
+                            <td>
+                                TD table row data
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h6 class="indentOne">
+                    h6.indentOne
+                </h6><code>code content</code>
+                <pre>
+<?php
+$tempDir = new DirectoryIterator(dirname(__FILE__));
+foreach ($tempDir as $fileinfo) {
+    if (!$fileinfo->isDot()) {
+        var_dump($fileinfo->getFilename());
+    }
+}
+?>
+</pre>
+            </div><!--    $    END class.content (former id.maincol)    $    -->
+        </div><!--    $    id:pagewidth    $    -->
+    </body>
+</html>

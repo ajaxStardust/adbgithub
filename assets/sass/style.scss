@@ -1,16 +1,10 @@
 @charset "UTF-8";
-/* ;
-navigation  */
+
 @import "navigation/navigation";
 
-/* ;
-lists  */
 @import "lists/dl";
 
-/*
-typography */
 @import "type/fonts";
-
 
 body {
     background-attachment: fixed;
@@ -1784,3 +1778,4 @@ li.xcficon::before {
   float: left;
   font-weight: 900;
 }
+
