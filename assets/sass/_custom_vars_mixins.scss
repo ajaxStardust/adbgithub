@@ -59,6 +59,9 @@ $widget_b_padding: $widget_t_padding;
 @import url('//fonts.googleapis.com/css2?family=Open+Sans');
 @import url('//fonts.googleapis.com/css2?family=Droid+Sans');
 @import url('//fonts.googleapis.com/css2?family=Mada:wght@200;300;400;500;600;700;900&display=swap');
+/* @import url('//fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+*/
+@import url('//fonts.googleapis.com/css2?family=DM+Mono');
 
 // Google Fonts via CDN:
 $font_raleway: "Raleway";
@@ -69,15 +72,22 @@ $font_poppins: "Poppins";
 $font_ubuntu: "Ubuntu";
 $font_mada: "Mada";
 $font_droidsans: 'Droid Sans';
+$font_mono = "DM Mono";
 
+/**
 // DEFAULT _S "TYPOGRAPHY" VARS
+*
+*/
 $font__main: $font_opensans, "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
-$font__code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+$font__code: $font_mono, Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 $font__pre: "Courier 10 Pitch", Courier, monospace;
 $font__nav: $font_opensans;
 $font__line-height-body: $phi * 1em;
 $font__line-height-pre: $phi * 1em;
+/**
 // /end
+*
+*/
 
 $header_lineheight: 1.3em;
 $header_family: $font_opensans;
