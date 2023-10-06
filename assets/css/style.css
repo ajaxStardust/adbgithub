@@ -2051,7 +2051,39 @@ li.sourceLine:after {
   content: " ";
 }
 
+<<<<<<< HEAD
+/*
+typography */
+li#font_demo_serif {
+  font-family: Argesta, Didot, "Playfair Display", Lora, Cambria, "Times New Roman", times, serif !important;
+  font-size: 2rem !important;
+  font-variant: normal !important;
+  white-space: wrap !important;
+  text-align: start !important;
+}
 
+li#font_demo_serif::before {
+  content: "Serif ⇒";
+  font-size: 1rem;
+  clear: both;
+}
+
+li#font_demo_sans {
+  /* font-family: Poppins, Roboto !important; */
+  font-size: 2rem !important;
+  font-variant: normal !important;
+  white-space: wrap !important;
+  text-align: start !important;
+}
+
+li#font_demo_sans::before {
+  content: "Sans ⇒";
+  font-size: 1rem;
+  clear: both;
+}
+
+=======
+>>>>>>> 8a348f13a9eec48625397746ad54c36c0c8f86ec
 body {
   background-attachment: fixed;
   background-color: #1e1e2e;
@@ -2679,8 +2711,11 @@ li.htmlicon::before {
   float: left;
   font-weight: 900;
 }
+<<<<<<< HEAD
 
-
+=======
+ 
+>>>>>>> 8a348f13a9eec48625397746ad54c36c0c8f86ec
 li.cfgicon,
 li.conficon,
 li.iniicon {
@@ -2808,7 +2843,11 @@ li.sourceline {
   font-size: 0.5em;
   vertical-align: middle;
 }
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 8a348f13a9eec48625397746ad54c36c0c8f86ec
 li.bz2icon,
 li.gzicon,
 li.raricon,
@@ -3475,7 +3514,6 @@ ul#imgShow li.imgShowItem {
 #urlSplit:before {
   background-color: #fafafa;
   color: #30f;
-  content: "Showing: \D\A (matches as matchKey-> matchVal): ";
   font-family: monospace;
   font-weight: 800;
   padding: 0.2em;
@@ -3532,11 +3570,22 @@ dl dd dl dt:first-letter {
   vertical-align: baseline;
 }
 
+li.comicon::before,
+li.infoicon::before,
+li.neticon::before,
+li.orgicon::before,
 li.com:before,
 li.info:before,
 li.net:before,
 li.org:before {
-  content: "www.";
+  content: "⛬";
+  color: #dafac0;
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 900;
 }
 
 ol#navlist li.phpicon a:hover,
@@ -3576,3 +3625,210 @@ li#adb_small_logo img {
   margin-left: 2rem;
   margin-top: 1rem;
 }
+<<<<<<< HEAD
+
+li.bmp, li.bmpicon {
+  list-style-image: none;
+}
+
+li.bmp::before,
+li.bmpicon::before {
+  list-style-image: none;
+  color: #ffc;
+  content: "∠";
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 900;
+}
+
+li.gif, li.gificon {
+  list-style-image: none;
+}
+
+li.gif::before,
+li.gificon::before {
+  list-style-image: none;
+  color: #ffc;
+  content: "∠";
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 900;
+}
+
+li.ico, li.icoicon {
+  list-style-image: none;
+}
+
+li.ico::before,
+li.icoicon::before {
+  list-style-image: none;
+  color: #ffc;
+  content: "∠";
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 900;
+}
+
+li.jpg, li.jpgicon {
+  list-style-image: none;
+}
+
+li.jpg::before,
+li.jpgicon::before {
+  list-style-image: none;
+  color: #ffc;
+  content: "∠";
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 900;
+}
+
+li.pdn, li.pdnicon {
+  list-style-image: none;
+}
+
+li.pdn::before,
+li.pdnicon::before {
+  list-style-image: none;
+  color: #ffc;
+  content: "∠";
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 900;
+}
+
+li.png, li.pngicon {
+  list-style-image: none;
+}
+
+li.png::before,
+li.pngicon::before {
+  list-style-image: none;
+  color: #ffc;
+  content: "∠";
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 900;
+}
+
+li.psd, li.psdicon {
+  list-style-image: none;
+}
+
+li.psd::before,
+li.psdicon::before {
+  list-style-image: none;
+  color: #ffc;
+  content: "∠";
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 900;
+}
+
+li.svg, li.svgicon {
+  list-style-image: none;
+}
+
+li.svg::before,
+li.svgicon::before {
+  list-style-image: none;
+  color: #ffc;
+  content: "∠";
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 900;
+}
+
+li.tga, li.tgaicon {
+  list-style-image: none;
+}
+
+li.tga::before,
+li.tgaicon::before {
+  list-style-image: none;
+  color: #ffc;
+  content: "∠";
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 900;
+}
+
+li.tif, li.tiff {
+  list-style-image: none;
+}
+
+li.tif::before,
+li.tiff::before {
+  list-style-image: none;
+  color: #ffc;
+  content: "∠";
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 900;
+}
+
+li.tifficon, li.tificon {
+  list-style-image: none;
+}
+
+li.tifficon::before,
+li.tificon::before {
+  list-style-image: none;
+  color: #ffc;
+  content: "∠";
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 900;
+}
+
+li.xcf, li.xcficon {
+  list-style-image: none;
+}
+
+li.xcf::before,
+li.xcficon::before {
+  list-style-image: none;
+  color: #ffc;
+  content: "∠";
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 900;
+}
+=======
+>>>>>>> 8a348f13a9eec48625397746ad54c36c0c8f86ec

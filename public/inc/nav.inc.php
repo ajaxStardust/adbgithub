@@ -4,10 +4,10 @@
 * URL Path ./inc/nav.inc.php
 */
 if(defined("XRO")){
-	$xro = XRO;
+    $xro = XRO;
 }
 else {
-	$xro = '';
+    $xro = '';
 }
 // initialize counter
 $objNmbr = 0;
@@ -26,7 +26,7 @@ $childItems = array();
 // $baseNameEQonePage = array();
 $specialExtn = array();
 /**
-*	@todo fix pmAllCollector
+*   @todo fix pmAllCollector
 * currently pmAllCollector records all extensions, including duplicates. we don't want duplicates.
 *'
 * @var array pmAllCollector
@@ -43,10 +43,10 @@ require $xro.'public/inc/alphanumarray.inc.php';
 require $xro.'public/inc/basenamecleaner.inc.php';
 
 if(file_exists($xro.'public\inc\nav.inc.php')) {
-	$search = '\public\inc\nav.inc.php';
+    $search = '\public\inc\nav.inc.php';
 }
 elseif(file_exists($xro.'public/inc/nav.inc.php')) {
-	$search = '/public/inc/nav.inc.php';
+    $search = '/public/inc/nav.inc.php';
 }
 $subject = $dir;
 $replace = '';
@@ -59,8 +59,8 @@ $dir = str_ireplace($search, $replace, $subject);
  */
 
 if(empty($parseUrl)){
-	$parseUrl = parse_url($nav_pathInfo['dirname'], PHP_URL_PATH);
-	$bodyid=rtrim(".",$parseUrl) ? empty($bodyid) : $bodyid = $bodyid;
+    $parseUrl = parse_url($nav_pathInfo['dirname'], PHP_URL_PATH);
+    $bodyid=rtrim(".",$parseUrl) ? empty($bodyid) : $bodyid = $bodyid;
 
         /**
          * WHAT IS GOING ON HERE - $bodyid is boolean -> false here?
@@ -76,15 +76,15 @@ $goUp["search"] = '@^(.*(?=(/).*))@';
 $goUp["result"] = preg_replace($goUp["search"], $goUp["replace"], $goUp["subject"]);
 $goUp["url"] = str_ireplace($goUp["result"], $goUp["replace"], $goUp["subject"]);
 if(strlen($goUp["url"]) < 1) {
-	$goUp["url"] = $serverUrl."/";
+    $goUp["url"] = $serverUrl."/";
 }
 
 /* if (is_dir($dir)) {
-	if ($dh0 = opendir($dir)) {
-		while (($sortDir[] = readdir($dh0)) !== false) {
-		    sort($sortDir);
-		    }
-  	}
+    if ($dh0 = opendir($dir)) {
+        while (($sortDir[] = readdir($dh0)) !== false) {
+            sort($sortDir);
+            }
+    }
 } */
 
 $concatSubdir = "/".$chopThis."/";
@@ -98,148 +98,148 @@ if (is_dir($concatDirs)) {
 else {
     $dh = opendir(realpath($dir));
 }
-	if ($dh) {
+    if ($dh) {
 
-		while (($thisObject = readdir($dh)) !== false) {
-			foreach($myPathInfo as $myKey => $myVal){
-				if(isset(${$myVal})){
-					unset(${$myVal});
-				}
-			}
-			$thisObject_pathInfo = pathinfo($thisObject);
+        while (($thisObject = readdir($dh)) !== false) {
+            foreach($myPathInfo as $myKey => $myVal){
+                if(isset(${$myVal})){
+                    unset(${$myVal});
+                }
+            }
+            $thisObject_pathInfo = pathinfo($thisObject);
 
-			foreach($thisObject_pathInfo as $pathKey => $pathVal) {
-				${$pathKey} = $pathVal;
-			}
+            foreach($thisObject_pathInfo as $pathKey => $pathVal) {
+                ${$pathKey} = $pathVal;
+            }
 
-			if($dirname == '.' && empty($thisObject_pathInfo['extension'])) {
-				$dirname = $basename;
-			}
-			if($dirname=='.') {
-				if($dirname.$extension==$basename){
-					if(strlen($filename) < 1){
-						// REACH THIS POINT? THEN MUST BE SIMILAR TO:
-						// '.buildpath'
-						// IN WHICH CASE WE can define list item as hiddenitem
-						// HOW ABOUT THE FOLLOWING:
+            if($dirname == '.' && empty($thisObject_pathInfo['extension'])) {
+                $dirname = $basename;
+            }
+            if($dirname=='.') {
+                if($dirname.$extension==$basename){
+                    if(strlen($filename) < 1){
+                        // REACH THIS POINT? THEN MUST BE SIMILAR TO:
+                        // '.buildpath'
+                        // IN WHICH CASE WE can define list item as hiddenitem
+                        // HOW ABOUT THE FOLLOWING:
 
-						if(isset($extension) && strlen($extension) < 1){
-							unset($extension);
-							$dirname = $basename;
-						}
-/* 						else{
-							 // $dirname = $basename;
-						} */
-					}
-				}
-			}
-			if (($basename != ".") && ($basename != "..")) {
-				$objNmbr ++;
-			    if(
-			    	!is_dir($thisObject)
-			    	&& (isset($extension) && strlen($extension) > 0)
-			    	&& ($extension != 'htaccess' && $extension != 'htpasswd')
-			    ) {
-			// POPULATE THE ELUSIVE ALPHANUMARRY
-					// continued in ./arrayobjectparser.inc.php
-					require $xro.'public/inc/arrayobjectparser.inc.php';
+                        if(isset($extension) && strlen($extension) < 1){
+                            unset($extension);
+                            $dirname = $basename;
+                        }
+/*                      else{
+                             // $dirname = $basename;
+                        } */
+                    }
+                }
+            }
+            if (($basename != ".") && ($basename != "..")) {
+                $objNmbr ++;
+                if(
+                    !is_dir($thisObject)
+                    && (isset($extension) && strlen($extension) > 0)
+                    && ($extension != 'htaccess' && $extension != 'htpasswd')
+                ) {
+            // POPULATE THE ELUSIVE ALPHANUMARRY
+                    // continued in ./arrayobjectparser.inc.php
+                    require $xro.'public/inc/arrayobjectparser.inc.php';
 
 
-				} // 	ENDIF- LARGEST CONTAINER CLOSED HERE
+                } //    ENDIF- LARGEST CONTAINER CLOSED HERE
 
-			require $xro.'public/inc/arrayobjectanchors.inc.php';
-			addAlphaNum($basename,$alphaNumArray,$childItems[$objNmbr]);
-			}
+            require $xro.'public/inc/arrayobjectanchors.inc.php';
+            addAlphaNum($basename,$alphaNumArray,$childItems[$objNmbr]);
+            }
 
-			 // 	ENDIF  ( pathinfo != "." or "..")
+             //     ENDIF  ( pathinfo != "." or "..")
 
-		}
-		 	 // ENDWHILE
-		closedir($dh);
-	}
+        }
+             // ENDWHILE
+        closedir($dh);
+    }
 // comment 20220604 - dangling brace }
 
  $htmlPrint = array();
 
-/* 	for($i=0;$i<=$objNmbr;$i++) {
-		if(isset($childItems[$i])) {
-			$htmlPrint[$i] = $childItems[$i];
-		}
-	} */
+/*  for($i=0;$i<=$objNmbr;$i++) {
+        if(isset($childItems[$i])) {
+            $htmlPrint[$i] = $childItems[$i];
+        }
+    } */
 
-	$lc = 0;
-	$htmlPrint[$lc] = "<nav id=\"leftcol\" class=\"navlist\"> \n <ul id=\"navlist\" class=\"navlist\"> \n";
-	if(isset($goUp["url"])){
-		$htmlPrint[$lc] .= "<li id=\"goUpItem\" class=\"nav\"><a href=\""
-			.$goUp["url"]."\">".$goUp["url"]."</a></li> \n";
-	}
+    $lc = 0;
+    $htmlPrint[$lc] = "<nav id=\"leftcol\" class=\"navlist\"> \n <ul id=\"navlist\" class=\"navlist\"> \n";
+    if(isset($goUp["url"])){
+        $htmlPrint[$lc] .= "<li id=\"goUpItem\" class=\"nav\"><a href=\""
+            .$goUp["url"]."\">".$goUp["url"]."</a></li> \n";
+    }
 
-	$totalObjects = $objNmbr;
-	foreach($alphaNumArray as $alphaNumKey => $alphaNumVal){
-		$lc++;
-		$htmlPrint[$lc] = '';
+    $totalObjects = $objNmbr;
+    foreach($alphaNumArray as $alphaNumKey => $alphaNumVal){
+        $lc++;
+        $htmlPrint[$lc] = '';
 
-		if(is_array($alphaNumVal) && $alphaNumVal !== ''){
+        if(is_array($alphaNumVal) && $alphaNumVal !== ''){
                     $toggleCount = count($alphaNumVal);
                     if($toggleCount != 0){
-			$htmlPrint[$lc] .= '<li onclick="showHide(\'ul_'.$alphaNumKey.'\')" id="li_'.$alphaNumKey.'" class="toggler"><span style="font-weight:bold;">'.$alphaNumKey.'</span>:';
+            $htmlPrint[$lc] .= '<li onclick="showHide(\'ul_'.$alphaNumKey.'\')" id="li_'.$alphaNumKey.'" class="toggler"><span style="font-weight:bold;">'.$alphaNumKey.'</span>:';
 
-			if(is_array($alphaNumVal)){
+            if(is_array($alphaNumVal)){
 
-				$htmlPrint[$lc] .= ' [ view '.$toggleCount.' ]';
+                $htmlPrint[$lc] .= ' [ view '.$toggleCount.' ]';
 
 // ############ ATTN 20220816 - THIS IS WHERE THE EMPTY LI is created.
 // ############ FIX TO MAKE NAV not include EMPTY ITEMS!
 
-				$htmlPrint[$lc] .= '
+                $htmlPrint[$lc] .= '
 <ul id="ul_'.$alphaNumKey.'" class="alphaNumChildList target">';
-				foreach($alphaNumVal as $alphaNumSortedKey => $alphaNumSortedItem){
-					if($alphaNumSortedItem != ''){
-						$htmlPrint[$lc] .= $alphaNumSortedItem;
-					}
-				}
-				$htmlPrint[$lc] .= '</ul>
-				';
+                foreach($alphaNumVal as $alphaNumSortedKey => $alphaNumSortedItem){
+                    if($alphaNumSortedItem != ''){
+                        $htmlPrint[$lc] .= $alphaNumSortedItem;
+                    }
+                }
+                $htmlPrint[$lc] .= '</ul>
+                ';
                                 }
-			}
+            }
 
-			elseif(!is_array($alphaNumVal) && $alphaNumVal != '') {
-			 $htmlPrint[$lc] .= ' string:';
-				$htmlPrint[$lc] .= '<ul id="ul_'.$alphaNumKey.'" class="alphaNumChildList target">
-					<li style="white-space:pre;">$['.$alphaNumKey.'] &#x3d;&gt; '.$alphaNumVal.'</li>
-					</ul>
-					';
-			}
-//			else{
-//				$htmlPrint[$lc] .= ' <!-- line '.__LINE__.': -->&#x3d;&gt; '.$alphaNumVal;
-//			}
-			$htmlPrint[$lc] .= '';
-		} /* WHY IS THERE no ELSE or ELSEIF here? - this doesn't make much sense */
-		else {
-		unset($htmlPrint[$lc]);
-		}
-	}
- 	//$totalObjects = $lc;
-	//$oneMore = $i++;
-	$oneMore = $lc++;
+            elseif(!is_array($alphaNumVal) && $alphaNumVal != '') {
+             $htmlPrint[$lc] .= ' string:';
+                $htmlPrint[$lc] .= '<ul id="ul_'.$alphaNumKey.'" class="alphaNumChildList target">
+                    <li style="white-space:pre;">$['.$alphaNumKey.'] &#x3d;&gt; '.$alphaNumVal.'</li>
+                    </ul>
+                    ';
+            }
+//          else{
+//              $htmlPrint[$lc] .= ' <!-- line '.__LINE__.': -->&#x3d;&gt; '.$alphaNumVal;
+//          }
+            $htmlPrint[$lc] .= '';
+        } /* WHY IS THERE no ELSE or ELSEIF here? - this doesn't make much sense */
+        else {
+        unset($htmlPrint[$lc]);
+        }
+    }
+    //$totalObjects = $lc;
+    //$oneMore = $i++;
+    $oneMore = $lc++;
 
-	$htmlPrint[$oneMore] = '<li id="navTotal">Objects found: '.$totalObjects.'</li>
-		<li id="adb_small_logo"><img
-		src="assets/css/adb_logo_shadow.png"
-		style="width:100px;height:80px;"
-		class="floatLt" /></li>
-    <li id="font_demo_serif">Bbrief Bit oF texT</li>
-	<li id="font_demo_sans">Bbrief Bit oF texT</li>
-		</ul>
+    $htmlPrint[$oneMore] = '<li id="navTotal">Objects found: '.$totalObjects.'</li>
+        <li id="adb_small_logo"><img
+        src="assets/css/adb_logo_shadow.png"
+        style="width:100px;height:80px;"
+        class="floatLt" /></li>
+    <li id="font_demo_serif">A QuIck Bit oF Valid TeXt bRiEfly</li>
+    <li id="font_demo_sans">A QuIck Bit oF Valid TeXt bRiEfly</li>
+        </ul>
 
         <div id="js_return_serif"></div>
-		<!-- close navlist -->
-		</nav>';
+        <!-- close navlist -->
+        </nav>';
         ?>
         <script>
         font_props( 'font_demo_serif', 'fontFamily' );
         font_props( 'font_demo_sans', 'fontFamily' );
         </script>
-		<!-- close leftcol -->
+        <!-- close leftcol -->
 <?php
-	ksort($htmlPrint);
+    ksort($htmlPrint);

@@ -1,21 +1,29 @@
 <?php
 
-header('Access-Control-Allow-Origin: *'); // ENABLE CORS (Cross-Origin Request) policy allow all
-date_default_timezone_set('America/New_York');
-$page_heading = 'p2u2 - path 2 url 2';
-$title = 'path to url converter 2023';
-$lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
+// namespace adb_simplest/public/inc;
 
-if (!defined('ABSOLUTELOCATION')) {
-    define('ABSOLUTELOCATION', rtrim(dirname(__FILE__), "inc"));
-}
-$page_heading = 'Convert System Path to HTTP URL';
-$title = 'p2u2 - ' . ABSOLUTELOCATION;
-$server_soft = $_SERVER['SERVER_SOFTWARE'];
-$server_name = $_SERVER['SERVER_NAME'];
-$server_addr = $_SERVER['SERVER_ADDR'];
+/**
+* @depends
+*   ./class/class-urlchopper.php
+*   ./css/style.css.php
+**/
 
-// define( 'ABSOLUTELOCATION', dirname($_SERVER['SCRIPT_NAME']));
+/**
+* add 45 secs to default of 30 = 75 secs if invoked
+* set_time_limit(45);
+*/
+
+/**
+* @TODO CSSPATH concept introduced here but never embellished
+**/
+
+/**
+* TRUE OR FALSE?
+* whether to pull css from the site root ./css folder
+* or the css container most closely relative to this document
+**/
+
+define( 'ABSOLUTELOCATION', dirname($_SERVER['SCRIPT_NAME']));
 $abspath = ABSOLUTELOCATION;
 
 // echo '<br>included: '.var_dump(ABSOLUTELOCATION);
@@ -69,7 +77,7 @@ if(isset($_SERVER['SERVER_NAME'])){
     $serverName = $_SERVER['SERVER_NAME'];
 }
 else{
-    $serverName = $server_addr;
+    $serverName = 'localhost';
 }
 $serverUrl = 'http://' . $serverName;
 $abspath = $serverUrl."/".$chopThis;
@@ -189,17 +197,11 @@ else{
         $xro."p2u2.phtml",
     );
 
-    if(file_exists($xro.'tree.html')){
-        $defaultIframe = $xro.'tree.html';
-    }
-else{
     foreach($defaultFrameArray as $thisIframe){
         if(file_exists($thisIframe)) {
             $defaultIframe = $thisIframe;
         }
     }
-}
-
 }
 
 $frameInfo = pathinfo($defaultIframe);
@@ -212,7 +214,7 @@ $frameTitle = $frameInfo['filename'];
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-<title><?php print $server_name .'/'.$chopThis."/".$c_trim; ?></title>
+<title><?php print $chopThis."/".$c_trim; ?></title>
 
 <meta charset="UTF-8">
         <meta http-equiv="Content-Style-Type" content="text/css" />
