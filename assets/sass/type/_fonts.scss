@@ -1,0 +1,30 @@
+li#font_demo_serif {
+font-family:  Argesta, Didot, "Playfair Display", Lora, Cambria, "Times New Roman", times, serif !important;
+font-size: 2rem !important;
+font-variant:normal !important;
+white-space:wrap !important;
+text-align:start !important;
+
+}
+
+li#font_demo_serif::before {
+    content: "Serif ⇒";
+    font-size:1rem;
+    clear:both;
+}
+
+
+li#font_demo_sans {
+    /* font-family: Poppins, Roboto !important; */
+    font-size: 2rem !important;
+font-variant:normal !important;
+white-space:wrap !important;
+text-align:start !important;
+}
+
+li#font_demo_sans::before {
+
+    content: "Sans ⇒";
+    font-size:1rem;
+    clear:both;
+}
