@@ -4,7 +4,7 @@ li#adb_small_logo img {
 	margin-left: 2rem;
 	margin-top: 1rem;
   }
-  
+
   li#font_demo_serif {
 	font-family: Argesta, Didot, "Playfair Display", Lora, Cambria, "Times New Roman", times, serif !important;
 	font-size: 2rem !important;
@@ -12,14 +12,14 @@ li#adb_small_logo img {
 	white-space: wrap !important;
 	text-align: start !important;
   }
-  
+
   li#font_demo_serif::before {
 	content: "Serif ⇒";
 	font-size: 1rem;
 	clear: both;
   }
-  
-  
+
+
   li#font_demo_sans {
 	font-family: Raleway, "Open Sans", "Segoe UI", Ubuntu, Cantarell,  system-ui, -apple-system, Roboto, Poppins, Oxygen, BlinkMac, SystemFont, "Helvetica Neue", sans-serif !important;
 	font-size: 2rem !important;
@@ -27,13 +27,13 @@ li#adb_small_logo img {
 	white-space: wrap !important;
 	text-align: start !important;
   }
-  
+
   li#font_demo_sans::before {
 	content: "Sans ⇒";
 	font-size: 1rem;
 	clear: both;
   }
-  
+
  $nav_width: 1 * 18%;
 
 
@@ -79,7 +79,7 @@ nav {
   font-size: 20px;
   color: #CDCDCD;
 }
- 
+
 li.nav {
 /*  list-style-image: url(bullet_square_grey.png);*/
   margin-left: -0.5em;
@@ -90,7 +90,7 @@ li.bakicon {
   list-style-type: none;
 }
 
-li.markdownicon::before , li.mdicon::before {
+li.markdownicon, li.mdicon::before {
 	color:rgb(102, 204, 145);
 	  content:"\2211";
 	font-size:1.5rem;
@@ -143,7 +143,7 @@ li.navnobull::before {
 	font-size: 1.5rem;
 	float: left;
 	font-weight: 900;
-  
+
 }
 li.new_dirHandArr {
   list-style-image: none !important;
@@ -266,7 +266,7 @@ body {
 }
 
 code,
-code.codelite {
+coden::before,lite {
   background-color: #dafac0;
   color: #05c;
   line-height: 140%;
@@ -452,7 +452,7 @@ iframe html {
   font-size: 8pt !important;
 }
 
-code.codelite {
+coden::before,lite {
   background-color: #fffaef;
   color: #395;
   padding: 0.4em;
@@ -565,15 +565,15 @@ thead {
   text-align: center;
 }
 
-.code {
+n::before, {
   background-color: #eee;
   color: #337;
   display: inline-block;
   font-family: "Liberation Mono", "DejaVu Sans Mono", "Lucida Console", "monte carlo", monospace;
 }
 
-.codeComment,
-.codeHints {
+n::before,Comment,
+n::before,Hints {
   color: #c00;
   font-family: monospace;
   font-style: italic;
