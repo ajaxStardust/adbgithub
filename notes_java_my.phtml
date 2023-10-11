@@ -1,0 +1,86 @@
+<?php
+/**
+ * @method frame_only
+ * @param ENUM (TRUE,FALSE)
+ * @abstract
+ * 	use frame_only() to force the document into preferred frame, relative to project.
+ *
+*/
+require 'public/class/adbfuncs.class.php';
+$frameControl = new adbFuncs;
+$frame_only = $frameControl->frame_only($setKickout=TRUE);
+
+// FIX THIS BY SENDING INSTED OF JUST $setKickout=TRUE...
+// SEND URL_Chopper to file_name only with $setKickout 
+//E.G.: frame_only($setKicout=TRUE,$this_filename=$URL_Chopper_blah_blah...)
+// this will require modifying the adbFuncs class also
+
+/*
+**     NOTE: THIS DOCUMENT IS DECLARED AS HTTP-EQUIV(Content-Type) "application/xml-html"
+**     IF YOUR SERVER CONFIGURATION (i.e. .conf, .htaccess, php.ini, etc.) is set to
+**    parse HTML as XHTML (i.e. XML), in a strict manner, this document may not display,
+**     instead, rendering as bad XML markup. In its original form, the XHTML below
+**     should NOT cause a server error, but "never" is a heavy word in this business. ;-)
+**
+**    The recommended Content-type for the WWW as of 2009 is "text/html",
+**    albeit such use is a direct contradiction of the very philosophy of XHTML.
+*/
+print '<?xml version="1.0" encoding="utf-8"?>
+';
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Revature SPARK Notes - 2022-06-02 17:30:42 - Java
+        </title>
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+<?php /* print $frame_only; */ ?>
+
+</script>
+        <link href="assets/css/iframestyle.css" rel="stylesheet" type="text/css" media="screen" />
+    </head>
+    <body>
+        <!--    ^    id:pagewidth    ^    -->
+        <div id="pagewidth">
+            <!--    ^    id:maincol    ^    -->
+            <div class="content">
+                <h1 class="doctopic">
+                    Revature SPARK - Java Notes 
+                </h1>
+                <h2 class="date">
+                June 2, 2022 (Thursday) 17:31:30
+                </h2>
+                <div class="container">
+                    <h3 class="topic">new keyword -vs- Primitive Data Types</h3>
+                    <dl><dt>the NEW keyword</dt>
+                    <dd>Anytime you create datatypes, other than primitives, you must use the <strong>new</strong> keyword 
+                </dl>
+                    <h3 class="topic">4 Pillars of OOP</h3>
+                    <dl>
+                        <dt>Inheritance</dt>
+                        <dd><p>The ability for entities to adopt variables (fields) and/or methods (behaviour) from a parent (super) class, allowing for instantiation of child objects from said parent class.</p>
+                        <p>Understand the <strong>Inheritance Chain</strong></p><p>uderstand the <strong>Extends</strong> keyword.</p>
+                        <dl> <dt>Overriding</dt>
+                        <dd>
+                            <p><strong>Method Overriding</strong>: if we want to change the way a method behaves, we simply change the parameters</p>
+                        </dd></dl>
+                        </dd>
+                       
+                    </dl>
+                </div>
+                         <pre>
+<?php
+$tempDir = new DirectoryIterator(dirname(__FILE__));
+foreach ($tempDir as $fileinfo) {
+    if (!$fileinfo->isDot()) {
+        var_dump($fileinfo->getFilename());
+    }
+}
+?>
+</pre>
+            </div><!--    $    END class.content (former id.maincol)    $    -->
+        </div><!--    $    id:pagewidth    $    -->
+    </body>
+</html>

@@ -1,38 +1,21 @@
-<?php 
-date_default_timezone_set('EST');
-$page_heading = 'Embed Twitter Elements';
-$title = 'Twitter Feed Notes';
-$lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
-?>
 <!DOCTYPE html>
 <html>
 
 <head>
-  <meta charset="UTF-8"> 
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
-    <?php print $title; ?>
+    Tutorial - My Notes
   </title>
-  <link rel="icon" type="image/ico" href="favicon.ico">
-  <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+  <link href="iframestyle.css" rel="stylesheet" type="text/css" media="screen" />
   <style>
-/** if needed add style here */
+/** if you need custom styles put it here */
   </style>
-    <link 
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
-        rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" 
-        crossorigin="anonymous">    <!-- BOOTSTRAP STYLE -->
-    <link 
-        rel="stylesheet" 
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link 
-        href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" 
-        rel="stylesheet">
-    <link 
-        href="assets/css/notes.css" 
-        rel="stylesheet" 
-        type="text/css">
+  	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+	<link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -42,7 +25,7 @@ $lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
     <!--    ^:begin    class:content    ^    -->
     <div class="">
     <section id="header">  
-    <h1 class="bg-dark text-light text-end pe-3"><?php echo $title; ?></h1>
+    <h1 class="bg-dark text-light text-end pe-3"> Notes -  Tutorial</h1>
 </section>
 <section id="general_notes">
       <div id="" class="notes"> <!-- ^:begin #general_notes ^ -->
@@ -83,7 +66,7 @@ $lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
 <div class="is-table-default">
   
 <p><b>Please note</b>:</p>
-<p>We are retiring the Likes, Collections, and Moments timelines on September 15, 2022. We recommend you use the&nbsp;<a href="/en/docs/twitter-for-websites/timelines/guides/profile-timeline">Profile</a>&nbsp;and&nbsp;<a href="/en/docs/twitter-for-websites/timelines/guides/list-timeline">Lists</a>&nbsp;timelines, which we‚Äôre updating to become faster, easier to use, and more up-to-date with Twitter features and functionality.</p>
+<p>We are retiring the Likes, Collections, and Moments timelines on September 15, 2022. We recommend you use the&nbsp;<a href="/en/docs/twitter-for-websites/timelines/guides/profile-timeline">Profile</a>&nbsp;and&nbsp;<a href="/en/docs/twitter-for-websites/timelines/guides/list-timeline">Lists</a>&nbsp;timelines, which weíre updating to become faster, easier to use, and more up-to-date with Twitter features and functionality.</p>
 <p>You can learn more about this change in our&nbsp;<a href="https://twittercommunity.com/t/removing-support-for-embedded-like-collection-and-moment-timelines/150313">announcement</a>.</p>
 
 
@@ -148,7 +131,7 @@ $lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
     <div class="d07-raw-html">
 
 <div class="d07">
-  <h3>Linear style example<a class="headerlink" href="#linear-style-example" title="Permalink to this headline">¬∂</a></h3>
+  <h3>Linear style example<a class="headerlink" href="#linear-style-example" title="Permalink to this headline">∂</a></h3>
 <br>
 <iframe id="twitter-widget-4" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-timeline twitter-timeline-rendered" style="position: static; visibility: visible; display: inline-block; width: 500px; height: 700px; padding: 0px; border: none; max-width: 100%; min-width: 180px; margin-top: 0px; margin-bottom: 0px; min-height: 200px;" data-widget-id="collection:539487832448843776" title="Twitter Timeline"></iframe> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div></div>
@@ -185,7 +168,7 @@ $lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
 <div class="is-table-default">
   
 <h3>Lists</h3>
-<p>A&nbsp;<a href="/en/docs/twitter-for-websites/timelines/guides/list-timeline" title="list timeline">list timeline</a>&nbsp;displays the latest Tweets from a curated, public list of Twitter accounts. The timeline includes a header displaying the list‚Äôs name, description, and curator. To create lists on Twitter.com, the Twitter app, or in TweetDeck,&nbsp;<a href="https://support.twitter.com/articles/76460">learn more here</a>.</p>
+<p>A&nbsp;<a href="/en/docs/twitter-for-websites/timelines/guides/list-timeline" title="list timeline">list timeline</a>&nbsp;displays the latest Tweets from a curated, public list of Twitter accounts. The timeline includes a header displaying the listís name, description, and curator. To create lists on Twitter.com, the Twitter app, or in TweetDeck,&nbsp;<a href="https://support.twitter.com/articles/76460">learn more here</a>.</p>
 
 
 </div>
@@ -208,7 +191,7 @@ $lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
 <div class="is-table-default">
   
 <h2>How to add an embedded timeline to your website</h2>
-<p>Visit&nbsp;<a href="https://publish.twitter.com/">publish.twitter.com</a>&nbsp;to generate embed codes for profiles, lists, and&nbsp;<a href="/en/docs/twitter-for-websites/timelines/guides/collection" title="collections">collections</a>. You can also click ‚ÄúEmbed this‚Ä¶‚Äù from the ‚Äú‚Ä¢‚Ä¢‚Ä¢‚Äù menu on timeline screens on Twitter.com, or the ‚ÄúShare‚Äù menu of a TweetDeck column.</p>
+<p>Visit&nbsp;<a href="https://publish.twitter.com/">publish.twitter.com</a>&nbsp;to generate embed codes for profiles, lists, and&nbsp;<a href="/en/docs/twitter-for-websites/timelines/guides/collection" title="collections">collections</a>. You can also click ìEmbed thisÖî from the ìïïïî menu on timeline screens on Twitter.com, or the ìShareî menu of a TweetDeck column.</p>
 
 
 </div>
@@ -300,7 +283,7 @@ Tweets by @TwitterDev
 </tr><tr><td><span class="code-inline">noscrollbar</span></td>
 <td>Crops and hides the main timeline scrollbar, if visible. Please consider that hiding standard user interface components can affect the accessibility of your website.</td>
 </tr><tr><td><span class="code-inline">transparent</span></td>
-<td>Removes the widget‚Äôs background color.</td>
+<td>Removes the widgetís background color.</td>
 </tr></tbody></table>
 
 
@@ -447,7 +430,7 @@ Tweets by @TwitterDev
   
 <h2>Accessibility: Override ARIA live politeness</h2>
 <p>An embedded timeline describes its content for screen readers and other assistive technologies using additional markup defined in&nbsp;<a href="http://www.w3.org/WAI/intro/aria.php">WAI-ARIA standards</a>. A timeline widget is a&nbsp;<a href="http://www.w3.org/WAI/PF/aria-practices/#liveprops">live region of a page</a>&nbsp;which will receive updates when new Tweets become available.</p>
-<p>By default, a timeline has a politeness value of&nbsp;<span class="code-inline">polite</span>&nbsp;by default; set a&nbsp;<span class="code-inline">data-aria-polite</span>&nbsp;attribute value of&nbsp;assertive&nbsp;to set the embedded timeline live region politeness to&nbsp;<span class="code-inline">assertive</span>, for example if you‚Äôre using the embedded Timeline as a primary source of live content in your page.</p>
+<p>By default, a timeline has a politeness value of&nbsp;<span class="code-inline">polite</span>&nbsp;by default; set a&nbsp;<span class="code-inline">data-aria-polite</span>&nbsp;attribute value of&nbsp;assertive&nbsp;to set the embedded timeline live region politeness to&nbsp;<span class="code-inline">assertive</span>, for example if youíre using the embedded Timeline as a primary source of live content in your page.</p>
 
 
 </div>
@@ -496,13 +479,13 @@ Tweets by @TwitterDev
 
 <div id="twtr-article-embedded-survey" class="b32"><iframe id="embeddedIframe2315" title="Feedback Survey" scrolling="no" src="https://developer.twitter.com/medallia/2.41.1_20211116204941/liveApp/2.41.1/form-app-web.html?formId=2315&amp;type=live&amp;isMobile=false&amp;referrer=https%3A%2F%2Fdeveloper.twitter.com%2Fen%2Fdocs%2Ftwitter-for-websites%2Ftimelines%2Foverview&amp;region=digital-cloud-us-prem&amp;displayType=embedded&amp;isSeparateFormTemplateFromData=true" style="border: 0px; width: 100%; height: 248px; display: block;"></iframe></div>
 
-    <section class="footer px-4">                   <!--    .FOOTER     -->
-        <div class="row gx-5">
-            <div class="col"><div class="p-3 border bg-light"> Based on Notes by <a href="https://github.com/ajaxStardust" target="_blank" title="View original">@ajaxStardust</a> <em>Laravel</em> notes:</div></div>
-            <div class="col"><div class="p-3 border bg-light text-end"><kbd><?php echo $lastMod; ?></kbd></div></div>
         </div>
-    </section>      
-  </div>                                            <!--    .content  -->
+        <p class="content footer cite">Based on Brad Traversy&apos;s <a href="https://github.com/bradtraversy/-crash-2021" target="_blank" title="View original"></a> Crash Course.
+        </p>
+      </div><!--    $ :end    END class.content (former id.maincol)    $    -->
+  </section>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
+
 </html>
+

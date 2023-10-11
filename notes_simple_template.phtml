@@ -1,0 +1,100 @@
+<?php 
+header('Access-Control-Allow-Origin: *'); // ENABLE CORS (Cross-Origin Request) policy allow all
+date_default_timezone_set('EST');
+$page_heading = 'PAGE HEADING is php var';
+$title = 'SET PAGE TITLE @ line 2';
+$lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
+?>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <?php print $title; ?>
+  </title>
+  <link rel="icon" type="image/ico" href="favicon.ico">
+  <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+  <style>
+
+.tsw {
+    font-family: "source serif pro";
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+                                                        /** if needed add style here */
+  </style>
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" 
+        crossorigin="anonymous">    <!-- BOOTSTRAP STYLE -->
+    <link 
+        rel="stylesheet" 
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link 
+        href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" 
+        rel="stylesheet">
+    <link 
+        href="assets/css/notes.css" 
+        rel="stylesheet" 
+        type="text/css">
+</head>
+
+<body>
+
+  <div id="pagewidth" class="container">    <!--    ^:begin    class:content    ^    -->
+    
+    <section id="header">  <!-- #HEADER -->
+        <h1 class="bg-dark text-light text-end pe-3"><?php print $page_heading; ?></h1>
+    </section>
+    <section id="general_notes">
+          <div class="notes"> <!-- ^:begin #general_notes ^ -->
+            <h2>General Notes</h2>
+            <div class="notes"> 
+				
+<div class="wp-block-image">
+<figure class="aligncenter"><a href="https://centrewebdesign.com/about.php" target="_blank" rel="noreferrer noopener"><img src="https://ci3.googleusercontent.com/mail-sig/AIorK4x4aYuZKKbx-iRfEgF0j0KKhSYnZsltvxUR70QreXpQKQx7TwRZqb0II44dkTVptD-moe-RJB0" alt="" style="filter: invert(0);"></a><figcaption><a rel="noreferrer noopener" href="http://www.centrewebdesign.com/" target="_blank">CentreWebDesign.com</a></figcaption></figure>
+<figure class="aligncenter size-full is-resized"><a href="https://my.indeed.com/p/9n1d3mc" target="_blank" rel="noreferrer noopener"><img loading="lazy" src="https://ajaxstardust.vivaldi.net/wp-content/uploads/sites/31775/2023/07/image.png" alt="" class="wp-image-60" width="28" height="28" style="filter: invert(0);"></a><figcaption><a rel="noreferrer noopener" href="https://www.linkedin.com/in/jeffreysabarese" target="_blank">linkedin.com/in/jeffreysabarese</a></figcaption></figure>
+<p class="has-text-align-center" style="font-size:0.75rem">Voice/ Text:&nbsp; +1 (814) 867-5309</p>
+</div>
+
+            
+            </div>                                        
+          </div>                    <!-- $ end .notes div -->
+    </section>
+    <section id="_glossary"> <!-- ^:begin #_GLOSSARY ^ -->
+        <div>
+        <h2>Glossary:</h2>
+        <p>Key Terms about <?php print $page_heading; ?></p>
+        <dl>
+            <dt class="keyTerms">dt.keyTerms #_glossary</dt>
+            <dd>
+            <p>Something about  folder structure...</p>
+            <pre>#       /var/www/html/framework_name/
+#       |-- some.file
+#       |-- some.ts
+#       |-- some.json
+#       |-- some.js</pre>
+            <p>Remember: There are tools, including bash commandline which can <strong>generate the tree</strong></p>
+            </dd>
+        </dl>
+        </div> <!-- $ :end #_glossary -->
+    </section>
+      <section class="footer px-4">                   <!--    .FOOTER     -->
+        <div class="row gx-5">
+            <div class="col"><div class="p-3 border bg-light"> Based on Notes by <a href="https://github.com/ajaxStardust" target="_blank" title="View original">@ajaxStardust</a> <em>Laravel</em> notes:</div></div>
+            <div class="col"><div class="p-3 border bg-light text-end"><kbd><?php echo $lastMod; ?></kbd></div></div>
+        </div>
+    </section> 
+      </div><!--    $ :end    END class.content (former id.maincol)    $    -->
+  </section>
+            </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+            
+</body>
+
+</html>
+
