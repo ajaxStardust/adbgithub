@@ -15,7 +15,11 @@
 
 ?>
 
-<div id="pageControls">
+<div class="hide-show-element">
+  <input type="checkbox" id="toggle" />
+  <label for="toggle"></label>
+
+<div id="pageControls" class="test1">
     <header id="pageControlHeader">Page Control</header>
     <ul id="controList">
     <li id="toTopJscon">
@@ -28,7 +32,7 @@
             <span class="handler" id="goBackHandler"><a title="JavaScript Function of showme-hideme_js - goBack()" onclick="goBack()"><img src="<?php echo $xro; ?>assets/css/back-matchingred.png" height="16" width="26" alt="History: Go Back" title="Back to previous page" /></a></span>
         </li>
         <li id="toBottom">
-            <a class="intraNav" href="#footer"><img src="<?php echo $xro; ?>assets/css/arrow-down.png" alt="jump to bottom" /> <span id="footJumper">bottom</span> 
+            <a class="intraNav" href="#footer"><img src="<?php echo $xro; ?>assets/css/arrow-down.png" alt="jump to bottom" /> <span id="footJumper">bottom</span>
             </a></li>
         <li id="accessTrigger"><span class="trigger" id="accessContainerTrigger" onclick="showHide('accessContainer')"> toggle acc </span></li>
         <li class="loader"> <span id="lockFrameLoader" class="cssloader"><a id="lockFrameAnchor" title="Lock main iframe for easier viewing of large images or lengthy text" href="#mainFrameContainer">lock iframe</a> </span>
@@ -46,7 +50,7 @@
     </ul>
     <!-- temp note: moved css box model image to dochead for now -->
 </div>
- 
+ </div>
 <hr class="hidden" />
 
 <?php
