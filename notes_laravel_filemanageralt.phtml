@@ -1,0 +1,155 @@
+<?php
+/*
+ * adb_simplest/template.phtml
+ *
+ * Copyright 2023 @ajaxStardust <flux@mx23>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ *
+ *
+ */
+
+header('Access-Control-Allow-Origin: *'); // ENABLE CORS (Cross-Origin Request) policy allow all - CAUTION: not-ready-for-prime-time player
+date_default_timezone_set('EST');
+$page_heading = '&#x201c;Simple Template&#x201d; ';
+$title = 'Basic TEMPLATE';
+$lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <?php print $title; ?>
+  </title>
+  <link rel="icon" type="image/ico" href="favicon.ico">
+  <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+
+  <style>
+    .tsw {
+      font-family: "source serif pro";
+      font-size: 1.2rem;
+      font-style: italic;
+    }
+
+    /** if needed add style here
+                                ** NOTE THE NEW favICON code here:
+                                **
+                                */
+  </style>
+  <link rel="icon" href="./favicon.ico" sizes="32x32">
+  <link rel="icon" href="./favicon.ico" sizes="192x192">
+  <link rel="apple-touch-icon" href="./favicon.ico">
+  <meta name="msapplication-TileImage" content="<!-- http://.file./ -->">
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <!-- BOOTSTRAP STYLE -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
+  <link href="assets/css/notes.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+  <div id="pagewidth" class="container"> <!--    :begin    class:content        -->
+
+    <section id="header"> <!-- #HEADER -->
+      <h1 class="bg-dark text-light text-end pe-3">
+        <?php print $page_heading; ?>
+      </h1>
+    </section>
+    <section id="general_notes">
+      <h2>General Notes</h2>
+      <div class="notes">
+<div>https://medium.com/@codesolutionstuff/laravel-9-file-manager-tutorial-example-7ef906679b15</div>
+<div class="ka kb kc kd ke"><div class="ab ca"><div class="ch bg eu ev ew ex"><h2 id="1f2f" class="kf kg kh be ki kj kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld bj" data-selectable-paragraph=""><a class="af le" href="https://www.codesolutionstuff.com/laravel-9-file-manager-tutorial-example/" rel="noopener ugc nofollow" target="_blank"><strong class="al">Laravel 9 File Manager Tutorial Example</strong></a><strong class="al"></strong></h2><figure class="lf lg lh li lj lk ll lm paragraph-image"><div class="ab cm ca ln"><picture><source srcset="https://miro.medium.com/v2/0*skHhnYkpSc0dZ8js 640w, https://miro.medium.com/v2/0*skHhnYkpSc0dZ8js 720w, https://miro.medium.com/v2/0*skHhnYkpSc0dZ8js 750w, https://miro.medium.com/v2/0*skHhnYkpSc0dZ8js 786w, https://miro.medium.com/v2/0*skHhnYkpSc0dZ8js 828w, https://miro.medium.com/v2/0*skHhnYkpSc0dZ8js 1100w, https://miro.medium.com/v2/0*skHhnYkpSc0dZ8js 1400w" sizes="(min-resolution: 4dppx) and (max-width: 700px) 50vw, (-webkit-min-device-pixel-ratio: 4) and (max-width: 700px) 50vw, (min-resolution: 3dppx) and (max-width: 700px) 67vw, (-webkit-min-device-pixel-ratio: 3) and (max-width: 700px) 65vw, (min-resolution: 2.5dppx) and (max-width: 700px) 80vw, (-webkit-min-device-pixel-ratio: 2.5) and (max-width: 700px) 80vw, (min-resolution: 2dppx) and (max-width: 700px) 100vw, (-webkit-min-device-pixel-ratio: 2) and (max-width: 700px) 100vw, 700px" type="image/webp"><source data-testid="og" srcset="https://miro.medium.com/v2/0*skHhnYkpSc0dZ8js 640w, https://miro.medium.com/v2/0*skHhnYkpSc0dZ8js 720w, https://miro.medium.com/v2/0*skHhnYkpSc0dZ8js 750w, https://miro.medium.com/v2/0*skHhnYkpSc0dZ8js 786w, https://miro.medium.com/v2/0*skHhnYkpSc0dZ8js 828w, https://miro.medium.com/v2/0*skHhnYkpSc0dZ8js 1100w, https://miro.medium.com/v2/0*skHhnYkpSc0dZ8js 1400w" sizes="(min-resolution: 4dppx) and (max-width: 700px) 50vw, (-webkit-min-device-pixel-ratio: 4) and (max-width: 700px) 50vw, (min-resolution: 3dppx) and (max-width: 700px) 67vw, (-webkit-min-device-pixel-ratio: 3) and (max-width: 700px) 65vw, (min-resolution: 2.5dppx) and (max-width: 700px) 80vw, (-webkit-min-device-pixel-ratio: 2.5) and (max-width: 700px) 80vw, (min-resolution: 2dppx) and (max-width: 700px) 100vw, (-webkit-min-device-pixel-ratio: 2) and (max-width: 700px) 100vw, 700px"><img alt="" class="lo bg lp c" width="700" loading="eager" role="presentation" src="https://miro.medium.com/v2/0*skHhnYkpSc0dZ8js"></picture></div></figure></div></div></div><div class="ab ca lq lr ls lt" role="separator"><span class="lu bx bl lv lw lx"></span><span class="lu bx bl lv lw lx"></span><span class="lu bx bl lv lw"></span></div><div class="ka kb kc kd ke"><div class="ab ca"><div class="ch bg eu ev ew ex"><p id="6782" class="pw-post-body-paragraph ly lz kh ma b mb mc md me mf mg mh mi kr mj mk ml kv mm mn mo kz mp mq mr ms ka bj" data-selectable-paragraph="">I’ll demonstrate how to install the file manager package in a Laravel application in this blog. This package supports the integration of cloud storage and the selection of various files.<br>This File Manager is simple to setup, and the forthcoming version will have cloud support.</p><h2 id="228d" class="kf kg kh be ki kj kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld bj" data-selectable-paragraph="">Features :-</h2><ol class=""><li id="ca62" class="ly lz kh ma b mb mt md me mf mu mh mi kr mv mk ml kv mw mn mo kz mx mq mr ms my mz na bj" data-selectable-paragraph="">Integration of CKEditor, TinyMCE, and Summernote</li><li id="cdb5" class="ly lz kh ma b mb nb md me mf nc mh mi kr nd mk ml kv ne mn mo kz nf mq mr ms my mz na bj" data-selectable-paragraph="">Independent button</li><li id="14e6" class="ly lz kh ma b mb nb md me mf nc mh mi kr nd mk ml kv ne mn mo kz nf mq mr ms my mz na bj" data-selectable-paragraph="">submitting proof</li><li id="7f63" class="ly lz kh ma b mb nb md me mf nc mh mi kr nd mk ml kv ne mn mo kz nf mq mr ms my mz na bj" data-selectable-paragraph="">Image scaling and cropping</li><li id="fdc1" class="ly lz kh ma b mb nb md me mf nc mh mi kr nd mk ml kv ne mn mo kz nf mq mr ms my mz na bj" data-selectable-paragraph="">Multi-user public and private folders</li><li id="b539" class="ly lz kh ma b mb nb md me mf nc mh mi kr nd mk ml kv ne mn mo kz nf mq mr ms my mz na bj" data-selectable-paragraph="">Customizable folder path, middlewares, routes, and views</li><li id="5edb" class="ly lz kh ma b mb nb md me mf nc mh mi kr nd mk ml kv ne mn mo kz nf mq mr ms my mz na bj" data-selectable-paragraph="">Offers support for files and images. Every kind operates in a unique directory.</li><li id="cd30" class="ly lz kh ma b mb nb md me mf nc mh mi kr nd mk ml kv ne mn mo kz nf mq mr ms my mz na bj" data-selectable-paragraph="">The following localities are supported: ar, bg, de, el, en, es, fa, fr, it, he, hu, nl, pl, pt-BR, pt PT, ro, ru, sv, tr, zh-CN, and zh-TW</li></ol><p id="2207" class="pw-post-body-paragraph ly lz kh ma b mb mc md me mf mg mh mi kr mj mk ml kv mm mn mo kz mp mq mr ms ka bj" data-selectable-paragraph="">I’ll provide a complete example of how to incorporate a file management package here. Let’s proceed by following the steps below.</p><h2 id="7637" class="kf kg kh be ki kj kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld bj" data-selectable-paragraph=""><strong class="al">Install Laravel App</strong></h2><p id="4e08" class="pw-post-body-paragraph ly lz kh ma b mb mt md me mf mu mh mi kr ng mk ml kv nh mn mo kz ni mq mr ms ka bj" data-selectable-paragraph="">You can install the fresh Laravel app in this stage. Open a terminal and type the command below.</p><pre class="lf lg lh li lj nj nk nl nm ax nn bj"><span id="681e" class="kf kg kh nk b gg no np l nq nr" data-selectable-paragraph="">composer create-project --prefer-dist laravel/laravel blog</span></pre><h2 id="418c" class="kf kg kh be ki kj kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld bj" data-selectable-paragraph=""><strong class="al">Install Unisharp File Manager Package</strong></h2><p id="8d3e" class="pw-post-body-paragraph ly lz kh ma b mb mt md me mf mu mh mi kr ng mk ml kv nh mn mo kz ni mq mr ms ka bj" data-selectable-paragraph="">Installing the file manager package in this Laravel application step. Open a terminal and type the command below.</p><pre class="lf lg lh li lj nj nk nl nm ax nn bj"><span id="eacf" class="kf kg kh nk b gg no np l nq nr" data-selectable-paragraph="">composer <strong class="nk ns">require</strong> unisharp/laravel-filemanager</span></pre><h2 id="0ce2" class="kf kg kh be ki kj kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld bj" data-selectable-paragraph=""><strong class="al">Add Provider and Aliase</strong></h2><p id="8182" class="pw-post-body-paragraph ly lz kh ma b mb mt md me mf mu mh mi kr ng mk ml kv nh mn mo kz ni mq mr ms ka bj" data-selectable-paragraph="">You can add providers and aliases in the configuration app file in this phase, so let’s open the app.php file and do that.</p><p id="d0dc" class="pw-post-body-paragraph ly lz kh ma b mb mc md me mf mg mh mi kr mj mk ml kv mm mn mo kz mp mq mr ms ka bj" data-selectable-paragraph=""><strong class="ma ns">config/app.php</strong></p><pre class="lf lg lh li lj nj nk nl nm ax nn bj"><span id="1204" class="kf kg kh nk b gg no np l nq nr" data-selectable-paragraph="">//Providers<br>UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::<strong class="nk ns">class</strong>,<br>Intervention\Image\ImageServiceProvider::<strong class="nk ns">class</strong>,<br><br>//Aliases<br>'Image' =&gt; Intervention\Image\Facades\Image::<strong class="nk ns">class</strong>,</span></pre><h2 id="5fef" class="kf kg kh be ki kj kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld bj" data-selectable-paragraph=""><strong class="al">Publish Config File</strong></h2><p id="b1d7" class="pw-post-body-paragraph ly lz kh ma b mb mt md me mf mu mh mi kr ng mk ml kv nh mn mo kz ni mq mr ms ka bj" data-selectable-paragraph="">Using the command below, you can publish the package’s configuration and assets in this phase.</p><pre class="lf lg lh li lj nj nk nl nm ax nn bj"><span id="e72a" class="kf kg kh nk b gg no np l nq nr" data-selectable-paragraph="">php artisan vendor:publish --tag=lfm_config<br>php artisan vendor:publish --tag=lfm_public</span></pre><h2 id="e572" class="kf kg kh be ki kj kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld bj" data-selectable-paragraph=""><strong class="al">Create symbolic link</strong></h2><p id="e963" class="pw-post-body-paragraph ly lz kh ma b mb mt md me mf mu mh mi kr ng mk ml kv nh mn mo kz ni mq mr ms ka bj" data-selectable-paragraph="">Using the command below, you can build a symbolic link in this phase.</p><pre class="lf lg lh li lj nj nk nl nm ax nn bj"><span id="c6d5" class="kf kg kh nk b gg no np l nq nr" data-selectable-paragraph="">php artisan storage:link</span></pre><h2 id="1c0d" class="kf kg kh be ki kj kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld bj" data-selectable-paragraph=""><strong class="al">Edit .env File</strong></h2><p id="90e7" class="pw-post-body-paragraph ly lz kh ma b mb mt md me mf mu mh mi kr ng mk ml kv nh mn mo kz ni mq mr ms ka bj" data-selectable-paragraph="">We must alter the .env file in this step to replace APP URL with your localhost URL.</p><p id="414c" class="pw-post-body-paragraph ly lz kh ma b mb mc md me mf mg mh mi kr mj mk ml kv mm mn mo kz mp mq mr ms ka bj" data-selectable-paragraph=""><strong class="ma ns">.env</strong></p><pre class="lf lg lh li lj nj nk nl nm ax nn bj"><span id="2c53" class="kf kg kh nk b gg no np l nq nr" data-selectable-paragraph=""><a class="af le" href="http://localhost:8000" rel="noopener ugc nofollow" target="_blank">http://localhost:8000</a></span></pre><h2 id="96b6" class="kf kg kh be ki kj kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld bj" data-selectable-paragraph=""><strong class="al">Add Route</strong></h2><p id="d4f2" class="pw-post-body-paragraph ly lz kh ma b mb mt md me mf mu mh mi kr ng mk ml kv nh mn mo kz ni mq mr ms ka bj" data-selectable-paragraph="">Currently, we must build a route to the Laravel application that provides access to the File Manager package. so add the following route by opening your “routes/web.php” file.</p><p id="e599" class="pw-post-body-paragraph ly lz kh ma b mb mc md me mf mg mh mi kr mj mk ml kv mm mn mo kz mp mq mr ms ka bj" data-selectable-paragraph=""><strong class="ma ns">routes/web.php</strong></p><pre class="lf lg lh li lj nj nk nl nm ax nn bj"><span id="8818" class="kf kg kh nk b gg no np l nq nr" data-selectable-paragraph="">Route::<strong class="nk ns">group</strong>(['prefix' =&gt; 'laravel-filemanager', 'middleware' =&gt; ['web', 'auth']], <strong class="nk ns">function</strong> ()<br>    \UniSharp\LaravelFilemanager\Lfm::routes();<br>);</span></pre><p id="44d5" class="pw-post-body-paragraph ly lz kh ma b mb mc md me mf mg mh mi kr mj mk ml kv mm mn mo kz mp mq mr ms ka bj" data-selectable-paragraph="">Now that our example is ready to run, use the command below for a quick run:</p><pre class="lf lg lh li lj nj nk nl nm ax nn bj"><span id="c268" class="kf kg kh nk b gg no np l nq nr" data-selectable-paragraph="">php artisan serve</span></pre><p id="4cf2" class="pw-post-body-paragraph ly lz kh ma b mb mc md me mf mg mh mi kr mj mk ml kv mm mn mo kz mp mq mr ms ka bj" data-selectable-paragraph="">You may now open the URL below in your browser after first logging in.</p><pre class="lf lg lh li lj nj nk nl nm ax nn bj"><span id="ba64" class="kf kg kh nk b gg no np l nq nr" data-selectable-paragraph=""><a class="af le" href="http://localhost:8000/laravel-filemanager" rel="noopener ugc nofollow" target="_blank">http://localhost:8000/laravel-filemanager</a></span></pre><p id="0cfa" class="pw-post-body-paragraph ly lz kh ma b mb mc md me mf mg mh mi kr mj mk ml kv mm mn mo kz mp mq mr ms ka bj" data-selectable-paragraph=""><a class="af le" href="https://www.codesolutionstuff.com/laravel-9-file-manager-tutorial-example/" rel="noopener ugc nofollow" target="_blank">https://www.codesolutionstuff.com/laravel-9-file-manager-tutorial-example/</a></p></div></div></div><div class="ab ca lq lr ls lt" role="separator"><span class="lu bx bl lv lw lx"></span><span class="lu bx bl lv lw lx"></span><span class="lu bx bl lv lw"></span></div>
+
+        <dl>
+          <dt class="keyTerms pointer">Example Collapse <span class="normal blue pointer" id="show_n01"
+              onclick="swap_text('show_n01','notes_01') ">[toggle...]</span>
+          </dt>
+          <dd id="notes_01" class="displaynone"> <!-- hidden then revealed -->
+            <p>Something you want to be collapsed at first:
+              <code>some code maybe</code> or</p>
+            <pre>maybe some
+&#x3c;preformatted&#x3e;
+text here.</pre>
+          </dd>
+
+          <dt class="keyTerms pointer">Reveal random: <span class="normal blue pointer" id="show_n02"
+              onclick="swap_text('show_n02','notes_02') ">[toggle...]</span>
+          </dt>
+          <dd id="notes_02" class="displaynone"> <!-- hidden then revealed -->
+            <p>Some Random content
+          </dd>
+        </dl>
+
+        <!-- END NOTES --><!-- END NOTES -->
+        <!-- END NOTES --><!-- END NOTES -->
+
+
+      </div> <!-- $ end .notes div -->
+    </section>
+    <section> <!-- :begin #_GLOSSARY  -->
+      <div>
+        <h2>Glossary:</h2>
+        <h3>Key Terms about <?php print $page_heading; ?></h3>
+        <dl>
+        <dt class="pointer">Show Glossary<span class="normal blue pointer" id="show_g01"
+              onclick="swap_text('show_g01','glossary_01') ">[toggle...]</span>
+          </dt>
+          <dd id="glossary_01" class="displaynone">
+            <p>Maybe this is a note about a framework&apos;s folder structure...</p>
+            <pre>#       /var/www/html/framework_name/
+#       |-- some.file.name
+#       |-- some.ts
+#       |-- some.json
+#       |-- some.js</pre>
+<p>Remember: There are tools, such as the Linux command line tool, <code>tree</code> which can generate the
+                tree in various formats including <strong>JSON and HTML</strong>. E.g. <code>tree -J</code> or <code>tree -H http://path/of/dir</code></p>
+            <p><kbd>apt install tree</kbd></p>
+          </dd>
+        </dl>
+      </div> <!-- $ :end #_glossary -->
+    </section>
+    <footer class="footer px-4"> <!--    .FOOTER     -->
+      <div class="row gx-5">
+        <div class="col">
+          <div class="p-3 border bg-light"> Based on Notes by <a href="https://github.com/ajaxStardust" target="_blank"
+              title="View original">@ajaxStardust</a> <em>Laravel</em> notes:</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light text-end"><kbd>
+              <?php echo $lastMod; ?>
+            </kbd></div>
+        </div>
+      </div>
+    </footer>
+  </div><!--    $ :end    END class.content (former id.maincol)    $    -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+  <script src="assets/js/showme-hideme.js"></script>
+
+</body>
+
+</html>

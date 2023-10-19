@@ -47,13 +47,12 @@ nav {
   z-index: 10;
 }
 
-.navlist {
-  background: #1A4314;
+/* .navlist {
+  background: #1a4314;
   font-family: Verdana;
   font-size: 20px;
-  color: #CDCDCD;
-}
-
+  color: #cdcdcd;
+} */
 #ATTN_THIS_IS_PROCESSING {
   color: unset;
 }
@@ -71,13 +70,13 @@ nav {
   z-index: 10;
 }
 
-.navlist {
-  background: #1A4314;
+/* .navlist {
+  background: #1a4314;
   font-family: Verdana;
   font-size: 20px;
-  color: #CDCDCD;
+  color: #cdcdcd;
 }
-
+ */
 li.nav {
   /*  list-style-image: url(bullet_square_grey.png);*/
   margin-left: -0.5em;
@@ -89,9 +88,10 @@ li.bakicon {
   list-style-type: none;
 }
 
-li.markdownicon, li.mdicon::before {
-  color: rgb(102, 204, 145);
-  content: "∑";
+li.markdownicon,
+li.mdicon::before {
+  color: #66cc91;
+  content: "\2211";
   font-size: 1.5rem;
   float: left;
   display: block;
@@ -104,13 +104,14 @@ li.markdownicon, li.mdicon::before {
   font-weight: 500;
 }
 
-li.mdicon, li.markdownicon {
+li.mdicon,
+li.markdownicon {
   list-style-image: none !important;
 }
 
 li.cssicon::before {
-  color: #FF0;
-  content: "♛";
+  color: #ff0;
+  content: "\265b";
   font-size: 1.5rem;
   float: left;
   display: block;
@@ -139,7 +140,7 @@ li.jsicon {
 
 li.navnobull::before {
   color: #00bfff;
-  content: "∆";
+  content: "\2206";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -167,13 +168,19 @@ li.phpicon::before {
   font-weight: 900;
 }
 
-li.jsonicon, li.jsicon, li.shtmlicon, li.lockicon {
+li.jsonicon,
+li.jsicon,
+li.shtmlicon,
+li.lockicon {
   list-style-image: none !important;
 }
 
-li.jsonicon::before, li.jsicon::before, li.shtmlicon::before, li.lockicon::before {
+li.jsonicon::before,
+li.jsicon::before,
+li.shtmlicon::before,
+li.lockicon::before {
   color: #ff46ff;
-  content: "⛧";
+  content: "\26E7";
   margin-left: -3.1rem;
   padding-left: 0;
   white-space: pre;
@@ -182,13 +189,17 @@ li.jsonicon::before, li.jsicon::before, li.shtmlicon::before, li.lockicon::befor
   font-weight: 500;
 }
 
-li.xmlicon, li.ymlicon, li.yamlicon {
+li.xmlicon,
+li.ymlicon,
+li.yamlicon {
   list-style-image: none !important;
 }
 
-li.xmlicon::before, li.ymlicon::before, li.yamlicon::before {
+li.xmlicon::before,
+li.ymlicon::before,
+li.yamlicon::before {
   color: #ffaabb;
-  content: "⛥";
+  content: "\26E5";
   margin-left: -3.1rem;
   padding-left: 0;
   white-space: pre;
@@ -202,7 +213,7 @@ li.pharicon {
 }
 
 li.pharicon::before {
-  color: #BBFFbb;
+  color: #bbffbb;
   content: "♀";
   margin-left: -3rem;
   padding-left: 0;
@@ -249,13 +260,15 @@ li.thumbicon {
   list-style-type: none;
 }
 
-li.txticon, li.logicon {
+li.txticon,
+li.logicon {
   list-style-image: none !important;
 }
 
-li.txticon::before, li.logicon::before {
-  content: "🖹";
-  color: hsl(0, 0%, 82%);
+li.txticon::before,
+li.logicon::before {
+  content: "\1F5B9";
+  color: #d1d1d1;
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -289,7 +302,8 @@ body {
 }
 
 code,
-coden::before, lite {
+coden::before,
+lite {
   background-color: #dafac0;
   color: #05c;
   line-height: 140%;
@@ -483,7 +497,8 @@ iframe html {
   font-size: 8pt !important;
 }
 
-coden::before, lite {
+coden::before,
+lite {
   background-color: #fffaef;
   color: #395;
   padding: 0.4em;
@@ -606,8 +621,10 @@ n::before {
   font-family: "Liberation Mono", "DejaVu Sans Mono", "Lucida Console", "monte carlo", monospace;
 }
 
-n::before, Comment,
-n::before, Hints {
+n::before,
+Comment,
+n::before,
+Hints {
   color: #c00;
   font-family: monospace;
   font-style: italic;
@@ -1027,7 +1044,7 @@ li.regicon {
 }
 
 li.regicon::before {
-  content: "⚿";
+  content: "\26BF";
   color: #9f9;
   max-height: 16px;
   max-width: 16px;
@@ -1065,7 +1082,7 @@ li.xcf::before,
 li.xcficon {
   list-style-image: none !important;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -1087,8 +1104,8 @@ li.gzicon::before,
 li.raricon::before,
 li.sevenzipicon::before,
 li.zipicon::before {
-  color: #EfA;
-  content: "☯";
+  color: #efa;
+  content: "\262F";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -1483,8 +1500,8 @@ p#collapser img {
 #pageControls ul {
   background-color: #f8f8f8;
   border-radius: 1.5em 1em 1.5em 1em;
-  -webkit-box-shadow: 0 0 0.8em rgba(68, 68, 68, 0.5333333333);
-  box-shadow: 0 0 0.8em rgba(68, 68, 68, 0.5333333333);
+  -webkit-box-shadow: 0 0 0.8em rgba(68, 68, 68, 0.533333);
+  box-shadow: 0 0 0.8em rgba(68, 68, 68, 0.533333);
   margin: 0;
   padding: 0.5em 0 0.5em 0.7em;
   position: relative;
@@ -1912,95 +1929,117 @@ li#font_demo_sans::before {
 }
 
 .icoicon::before {
-  content: "∠";
-  color: #FFC;
+  content: "\2220";
+  color: #ffc;
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
   font-size: 1.5rem;
   float: left;
   font-weight: 900;
+}
+
+li.nav:active {
+  background-color: #ffffffee;
+  color: #333;
 }
 
 /* ;
 lists  */
 dl {
-  border: 0.1em dashed #ddd;
-  margin: 1em 0 2em 0.5em;
+  border: .1em dashed #ddd;
+  margin: 1em 0 2em .5em;
   width: 90%;
 }
+
 dl * dt {
   outline: 0;
   border: 0;
   font-style: italic;
 }
+
 dl dd {
   background-color: #fcfcfa;
   margin: 1em 0 0;
 }
+
 dl dd dl {
   background-color: #eee;
   border: medium;
   margin-bottom: 0;
 }
+
 dl dd dl dd {
   color: #330;
   margin-bottom: 0;
   padding-bottom: 0;
 }
+
 dl dd ul {
   list-style-position: inside;
 }
+
 dl dd ul li {
   color: #330;
-  font-family: "Liberation Sans", "Droid Sans", "DejaVu Sans", arial, helvetica, sans-serif;
-  text-indent: 0.5em;
+  font-family: "Liberation Sans","Droid Sans","DejaVu Sans",arial,helvetica,sans-serif;
+  text-indent: .5em;
 }
+
 dl dl * dt {
   font-style: normal;
 }
+
 dl dt {
-  border-bottom: 0.01em solid #777;
+  border-bottom: .01em solid #777;
   font-weight: 600;
 }
 
 li {
   font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
-  font-size: 0.95em;
+  font-size: .95em;
   font-weight: 400;
 }
+
 li.nav {
   list-style-image: url(bullet_square_grey.png);
-  margin-left: -0.5em;
+  margin-left: -.5em;
   padding-left: 0;
 }
+
 li.bakicon {
   list-style-image: url(bakicon.gif);
   list-style-type: none;
 }
+
 li.cssicon {
   list-style-image: none;
 }
+
 li.imgShowItem img {
   color: #555;
   height: 3em;
   width: 5em;
 }
+
 li.jsicon {
   list-style-image: url(javascript-icon.png);
 }
+
 li.navnobull {
   list-style-image: none;
 }
+
 li.new_dirHandArr {
   list-style-image: url(folder-new.gif);
 }
+
 li.pdficon {
   list-style-image: url(pdf.png);
 }
+
 li.phpicon::before {
   color: #ff46ff;
-  content: "♀";
+  content: "\2640";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -2008,12 +2047,14 @@ li.phpicon::before {
   float: left;
   font-weight: 900;
 }
+
 li.phtmlicon {
   list-style-image: none;
 }
+
 li.phtmlicon::before {
   color: #4646ff;
-  content: "⚤";
+  content: "\26A4";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -2021,32 +2062,41 @@ li.phtmlicon::before {
   float: left;
   font-weight: 500;
 }
+
 li.selicon {
   list-style-image: url(sel-icon.png);
 }
+
 li.shortcutlink {
   list-style-image: url(link-icon.gif);
 }
+
 li.shtmlicon {
   display: none;
   list-style-image: url(file.png);
 }
+
 li.swficon {
   list-style-image: url(swf-icon.gif);
 }
+
 li.thumbicon {
   list-style-image: url(thumb-icon.gif);
   list-style-type: none;
 }
+
 li.txticon {
   list-style-image: url(txt-icon.gif);
 }
+
 li.xmlicon {
   list-style-image: url(xml-icon.png);
 }
+
 li.xpiicon {
   list-style-image: url(xpiicon.png);
 }
+
 li.sourceLine:after {
   content: " ";
 }
@@ -2087,7 +2137,7 @@ body {
   background-position: left top;
   background-repeat: repeat;
   color: #304;
-  font-family: "Liberation Sans", "Droid Sans", "DejaVu Sans", arial, helvetica, sans-serif;
+  font-family: "Liberation Sans", "Droid Sans", "DejaVu Sans", arial, helvetica, sans-serif;
   margin: 0;
 }
 
@@ -2155,7 +2205,7 @@ li {
 
 #cssTips * dt,
 dl dt {
-  font-family: "Playfair Display", Argesta, Didot, GFSDidot, Lora, Cambria, "Times New Roman", times, serif;
+  font-family: "Playfair Display", Argesta, Didot, GFSDidot, Lora, Cambria, "Times New Roman", times, serif;
   text-indent: 0;
 }
 
@@ -2173,6 +2223,7 @@ dt code {
   color: #3a0;
   font-weight: 700;
 }
+
 dt.cross {
   color: #088;
   cursor: crosshair;
@@ -2193,7 +2244,7 @@ h4,
 h5,
 h6 {
   text-shadow: 0 0.04em 0 rgba(255, 255, 255, 0.9);
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
 }
 
 h4 {
@@ -2203,11 +2254,13 @@ h4 {
   text-indent: 0.4em;
   width: 89.9%;
 }
+
 h4.keyTermsHeading {
   color: #c30;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   font-style: italic;
 }
+
 h4:before {
   content: "★";
 }
@@ -2233,13 +2286,14 @@ iframe html {
   background-color: transparent;
   color: #aaa;
   display: block;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   font-size: 0.9em;
   margin-top: 1em;
   text-align: left;
   outline: 0.1em solid #f88;
   padding: unset;
 }
+
 #navlist li {
   background-color: rgba(255, 255, 255, 0.5);
   background-position: 50% 50%;
@@ -2257,22 +2311,26 @@ iframe html {
   font-size: 9pt;
   font-weight: 400;
 }
+
 #navlist li a {
   cursor: pointer;
   display: block;
   text-decoration: none;
   width: 100%;
 }
+
 #navlist li a:first-letter {
   color: #3434ee;
   font-size: 1.5em;
 }
+
 #navlist li.unknown {
   list-style-image: url(unknown-icon.png);
   margin-left: -0.5em;
   padding-left: 0;
   white-space: pre;
 }
+
 #navlist li ul li {
   font-family: sans-serif;
   font-size: 8pt !important;
@@ -2288,6 +2346,7 @@ p {
   line-height: 140%;
   padding: 0 0.8em;
 }
+
 p.displaynone {
   background-color: #ffc;
   border: 0.1em ridge #f03;
@@ -2310,6 +2369,7 @@ thead {
   margin-left: 8em;
   width: 100%;
 }
+
 * html.unfloat {
   height: 1%;
 }
@@ -2382,9 +2442,10 @@ thead {
 
 .closeme {
   color: #03f;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   text-align: center;
 }
+
 .closeme:hover {
   color: #c22;
   font-weight: 700;
@@ -2395,7 +2456,7 @@ thead {
   background-color: #eee;
   color: #337;
   display: inline-block;
-  font-family: "Liberation Mono", "DejaVu Sans Mono", "Lucida Console", "monte carlo", monospace;
+  font-family: "Liberation Mono", "DejaVu Sans Mono", "Lucida Console", "monte carlo", monospace;
 }
 
 .codeComment,
@@ -2418,10 +2479,12 @@ thead {
   margin: 0.5em auto;
   padding: 0.25em;
 }
+
 .content p {
   background-position: center bottom;
   background-repeat: repeat-x;
 }
+
 .content p * {
   background-color: rgba(255, 255, 255, 0.6);
 }
@@ -2437,7 +2500,7 @@ thead {
 .defListTitle {
   border: 0;
   color: #d02;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   font-style: italic;
   margin-bottom: 0.3em;
   width: 50%;
@@ -2500,19 +2563,23 @@ li.hiddenitem {
   padding: 0.2em 1em;
   text-align: justify;
 }
+
 .keyTerms h4 {
   border: 0.2em outset #aaa;
   padding: 0.3em;
   width: 8em;
 }
+
 .keyTerms ul li {
   font-size: 0.8em;
   margin-bottom: 2em;
 }
+
 .keyTerms ul li pre {
   background-image: none;
   font-size: larger;
 }
+
 .keyTerms ul li sup code {
   font-size: larger;
 }
@@ -2568,7 +2635,7 @@ li.hiddenitem {
 
 .serif,
 .serifBold {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
 }
 
 .serifBold {
@@ -2593,7 +2660,7 @@ li.hiddenitem {
 }
 
 .tableHeadrow {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   font-size: 1.1em;
   font-weight: 700;
   text-align: center;
@@ -2612,7 +2679,7 @@ li.hiddenitem {
 .trigger {
   color: navy;
   cursor: help;
-  font-family: "DejaVu Sans Condensed", "Arial Narrow", Arial, Helvetica, sans-serif;
+  font-family: "DejaVu Sans Condensed", "Arial Narrow", Arial, Helvetica, sans-serif;
   font-variant: small-caps;
   letter-spacing: 0.1em;
   line-height: 2em;
@@ -2652,18 +2719,22 @@ kbd {
 .winpathanchor {
   color: #060;
 }
+
 .winpathanchor:focus {
   background-color: #ffa;
   color: #00bfff;
 }
+
 .winpathanchor:hover {
   background-color: #ff0;
   color: green;
   outline: medium #00f;
 }
+
 .winpathanchor:link {
   color: #00f;
 }
+
 .winpathanchor:visited {
   color: purple;
 }
@@ -2701,7 +2772,7 @@ li.htmlicon {
 li.htmicon::before,
 li.htmlicon::before {
   color: red;
-  content: "♂";
+  content: "\2642";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -2732,7 +2803,7 @@ li.listheader,
 li.listheaditem {
   background-color: #fff;
   color: purple;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   font-size: 14pt;
   font-style: normal;
   font-variant: small-caps;
@@ -2820,7 +2891,7 @@ li.code-workspaceicon::before,
 li.workspaceicon::before,
 li.clpprjicon::before {
   color: #bb0;
-  content: "☸";
+  content: "\2638";
   max-height: 16px;
   max-width: 16px;
   margin-left: -3.15rem;
@@ -2864,12 +2935,14 @@ span.toggler {
 ul.keyTermsList {
   background-color: #f8f8f8;
   color: #006;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   padding: 0.8em;
 }
+
 ul.keyTermsList li {
   list-style-image: url(info-icon.gif);
 }
+
 ul.keyTermsList li sup {
   background-color: #fafafa;
   border-bottom: 0.18em groove #aaa;
@@ -2885,7 +2958,7 @@ ul.keyTermsList li sup {
 }
 
 #accessContainerTrigger {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
 }
 
 #accessoryContainer {
@@ -2905,6 +2978,7 @@ ul.keyTermsList li sup {
   margin-bottom: -1em;
   padding-top: 1em;
 }
+
 #backlinks a {
   color: #ff0;
 }
@@ -2913,6 +2987,7 @@ ul.keyTermsList li sup {
   text-align: center;
   text-indent: 3em;
 }
+
 #searchrec a {
   color: #00f !important;
 }
@@ -2940,6 +3015,7 @@ ul.keyTermsList li sup {
   -webkit-box-shadow: 0 0 0.5em #545454 inset;
           box-shadow: 0 0 0.5em #545454 inset;
 }
+
 #controList li {
   border: 0.08em solid #fff;
   display: block;
@@ -2981,15 +3057,18 @@ ul.keyTermsList li sup {
   margin: 0 auto;
   width: 85%;
 }
+
 #cssTips * dd {
   padding: 0.8em;
 }
+
 #cssTips * dt {
   font-style: oblique;
   margin: 0;
   padding: 0.3em 0 0.2em;
   text-align: left;
 }
+
 #cssTips dl {
   background-color: #fafaef;
 }
@@ -2998,7 +3077,7 @@ ul.keyTermsList li sup {
   background-color: rgba(255, 255, 255, 0.1);
   color: #000;
   display: table-cell;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   font-size: 0.95em;
   font-weight: 300;
   text-align: left;
@@ -3006,7 +3085,7 @@ ul.keyTermsList li sup {
 }
 
 #doc_loc_href {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   font-size: 1.2em;
   font-weight: 600;
   color: #fff;
@@ -3025,38 +3104,48 @@ ul.keyTermsList li sup {
   background-color: rgba(255, 255, 255, 0.1);
   background-repeat: repeat-x;
   clear: both;
-  font-family: "Liberation Sans", "Droid Sans", "DejaVu Sans", arial, helvetica, sans-serif;
+  font-family: "Liberation Sans", "Droid Sans", "DejaVu Sans", arial, helvetica, sans-serif;
   text-align: center;
 }
+
 #footer p {
   display: block;
   margin: 0 auto;
   padding-top: 1em;
 }
+
 #footer p a:hover {
   color: #aff;
 }
+
 #footer p a:link {
   color: #00f;
 }
+
 #footer p a:visited {
   color: #ddf;
 }
+
 #footer hr {
   border: 0.035em inset rgba(150, 190, 220, 0.7);
 }
+
 #footer :link {
   color: #8080ff;
 }
+
 #footer :visited {
   color: #d456d4;
 }
+
 #footer :focus {
   color: #ff8080;
 }
+
 #footer :hover {
   color: inherit;
 }
+
 #footer :active {
   color: #ff8080;
 }
@@ -3075,7 +3164,7 @@ ul.keyTermsList li sup {
 #frameName {
   background-color: rgba(255, 245, 152, 0.5);
   color: #003c3c;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   font-size: 0.9em;
   font-variant: small-caps;
 }
@@ -3135,13 +3224,14 @@ p#collapser img {
   width: 18%;
   z-index: 10;
 }
+
 #leftcol dl#alpharrayTest {
   z-index: 9;
 }
 
 #localScope {
   border: 2em solid #ccc;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   margin: 0 2em;
   width: 30em;
 }
@@ -3155,12 +3245,15 @@ p#collapser img {
   width: 80%;
   z-index: 11;
 }
+
 #maincol div.displayNone dl dd {
   background-color: #fffaf5;
 }
+
 #maincol dl dd {
   border: 0.08em dotted #c55;
 }
+
 #maincol dl dt {
   font-size: 1.2em;
   margin: 1em auto 0.5em;
@@ -3206,11 +3299,12 @@ p#collapser img {
 #pageControls {
   z-index: 999;
 }
+
 #pageControls ul {
   background-color: #f8f8f8;
   border-radius: 1.5em 1em 1.5em 1em;
-  -webkit-box-shadow: 0 0 0.8em rgba(68, 68, 68, 0.5333333333);
-          box-shadow: 0 0 0.8em rgba(68, 68, 68, 0.5333333333);
+  -webkit-box-shadow: 0 0 0.8em #4448;
+          box-shadow: 0 0 0.8em #4448;
   margin: 0;
   padding: 0.5em 0 0.5em 0.7em;
   position: relative;
@@ -3279,6 +3373,7 @@ p#collapser img {
   margin-top: -0.5em;
   font-size: 1rem;
 }
+
 #pageControlHeader:before {
   content: url(gear.png);
   margin-left: -1em;
@@ -3335,7 +3430,7 @@ p#collapser img {
   margin: 1em;
   padding: 0.5em;
   color: #000;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   background: 0 0;
   width: 10%;
   left: 45%;
@@ -3401,6 +3496,7 @@ p#collapser {
   font-size: 0.8em;
   margin: 0.4em 0.5em;
 }
+
 #urlSplit:before {
   color: #f03;
   content: "Showing: preg_split(matches[ 0] ): ";
@@ -3485,6 +3581,7 @@ p#jumpBack {
   float: right;
   margin: 0 auto;
 }
+
 p#jumpBack img {
   display: table-cell;
 }
@@ -3615,7 +3712,7 @@ li.bmp::before,
 li.bmpicon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -3633,7 +3730,7 @@ li.gif::before,
 li.gificon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -3651,7 +3748,7 @@ li.ico::before,
 li.icoicon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -3669,7 +3766,7 @@ li.jpg::before,
 li.jpgicon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -3687,7 +3784,7 @@ li.pdn::before,
 li.pdnicon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -3705,7 +3802,7 @@ li.png::before,
 li.pngicon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -3723,7 +3820,7 @@ li.psd::before,
 li.psdicon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -3741,7 +3838,7 @@ li.svg::before,
 li.svgicon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -3759,7 +3856,7 @@ li.tga::before,
 li.tgaicon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -3777,7 +3874,7 @@ li.tif::before,
 li.tiff::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -3795,7 +3892,7 @@ li.tifficon::before,
 li.tificon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -3813,7 +3910,7 @@ li.xcf::before,
 li.xcficon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -3828,7 +3925,7 @@ body {
   background-position: left top;
   background-repeat: repeat;
   color: #304;
-  font-family: "Liberation Sans", "Droid Sans", "DejaVu Sans", arial, helvetica, sans-serif;
+  font-family: "Liberation Sans", "Droid Sans", "DejaVu Sans", arial, helvetica, sans-serif;
   margin: 0;
 }
 
@@ -3896,7 +3993,7 @@ li {
 
 #cssTips * dt,
 dl dt {
-  font-family: "Playfair Display", Argesta, Didot, GFSDidot, Lora, Cambria, "Times New Roman", times, serif;
+  font-family: "Playfair Display", Argesta, Didot, GFSDidot, Lora, Cambria, "Times New Roman", times, serif;
   text-indent: 0;
 }
 
@@ -3914,6 +4011,7 @@ dt code {
   color: #3a0;
   font-weight: 700;
 }
+
 dt.cross {
   color: #088;
   cursor: crosshair;
@@ -3934,7 +4032,7 @@ h4,
 h5,
 h6 {
   text-shadow: 0 0.04em 0 rgba(255, 255, 255, 0.9);
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
 }
 
 h4 {
@@ -3944,11 +4042,13 @@ h4 {
   text-indent: 0.4em;
   width: 89.9%;
 }
+
 h4.keyTermsHeading {
   color: #c30;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   font-style: italic;
 }
+
 h4:before {
   content: "★";
 }
@@ -3974,13 +4074,14 @@ iframe html {
   background-color: transparent;
   color: #aaa;
   display: block;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   font-size: 0.9em;
   margin-top: 1em;
   text-align: left;
   outline: 0.1em solid #f88;
   padding: unset;
 }
+
 #navlist li {
   background-color: rgba(255, 255, 255, 0.5);
   background-position: 50% 50%;
@@ -3998,22 +4099,26 @@ iframe html {
   font-size: 9pt;
   font-weight: 400;
 }
+
 #navlist li a {
   cursor: pointer;
   display: block;
   text-decoration: none;
   width: 100%;
 }
+
 #navlist li a:first-letter {
   color: #3434ee;
   font-size: 1.5em;
 }
+
 #navlist li.unknown {
   list-style-image: url(unknown-icon.png);
   margin-left: -0.5em;
   padding-left: 0;
   white-space: pre;
 }
+
 #navlist li ul li {
   font-family: sans-serif;
   font-size: 8pt !important;
@@ -4029,6 +4134,7 @@ p {
   line-height: 140%;
   padding: 0 0.8em;
 }
+
 p.displaynone {
   background-color: #ffc;
   border: 0.1em ridge #f03;
@@ -4051,6 +4157,7 @@ thead {
   margin-left: 8em;
   width: 100%;
 }
+
 * html.unfloat {
   height: 1%;
 }
@@ -4123,9 +4230,10 @@ thead {
 
 .closeme {
   color: #03f;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   text-align: center;
 }
+
 .closeme:hover {
   color: #c22;
   font-weight: 700;
@@ -4136,7 +4244,7 @@ thead {
   background-color: #eee;
   color: #337;
   display: inline-block;
-  font-family: "Liberation Mono", "DejaVu Sans Mono", "Lucida Console", "monte carlo", monospace;
+  font-family: "Liberation Mono", "DejaVu Sans Mono", "Lucida Console", "monte carlo", monospace;
 }
 
 .codeComment,
@@ -4159,10 +4267,12 @@ thead {
   margin: 0.5em auto;
   padding: 0.25em;
 }
+
 .content p {
   background-position: center bottom;
   background-repeat: repeat-x;
 }
+
 .content p * {
   background-color: rgba(255, 255, 255, 0.6);
 }
@@ -4178,7 +4288,7 @@ thead {
 .defListTitle {
   border: 0;
   color: #d02;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   font-style: italic;
   margin-bottom: 0.3em;
   width: 50%;
@@ -4241,19 +4351,23 @@ li.hiddenitem {
   padding: 0.2em 1em;
   text-align: justify;
 }
+
 .keyTerms h4 {
   border: 0.2em outset #aaa;
   padding: 0.3em;
   width: 8em;
 }
+
 .keyTerms ul li {
   font-size: 0.8em;
   margin-bottom: 2em;
 }
+
 .keyTerms ul li pre {
   background-image: none;
   font-size: larger;
 }
+
 .keyTerms ul li sup code {
   font-size: larger;
 }
@@ -4309,7 +4423,7 @@ li.hiddenitem {
 
 .serif,
 .serifBold {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
 }
 
 .serifBold {
@@ -4334,7 +4448,7 @@ li.hiddenitem {
 }
 
 .tableHeadrow {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   font-size: 1.1em;
   font-weight: 700;
   text-align: center;
@@ -4353,7 +4467,7 @@ li.hiddenitem {
 .trigger {
   color: navy;
   cursor: help;
-  font-family: "DejaVu Sans Condensed", "Arial Narrow", Arial, Helvetica, sans-serif;
+  font-family: "DejaVu Sans Condensed", "Arial Narrow", Arial, Helvetica, sans-serif;
   font-variant: small-caps;
   letter-spacing: 0.1em;
   line-height: 2em;
@@ -4393,18 +4507,22 @@ kbd {
 .winpathanchor {
   color: #060;
 }
+
 .winpathanchor:focus {
   background-color: #ffa;
   color: #00bfff;
 }
+
 .winpathanchor:hover {
   background-color: #ff0;
   color: green;
   outline: medium #00f;
 }
+
 .winpathanchor:link {
   color: #00f;
 }
+
 .winpathanchor:visited {
   color: purple;
 }
@@ -4442,7 +4560,7 @@ li.htmlicon {
 li.htmicon::before,
 li.htmlicon::before {
   color: red;
-  content: "♂";
+  content: "\2642";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -4473,7 +4591,7 @@ li.listheader,
 li.listheaditem {
   background-color: #fff;
   color: purple;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   font-size: 14pt;
   font-style: normal;
   font-variant: small-caps;
@@ -4561,7 +4679,7 @@ li.code-workspaceicon::before,
 li.workspaceicon::before,
 li.clpprjicon::before {
   color: #bb0;
-  content: "☸";
+  content: "\2638";
   max-height: 16px;
   max-width: 16px;
   margin-left: -3.15rem;
@@ -4605,12 +4723,14 @@ span.toggler {
 ul.keyTermsList {
   background-color: #f8f8f8;
   color: #006;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   padding: 0.8em;
 }
+
 ul.keyTermsList li {
   list-style-image: url(info-icon.gif);
 }
+
 ul.keyTermsList li sup {
   background-color: #fafafa;
   border-bottom: 0.18em groove #aaa;
@@ -4626,7 +4746,7 @@ ul.keyTermsList li sup {
 }
 
 #accessContainerTrigger {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
 }
 
 #accessoryContainer {
@@ -4646,6 +4766,7 @@ ul.keyTermsList li sup {
   margin-bottom: -1em;
   padding-top: 1em;
 }
+
 #backlinks a {
   color: #ff0;
 }
@@ -4654,6 +4775,7 @@ ul.keyTermsList li sup {
   text-align: center;
   text-indent: 3em;
 }
+
 #searchrec a {
   color: #00f !important;
 }
@@ -4681,6 +4803,7 @@ ul.keyTermsList li sup {
   -webkit-box-shadow: 0 0 0.5em #545454 inset;
           box-shadow: 0 0 0.5em #545454 inset;
 }
+
 #controList li {
   border: 0.08em solid #fff;
   display: block;
@@ -4722,15 +4845,18 @@ ul.keyTermsList li sup {
   margin: 0 auto;
   width: 85%;
 }
+
 #cssTips * dd {
   padding: 0.8em;
 }
+
 #cssTips * dt {
   font-style: oblique;
   margin: 0;
   padding: 0.3em 0 0.2em;
   text-align: left;
 }
+
 #cssTips dl {
   background-color: #fafaef;
 }
@@ -4739,7 +4865,7 @@ ul.keyTermsList li sup {
   background-color: rgba(255, 255, 255, 0.1);
   color: #000;
   display: table-cell;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   font-size: 0.95em;
   font-weight: 300;
   text-align: left;
@@ -4747,7 +4873,7 @@ ul.keyTermsList li sup {
 }
 
 #doc_loc_href {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   font-size: 1.2em;
   font-weight: 600;
   color: #fff;
@@ -4766,38 +4892,48 @@ ul.keyTermsList li sup {
   background-color: rgba(255, 255, 255, 0.1);
   background-repeat: repeat-x;
   clear: both;
-  font-family: "Liberation Sans", "Droid Sans", "DejaVu Sans", arial, helvetica, sans-serif;
+  font-family: "Liberation Sans", "Droid Sans", "DejaVu Sans", arial, helvetica, sans-serif;
   text-align: center;
 }
+
 #footer p {
   display: block;
   margin: 0 auto;
   padding-top: 1em;
 }
+
 #footer p a:hover {
   color: #aff;
 }
+
 #footer p a:link {
   color: #00f;
 }
+
 #footer p a:visited {
   color: #ddf;
 }
+
 #footer hr {
   border: 0.035em inset rgba(150, 190, 220, 0.7);
 }
+
 #footer :link {
   color: #8080ff;
 }
+
 #footer :visited {
   color: #d456d4;
 }
+
 #footer :focus {
   color: #ff8080;
 }
+
 #footer :hover {
   color: inherit;
 }
+
 #footer :active {
   color: #ff8080;
 }
@@ -4816,7 +4952,7 @@ ul.keyTermsList li sup {
 #frameName {
   background-color: rgba(255, 245, 152, 0.5);
   color: #003c3c;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   font-size: 0.9em;
   font-variant: small-caps;
 }
@@ -4876,13 +5012,14 @@ p#collapser img {
   width: 18%;
   z-index: 10;
 }
+
 #leftcol dl#alpharrayTest {
   z-index: 9;
 }
 
 #localScope {
   border: 2em solid #ccc;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   margin: 0 2em;
   width: 30em;
 }
@@ -4896,12 +5033,15 @@ p#collapser img {
   width: 80%;
   z-index: 11;
 }
+
 #maincol div.displayNone dl dd {
   background-color: #fffaf5;
 }
+
 #maincol dl dd {
   border: 0.08em dotted #c55;
 }
+
 #maincol dl dt {
   font-size: 1.2em;
   margin: 1em auto 0.5em;
@@ -4947,11 +5087,12 @@ p#collapser img {
 #pageControls {
   z-index: 999;
 }
+
 #pageControls ul {
   background-color: #f8f8f8;
   border-radius: 1.5em 1em 1.5em 1em;
-  -webkit-box-shadow: 0 0 0.8em rgba(68, 68, 68, 0.5333333333);
-          box-shadow: 0 0 0.8em rgba(68, 68, 68, 0.5333333333);
+  -webkit-box-shadow: 0 0 0.8em #4448;
+          box-shadow: 0 0 0.8em #4448;
   margin: 0;
   padding: 0.5em 0 0.5em 0.7em;
   position: relative;
@@ -5020,6 +5161,7 @@ p#collapser img {
   margin-top: -0.5em;
   font-size: 1rem;
 }
+
 #pageControlHeader:before {
   content: url(gear.png);
   margin-left: -1em;
@@ -5076,7 +5218,7 @@ p#collapser img {
   margin: 1em;
   padding: 0.5em;
   color: #000;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
   background: 0 0;
   width: 10%;
   left: 45%;
@@ -5142,6 +5284,7 @@ p#collapser {
   font-size: 0.8em;
   margin: 0.4em 0.5em;
 }
+
 #urlSplit:before {
   color: #f03;
   content: "Showing: preg_split(matches[ 0] ): ";
@@ -5226,6 +5369,7 @@ p#jumpBack {
   float: right;
   margin: 0 auto;
 }
+
 p#jumpBack img {
   display: table-cell;
 }
@@ -5356,7 +5500,7 @@ li.bmp::before,
 li.bmpicon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -5374,7 +5518,7 @@ li.gif::before,
 li.gificon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -5392,7 +5536,7 @@ li.ico::before,
 li.icoicon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -5410,7 +5554,7 @@ li.jpg::before,
 li.jpgicon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -5428,7 +5572,7 @@ li.pdn::before,
 li.pdnicon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -5446,7 +5590,7 @@ li.png::before,
 li.pngicon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -5464,7 +5608,7 @@ li.psd::before,
 li.psdicon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -5482,7 +5626,7 @@ li.svg::before,
 li.svgicon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -5500,7 +5644,7 @@ li.tga::before,
 li.tgaicon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -5518,7 +5662,7 @@ li.tif::before,
 li.tiff::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -5536,7 +5680,7 @@ li.tifficon::before,
 li.tificon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
@@ -5554,11 +5698,17 @@ li.xcf::before,
 li.xcficon::before {
   list-style-image: none;
   color: #ffc;
-  content: "∠";
+  content: "\2220";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
   font-size: 1.5rem;
   float: left;
   font-weight: 900;
+}
+
+#wrapper {
+  background-color: #f5f4f3;
+  /* background-image: url(backgrounddiagonal.jpg); */
+  width: 100%;
 }
