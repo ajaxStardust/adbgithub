@@ -1,0 +1,35 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "hide-files.files": ["assets/css/arrow-up.png"],
+    "phpserver.ip": "mx23",
+    "phpserver.phpConfigPath": "/etc/php/8.2/fpm/php.ini",
+    "phpserver.browser": "/usr/bin/microsoft-edge",
+    "open-php-html-js-in-browser.selectedBrowser": "Ask always...",
+    "open-php-html-js-in-browser.customBrowserPath": "/usr/bin/microsoft-edge",
+    "open-php-html-js-in-browser.documentRootFolder": "/var/www/html",
+    "open-php-html-js-in-browser.rememberBrowserSelection": false,
+    "open-php-html-js-in-browser.alternativeDocumentRootFolders": [
+      "/var/www/html/adb_clone_novicenotes_20231010"
+    ],
+    "open-php-html-js-in-browser.urlToOpen": "custom",
+    "open-php-html-js-in-browser.customHost": "mx23",
+    "open-php-html-js-in-browser.showStatusBarItem": false,
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": false,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true,
+      "**/*.png": true,
+      "**/*.gif": true,
+      "**/*.jpg": false
+    },
+    "explorerExclude.backup": {}
+  }
+}

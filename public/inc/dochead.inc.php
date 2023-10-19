@@ -214,7 +214,7 @@ $frameTitle = $frameInfo['filename'];
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-<title><?php print $chopThis."/".$c_trim; ?></title>
+<title><?php print $serverName.$chopThis."/".$c_trim; ?></title>
 
 <meta charset="UTF-8">
         <meta http-equiv="Content-Style-Type" content="text/css" />

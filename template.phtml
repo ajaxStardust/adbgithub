@@ -24,9 +24,28 @@
 
 header('Access-Control-Allow-Origin: *'); // ENABLE CORS (Cross-Origin Request) policy allow all - CAUTION: not-ready-for-prime-time player
 date_default_timezone_set('EST');
+
+if (!defined('ABSOLUTELOCATION')) {
+    define('ABSOLUTELOCATION', rtrim(dirname(__FILE__), 'public/inc'));
+}
+$abspath = ABSOLUTELOCATION;
+
+$http_type = $_SERVER['SERVER_SOFTWARE'];
+$http_name = $_SERVER['SERVER_NAME'];
+$http_ip = $_SERVER['SERVER_ADDR'];
+$httpname = $http_name;
+if (preg_match('@(10\.0\.0\.\d+|192\.\d+\.\d+\.\d+)@', $http_ip)) {
+    $abspath = '<code class="info">' . $abspath . '</code>';
+} else {
+    $abspath = 'is simply a PHP value which relies on server variables<code>define( ABSOLUTELOCATION , rtrim(dirname(__FILE__), inc))</code>';
+}
+
+$parent_dir = str_ireplace('/var/www/html','',__DIR__);
+
 $page_heading = '&#x201c;Simple Template&#x201d; ';
-$title = 'Basic TEMPLATE';
+$title = $http_ip.' - '.$parent_dir.' - EditPlus_IV TEMPLATE';
 $lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,10 +57,22 @@ $lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
   <title>
     <?php print $title; ?>
   </title>
-  <link rel="icon" type="image/ico" href="favicon.ico">
+  <link rel="icon" type="image/ico" href="favicon.ico" sizes="16x16">
   <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+  <link rel="icon" href="./favicon.ico" sizes="32x32">
+  <link rel="icon" href="./favicon.ico" sizes="192x192">
+  <link rel="apple-touch-icon" href="./favicon.ico">
+  <meta name="msapplication-TileImage" content="http://.file./ -->">
 
-  <style>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <!-- BOOTSTRAP STYLE -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
+  <link href="assets/css/notes.css" rel="stylesheet" type="text/css">
+    <style>
+    <![CDATA[
     .tsw {
       font-family: "source serif pro";
       font-size: 1.2rem;
@@ -53,18 +84,6 @@ $lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
                                 **
                                 */
   </style>
-  <link rel="icon" href="./favicon.ico" sizes="32x32">
-  <link rel="icon" href="./favicon.ico" sizes="192x192">
-  <link rel="apple-touch-icon" href="./favicon.ico">
-  <meta name="msapplication-TileImage" content="<!-- http://.file./ -->">
-
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-  <!-- BOOTSTRAP STYLE -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
-  <link href="assets/css/notes.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -90,15 +109,27 @@ $lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
             <p>Something you want to be collapsed at first:
               <code>some code maybe</code> or</p>
             <pre>maybe some
-&#x3c;preformatted&#x3e; 
+&#x3c;preformatted&#x3e;
 text here.</pre>
           </dd>
 
-          <dt class="keyTerms pointer">Reveal random: <span class="normal blue pointer" id="show_n02"
+          <dt class="keyTerms pointer">Peek-a-boo Code:<span class="normal blue pointer" id="show_n02"
               onclick="swap_text('show_n02','notes_02') ">[toggle...]</span>
           </dt>
           <dd id="notes_02" class="displaynone"> <!-- hidden then revealed -->
-            <p>Some Random content
+            <pre>
+function register_custom_post_type() {
+    register_post_type('form_log', array(
+        'labels' => array(
+            'name' => __('Form Logs'),
+            'singular_name' => __('Form Log')
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'supports' => array('title', 'editor'),
+    ));
+}
+add_action('init', 'register_custom_post_type');</pre>
           </dd>
         </dl>
 
@@ -144,7 +175,7 @@ text here.</pre>
       </div>
     </footer>
   </div><!--    $ :end    END class.content (former id.maincol)    $    -->
- 
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
