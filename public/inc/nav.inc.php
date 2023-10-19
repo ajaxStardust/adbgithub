@@ -231,7 +231,11 @@ else {
     <li id="font_demo_serif">A QuIck Bit oF Valid TeXt bRiEfly</li>
     <li id="font_demo_sans">A QuIck Bit oF Valid TeXt bRiEfly</li>
         </ul>
-
+<form id="check_font" method="post" action="'.$_SERVER['PHP_SELF'].'?check_font=">
+<input type="text" name="font_name" id="font_name">
+<input type="submit" name="submit_font" id="submit_font" value="Check">
+<label for="submit_font">Check Font</label>
+</form>
         <div id="js_return_serif"></div>
         <!-- close navlist -->
         </nav>';

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* SCSS SYNTAX */
 @use "sass:math";
 
@@ -13,20 +12,4 @@ article[role="main"] {
 aside[role="complementary"] {
   width: math.div(300px, 960px) * 100%;
   margin-left: auto;
-=======
-/* SCSS SYNTAX */
-@use "sass:math";
-
-.container {
-  display: flex;
-}
-
-article[role="main"] {
-  width: math.div(600px, 960px) * 100%;
-}
-
-aside[role="complementary"] {
-  width: math.div(300px, 960px) * 100%;
-  margin-left: auto;
->>>>>>> a5636a2cd6d8c43da9e4d060ab7e8791e9c73ddf
 }
