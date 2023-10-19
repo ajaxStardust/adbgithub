@@ -1,21 +1,29 @@
 <?php
 
-header('Access-Control-Allow-Origin: *'); // ENABLE CORS (Cross-Origin Request) policy allow all
-date_default_timezone_set('America/New_York');
-$page_heading = 'p2u2 - path 2 url 2';
-$title = 'path to url converter 2023';
-$lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
+// namespace adb_simplest/public/inc;
 
-if (!defined('ABSOLUTELOCATION')) {
-    define('ABSOLUTELOCATION', rtrim(dirname(__FILE__), "inc"));
-}
-$page_heading = 'Convert System Path to HTTP URL';
-$title = 'p2u2 - ' . ABSOLUTELOCATION;
-$server_soft = $_SERVER['SERVER_SOFTWARE'];
-$server_name = $_SERVER['SERVER_NAME'];
-$server_addr = $_SERVER['SERVER_ADDR'];
+/**
+* @depends
+*   ./class/class-urlchopper.php
+*   ./css/style.css.php
+**/
 
-// define( 'ABSOLUTELOCATION', dirname($_SERVER['SCRIPT_NAME']));
+/**
+* add 45 secs to default of 30 = 75 secs if invoked
+* set_time_limit(45);
+*/
+
+/**
+* @TODO CSSPATH concept introduced here but never embellished
+**/
+
+/**
+* TRUE OR FALSE?
+* whether to pull css from the site root ./css folder
+* or the css container most closely relative to this document
+**/
+
+define( 'ABSOLUTELOCATION', dirname($_SERVER['SCRIPT_NAME']));
 $abspath = ABSOLUTELOCATION;
 
 // echo '<br>included: '.var_dump(ABSOLUTELOCATION);
@@ -69,7 +77,7 @@ if(isset($_SERVER['SERVER_NAME'])){
     $serverName = $_SERVER['SERVER_NAME'];
 }
 else{
-    $serverName = $server_addr;
+    $serverName = 'localhost';
 }
 $serverUrl = 'http://' . $serverName;
 $abspath = $serverUrl."/".$chopThis;
@@ -189,17 +197,11 @@ else{
         $xro."p2u2.phtml",
     );
 
-    if(file_exists($xro.'tree.html')){
-        $defaultIframe = $xro.'tree.html';
-    }
-else{
     foreach($defaultFrameArray as $thisIframe){
         if(file_exists($thisIframe)) {
             $defaultIframe = $thisIframe;
         }
     }
-}
-
 }
 
 $frameInfo = pathinfo($defaultIframe);
@@ -212,7 +214,7 @@ $frameTitle = $frameInfo['filename'];
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-<title><?php print $server_name .'/'.$chopThis."/".$c_trim; ?></title>
+<title><?php print $serverName.$chopThis."/".$c_trim; ?></title>
 
 <meta charset="UTF-8">
         <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -251,25 +253,94 @@ $frameTitle = $frameInfo['filename'];
     type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
 </script>
-    <!-- Google Analytics 2022.07.24 -->
-    <!-- script async src="https://www.googletagmanager.com/gtag/js?id=G-SE954SRMG8"></script -->
-    <script>
-/*      window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-SE954SRMG8'); */
-    </script>
-    <!-- Google Adsense -->
-    <!-- script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2612637898892107" crossorigin="anonymous"></script -->
     <!-- Bootstrap Css v5 -->
     <!-- link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" -->
+    <!-- link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" -->
+<style>
+<!--
+.hide-show-element {
+  /*
+  *
+  background-color: #eee;
+  height: 400px;
+  position: relative;
+  text-align: center;
+  *
+  */
+   width: 10rem;
+    display: inline-block;
+}
 
+.hide-show-element label:hover {
+    color: #D00;
+}
+
+.hide-show-element input[type='checkbox'] {
+  display: none;
+}
+
+.hide-show-element label {
+    margin: 0 .1em;
+    padding: 0 .3em;
+    border-radius: 3px;
+    border: .1em solid #ccc;
+    color: #333;
+    line-height: 1.625;
+    font-size: .83em;
+    font-family: inherit;
+    background-color: #f7f7f7;
+    box-shadow: 0 .1em 0 rgba(0,0,0,.2),0 0 0 .2em #fff inset;
+}
+
+.hide-show-element label {
+	/* background-color: #a00; */
+	/* border: 1px solid #111; */
+	color: #E8E6FF;
+	cursor: pointer;
+	/* display: block; */
+	/* padding: 20px; */
+    display: inline-block;
+	text-align: center;
+	transition-duration: 0.4s;
+	width: 90%;
+	margin: 0;
+    text-shadow: 0.06rem 0.06rem 0.1rem #33333355;
+}
+.hide-show-element label:after {
+  display: block;
+  content: "Show Controls";
+}
+.hide-show-element input:checked + label {
+  background-color: none;
+  /* border: 1px solid #a00; */
+  color: #3A29BB;
+}
+.hide-show-element input:checked + label:after {
+  content: "Hide Controls";
+}
+
+.test1 {
+  opacity: 0;
+  position: relative;
+  height: 0;
+  transform: rotate(135deg);
+  top: 20%;
+  transition-duration: 0.6s;
+  width: 0;
+}
+
+.hide-show-element input:checked ~ .test1 {
+  filter: grayscale(25%);
+  opacity: 1;
+  height: 200px;
+  transform: rotate(0);
+  width: 8rem;
+}
+
+-->
+</style>
 <?php
 
 /*
