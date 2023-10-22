@@ -2,8 +2,6 @@
 
 header('Access-Control-Allow-Origin: *');  // ENABLE CORS (Cross-Origin Request) policy allow all
 date_default_timezone_set('America/New_York');
-$page_heading = 'p2u2 - path 2 url 2';
-$title = 'path to url converter 2023';
 $lastMod = 'Modified: ' . date('D M j Y G:i:s T', getlastmod());
 
 if (!defined('ABSOLUTELOCATION')) {
@@ -97,10 +95,7 @@ function clean_url_chars($url_2_convert)
         <section id="header">
             <h1 class="bg-dark text-light text-end pe-3"><?php echo $page_heading; ?></h1>
 
-            <h2
-                id="wpFormHeader"
-                class="text-h2"
-            >Windows and Linux Path to URL Conversion Tool:</h2>
+
 
 
         </section>
@@ -108,23 +103,15 @@ function clean_url_chars($url_2_convert)
             id="general_notes"
             class="container"
         >
-            <?php echo '<p><strong>ABSOLUTELOCATION</strong>:</p><p style="margin-top:-1rem;">' . $abspath . '</p>';
-            echo '<div class="col text-center"><p class="bg-dark text-light">Served by: <span class="bg-dark text-warning">' . $serversoftware . '</span></p>
+        <p><a href="https://github.com/ajaxStardust/AnnieDeBrowsa" target="_blank"><img src="https://github-readme-stats.vercel.app/api/pin/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true" alt="Status" /></a></p>
+        <h3
+                id="wpFormHeader"
+                class="text-h2"
+            >path2url v2:</h3>
+        <p class="text-primary">Convert a System Path to an HTTP URL:</p>
+                        <p class="indentOne text-secondary smaller">A convenient way to load files that require server-side scripting to render in your browser (e.g. PHP files)</p>
+        <?php echo '<p><strong>ABSOLUTELOCATION</strong>:</p><p style="margin-top:-1rem;">' . $abspath . '</p>'; ?>
 
-                <p class="bg-dark text-light">PHP Version: <span class="text-warning">' . phpversion() . '</span></p>
-                <p class="bg-dark text-light">Server Name: <span class="text-info">' . $servername . '</span></p>
-                <p class="bg-dark text-light">Server Addr: <span class="text-info">' . $server_addr . '</span></p>
-                </div>'; ?>
-                <p><a href="https://github.com/ajaxStardust/AnnieDeBrowsa" target="_blank"><img src="https://github-readme-stats.vercel.app/api/pin/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true" alt="Status" /></a></p>
-<p><a href="https://github.com/ajaxStardust" target="_blank"><img src="https://github-readme-stats.vercel.app/api/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true&amp;show_icons=true" alt="More" /></a></p>
-
-            <div class="notes">
-                <!-- p class="italic red">A convenient way to load files that require server-side scripting, such as PHP, if
-                    you don't already have a bookmark or other easy way to <em>browse</em> to it.</p -->
-                <!-- p class="italic red">Once converted, the <kbd>HTTP://</kbd> URL will be displayed as a hyperlink which
-                    you can click to view the file.</p -->
-                <h3>path2url v2</h3>
-                <p class="text-secondary">Creat an HTTP URL from a Server Path:</p>
                 <form
                     action="<?php $_SERVER['PHP_SELF']; ?>"
                     id="p2u2"
@@ -138,7 +125,10 @@ function clean_url_chars($url_2_convert)
                         name="convert"
                     >
                 </form>
-                <?php
+                 <p>Enter the complete system file path in the text field
+                    (E.g. <code class="underline">Y:\var\www\html\wsl_workspace\index.php</code>).
+                </p>
+                                <?php
                     if (!empty($_GET['path2url'])) {
                         echo '<br>$_GET[path2url] = <strong class="red">' . $_GET['path2url'] . '</strong><br>';
                         $strirep = clean_url_chars($_GET['path2url']);
@@ -277,15 +267,29 @@ function clean_url_chars($url_2_convert)
                         /* $servername = empty($server_name) ? $servername : $server_name; */
 
                         $url_result = 'http://' . $servername . '/' . ltrim($strirep, '/');
-                        echo '<br>new path: <a href="' . $url_result . '" title="' . $strirep . '" target="_blank">' . $url_result . '</a>';
+                        echo '<br><strong>Click URL:</strong><br> <a href="' . $url_result . '" title="' . $strirep . '" target="_blank">' . $url_result . '</a>';
                     }
                 ?>
-                <p>The <em>path2url</em> convenience is most evident if the file path points to something from your <span class="underline">localhost</span> <em>testing server</em>.
-                    <br>
-                    (E.g. <code class="underline">Y:\var\www\html\wsl_workspace\index.php</code>)
-                </p>
-                <p>The <span class="black">WordPressCenter.net <em>path2url</em></span> application uses conditioinal logic on the path submitted in attempt to return a viable HTTP URL.<br><span class="smaller">NOTE: Should an unexpected System Path result in a <em>bad URL</em>, please submit it to @ajaxStardust so the application logic will be improved. Thank you!</span></p>
-                <p>If it didnt give you what you wanted, and you think you know why, <span class="red">you are welcome to <strong>reach out and provide feedback</strong> </span>.</p>
+            <?php echo '<div class="mt-2 col text-center"><p class="bg-dark text-light">Served by: <span class="bg-dark text-warning">' . $serversoftware . '</span></p>
+                <p class="bg-dark text-light">PHP Version: <span class="text-warning">' . phpversion() . '</span></p>
+                <p class="bg-dark text-light">Server Name: <span class="text-info">' . $servername . '</span></p>
+                <p class="bg-dark text-light">Server Addr: <span class="text-info">' . $server_addr . '</span></p>
+                </div>'; ?>
+
+            <div class="notes">
+
+                <!-- p class="italic red">Once converted, the <kbd>HTTP://</kbd> URL will be displayed as a hyperlink which
+                    you can click to view the file.</p -->
+                    <p><a href="https://github.com/ajaxStardust" target="_blank"><img src="https://github-readme-stats.vercel.app/api/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true&amp;show_icons=true" alt="More" /></a></p>
+
+
+
+                <p>This <span class="black">WordPressCenter.net <em>path2url</em></span> application uses conditioinal logic on the path to return a viable HTTP URL. It may not output the desired URL without some simple code tweaking.</p><p class="smaller">NOTE: Should an unexpected System Path result in a <em>bad URL</em>, please submit it to <a
+                            href="https://github.com/ajaxStardust"
+                            target="_blank"
+                            title="View original"
+                        >@ajaxStardust</a> so the application logic might be improved. Thank you!</span></p>
+
 
             </div> <!--  $    div   .notes    $   -->
         </section> <!--    $   section   #general_notes  .container    $   -->
