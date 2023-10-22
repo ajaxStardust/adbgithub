@@ -1,0 +1,552 @@
+*,html,body {
+    font-size: 18px;    
+}
+
+dd {
+    background-color: #DDD;
+    padding: 1px 0;
+    width: 85%;
+}
+
+dd.nodent {
+	display:none;
+}
+
+dl {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+dt {
+    background-color: transparent;
+    color: #C00;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 0.8em;
+    text-shadow: 0.08em 0.09em 0.2em rgba(140, 140, 180, 0.07);
+}
+
+dt sup {
+    font-size: x-small;
+    line-height: 200%;
+}
+
+li {
+    border-bottom: 4px solid #666;
+    border-left: 2px solid #fff;
+    border-right: 3px solid #555;
+    border-top: 2px solid #fff;
+    margin: 0.5em 0;
+    padding: 0.2em 0 0.2em 0.2em;
+    width: 90%;
+}
+
+.bitsMono {
+    font-family: "Bitstream Vera Sans Mono";
+}
+
+.bitsVSans {
+    font-family: "Bitstream Vera Sans";
+}
+
+.bitsVSerif {
+    font-family: "Bitstream Vera Serif";
+}
+
+.dejaSans {
+    font-family: "DejaVu Sans";
+}
+
+.dejaSansCond {
+    font-family: "DejaVu Sans Condensed";
+}
+
+.dejaSansLight {
+    font-family: "DejaVu Sans Light";
+}
+
+.dejaSansMono {
+    font-family: "DejaVu Sans Mono";
+}
+
+.dejaSerif {
+    font-family: "DejaVu Serif";
+}
+
+.dejaSerifCond {
+    font-family: "DejaVu Serif Condensed";
+}
+
+.inlineDesc {
+    font-size: smaller;
+    font-weight: 200;
+    letter-spacing: -1px;
+}
+
+.liberMono {
+    font-family: "Liberation Mono";
+}
+
+.liberSans {
+    font-family: "Liberation Sans";
+}
+
+.liberSerif {
+    font-family: "Liberation Serif";
+}
+
+.smaller {
+    font-size: smaller;
+}
+
+.underline {
+    color: #c64;
+    text-decoration: underline;
+}
+
+.unstyle {
+    display: run-in;
+}
+
+body, .unstyle {
+    background-color: #CCEEFF;
+    color: #000;
+    font-family: "Liberation Sans", Arial, Helvetica, sans-serif;
+    font-size: small;
+}
+
+dd.nodent {
+    border-right: 0.2em ridge #777;
+}
+
+div.stremBG {
+    background-color: #FEFEFC;
+}
+
+img.toggleimg {
+    display: block;
+    margin: 3px auto 1px auto;
+    padding: 3px 0 0 0;
+    text-align: center;
+}
+
+li.darkgrey {
+    background-color: #fff;
+}
+
+li.lightgrey {
+    background-color: #eee;
+}
+
+li.serif {
+    font-family: serif;
+    list-style-position: outside;
+}
+
+p.toggitalic {
+    background: transparent;
+    color: #333;
+    cursor: pointer;
+    display: table-cell;
+    padding: 0.3em 1em 0 1em;
+}
+
+p.togglebold {
+    background: transparent;
+    color: #333;
+    cursor: pointer;
+    display: table-cell;
+    padding: 0 1em 0.3em 1em;
+}
+
+span.headgetsmaller {
+    color: #aaa;
+    font-size: 50%;
+}
+
+span.heythere {
+    color: #33CC66;
+    font-weight: bold;
+}
+
+span.sansspan {
+    font-family: monospace;
+}
+
+ul.nobull {
+    list-style-position: outside;
+    list-style-type: upper-roman;
+    margin-left: -1em;
+    padding: 0;
+}
+
+#amplanations ol#olamplist li.amplist {
+    border: none;
+    border-right: 1px solid #444;
+    border-top: 1px solid #555;
+    margin-left: 0em;
+    padding-left: 0em;
+}
+
+#customPreview {
+    background-color: #F5F4F1;
+    color: #444;
+    font-family: serif;
+    outline: 0.3em #888 double;
+    padding: 0.5em;
+}
+
+#customPreviewTitle {
+    font-size: 1.1em;
+    font-weight: 600;
+    text-shadow: 0.08em 0.09em 0.1em rgba(40, 40, 40, 0.07);
+}
+
+#dagger {
+    font-variant: small-caps;
+}
+
+#disp {
+    background-color: #ffe;
+    border: 2px dashed #F33;
+    font-size: small;
+    padding: 0.5em;
+    white-space: pre-wrap;
+}
+
+#faux {
+    visibility: hidden;
+}
+
+#inp {
+    background-image: url(blue-lines2.png), url('element-dl_sandmarblegrey.png');
+    color: #000;
+    height: auto;
+}
+
+#mainfonts {
+    background-color: #fcfcfc;
+}
+
+#mainfonts h1 {
+    border: 1px solid #9ac;
+    color: #bce;
+    display: block;
+}
+
+#mainfonts h3 {
+    color: #ccc;
+}
+
+body#safetyfonts, p#makebold {}
+dd#cursiveDD {
+    background-color: #777;
+}
+
+dd#monotypeDD {
+    background-color: #0000CC;
+}
+
+dd#sansserifDD {
+    background-color: #9a8afd;
+}
+
+dd#serifDD {
+    background-color: #D7423F;
+}
+
+dd#symbolsDD {
+    background-color: #009900;
+}
+
+div#ampcredits {
+    background-color: #000077;
+    color: #ee0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-small;
+    padding: 0.2em;
+    text-align: left;
+}
+
+div#headOne {
+    background-image: url('css/objecthing.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+div#mainfonts {
+    width: 200px;
+}
+
+div#panelwidth {
+    text-align: left;
+    width: 195px;
+}
+
+dl#customarea {
+    background-image: url(css/font-dl-custom.png);
+}
+
+dl#customarea dd p {
+    color: #000;
+    margin: 0.8em;
+}
+
+dl#customarea dd strong {
+    color: #00A;
+}
+
+dl#customarea dd strong.step {
+    background-color: #fff;
+    border: 0.05em solid #55a;
+    padding: 0.1em 0.2em;
+}
+
+dl#font-DL-one {
+    background-attachment: scroll;
+    background-image: url(css/parchmosteven.jpg);
+    background-position: 0px 0px;
+    color: #000;
+}
+
+dt#cursiveDT {
+    color: #777;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+dt#exceptionDT {
+    color: #990066;
+    font-family: sans-serif;
+}
+
+dt#fantasyDT {
+    color: #660099;
+    font-family: fantasy;
+}
+
+dt#monotypeDT {
+    color: #0000CC;
+    font-family: "Courier New", Courier, monospace;
+}
+
+dt#sansserifDT {
+    color: #6A5ACD;
+    font-family: sans-serif;
+}
+
+dt#serifDT {
+    color: #D7423F;
+    font-family: serif;
+}
+
+dt#symbolsDT {
+    color: #009900;
+}
+
+dt#testinstruct {
+    color: #ff0;
+    font-weight: normal;
+    letter-spacing: -1px;
+    text-indent: 1em;
+    word-spacing: -1px;
+}
+
+h4#headshow {
+    color: #FFF6ED;
+    margin: 0 auto;
+    text-align: center;
+}
+
+input#fontButton, button#fontButton {
+    background-color: #FFF;
+    border-color: #00f;
+    border-width: medium;
+    color: #0000FF;
+    font-family: sans-serif;
+    font-weight: 800;
+    line-height: 99%;
+    padding: 0.3em 0.5em;
+}
+
+li#andalemon, .andalemon {
+    font-family: "Andale Mono", "monte carlo", monospace;
+}
+
+li#arial, .arial {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+li#arialblack, .arialblack {
+    font-family: Arial Black, Gadget, sans-serif;
+}
+
+li#comicsans, .comicsans {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+li#couriernew, .couriernew {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+li#exceptMSSans, .exceptMSSans {
+    font-family: "MS Sans Serif", Geneva, sans-serif;
+}
+
+li#exceptMSSerif, .exceptMSSerif {
+    font-family: "MS Serif", "New York", serif;
+}
+
+li#fantasy, .fantasy {
+    font-family: fantasy;
+}
+
+li#georgia, .georgia {
+    font-family: Georgia, georgia, serif;
+}
+
+li#impact, .impact {
+    font-family: Impact, Charcoal, sans-serif;
+}
+
+li#lucida, .lucida {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+li#lucidacon, .lucidacon {
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+li#palatino, .palatino {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+li#symbol, .symbol {
+    font-family: Symbol, Symbol;
+}
+
+li#tahoma, .tahoma {
+    font-family: Tahoma, Geneva, sans-serif;
+}
+
+li#timesnewrom, .timesnewrom {
+    font-family: "Times New Roman", Times, serif;
+}
+
+li#trebuchet, .trebuchet {
+    font-family: "Trebuchet MS", Trebuchet, sans-serif;
+}
+
+li#verdana, .verdana {
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+li#webdings, .webdings {
+    font-family: Webdings, Webdings;
+}
+
+li#wingdings, .wingdings {
+    font-family: Wingdings, "Zapf Dingbats";
+}
+
+ol#olamplist {
+    list-style-position: inside;
+    outline: 1px solid #444;
+    padding-left: 0em;
+}
+
+p#customtells {
+    color: #000;
+}
+
+p#fin {
+    background-color: #623;
+    border: 1px solid #aaa;
+    color: #eee;
+    font-family: Arial, Arial, Helvetica, sans-serif;
+    font-size: x-small;
+    padding: 0.2em;
+    text-align: left;
+}
+
+p#newfontname {
+    background-color: #333;
+    color: #FF0;
+    font-size: 18px;
+    margin: 0.2em;
+    text-align: center;
+}
+
+p#whatfontnow {
+    color: #339;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #0F0;
+}
+
+a:link{
+    color: #00F;
+}
+
+a:visited {
+    color: #F0F;
+}
+
+dt#testinstruct:first-line {
+    color: #ff0;
+    font-weight: bold;
+    letter-spacing: -1px;
+    text-indent: 1em;
+    word-spacing: -1px;
+}
+
+input#fontButton:active, button#fontButton:active, input#fontButton:focus, button#fontButton:focus {
+    border-color: #0A0;
+}
+
+input#fontButton:hover, button#fontButton:hover {
+    background-color: #EEEEFF;
+    border-color: #ff0;
+    border-width: medium;
+    color: #00F;
+    font-family: sans-serif;
+    font-weight: 800;
+    line-height: 99%;
+    padding: 0.3em 0.5em;
+}
+
+/* p#stepFour a:link, p#stepFour a:visited { */
+/*     color: #FFFFFF; */
+/* } */
+
+p#stepFour strong span a:hover {
+    color: rgb(0, 0, 238);
+}
+
+dl#font-DL-one dd {
+    outline: 1px solid #7878b871;
+    outline-offset: 40px; 
+    border-bottom: 20px solid black;
+}
+
+#customPreview {
+    background-color: #F5F4F1;
+    color: #444;
+    font-family: serif;
+    outline: 0.3em #888 double;
+    padding: 0.5em;
+    min-width: 275px !important;
+}
+
+#inp {
+    background-image: url('css/element-dl_sandmarblegrey.png');
+    color: #000;
+    height: auto;
+    min-width: 270px;
+    min-height: 180px;
+   
+}
+
+
