@@ -1,8 +1,9 @@
 <?php
 
-/* header('mime-type: application/x-httpd-php'); */
 header('Access-Control-Allow-Origin: *');  // ENABLE CORS (Cross-Origin Request) policy allow all
 date_default_timezone_set('America/New_York');
+$page_heading = 'p2u2 - path 2 url 2';
+$title = 'path to url converter 2023';
 $lastMod = 'Modified: ' . date('D M j Y G:i:s T', getlastmod());
 
 if (!defined('ABSOLUTELOCATION')) {
@@ -11,17 +12,10 @@ if (!defined('ABSOLUTELOCATION')) {
 $abspath = ABSOLUTELOCATION;
 
 $page_heading = 'Convert System Path to HTTP URL';
-$title = 'p2u2 @ ' . ABSOLUTELOCATION;
+$title = 'p2u2 - ' . ABSOLUTELOCATION;
 $serversoftware = $_SERVER['SERVER_SOFTWARE'];
 $server_name = $_SERVER['SERVER_NAME'];
-
-if(!empty($_SERVER['SERVER_ADDR'])) {
-    $server_addr = $_SERVER['SERVER_ADDR'];
-}
-else {
-    $server_addr = $server_name;
-}
-
+$server_addr = $_SERVER['SERVER_ADDR'];
 $servername = $server_name;
 if (preg_match('@10\.0\.0\.\d+@', $server_addr)) {
     $abspath = '<code class="info">' . $abspath . '</code>';
@@ -100,10 +94,16 @@ function clean_url_chars($url_2_convert)
         class="container"
     >
 
-        <header id="header">
+        <section id="header">
             <h1 class="bg-dark text-light text-end pe-3"><?php echo $page_heading; ?></h1>
 
-</header>
+            <h2
+                id="wpFormHeader"
+                class="text-h2"
+            >Windows and Linux Path to URL Conversion Tool:</h2>
+
+
+        </section>
         <section
             id="general_notes"
             class="container"
@@ -115,6 +115,9 @@ function clean_url_chars($url_2_convert)
                 <p class="bg-dark text-light">Server Name: <span class="text-info">' . $servername . '</span></p>
                 <p class="bg-dark text-light">Server Addr: <span class="text-info">' . $server_addr . '</span></p>
                 </div>'; ?>
+                <p><a href="https://github.com/ajaxStardust/AnnieDeBrowsa" target="_blank"><img src="https://github-readme-stats.vercel.app/api/pin/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true" alt="Status" /></a></p>
+<p><a href="https://github.com/ajaxStardust" target="_blank"><img src="https://github-readme-stats.vercel.app/api/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true&amp;show_icons=true" alt="More" /></a></p>
+
             <div class="notes">
                 <!-- p class="italic red">A convenient way to load files that require server-side scripting, such as PHP, if
                     you don't already have a bookmark or other easy way to <em>browse</em> to it.</p -->
