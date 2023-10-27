@@ -1,6 +1,7 @@
 @charset "UTF-8";
 /* ;
 navigation  */
+@import url(../css/pma_style.css);
 li#adb_small_logo img {
   width: 100px;
   height: 80px;
@@ -2771,6 +2772,7 @@ li.htmlicon {
 
 li.htmicon::before,
 li.htmlicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   color: red;
   content: "\2642";
   margin-left: -3rem;
@@ -2890,6 +2892,7 @@ li.projecticon::before,
 li.code-workspaceicon::before,
 li.workspaceicon::before,
 li.clpprjicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   color: #bb0;
   content: "\2638";
   max-height: 16px;
@@ -3671,6 +3674,25 @@ ul#navlist li.phpicon a:hover {
   color: #c30;
 }
 
+li.php,
+li.phpicon {
+  list-style-image: none;
+}
+
+li.php::before,
+li.phpicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
+  list-style-image: none;
+  color: #ff46ff;
+  content: "♀";
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 900;
+}
+
 ol#navlist li:hover,
 ul#navlist li:hover {
   background-color: #fff;
@@ -3710,6 +3732,7 @@ li.bmpicon {
 
 li.bmp::before,
 li.bmpicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3728,6 +3751,7 @@ li.gificon {
 
 li.gif::before,
 li.gificon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3746,6 +3770,7 @@ li.icoicon {
 
 li.ico::before,
 li.icoicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3764,6 +3789,7 @@ li.jpgicon {
 
 li.jpg::before,
 li.jpgicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3782,6 +3808,7 @@ li.pdnicon {
 
 li.pdn::before,
 li.pdnicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3800,6 +3827,7 @@ li.pngicon {
 
 li.png::before,
 li.pngicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3818,6 +3846,7 @@ li.psdicon {
 
 li.psd::before,
 li.psdicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3836,6 +3865,7 @@ li.svgicon {
 
 li.svg::before,
 li.svgicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3854,6 +3884,7 @@ li.tgaicon {
 
 li.tga::before,
 li.tgaicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3872,6 +3903,7 @@ li.tiff {
 
 li.tif::before,
 li.tiff::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3890,6 +3922,7 @@ li.tificon {
 
 li.tifficon::before,
 li.tificon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3908,6 +3941,7 @@ li.xcficon {
 
 li.xcf::before,
 li.xcficon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -4559,6 +4593,7 @@ li.htmlicon {
 
 li.htmicon::before,
 li.htmlicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   color: red;
   content: "\2642";
   margin-left: -3rem;
@@ -4678,6 +4713,7 @@ li.projecticon::before,
 li.code-workspaceicon::before,
 li.workspaceicon::before,
 li.clpprjicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   color: #bb0;
   content: "\2638";
   max-height: 16px;
@@ -5498,6 +5534,7 @@ li.bmpicon {
 
 li.bmp::before,
 li.bmpicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5516,6 +5553,7 @@ li.gificon {
 
 li.gif::before,
 li.gificon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5534,6 +5572,7 @@ li.icoicon {
 
 li.ico::before,
 li.icoicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5552,6 +5591,7 @@ li.jpgicon {
 
 li.jpg::before,
 li.jpgicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5570,6 +5610,7 @@ li.pdnicon {
 
 li.pdn::before,
 li.pdnicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5588,6 +5629,7 @@ li.pngicon {
 
 li.png::before,
 li.pngicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5606,6 +5648,7 @@ li.psdicon {
 
 li.psd::before,
 li.psdicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5624,6 +5667,7 @@ li.svgicon {
 
 li.svg::before,
 li.svgicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5642,6 +5686,7 @@ li.tgaicon {
 
 li.tga::before,
 li.tgaicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5660,6 +5705,7 @@ li.tiff {
 
 li.tif::before,
 li.tiff::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5678,6 +5724,7 @@ li.tificon {
 
 li.tifficon::before,
 li.tificon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5696,6 +5743,7 @@ li.xcficon {
 
 li.xcf::before,
 li.xcficon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
