@@ -1,6 +1,7 @@
 @charset "UTF-8";
 /* ;
 navigation  */
+@import url(../css/pma_style.css);
 li#adb_small_logo img {
   width: 100px;
   height: 80px;
