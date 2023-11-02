@@ -673,7 +673,19 @@ kbd {
 
 li.ds_storeicon,
 li.dsstore {
-  list-style-image: url(ds_store-icon.png);
+  list-style-image: none;
+}
+li.ds_storeicon,
+li.dsstore::before {
+text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
+color: red;
+content: "\2646";
+margin-left: -3rem;
+padding-left: 0;
+white-space: pre;
+font-size: 1.5rem;
+float: left;
+font-weight: 900;
 }
 
 li.htmicon,
@@ -682,6 +694,7 @@ li.htmlicon {
 }
 li.htmicon::before,
 li.htmlicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: red;
   content: "\2642";
   margin-left: -3rem;
@@ -2526,6 +2539,7 @@ li.htmlicon {
 }
 li.htmicon::before,
 li.htmlicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: red;
   content: "\2642";
   margin-left: -3rem;
@@ -2646,6 +2660,7 @@ li.projecticon::before,
 li.code-workspaceicon::before,
 li.workspaceicon::before,
 li.clpprjicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #bb0;
   content: "\2638";
   max-height: 16px;

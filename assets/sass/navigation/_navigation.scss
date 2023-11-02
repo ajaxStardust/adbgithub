@@ -15,6 +15,7 @@ li#font_demo_serif {
 }
 
 li#font_demo_serif::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   content: "Serif ⇒";
   font-size: 1rem;
   clear: both;
@@ -31,6 +32,7 @@ li#font_demo_sans {
 }
 
 li#font_demo_sans::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   content: "Sans ⇒";
   font-size: 1rem;
   clear: both;
@@ -93,6 +95,7 @@ li.bakicon {
 
 li.markdownicon,
 li.mdicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: rgb(102, 204, 145);
   content: "\2211";
   font-size: 1.5rem;
@@ -113,6 +116,7 @@ li.markdownicon {
 }
 
 li.cssicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #ff0;
   content: "\265b";
   font-size: 1.5rem;
@@ -138,6 +142,8 @@ li.jsicon {
   list-style-image: none;
 }
 li.navnobull::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #00bfff;
   content: "\2206";
   margin-left: -3rem;
@@ -154,6 +160,8 @@ li.pdficon {
   list-style-image: none;
 }
 li.phpicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #ff46ff;
   content: "♀";
   margin-left: -3rem;
@@ -174,6 +182,8 @@ li.jsonicon::before,
 li.jsicon::before,
 li.shtmlicon::before,
 li.lockicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #ff46ff;
   content: "\26E7";
   margin-left: -3.1rem;
@@ -192,6 +202,8 @@ li.yamlicon {
 li.xmlicon::before,
 li.ymlicon::before,
 li.yamlicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #ffaabb;
   content: "\26E5";
   margin-left: -3.1rem;
@@ -206,6 +218,8 @@ li.pharicon {
   list-style-image: none !important;
 }
 li.pharicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #bbffbb;
   content: "♀";
   margin-left: -3rem;
@@ -219,6 +233,7 @@ li.phtmlicon {
   list-style-image: none !important;
 }
 li.phtmlicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #4646ff;
   content: "⚤";
   margin-left: -3rem;
@@ -252,6 +267,7 @@ li.logicon {
 
 li.txticon::before,
 li.logicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   content: "\1F5B9";
   color: hsl(0, 0%, 82%);
   margin-left: -3rem;
@@ -594,6 +610,7 @@ thead {
 }
 
 n::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   background-color: #eee;
   color: #337;
   display: inline-block;
@@ -904,6 +921,7 @@ li.dsstore {
 
 li.htmicon::before,
 li.htmlicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: red;
   content: "♂";
   margin-left: -3rem;
@@ -995,6 +1013,7 @@ li.projecticon::before,
 li.workspaceicon::before,
 li.code-workspaceicon::before,
 li.clpprjicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #bb0;
   content: "☸";
   max-height: 16px;
@@ -1018,6 +1037,7 @@ li.regicon {
   list-style-image: none !important;
 }
 li.regicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   content: "\26BF";
   color: #9f9;
   max-height: 16px;
@@ -1078,6 +1098,7 @@ li.gzicon::before,
 li.raricon::before,
 li.sevenzipicon::before,
 li.zipicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #efa;
   content: "\262F";
   margin-left: -3rem;
@@ -1866,6 +1887,7 @@ li#font_demo_serif {
 }
 
 li#font_demo_serif::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   content: "Serif ⇒";
   font-size: 1rem;
   clear: both;
@@ -1882,12 +1904,14 @@ li#font_demo_sans {
 }
 
 li#font_demo_sans::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   content: "Sans ⇒";
   font-size: 1rem;
   clear: both;
 }
 
 .icoicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   content: "\2220";
   color: #ffc;
   margin-left: -3rem;
