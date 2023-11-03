@@ -15,7 +15,7 @@ $serversoftware = $_SERVER['SERVER_SOFTWARE'];
 $server_name = $_SERVER['SERVER_NAME'];
 $server_addr = $_SERVER['SERVER_ADDR'];
 $servername = $server_name;
-if (preg_match('@10\.0\.0\.\d+@', $server_addr)) {
+if (preg_match('@10\.0\.0\.\d+|127\.0\.0\.\d+@', $server_addr)) {
     $abspath = '<code class="info">' . $abspath . '</code>';
 } else {
     $abspath = 'is simply a PHP value which relies on server variables<code>define( ABSOLUTELOCATION , rtrim(dirname(__FILE__), inc))</code>';
