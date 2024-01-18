@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* ;
 navigation  */
-@import url(../css/pma_style.css);
+@import url(pma_style.css);
 li#adb_small_logo img {
   width: 100px;
   height: 80px;
@@ -18,6 +18,7 @@ li#font_demo_serif {
 }
 
 li#font_demo_serif::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   content: "Serif ⇒";
   font-size: 1rem;
   clear: both;
@@ -32,6 +33,7 @@ li#font_demo_sans {
 }
 
 li#font_demo_sans::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   content: "Sans ⇒";
   font-size: 1rem;
   clear: both;
@@ -91,6 +93,7 @@ li.bakicon {
 
 li.markdownicon,
 li.mdicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #66cc91;
   content: "\2211";
   font-size: 1.5rem;
@@ -111,6 +114,7 @@ li.markdownicon {
 }
 
 li.cssicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #ff0;
   content: "\265b";
   font-size: 1.5rem;
@@ -140,6 +144,8 @@ li.jsicon {
 }
 
 li.navnobull::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #00bfff;
   content: "\2206";
   margin-left: -3rem;
@@ -159,6 +165,8 @@ li.pdficon {
 }
 
 li.phpicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #ff46ff;
   content: "♀";
   margin-left: -3rem;
@@ -180,6 +188,8 @@ li.jsonicon::before,
 li.jsicon::before,
 li.shtmlicon::before,
 li.lockicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #ff46ff;
   content: "\26E7";
   margin-left: -3.1rem;
@@ -199,6 +209,8 @@ li.yamlicon {
 li.xmlicon::before,
 li.ymlicon::before,
 li.yamlicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #ffaabb;
   content: "\26E5";
   margin-left: -3.1rem;
@@ -214,6 +226,8 @@ li.pharicon {
 }
 
 li.pharicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #bbffbb;
   content: "♀";
   margin-left: -3rem;
@@ -229,6 +243,7 @@ li.phtmlicon {
 }
 
 li.phtmlicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #4646ff;
   content: "⚤";
   margin-left: -3rem;
@@ -268,6 +283,7 @@ li.logicon {
 
 li.txticon::before,
 li.logicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   content: "\1F5B9";
   color: #d1d1d1;
   margin-left: -3rem;
@@ -616,6 +632,7 @@ thead {
 }
 
 n::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   background-color: #eee;
   color: #337;
   display: inline-block;
@@ -931,6 +948,7 @@ li.dsstore {
 
 li.htmicon::before,
 li.htmlicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: red;
   content: "♂";
   margin-left: -3rem;
@@ -1021,6 +1039,7 @@ li.projecticon::before,
 li.workspaceicon::before,
 li.code-workspaceicon::before,
 li.clpprjicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #bb0;
   content: "☸";
   max-height: 16px;
@@ -1045,6 +1064,7 @@ li.regicon {
 }
 
 li.regicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   content: "\26BF";
   color: #9f9;
   max-height: 16px;
@@ -1105,6 +1125,7 @@ li.gzicon::before,
 li.raricon::before,
 li.sevenzipicon::before,
 li.zipicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #efa;
   content: "\262F";
   margin-left: -3rem;
@@ -1582,19 +1603,19 @@ p#collapser img {
 #pageControls {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 1em 1em 1em 1em;
-  display: block;
-  font-family: sans-serif;
+    font-family: sans-serif;
   font-size: x-small;
   font-style: normal;
   font-variant: small-caps;
   font-weight: 400;
   line-height: normal;
   outline: 0.1em outset rgba(0, 30, 200, 0.1);
-  padding: 1.5em 0.5em 1.5em 0;
-  position: fixed;
+  padding: 1.5rem 0.5rem 1.5erem 0;
   right: 5px;
-  top: 60%;
-}
+  display: flex;
+  flex-direction:column;
+  margin: 0;
+ }
 
 #pagewidth {
   background-color: #fff;
@@ -1910,6 +1931,7 @@ li#font_demo_serif {
 }
 
 li#font_demo_serif::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   content: "Serif ⇒";
   font-size: 1rem;
   clear: both;
@@ -1924,12 +1946,14 @@ li#font_demo_sans {
 }
 
 li#font_demo_sans::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   content: "Sans ⇒";
   font-size: 1rem;
   clear: both;
 }
 
 .icoicon::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   content: "\2220";
   color: #ffc;
   margin-left: -3rem;
@@ -2138,7 +2162,8 @@ body {
   background-position: left top;
   background-repeat: repeat;
   color: #304;
-  font-family: "Liberation Sans", "Droid Sans", "DejaVu Sans", arial, helvetica, sans-serif;
+  font-family: "Liberation Sans", "Droid Sans", "DejaVu Sans", arial, helvetica,
+ sans-serif;
   margin: 0;
 }
 
@@ -2206,7 +2231,8 @@ li {
 
 #cssTips * dt,
 dl dt {
-  font-family: "Playfair Display", Argesta, Didot, GFSDidot, Lora, Cambria, "Times New Roman", times, serif;
+  font-family: "Playfair Display", Argesta, Didot, GFSDidot, Lora, Cambria,
+ "Times New Roman", times, serif;
   text-indent: 0;
 }
 
@@ -2245,7 +2271,8 @@ h4,
 h5,
 h6 {
   text-shadow: 0 0.04em 0 rgba(255, 255, 255, 0.9);
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
 }
 
 h4 {
@@ -2258,7 +2285,8 @@ h4 {
 
 h4.keyTermsHeading {
   color: #c30;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   font-style: italic;
 }
 
@@ -2287,7 +2315,8 @@ iframe html {
   background-color: transparent;
   color: #aaa;
   display: block;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   font-size: 0.9em;
   margin-top: 1em;
   text-align: left;
@@ -2443,7 +2472,8 @@ thead {
 
 .closeme {
   color: #03f;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   text-align: center;
 }
 
@@ -2457,7 +2487,8 @@ thead {
   background-color: #eee;
   color: #337;
   display: inline-block;
-  font-family: "Liberation Mono", "DejaVu Sans Mono", "Lucida Console", "monte carlo", monospace;
+  font-family: "Liberation Mono", "DejaVu Sans Mono", "Lucida Console",
+ "monte carlo", monospace;
 }
 
 .codeComment,
@@ -2501,7 +2532,8 @@ thead {
 .defListTitle {
   border: 0;
   color: #d02;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   font-style: italic;
   margin-bottom: 0.3em;
   width: 50%;
@@ -2636,7 +2668,8 @@ li.hiddenitem {
 
 .serif,
 .serifBold {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
 }
 
 .serifBold {
@@ -2661,7 +2694,8 @@ li.hiddenitem {
 }
 
 .tableHeadrow {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   font-size: 1.1em;
   font-weight: 700;
   text-align: center;
@@ -2680,7 +2714,8 @@ li.hiddenitem {
 .trigger {
   color: navy;
   cursor: help;
-  font-family: "DejaVu Sans Condensed", "Arial Narrow", Arial, Helvetica, sans-serif;
+  font-family: "DejaVu Sans Condensed", "Arial Narrow", Arial, Helvetica,
+ sans-serif;
   font-variant: small-caps;
   letter-spacing: 0.1em;
   line-height: 2em;
@@ -2762,7 +2797,20 @@ kbd {
 
 li.ds_storeicon,
 li.dsstore {
-  list-style-image: url(ds_store-icon.png);
+  list-style-image: none;
+}
+
+li.ds_storeicon,
+li.dsstore::before {
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
+  color: red;
+  content: "\2646";
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 900;
 }
 
 li.htmicon,
@@ -2772,7 +2820,7 @@ li.htmlicon {
 
 li.htmicon::before,
 li.htmlicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: red;
   content: "\2642";
   margin-left: -3rem;
@@ -2805,7 +2853,8 @@ li.listheader,
 li.listheaditem {
   background-color: #fff;
   color: purple;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   font-size: 14pt;
   font-style: normal;
   font-variant: small-caps;
@@ -2892,7 +2941,6 @@ li.projecticon::before,
 li.code-workspaceicon::before,
 li.workspaceicon::before,
 li.clpprjicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   color: #bb0;
   content: "\2638";
   max-height: 16px;
@@ -2938,7 +2986,8 @@ span.toggler {
 ul.keyTermsList {
   background-color: #f8f8f8;
   color: #006;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   padding: 0.8em;
 }
 
@@ -2961,7 +3010,8 @@ ul.keyTermsList li sup {
 }
 
 #accessContainerTrigger {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
 }
 
 #accessoryContainer {
@@ -3080,7 +3130,8 @@ ul.keyTermsList li sup {
   background-color: rgba(255, 255, 255, 0.1);
   color: #000;
   display: table-cell;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   font-size: 0.95em;
   font-weight: 300;
   text-align: left;
@@ -3088,7 +3139,8 @@ ul.keyTermsList li sup {
 }
 
 #doc_loc_href {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   font-size: 1.2em;
   font-weight: 600;
   color: #fff;
@@ -3107,7 +3159,8 @@ ul.keyTermsList li sup {
   background-color: rgba(255, 255, 255, 0.1);
   background-repeat: repeat-x;
   clear: both;
-  font-family: "Liberation Sans", "Droid Sans", "DejaVu Sans", arial, helvetica, sans-serif;
+  font-family: "Liberation Sans", "Droid Sans", "DejaVu Sans", arial, helvetica,
+ sans-serif;
   text-align: center;
 }
 
@@ -3167,7 +3220,8 @@ ul.keyTermsList li sup {
 #frameName {
   background-color: rgba(255, 245, 152, 0.5);
   color: #003c3c;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   font-size: 0.9em;
   font-variant: small-caps;
 }
@@ -3234,7 +3288,8 @@ p#collapser img {
 
 #localScope {
   border: 2em solid #ccc;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   margin: 0 2em;
   width: 30em;
 }
@@ -3396,9 +3451,14 @@ p#collapser img {
   line-height: normal;
   outline: 0.1em outset rgba(0, 30, 200, 0.1);
   padding: 1.5em 0.5em 1.5em 0;
-  position: fixed;
+  /* position: fixed; */
   right: 5px;
-  top: 60%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  /* position: absolute; */
+  /* top: 10%; */
+	min-width: 9rem;
 }
 
 #pagewidth {
@@ -3433,7 +3493,8 @@ p#collapser img {
   margin: 1em;
   padding: 0.5em;
   color: #000;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   background: 0 0;
   width: 10%;
   left: 45%;
@@ -3674,25 +3735,6 @@ ul#navlist li.phpicon a:hover {
   color: #c30;
 }
 
-li.php,
-li.phpicon {
-  list-style-image: none;
-}
-
-li.php::before,
-li.phpicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
-  list-style-image: none;
-  color: #ff46ff;
-  content: "♀";
-  margin-left: -3rem;
-  padding-left: 0;
-  white-space: pre;
-  font-size: 1.5rem;
-  float: left;
-  font-weight: 900;
-}
-
 ol#navlist li:hover,
 ul#navlist li:hover {
   background-color: #fff;
@@ -3732,7 +3774,6 @@ li.bmpicon {
 
 li.bmp::before,
 li.bmpicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3751,7 +3792,6 @@ li.gificon {
 
 li.gif::before,
 li.gificon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3770,7 +3810,6 @@ li.icoicon {
 
 li.ico::before,
 li.icoicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3789,7 +3828,6 @@ li.jpgicon {
 
 li.jpg::before,
 li.jpgicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3808,7 +3846,6 @@ li.pdnicon {
 
 li.pdn::before,
 li.pdnicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3827,7 +3864,6 @@ li.pngicon {
 
 li.png::before,
 li.pngicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3846,7 +3882,6 @@ li.psdicon {
 
 li.psd::before,
 li.psdicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3865,7 +3900,6 @@ li.svgicon {
 
 li.svg::before,
 li.svgicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3884,7 +3918,6 @@ li.tgaicon {
 
 li.tga::before,
 li.tgaicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3903,7 +3936,6 @@ li.tiff {
 
 li.tif::before,
 li.tiff::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3922,7 +3954,6 @@ li.tificon {
 
 li.tifficon::before,
 li.tificon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3941,7 +3972,6 @@ li.xcficon {
 
 li.xcf::before,
 li.xcficon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -3959,7 +3989,8 @@ body {
   background-position: left top;
   background-repeat: repeat;
   color: #304;
-  font-family: "Liberation Sans", "Droid Sans", "DejaVu Sans", arial, helvetica, sans-serif;
+  font-family: "Liberation Sans", "Droid Sans", "DejaVu Sans", arial, helvetica,
+ sans-serif;
   margin: 0;
 }
 
@@ -4027,7 +4058,8 @@ li {
 
 #cssTips * dt,
 dl dt {
-  font-family: "Playfair Display", Argesta, Didot, GFSDidot, Lora, Cambria, "Times New Roman", times, serif;
+  font-family: "Playfair Display", Argesta, Didot, GFSDidot, Lora, Cambria,
+ "Times New Roman", times, serif;
   text-indent: 0;
 }
 
@@ -4066,7 +4098,8 @@ h4,
 h5,
 h6 {
   text-shadow: 0 0.04em 0 rgba(255, 255, 255, 0.9);
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
 }
 
 h4 {
@@ -4079,7 +4112,8 @@ h4 {
 
 h4.keyTermsHeading {
   color: #c30;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   font-style: italic;
 }
 
@@ -4108,7 +4142,8 @@ iframe html {
   background-color: transparent;
   color: #aaa;
   display: block;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   font-size: 0.9em;
   margin-top: 1em;
   text-align: left;
@@ -4264,7 +4299,8 @@ thead {
 
 .closeme {
   color: #03f;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   text-align: center;
 }
 
@@ -4278,7 +4314,8 @@ thead {
   background-color: #eee;
   color: #337;
   display: inline-block;
-  font-family: "Liberation Mono", "DejaVu Sans Mono", "Lucida Console", "monte carlo", monospace;
+  font-family: "Liberation Mono", "DejaVu Sans Mono", "Lucida Console",
+ "monte carlo", monospace;
 }
 
 .codeComment,
@@ -4322,7 +4359,8 @@ thead {
 .defListTitle {
   border: 0;
   color: #d02;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   font-style: italic;
   margin-bottom: 0.3em;
   width: 50%;
@@ -4457,7 +4495,8 @@ li.hiddenitem {
 
 .serif,
 .serifBold {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
 }
 
 .serifBold {
@@ -4482,7 +4521,8 @@ li.hiddenitem {
 }
 
 .tableHeadrow {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   font-size: 1.1em;
   font-weight: 700;
   text-align: center;
@@ -4501,7 +4541,8 @@ li.hiddenitem {
 .trigger {
   color: navy;
   cursor: help;
-  font-family: "DejaVu Sans Condensed", "Arial Narrow", Arial, Helvetica, sans-serif;
+  font-family: "DejaVu Sans Condensed", "Arial Narrow", Arial, Helvetica,
+ sans-serif;
   font-variant: small-caps;
   letter-spacing: 0.1em;
   line-height: 2em;
@@ -4593,7 +4634,7 @@ li.htmlicon {
 
 li.htmicon::before,
 li.htmlicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: red;
   content: "\2642";
   margin-left: -3rem;
@@ -4626,7 +4667,8 @@ li.listheader,
 li.listheaditem {
   background-color: #fff;
   color: purple;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   font-size: 14pt;
   font-style: normal;
   font-variant: small-caps;
@@ -4713,7 +4755,7 @@ li.projecticon::before,
 li.code-workspaceicon::before,
 li.workspaceicon::before,
 li.clpprjicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
+  text-shadow: 0.1rem 0.1rem 0.1rem #aaaaaa55;
   color: #bb0;
   content: "\2638";
   max-height: 16px;
@@ -4759,7 +4801,8 @@ span.toggler {
 ul.keyTermsList {
   background-color: #f8f8f8;
   color: #006;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   padding: 0.8em;
 }
 
@@ -4782,7 +4825,8 @@ ul.keyTermsList li sup {
 }
 
 #accessContainerTrigger {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
 }
 
 #accessoryContainer {
@@ -4901,7 +4945,8 @@ ul.keyTermsList li sup {
   background-color: rgba(255, 255, 255, 0.1);
   color: #000;
   display: table-cell;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   font-size: 0.95em;
   font-weight: 300;
   text-align: left;
@@ -4909,7 +4954,8 @@ ul.keyTermsList li sup {
 }
 
 #doc_loc_href {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   font-size: 1.2em;
   font-weight: 600;
   color: #fff;
@@ -4928,7 +4974,8 @@ ul.keyTermsList li sup {
   background-color: rgba(255, 255, 255, 0.1);
   background-repeat: repeat-x;
   clear: both;
-  font-family: "Liberation Sans", "Droid Sans", "DejaVu Sans", arial, helvetica, sans-serif;
+  font-family: "Liberation Sans", "Droid Sans", "DejaVu Sans", arial, helvetica,
+ sans-serif;
   text-align: center;
 }
 
@@ -4988,7 +5035,8 @@ ul.keyTermsList li sup {
 #frameName {
   background-color: rgba(255, 245, 152, 0.5);
   color: #003c3c;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   font-size: 0.9em;
   font-variant: small-caps;
 }
@@ -5055,7 +5103,8 @@ p#collapser img {
 
 #localScope {
   border: 2em solid #ccc;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   margin: 0 2em;
   width: 30em;
 }
@@ -5254,7 +5303,8 @@ p#collapser img {
   margin: 1em;
   padding: 0.5em;
   color: #000;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria, "Times New Roman", times, serif;
+  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
+ "Times New Roman", times, serif;
   background: 0 0;
   width: 10%;
   left: 45%;
@@ -5286,6 +5336,8 @@ p#collapser img {
 #svgtitle {
   width: 100%;
   font-family: "Arial black";
+  z-index: 99;
+  position: sticky;
 }
 
 #testStringSplit {
@@ -5534,7 +5586,6 @@ li.bmpicon {
 
 li.bmp::before,
 li.bmpicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5553,7 +5604,6 @@ li.gificon {
 
 li.gif::before,
 li.gificon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5572,7 +5622,6 @@ li.icoicon {
 
 li.ico::before,
 li.icoicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5591,7 +5640,6 @@ li.jpgicon {
 
 li.jpg::before,
 li.jpgicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5610,7 +5658,6 @@ li.pdnicon {
 
 li.pdn::before,
 li.pdnicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5629,7 +5676,6 @@ li.pngicon {
 
 li.png::before,
 li.pngicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5648,7 +5694,6 @@ li.psdicon {
 
 li.psd::before,
 li.psdicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5667,7 +5712,6 @@ li.svgicon {
 
 li.svg::before,
 li.svgicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5686,7 +5730,6 @@ li.tgaicon {
 
 li.tga::before,
 li.tgaicon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5705,7 +5748,6 @@ li.tiff {
 
 li.tif::before,
 li.tiff::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5724,7 +5766,6 @@ li.tificon {
 
 li.tifficon::before,
 li.tificon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5743,7 +5784,6 @@ li.xcficon {
 
 li.xcf::before,
 li.xcficon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
   list-style-image: none;
   color: #ffc;
   content: "\2220";
@@ -5760,3 +5800,22 @@ li.xcficon::before {
   /* background-image: url(backgrounddiagonal.jpg); */
   width: 100%;
 }
+
+div#random_head_img {
+	position: relative;
+  height:100%;
+	text-align: right;
+	display: flex;
+	flex-direction: row-reverse;
+	align-content: start;
+}
+
+img#the_random_header {
+	position: relative;
+  max-height: inherit;
+	text-align: right;
+	display: flex;
+	flex-direction: row-reverse;
+	align-content: start;
+}
+

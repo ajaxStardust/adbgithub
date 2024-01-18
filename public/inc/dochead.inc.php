@@ -39,10 +39,21 @@ $rootCss = FALSE;
 /* for future impletation of CSS control - useless idea really */
 
 require $xro.'public/class/class-urlchopper.php';
+require $xro.'public/class/class-cwthumbs.php';
+
 
 $testPath = $_SERVER['SCRIPT_NAME'];
 
 $urlChopper = new urlChopper;
+
+$head_img_obj = new CwThumbs;
+$one_image = $head_img_obj->makeThumbs("assets/screenshots",$none=NULL); 
+$many = count($one_image);
+$rand = rand(0,$many) -1;
+if($rand == -1) {
+	$rand = 0;
+}
+// $random_head_img = $one_image[$rand];
 
 $chopThis = $urlChopper->chopUrl($testPath);
 /* what is the point of creating the _chopThis variable? */
@@ -214,7 +225,7 @@ $frameTitle = $frameInfo['filename'];
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-<title><?php print $serverName.$chopThis."/".$c_trim; ?></title>
+<title><?php print $serverName."/".$chopThis."/".$c_trim; ?></title>
 
 <meta charset="UTF-8">
         <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -375,6 +386,7 @@ require $xro.'assets/css/style.css.php';
 <object id="svgtitle" class="floatleft transparentback" title="Documents of <?php print $chopThis; ?> container"
         data="assets/css/masthead.php" type="image/svg+xml">
 </object>
+ 
 </div><!-- $ END Dynamic and SVG HTML node ID#header $ -->
 
 <div id="wrapper" class="unfloat"><!-- ^ id=wrapper ^ -->

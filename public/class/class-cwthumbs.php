@@ -11,7 +11,8 @@ class CwThumbs {
     public $many        =   NULL;
     public $images      =   NULL;
 
-    public function makeThumbs($dir,$abspath){
+    public function makeThumbs($dir,$abspath)
+	{
 	
 	
     if(isset($abspath)){
@@ -77,11 +78,11 @@ class CwThumbs {
     $this->images = $sort;
 	return $this->images;
 
-} // end cwthumbs(METHOD)
+} // end makeThmbs(METHOD)
 
 
 
-    public function randIMG($output) {
+    public function randIMG($randomimage) {
 
 // CODE BELOW WILL GENERATE A RANDOM IMAGE BASED ON THE INFO FROM CWDTHUMBS
 $randhdimg = (count($output) * (0.5));
