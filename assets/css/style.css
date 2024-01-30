@@ -15,9 +15,7 @@ nav {
     z-index: 10
 }
 
-#ATTN_THIS_IS_PROCESSING {
-    color: unset
-}
+ 
 
 li.markdownicon,
 li.mdicon::before {
@@ -2046,6 +2044,5 @@ li.xcficon::before {
     right: 5px;
     display: flex;
     flex-direction: column;
-    /* margin-top: 10rem; */
-    top: 10rem;
+    margin: 10% 2rem 0 0;
 }
