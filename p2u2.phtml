@@ -15,7 +15,7 @@ $serversoftware = $_SERVER['SERVER_SOFTWARE'];
 $server_name = $_SERVER['SERVER_NAME'] ? $_SERVER['SERVER_NAME'] : $_SERVER['SERVER_ADDR'];
 $server_addr = $_SERVER['SERVER_ADDR'] ? $_SERVER['SERVER_ADDR'] : $_SERVER['SERVER_NAME'];
 $servername = $server_name;
-if (preg_match('@10\.0\.0\.\d+|192\.\d\.\d\.\d+|127\.\d\.\d\.\d+@', $server_addr)) {
+if (preg_match('@10\.0\.0\.\d+|192\.\d+\.\d+\.\d+|127\.\d+\.\d+\.\d+@', $server_addr)) {
     $abspath = '<code class="info">' . $abspath . '</code>';
 } else {
     $abspath = 'is simply a PHP value which relies on server variables<code>define( ABSOLUTELOCATION , rtrim(dirname(__FILE__), inc))</code>';
@@ -207,116 +207,88 @@ $imgNumber = $cwThumbsClass->thumbsCount;
 
 <head>
     <meta charset="UTF-8">
-    <meta
-        http-equiv="X-UA-Compatible"
-        content="IE=edge"
-    >
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         <?php print $title; ?>
     </title>
-    <link
-        rel="icon"
-        type="image/ico"
-        href="favicon.ico"
-    >
-    <link
-        rel="shortcut icon"
-        type="image/ico"
-        href="favicon.ico"
-    >
+    <link rel="icon" type="image/ico" href="favicon.ico">
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico">
     <style>
     /** if needed add style here */
     </style>
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
-        crossorigin="anonymous"
-    > <!-- BOOTSTRAP STYLE -->
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
-    >
- 
-    <link
-        href="assets/css/notes.css"
-        rel="stylesheet"
-        type="text/css"
-    >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- BOOTSTRAP STYLE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <link href="assets/css/notes.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="assets/css/lightslider.css">
-		<style>
-			ul{
-					list-style: none outside none;
-				    padding-left: 0;
-		            margin: 0;
-				}
-		        .demo .item{
-		            margin-bottom: 60px;
-		        }
-				.content-slider li{
-				    background-color: #ed3020;
-				    text-align: center;
-				    color: #FFF;
-				}
-				.content-slider h3 {
-				    margin: 0;
-				    padding: 70px 0;
-				}
-				.demo{
-					width: 800px;
-				}
-		</style>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-		<script src="assets/js/lightslider.js"></script>
-		<script>
-			$(document).ready(function() {
-					$("#content-slider").lightSlider({
-		                loop:true,
-		                keyPress:true
-		            });
-		            $('#image-gallery').lightSlider({
-		                gallery:true,
-		                item:1,
-		                thumbItem:9,
-		                slideMargin: 0,
-		                speed:500,
-		                auto:true,
-		                loop:true,
-		                onSliderLoad: function() {
-		                    $('#image-gallery').removeClass('cS-hidden');
-		                }  
-		            });
-				});
-		</script>
+    <style>
+    ul {
+        list-style: none outside none;
+        padding-left: 0;
+        margin: 0;
+    }
+
+    .demo .item {
+        margin-bottom: 60px;
+    }
+
+    .content-slider li {
+        background-color: #ed3020;
+        text-align: center;
+        color: #FFF;
+    }
+
+    .content-slider h3 {
+        margin: 0;
+        padding: 70px 0;
+    }
+
+    .demo {
+        width: 800px;
+    }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="assets/js/lightslider.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("#content-slider").lightSlider({
+            loop: true,
+            keyPress: true
+        });
+        $('#image-gallery').lightSlider({
+            gallery: true,
+            item: 1,
+            thumbItem: 9,
+            slideMargin: 0,
+            speed: 500,
+            auto: true,
+            loop: true,
+            onSliderLoad: function() {
+                $('#image-gallery').removeClass('cS-hidden');
+            }
+        });
+    });
+    </script>
 
 </head>
 
 <body>
 
-  <div id="pagewidth" class="container">
- 
-    <section id="slideshow">  <!-- #HEADER -->
-        <h1 class="bg-dark text-light text-end pe-3">Slideshow with Form</h1>
-        <form
-                    action="<?php $_SERVER['PHP_SELF']; ?>"
-                    id="p2u2top"
-                >
-                    <input
-                        type="text"
-                        name="path2url"
-                    >
-                    <input
-                        type="submit"
-                        name="convert"
-                    >
-        </form>
-        
-        
-        <?php
+    <div id="pagewidth" class="container">
+
+        <section id="slideshow">
+            <!-- #HEADER -->
+            <h1 class="bg-dark text-light text-end pe-3">Slideshow with Form</h1>
+            <form action="<?php $_SERVER['PHP_SELF']; ?>" id="p2u2top">
+                <input type="text" name="path2url">
+                <input type="submit" name="convert">
+            </form>
+
+
+            <?php
         filter_path_to_url($_GET,$servername,$server_addr);
             $contactSheet = '<div class="demo">
         <div class="item">            
@@ -347,44 +319,32 @@ if(strlen($contactSheet) > 20) {
 		}
 		print '<p class="alt_link">Click to <a href="http://' . $servername . '/screenshots.phtml" title="view full size">select the screenshot</a> you wish to view full size.</p>';
         ?>
-        <section id="header">
-            <h1 class="bg-dark text-light text-end pe-3"><?php echo $page_heading; ?></h1>
+            <section id="header">
+                <h1 class="bg-dark text-light text-end pe-3"><?php echo $page_heading; ?></h1>
 
 
 
 
-        </section>
-        <section
-            id="general_notes"
-            class="container"
-        >
-        <p><a href="https://github.com/ajaxStardust/AnnieDeBrowsa" target="_blank"><img src="https://github-readme-stats.vercel.app/api/pin/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true" alt="Status" /></a></p>
-        <h3
-                id="wpFormHeader"
-                class="text-h2"
-            >path2url v2:</h3>
-        <p class="text-primary">Convert a System Path to an HTTP URL:</p>
-                        <p class="indentOne text-secondary smaller">A convenient way to load files that require server-side scripting to render in your browser (e.g. PHP files)</p>
-        <?php echo '<p><strong>ABSOLUTELOCATION</strong>:</p><p style="margin-top:-1rem;">' . $abspath . '</p>'; ?>
+            </section>
+            <section id="general_notes" class="container">
+                <p><a href="https://github.com/ajaxStardust/AnnieDeBrowsa" target="_blank"><img
+                            src="https://github-readme-stats.vercel.app/api/pin/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true"
+                            alt="Status" /></a></p>
+                <h3 id="wpFormHeader" class="text-h2">path2url v2:</h3>
+                <p class="text-primary">Convert a System Path to an HTTP URL:</p>
+                <p class="indentOne text-secondary smaller">A convenient way to load files that require server-side
+                    scripting to render in your browser (e.g. PHP files)</p>
+                <?php echo '<p><strong>ABSOLUTELOCATION</strong>:</p><p style="margin-top:-1rem;">' . $abspath . '</p>'; ?>
 
-                <form
-                    action="<?php $_SERVER['PHP_SELF']; ?>"
-                    id="p2u2"
-                >
-                    <input
-                        type="text"
-                        name="path2url"
-                    >
-                    <input
-                        type="submit"
-                        name="convert"
-                    >
+                <form action="<?php $_SERVER['PHP_SELF']; ?>" id="p2u2">
+                    <input type="text" name="path2url">
+                    <input type="submit" name="convert">
                 </form>
-                 <p>Enter the complete system file path in the text field
+                <p>Enter the complete system file path in the text field
                     (E.g. <code class="underline">Y:\var\www\html\wsl_workspace\index.php</code>).
                 </p>
-                                
-            <?php 
+
+                <?php 
             filter_path_to_url($_GET,$servername,$server_addr);
             echo '<div class="mt-2 col text-center" id="info_container"><p class="bg-dark text-light">Served by: <span class="bg-dark text-warning">' . $serversoftware . '</span></p>
                 <p class="bg-dark text-light">PHP Version: <span class="text-warning">' . phpversion() . '</span></p>
@@ -392,49 +352,48 @@ if(strlen($contactSheet) > 20) {
                 <p class="bg-dark text-light">Server Addr: <span class="text-info">' . $server_addr . '</span></p>
                 </div>'; ?>
 
-            <div class="notes">
+                <div class="notes">
 
-                <!-- p class="italic red">Once converted, the <kbd>HTTP://</kbd> URL will be displayed as a hyperlink which
+                    <!-- p class="italic red">Once converted, the <kbd>HTTP://</kbd> URL will be displayed as a hyperlink which
                     you can click to view the file.</p -->
-                    <p><a href="https://github.com/ajaxStardust" target="_blank"><img src="https://github-readme-stats.vercel.app/api/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true&amp;show_icons=true" alt="More" /></a></p>
+                    <p><a href="https://github.com/ajaxStardust" target="_blank"><img
+                                src="https://github-readme-stats.vercel.app/api/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true&amp;show_icons=true"
+                                alt="More" /></a></p>
 
 
 
-                <p>This <span class="black">WordPressCenter.net <em>path2url</em></span> application uses conditioinal logic on the path to return a viable HTTP URL. It may not output the desired URL without some simple code tweaking.</p><p class="smaller">NOTE: Should an unexpected System Path result in a <em>bad URL</em>, please submit it to <a
-                            href="https://github.com/ajaxStardust"
-                            target="_blank"
-                            title="View original"
-                        >@ajaxStardust</a> so the application logic might be improved. Thank you!</span></p>
+                    <p>This <span class="black">WordPressCenter.net <em>path2url</em></span> application uses
+                        conditioinal logic on the path to return a viable HTTP URL. It may not output the desired URL
+                        without some simple code tweaking.</p>
+                    <p class="smaller">NOTE: Should an unexpected System Path result in a <em>bad URL</em>, please
+                        submit it to <a href="https://github.com/ajaxStardust" target="_blank"
+                            title="View original">@ajaxStardust</a> so the application logic might be improved. Thank
+                        you!</span></p>
 
 
-            </div> <!--  $    div   .notes    $   -->
-        </section> <!--    $   section   #general_notes  .container    $   -->
+                </div> <!--  $    div   .notes    $   -->
+            </section> <!--    $   section   #general_notes  .container    $   -->
 
-        <section class="container">
+            <section class="container">
 
 
-        </section> <!-- $  section .container          -->
-        <section class="footer px-4">
-            <!--    .FOOTER     -->
-            <div class="row gx-5">
-                <div class="col">
-                    <div class="p-3 border bg-light"> Based on Notes by <a
-                            href="https://github.com/ajaxStardust"
-                            target="_blank"
-                            title="View original"
-                        >@ajaxStardust</a> <em>Laravel</em> notes:</div>
+            </section> <!-- $  section .container          -->
+            <section class="footer px-4">
+                <!--    .FOOTER     -->
+                <div class="row gx-5">
+                    <div class="col">
+                        <div class="p-3 border bg-light"> Based on Notes by <a href="https://github.com/ajaxStardust"
+                                target="_blank" title="View original">@ajaxStardust</a> <em>Laravel</em> notes:</div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border bg-light text-end"><kbd><?php echo $lastMod; ?></kbd></div>
+                    </div>
                 </div>
-                <div class="col">
-                    <div class="p-3 border bg-light text-end"><kbd><?php echo $lastMod; ?></kbd></div>
-                </div>
-            </div>
-        </section>
+            </section>
     </div> <!--    .content  -->
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-        crossorigin="anonymous"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
