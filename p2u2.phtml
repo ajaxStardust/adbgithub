@@ -300,7 +300,7 @@ $imgNumber = $cwThumbsClass->thumbsCount;
                     $cwimg_path = $imgDir . '/' . $cwImg;
                     $imgCounter = $imgNumber[$cwKey];
                     $caption = preg_replace('/(.*)(vscode_)([^_]+)(_\d+\.png)(.*)/', '$3', $cwImg);
-                    $contactSheet .= '<li data-thumb="assets/images/vscode/' . $cwImg . '"> <figure class="text-end"><figcaption>'.$caption.'</figcaption><img src="assets/images/vscode/' . $cwImg . '"></figure></li>
+                    $contactSheet .= '<li data-thumb="assets/images/vscode/' . $cwImg . '"> <figure><figcaption class="text-end">'.$caption.'</figcaption><img src="assets/images/vscode/' . $cwImg . '"></figure></li>
                     ';
                 }
             } else {
