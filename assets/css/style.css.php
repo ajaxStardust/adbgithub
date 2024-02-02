@@ -8,9 +8,7 @@ else {
 if(isset($bodyid)){
 
 	print '
-<style><!--/*--><![CDATA[/*><!--*/
-/* style.css.php */
-
+<style>
 	body#'.$bodyid.' li#'.$bodyid.'Nav a {
 		/* background-color:#E1EbFF; */
 		background-color:transparent;
@@ -24,8 +22,6 @@ if(isset($bodyid)){
 	body#'.$bodyid.' li#'.$bodyid.'Nav:hover {
 		color:#000;
 	}
-
-/*]]>*/-->
 </style>
 	';
 

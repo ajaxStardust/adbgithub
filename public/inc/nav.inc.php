@@ -12,8 +12,24 @@ else {
 // initialize counter
 $objNmbr = 0;
 // initialize goUp array():
-$goUp = array("subject" => ' ', "replace" => ' ', "search" => ' ', "result" => ' ', "url" => ' ');
-$nav_pathInfo = pathinfo($_SERVER['PHP_SELF']);
+
+$goUp = [
+    'subject' => NULL,
+    'replace' => NULL,
+    'search' => NULL,
+    'result' => NULL,
+    'url' => NULL
+];
+
+$nav_pathInfo = [
+    'basename' => NULL,
+    'dirname' => NULL,
+    'filename' => NULL,
+    'extension' => NULL
+];
+
+$nav_pathInfo = pathinfo($_SERVER['PHP_SELF'], PATHINFO_ALL);
+
 $filePathArray = pathinfo(__FILE__.$xro);
 /* same as $pi from dochead.inc.php ! - no because other is via _SERVER[script_name] but
  * remember - we are still going off of whatever file is loaded in the browser currently
@@ -59,7 +75,7 @@ $dir = str_ireplace($search, $replace, $subject);
  */
 
 if(empty($parseUrl)){
-    $parseUrl = parse_url($nav_pathInfo['dirname'], PHP_URL_PATH);
+    $parseUrl = @parse_url($nav_pathInfo['dirname'], PHP_URL_PATH);
     $bodyid=rtrim(".",$parseUrl) ? empty($bodyid) : $bodyid = $bodyid;
 
         /**

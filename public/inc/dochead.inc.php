@@ -219,13 +219,22 @@ $frameInfo = pathinfo($defaultIframe);
 $frameTitle = $frameInfo['filename'];
 /* create the string for the iFrame title */
 
+if(isset($chopThis) && strlen($chopThis) > 1) {
+
+$pagetitle = $serverName."/".$chopThis."/".$c_trim;
+
+}
+else {
+$pagetitle = $serverName ."/".$c_trim;
+}
+
 /* END PHP and begin HTML for document head */
 ?>
 
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-<title><?php print $serverName."/".$chopThis."/".$c_trim; ?></title>
+<title><?php print $pagetitle; ?></title>
 
 <meta charset="UTF-8">
         <meta http-equiv="Content-Style-Type" content="text/css" />
