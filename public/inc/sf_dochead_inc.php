@@ -90,7 +90,7 @@ foreach($defaultFontsArray as $fontsArrayKey_asCssClass => $fontsArrayValue_asFo
 <meta name="keywords" content="windows,mac,linux,fonts,common,similar,equivalent,standard,usual,typical,frequent" />
 <!-- link rel="stylesheet" href="assets/css/safefonts.css" type="text/css" media="screen" charset="UTF-8" -->
 <!-- tempcss -->
-<link rel="stylesheet" href="assets/css/safefontstyle_cssToolbox_akelPadEdit.css" type="text/css" media="screen" charset="UTF-8" />
+<link rel="stylesheet" href="assets/css/safefontstyle.css" type="text/css" media="screen" charset="UTF-8" />
 <link rel="shortcut icon" href="http://WordPressCenter.net/favicon.ico" />
 
 <script type="text/javascript" src="assets/js/thetoggler.js"></script>

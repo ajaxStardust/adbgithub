@@ -5,7 +5,23 @@
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
-    "**/Thumbs.db": true
+    "**/Thumbs.db": true,
+    "assets/css/parchmosteven.jpg": true,
+    "**/*.png": true,
+    "**/*.jpg": true,
+    "**/*.gif": true
   },
-  "hide-files.files": []
+  "hide-files.files": [
+    "assets/css/parchmosteven.jpg"
+  ],
+  "open-php-html-js-in-browser.selectedBrowser": "Ask always...",
+  "open-php-html-js-in-browser.customBrowserPath": "/opt/microsoft/msedge/msedge",
+  "open-php-html-js-in-browser.documentRootFolder": "/var/www/html",
+  "open-php-html-js-in-browser.alternativeDocumentRootFolders": [
+    "/var/www/html/adbatheatgit"
+  ],
+  "open-php-html-js-in-browser.urlToOpen": "custom",
+  "open-php-html-js-in-browser.customHost": "mx23ahs",
+  "open-php-html-js-in-browser.showStatusBarItem": false,
+  "explorerExclude.backup": {}
 }

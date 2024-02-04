@@ -505,7 +505,7 @@ function collapseNav(navDiv) {
         leftcol.style.display = 'block';
         maincol.style.width = '79%';
         navImage.src = spacer + 'assets/css/directional-arrow-left.png';
-        toggleTxt.innerHTML = "collapse";
+        toggleTxt.innerHTML = "hide";
     }
 }
 
