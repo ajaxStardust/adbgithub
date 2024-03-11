@@ -100,107 +100,113 @@ $parent_containers = explode(DIRECTORY_SEPARATOR, __DIR__);
     <!-- link href="<?php echo get_theme_root_uri(); ?>/css/notes.css" rel="stylesheet" type="text/css" -->
     <link href="assets/css/notes.css" rel="stylesheet">
     <style>
-        .red {
-            color: #F00;
-        }
+    .red {
+        color: #F00;
+    }
 
-        .keyTerms {
-            background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(235, 235, 255, 1) 80%, rgba(214, 214, 235, 1) 93%, rgba(173, 173, 214, 1) 100%);
-            margin-top: 1rem;
-            padding-top: 0.5rem;
-        }
-        }
+    .keyTerms {
+        background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(235, 235, 255, 1) 80%, rgba(214, 214, 235, 1) 93%, rgba(173, 173, 214, 1) 100%);
+        margin-top: 1rem;
+        padding-top: 0.5rem;
+    }
+    }
 
-        .sys_path {
-            color: #F00 !important;
-        }
+    .sys_path {
+        color: #F00 !important;
+    }
 
-        .http_url {
-            color: #00F;
-        }
+    .http_url {
+        color: #00F;
+    }
 
-        .sys_path {
-            color: #F00;
-        }
+    .sys_path {
+        color: #F00;
+    }
 
-        ol.array_like_counter {
-            list-style: none;
-            counter-reset: dir-counter -1;
-        }
+    ol.array_like_counter {
+        list-style: none;
+        counter-reset: dir-counter -1;
+    }
 
-        ol li {
-            counter-increment: dir-counter;
-        }
+    ol li {
+        counter-increment: dir-counter;
+    }
 
-        ol li::before {
-            content: counter(dir-counter) ". ";
-            color: green;
-            font-weight: bold;
-            font-family: monospace;
-            font-style: italic;
-        }
+    ol li::before {
+        content: counter(dir-counter) ". ";
+        color: green;
+        font-weight: bold;
+        font-family: monospace;
+        font-style: italic;
+    }
 
-        #url_blue {
-            background-color: blue;
-            color: white;
-        }
+    #url_blue {
+        background-color: blue;
+        color: white;
+    }
 
-        #path_red {
-            background-color: red;
-            color: white;
-        }
+    #path_red {
+        background-color: red;
+        color: white;
+    }
     </style>
-<script language="javascript" type="text/javascript">
-var myVariable = prompt('type here');
+    <script language="javascript" type="text/javascript">
+    var myVariable = prompt('Enter Path');
+    console.log(myVariable);
 
-var params = myVariable;
 
-var AJAX = function (params) {
-    this.server ={};
-    this.url = params.url;
-    this.method = params.method;
-    this.dataType = params.dataType;
-    this.formData = params.formData;
+    var params = myVariable;
 
-    this.init = function(){
-        if(typeof XMLHttpRequest != 'undefined'){
-            this.server = new XMLHttpRequest();
+    var AJAX = function(params) {
+        this.server = {};
+        this.url = params.url;
+        this.method = params.method;
+        this.dataType = params.dataType;
+        this.formData = params.formData;
 
-            //Open first, before setting the request headers.
-            this.server.open(this.method, this.url, true);
+        this.init = function() {
+            if (typeof XMLHttpRequest != 'undefined') {
+                this.server = new XMLHttpRequest();
 
-            //Now set the request headers.
-            this.server.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            //this.server.setRequestHeader('Content-length', this.formData.length);
-            //this.server.setRequestHeader('Connection', 'close');
-            console.log("XMLHttpRequest created.");
-            return true;
-        }
+                //Open first, before setting the request headers.
+                this.server.open(this.method, this.url, true);
+
+                //Now set the request headers.
+                this.server.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                //this.server.setRequestHeader('Content-length', this.formData.length);
+                //this.server.setRequestHeader('Connection', 'close');
+                console.log("XMLHttpRequest created.");
+                return true;
+            }
+        };
+
+        this.send = function() {
+            if (this.init()) {
+                this.server.send(this.formData);
+            }
+        };
+
     };
-
-    this.send = function(){
-        if(this.init()){
-            this.server.send(this.formData);
-        }
-    };
-
-};
-</script>
-<?php if (isset($_REQUEST['variable'])) { echo $_REQUEST['variable']; } ?>
+    console.log(AJAX);
+    </script>
+    <?php if (isset($_REQUEST['variable'])) { echo $_REQUEST['variable']; } ?>
 </head>
 
 <body>
 
     <div id="pagewidth" class="container">
-<form id="form1" name="form1"><a onclick="_vals('<?php if (isset($_REQUEST['variable'])) { echo $_REQUEST['variable']; } ?>')" href="#">My Link</a>
-</form>
+        <form id="form1" name="form1"><a
+                onclick="_vals('<?php if (isset($_REQUEST['variable'])) { echo $_REQUEST['variable']; } ?>')"
+                href="#">My Link</a>
+        </form>
         <section id="header">
             <!-- #HEADER -->
             <h1 class="bg-dark text-light text-end pe-3"><?php echo $page_heading; ?></h1>
         </section>
         <section id="intro">
             <h2>Figure it out, yo! WP Has the Native Functions for it!</h2>
-            <p>E.g.: The following WordPress native functions should provide you the information you need to acquire the correct paths to use in your custom code, templates, etc. Pay attention to what happens here:</p>
+            <p>E.g.: The following WordPress native functions should provide you the information you need to acquire the
+                correct paths to use in your custom code, templates, etc. Pay attention to what happens here:</p>
             <table>
                 <tr>
                     <td id="path_red">returns SYSTEM PATH</td>
@@ -262,11 +268,13 @@ var AJAX = function (params) {
         </section>
 
         <section id="footer">
-            <p class="content footer cite">Based on Notes by <a href="https://github.com/ajaxStardust" target="_blank" title="View original">@ajaxStardust</a> <em>Laravel</em> notes.
+            <p class="content footer cite">Based on Notes by <a href="https://github.com/ajaxStardust" target="_blank"
+                    title="View original">@ajaxStardust</a> <em>Laravel</em> notes.
             </p>
         </section>
     </div> <!--    .content  -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
     </script>
 
     <script src='<?php echo get__root_uri(); ?>/js/showme-hideme.js'></script>
