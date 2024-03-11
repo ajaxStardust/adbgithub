@@ -28,15 +28,10 @@ $nav_pathInfo = [
     'extension' => NULL
 ];
 
-$nav_pathInfo = pathinfo($_SERVER['PHP_SELF'], PATHINFO_ALL);
+$nav_pathInfo = pathinfo(dirname(__DIR__), PATHINFO_ALL);
 
-$filePathArray = pathinfo(__FILE__.$xro);
-/* same as $pi from dochead.inc.php ! - no because other is via _SERVER[script_name] but
- * remember - we are still going off of whatever file is loaded in the browser currently
- * E.g. index.php
- * so why all of the different approaches to grabbing the same data?
- * i.e. what is the most reliable way to obtain the info, and stick with it!
- **/
+$filePathArray = pathinfo(__FILE__);
+
 
 $childItems = array();
 // $baseNameEQonePage = array();
@@ -51,9 +46,8 @@ $specialExtn = array();
 
 $pmAllCollector = array();
 $myPathInfo = array("dirname","basename","extension","filename");
-// set directory name
+
 $dir = __FILE__;
-// $dir = $filePathArray['dirname'];
 
 require $xro.'public/inc/alphanumarray.inc.php';
 require $xro.'public/inc/basenamecleaner.inc.php';
@@ -67,41 +61,70 @@ elseif(file_exists($xro.'public/inc/nav.inc.php')) {
 $subject = $dir;
 $replace = '';
 $dir = str_ireplace($search, $replace, $subject);
-
-/**
- * this actually seems to work fairly well for determining the absolute directory path
- * 20220420 js
- *
- */
-
-if(empty($parseUrl)){
-    $parseUrl = @parse_url($nav_pathInfo['dirname'], PHP_URL_PATH);
-    $bodyid=rtrim(".",$parseUrl) ? empty($bodyid) : $bodyid = $bodyid;
-
-        /**
-         * WHAT IS GOING ON HERE - $bodyid is boolean -> false here?
-         * 20220420 js
-         */
-
+$server_name = $_SERVER['SERVER_NAME'] ? $_SERVER['SERVER_NAME'] : $_SERVER['HTTP_HOST'];
+$server_addr = $_SERVER['SERVER_ADDR'] ? $_SERVER['SERVER_ADDR'] : $_SERVER['SERVER_NAME'];
+$servername = $server_name;
+function convert_url_chars($url_2_convert)
+{
+    // if(!preg_match('@/var/www/html@', $_GET['path2url'])){
+    if (!empty($_GET['path2url'])) {
+        $url_2_convert = preg_replace('/"/', '', $url_2_convert);
+        $url_2_convert = preg_replace('/ /', '%20', $url_2_convert);
+        $url_2_convert = preg_replace('/%20$/', '', $url_2_convert);
+        $url_2_convert = str_ireplace('file://', '', $url_2_convert);
+        $url_2_convert = preg_replace('@([\x5c\x2f])@', '/', $url_2_convert);
+    }
+    return $url_2_convert;
 }
-/* $goUp = array('subject','replace','search','result','url'); */
 
-$goUp["subject"] = $parseUrl;
+function filter_path($url, $servername, $server_addr)
+{
+    /**
+     * to see everything, uncomment this var
+     * $filtered_url = $_SERVER;
+     */
+     $filtered_url['url'] = $url;
+    $filtered_url['servername'] = $servername;
+    $filtered_url['server_addr'] = $server_addr;
+    $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
+    return $filtered_url['servername'];
+}
+$goUp = [];
+
+$goUp["subject"] = $nav_pathInfo['dirname'];
 $goUp["replace"] = '';
 $goUp["search"] = '@^(.*(?=(/).*))@';
 $goUp["result"] = preg_replace($goUp["search"], $goUp["replace"], $goUp["subject"]);
 $goUp["url"] = str_ireplace($goUp["result"], $goUp["replace"], $goUp["subject"]);
-if(strlen($goUp["url"]) < 1) {
-    $goUp["url"] = $serverUrl."/";
+$goUp['url'] = preg_replace('/([^\/]+\/)+([^\/]+)/','$2',$goUp['url']);
+$goUp['url'] = filter_path($_SERVER['DOCUMENT_ROOT'],$servername,$server_addr);
+
+$depth = substr_count($goUp['subject'], '/');
+echo '<br>depth: ' .$depth;
+if($depth < 5) {
+
+    // $goUp['url'] = $_SERVER['HTTP_HOST'];
+    $goUp['url'] = filter_path($_SERVER['DOCUMENT_ROOT'],$servername,$server_addr);
+    echo '<div id="gouptest">Depth < 5<ol>';
+
+    foreach ($goUp as $guKey => $guVal) {
+        echo '<li>goUp['.$guKey.']: '.$guVal.'</li>';
+    }
+
+    echo '</ol></div>';
 }
 
-/* if (is_dir($dir)) {
-    if ($dh0 = opendir($dir)) {
-        while (($sortDir[] = readdir($dh0)) !== false) {
-            sort($sortDir);
-            }
-    }
-} */
+
+//if(strlen($goUp["url"]) < 1) {
+//    $goUp["url"] = $serverUrl."/";
+//}
+
+echo '<div id="gouptest">after if()<ol>';
+foreach ($goUp as $guKey => $guVal) {
+    echo '<li>goUp['.$guKey.']: '.$guVal.'</li>';
+}
+echo '</ol></div>';
+
 
 $concatSubdir = "/".$chopThis."/";
 $conSubSearch = "\\";
@@ -186,8 +209,9 @@ else {
     $lc = 0;
     $htmlPrint[$lc] = "<nav id=\"leftcol\" class=\"navlist\"> \n <ul id=\"navlist\" class=\"navlist\"> \n";
     if(isset($goUp["url"])){
-        $htmlPrint[$lc] .= "<li id=\"goUpItem\" class=\"nav\"><a href=\""
-            .$goUp["url"]."\">".$goUp["url"]."</a></li> \n";
+
+
+        $htmlPrint[$lc] .= '<li id="goUpItem" class="nav"><a title="crazy" href="//'.$goUp["url"].'">'.$goUp["url"].'</a></li>';
     }
 
     $totalObjects = $objNmbr;

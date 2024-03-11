@@ -32,10 +32,16 @@ require_once 'public/inc/dochead.inc.php';
 require_once 'public/inc/nav.inc.php';
 ?>
 <div id="maincol">
-                                <!--    ^   id:maincol  ^   -->
+    <!--    ^   id:maincol  ^   -->
     <!--    id:doc_loc_href added ID data here for indication of preferred text -->
     <h2 id="doc_loc_href" title="currentUrlPath.pathInfoBasename"><?php print $currentUrlPath.$pathInfoBasename; ?></h2>
-<?php
+    <ol>
+        <li class="float-left larger p-2"><a href="https://localhost/index.php">localhost/index.php</a></li>
+        <li class="float-left larger p-2"><a href="https://mx23flux/index.php">mx23flux/index.php</a></li>
+        <li class="float-left larger p-2"><a href="https://mylaravel/index.php">mylaravel/index.php</a></li>
+        <li class="float-left larger p-2"><a href="https://wordpresscenter.net">WordPressCenter.net</a></li>
+    </ol>
+    <?php
 // BEGIN PHP REQUIRE    #pageControls
             require 'public/inc/jscontrols.inc.php';
                 if (isset($bnRegExReport)) {
@@ -67,8 +73,9 @@ require_once 'public/inc/nav.inc.php';
         <!--    ^   id:mainFrameContainer   ^   -->
         <div id="frameTitler">Currently Viewing: <span id="frameName"><?php print $defaultIframe; ?></span>
         </div>
-                                            <!--    $   id:frameTitler  $   -->
-        <iframe title="frame content as selected in main navigation" src="<?php print $defaultIframe; ?>" id="mainFrame">
+        <!--    $   id:frameTitler  $   -->
+        <iframe title="frame content as selected in main navigation" src="<?php print $defaultIframe; ?>"
+            id="mainFrame">
         </iframe>
     </div>
     <!--    $   id:mainFrameContainer   $   -->
@@ -81,7 +88,7 @@ require_once 'public/inc/nav.inc.php';
     ?>
 <!-- div id="displayHttPath"><?php print $currentUrlPath.$pathInfoBasename; ?></div -->
 
-    <?php 
+<?php 
     require 'public/inc/footer.inc.php';
 ?>
 </div>
@@ -89,13 +96,10 @@ require_once 'public/inc/nav.inc.php';
 
 </div>
 <!--    $   id:pagewidth    $   -->
-<script 
-    type="text/javascript"
-    src="./<?php echo $xro; ?>assets/js/showme-hideme.js">
+<script type="text/javascript" src="./<?php echo $xro; ?>assets/js/showme-hideme.js">
 </script>
-<script 
-    type="text/javascript"
-    src="./<?php echo $xro; ?>assets/js/accessories.js">
+<script type="text/javascript" src="./<?php echo $xro; ?>assets/js/accessories.js">
 </script>
 </body>
+
 </html>

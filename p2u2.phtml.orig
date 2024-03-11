@@ -1,0 +1,399 @@
+<?php
+
+header('Access-Control-Allow-Origin: *');  // ENABLE CORS (Cross-Origin Request) policy allow all
+date_default_timezone_set('America/New_York');
+$lastMod = 'Modified: ' . date('D M j Y G:i:s T', getlastmod());
+
+if (!defined('ABSOLUTELOCATION')) {
+    define('ABSOLUTELOCATION', rtrim(dirname(__FILE__), 'inc'));
+}
+$abspath = ABSOLUTELOCATION;
+
+$page_heading = 'Convert System Path to HTTP URL';
+$title = 'p2u2 - ' . ABSOLUTELOCATION;
+$serversoftware = $_SERVER['SERVER_SOFTWARE'];
+$server_name = $_SERVER['SERVER_NAME'] ? $_SERVER['SERVER_NAME'] : $_SERVER['SERVER_ADDR'];
+$server_addr = $_SERVER['SERVER_ADDR'] ? $_SERVER['SERVER_ADDR'] : $_SERVER['SERVER_NAME'];
+$servername = $server_name;
+if (preg_match('@10\.0\.0\.\d+|192\.\d+\.\d+\.\d+|127\.\d+\.\d+\.\d+@', $server_addr)) {
+    $abspath = '<code class="info">' . $abspath . '</code>';
+} else {
+    $abspath = 'is simply a PHP value which relies on server variables<code>define( ABSOLUTELOCATION , rtrim(dirname(__FILE__), inc))</code>';
+}
+
+function clean_url_chars($url_2_convert)
+{
+    // if(!preg_match('@/var/www/html@', $_GET['path2url'])){
+    if (!empty($_GET['path2url'])) {
+        $url_2_convert = preg_replace('/"/', '', $url_2_convert);
+        $url_2_convert = preg_replace('/ /', '%20', $url_2_convert);
+
+        $url_2_convert = str_ireplace('file://', '', $url_2_convert);
+        $url_2_convert = preg_replace('@([\x5c\x2f])@', '/', $url_2_convert);
+    }
+    return $url_2_convert;
+}
+
+function filter_path_to_url($get_path2url,$servername,$server_addr){
+                    if (!empty($get_path2url)) {
+                        echo '<br>$_GET[path2url] = <strong class="red">' . $_GET['path2url'] . '</strong><br>';
+                        $strirep = clean_url_chars($_GET['path2url']);
+
+                        echo '<br>clean_url_chars($_GET[path2url]) { <strong class="red">' . $strirep . '</strong> }<br>';
+                        //   echo '<br>$_SERVER[DOCUMENT_ROOT] = '.$_SERVER['DOCUMENT_ROOT'].' @line: '.__LINE__.'<br>';
+                        // SET THIS STRING TO THE LAN WINDOWS PATH OF LINUX SYSTEM:
+                        if (preg_match('@([\x5c\x2f]{1,2})(wsl\.localhost[\x5c\x2f]{1,2})([^\x5c\x2f]+)@', $strirep)) {
+                            $strirep = preg_replace('@([\x5c\x2f])(wsl\.localhost[\x5c\x2f])([^\x5c\x2f]+)@', '', $strirep);
+
+                            $servername = 'wsldebian';
+                        } else {
+                            $servername = !empty($servername) ? $servername : $server_addr;
+
+                            /* $servername = empty($server_name) ? $servername : $server_name; */
+                        }
+                        switch ($strirep) {
+                            case (preg_match('@[Zz]:[\\\\/]@', $strirep) ? true : false):
+                                $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
+                                $strirep = str_ireplace('Z:\\', '', $strirep);
+                                $servername = 'mxlinux-21';
+                                $servername = !empty($servername) ? $servername : $server_addr;
+                                /* $servername = empty($server_name) ? $servername : $server_name; */
+                                break;
+                            case (preg_match('@[Ww]:[\\\\/]@', $strirep) ? true : false):
+                                $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
+                                $strirep = str_ireplace('W:\\', '', $strirep);
+                                $servername = 'mx23';
+                                $servername = !empty($servername) ? $servername : $server_addr;
+
+                                /* $servername = empty($server_name) ? $servername : $server_name; */
+                                break;
+                            case (preg_match('@/var/www/html@', $strirep) ? true : false):
+                                $strirep = str_ireplace('/var/www/html/', '', $strirep);
+
+                                if (preg_match('@^([Yy]:)@', $strirep)) {
+                                    $strirep = preg_replace('@^(\w:)@', '', $strirep);
+                                    $servername = 'wsldebian';
+                                    $servername = !empty($servername) ? $servername : $server_addr;
+
+                                    /* $servername = empty($server_name) ? $servername : $server_name; */
+                                } else {
+                                    $servername = !empty($servername) ? $servername : $server_addr;
+
+                                    /* $servername = empty($server_name) ? $servername : $server_name; */
+                                }
+
+                                break;
+                            case (preg_match('/.*mxlinux.*/', $strirep) ? true : false):
+                                $strirep = preg_replace('@([\x5c\x2f]*)(mxlinux\-21)([\x5c\x2f]*)(html)@', '\\', $strirep);
+                                $servername = 'mxlinux-21';
+                                $servername = !empty($servername) ? $servername : $server_addr;
+
+                                /* $servername = empty($server_name) ? $servername : $server_name; */
+                                break;
+
+                            case ((preg_match('/.*mx23.*/', $strirep)) ? true : false):
+                                if (preg_match('/[dD]evelopment[\x5c\x2f]/', $strirep)) {
+                                    $pattern = '@([\x5c\x2f]{1,2})(mx23[\x5c\x2f]{1,2})(flux_mount[\x5c\x2f]{1,2})([Dd]evelopment)([\x5c\x2f]{1,2})(Apache2[\x5c\x2f]{1,2})(htdocs[\x5c\x2f]{0,2})@';
+                                    $replace = '';
+                                    $strirep = preg_replace($pattern, $replace, $strirep);
+                                    $servername = 'devalt.mx23';
+                                    $servername = !empty($servername) ? $servername : $server_addr;
+
+                                    /* $servername = empty($server_name) ? $servername : $server_name; */
+                                } elseif (preg_match('/[dD]evel[\x5c\x2f]/', $strirep)) {
+                                    $pattern = '@([\x5c\x2f]{1,2})(mx23[\x5c\x2f]{1,2})(flux_mount[\x5c\x2f]{1,2})([Dd]evel)([\x5c\x2f]{1,2})(Apache2[\x5c\x2f]{1,2})(htdocs[\x5c\x2f]{0,2})@';
+                                    $replace = '';
+                                    $strirep = preg_replace($pattern, $replace, $strirep);
+                                    $servername = 'devel.mx23';
+                                    $servername = !empty($servername) ? $servername : $server_addr;
+
+                                    /* $servername = empty($server_name) ? $servername : $server_name; */
+                                } else {
+                                    $strirep = preg_replace('@([\x5c\x2f]*)(mx23)([\x5c\x2f]*)(html)@', '\\', $strirep);
+                                    $servername = 'mx23';
+                                    $servername = !empty($servername) ? $servername : $server_addr;
+                                    /*
+                                     * $servername = empty($server_name) ? $servername : $server_name;
+                                     */
+                                }
+                                break;
+
+                            case (preg_match('@[Vv]:[\x5c\x2f]{1,2}[Dd]evelopment@', $strirep) ? true : false):
+                                $strirep = preg_replace('@([\x5c\x2f])@', '/', $strirep);
+                                $strirep = str_ireplace('V:/Development/Apache2/htdocs', '', $strirep);
+                                $strirep = str_ireplace('V:\Development\Apache2\htdocs', '', $strirep);
+                                $servername = 'devalt.mx23';
+                                $servername = !empty($servername) ? $servername : $server_addr;
+
+                                /* $servername = empty($server_name) ? $servername : $server_name; */
+                                break;
+                            case (preg_match('@[Vv]:[\x5c\x2f]{1,2}[Dd]evel@', $strirep) ? true : false):
+                                $strirep = preg_replace('@([\x5c\x2f])@', '/', $strirep);
+                                $strirep = str_ireplace('V:/Devel/Apache2/htdocs', '', $strirep);
+                                $strirep = str_ireplace('V:\Devel\Apache2\htdocs', '', $strirep);
+                                $servername = 'devel.mx23';
+                                $servername = !empty($servername) ? $servername : $server_addr;
+
+                                /* $servername = empty($server_name) ? $servername : $server_name; */
+                                break;
+
+                            case (preg_match('@[Cc]:[\\\\/]@', $strirep) ? true : false):
+                                if (preg_match('@[Cc]:[\\\\/]Apache2@', $strirep)) {
+                                    $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
+                                    $strirep = str_ireplace('C:\\Apache2\\htdocs\\', '', $strirep);
+                                    $servername = 'beelink.localhost';
+                                    $servername = !empty($servername) ? $servername : $server_addr;
+
+                                    /* $servername = empty($server_name) ? $servername : $server_name; */
+                                } elseif (preg_match('@[Cc]:[\\\\/]Users@', $strirep)) {
+                                    $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
+                                    $strirep = str_ireplace('C:\\Users\\jsaba\\OneDrive\\Documents\\GitHub\\', '', $strirep);
+                                    $servername = 'github.localhost';
+                                    $servername = !empty($servername) ? $servername : $server_addr;
+
+                                    /* $servername = empty($server_name) ? $servername : $server_name; */
+                                } else {
+                                    $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
+                                    $strirep = str_ireplace('C:\\Portable\\_temp_\\_Global_Bak_Text_n_IDE\\', '', $strirep);
+                                    $servername = 'portable.localhost';
+                                    $servername = !empty($servername) ? $servername : $server_addr;
+
+                                    /* $servername = empty($server_name) ? $servername : $server_name; */
+                                }
+
+                                $servername = !empty($servername) ? $servername : $server_addr;
+
+                                /* $servername = empty($server_name) ? $servername : $server_name; */
+                                break;
+                        }
+
+                        $strirep = preg_replace('@([\x5c\x2f]+)@', '/', $strirep);
+                        $servername = !empty($servername) ? $servername : $server_addr;
+
+                        /* $servername = empty($server_name) ? $servername : $server_name; */
+
+                        $url_result = 'http://' . $servername . '/' . ltrim($strirep, '/');
+                        $http_url_final = '<br><strong>Click URL:</strong><br> <a href="' . $url_result . '" title="' . $strirep . '" target="_blank">' . $url_result . '</a>';
+                        echo $http_url_final;
+                    }
+}
+
+require 'public/class/class-cwthumbs.php';
+
+$cwThumbsClass = new cwThumbs;
+
+if (isset($_POST['imgDirSearch'])) {
+    $newimagesdir = $_POST['imgDirSearch'];
+    if (is_dir($newimagesdir)) {
+        $cwThumbs = $cwThumbsClass->makeThumbs($newimagesdir, $none = NULL);
+        $number_of = count($cwThumbs);
+        $notice_of_images = "<h4>Success:</h4><p>Found $number_of images.</p>";
+    } else {
+        $cwThumbs = $cwThumbsClass->makeThumbs('assets/images/vscode', $none = NULL);
+        $notice_of_images = '<h4>Notice:</h4><p>The directory you entered is not a valid path.</p>';
+    }
+} else {
+    $cwThumbs = $cwThumbsClass->makeThumbs('assets/images/vscode', $none = NULL);
+    $number_of = count($cwThumbs);
+    $notice_of_images = "<h4>Info:</h4><p>Found $number_of screenshots.</p>";
+}
+
+$imgDir = $cwThumbsClass->imagesDir;
+$imgNumber = $cwThumbsClass->thumbsCount;
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <?php print $title; ?>
+    </title>
+    <link rel="icon" type="image/ico" href="favicon.ico">
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+    <style>
+    /** if needed add style here */
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- BOOTSTRAP STYLE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <link href="assets/css/notes.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/css/lightslider.css">
+    <style>
+    ul {
+        list-style: none outside none;
+        padding-left: 0;
+        margin: 0;
+    }
+
+    .demo .item {
+        margin-bottom: 60px;
+    }
+
+    .content-slider li {
+        background-color: #ed3020;
+        text-align: center;
+        color: #FFF;
+    }
+
+    .content-slider h3 {
+        margin: 0;
+        padding: 70px 0;
+    }
+
+    .demo {
+        width: 800px;
+    }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="assets/js/lightslider.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("#content-slider").lightSlider({
+            loop: true,
+            keyPress: true
+        });
+        $('#image-gallery').lightSlider({
+            gallery: true,
+            item: 1,
+            thumbItem: 9,
+            slideMargin: 0,
+            speed: 500,
+            auto: true,
+            loop: true,
+            onSliderLoad: function() {
+                $('#image-gallery').removeClass('cS-hidden');
+            }
+        });
+    });
+    </script>
+
+</head>
+
+<body>
+
+    <div id="pagewidth" class="container">
+
+        <section id="slideshow">
+            <!-- #HEADER -->
+            <h1 class="bg-dark text-light text-end pe-3">Slideshow with Form</h1>
+            <form action="<?php $_SERVER['PHP_SELF']; ?>" id="p2u2top">
+                <input type="text" name="path2url">
+                <input type="submit" name="convert">
+            </form>
+
+
+            <?php
+        filter_path_to_url($_GET,$servername,$server_addr);
+            $contactSheet = '<div class="demo">
+        <div class="item">            
+            <div class="clearfix" style="max-width:474px;">
+            <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
+            ';
+            if (isset($cwThumbs) && is_array($cwThumbs)) {
+                foreach ($cwThumbs as $cwKey => $cwImg) {
+                    $cwimg_path = $imgDir . '/' . $cwImg;
+                    $imgCounter = $imgNumber[$cwKey];
+                    $caption = preg_replace('/(.*)(vscode_)([^_]+)(_\d+\.png)(.*)/', '$3', $cwImg);
+                    $contactSheet .= '<li data-thumb="assets/images/vscode/' . $cwImg . '"> <figure><figcaption class="text-end">'.$caption.'</figcaption><img src="assets/images/vscode/' . $cwImg . '"></figure></li>
+                    ';
+                }
+            } else {
+                $contactSheet .= '<li class="bold nobull noBull">Sorry, but there is an error in the source, specific to the image resources contact-sheet previews.</li><li>Specifically, the ADB PHP-class, <em>cwThumbs</em> fails the logical condition of<ul><li><pre>
+                 does not exist</pre></li><li><pre>
+                 is not an array</pre></li><li><pre>has not been properly set</pre></li></ul>' . "\n";
+            }
+            $contactSheet .= "</ul> \n </div> \n </div> \n </div> \n";
+
+if(strlen($contactSheet) > 20) {
+            print $contactSheet;
+            print " \n <hr id=\"clearImgShow\" /> \n";
+		}
+		else {
+			print '<p class="notice">No screenshots to display</p>';
+		}
+		print '<p class="alt_link">Click to <a href="http://' . $servername . '/screenshots.phtml" title="view full size">select the screenshot</a> you wish to view full size.</p>';
+        ?>
+            <section id="header">
+                <h1 class="bg-dark text-light text-end pe-3"><?php echo $page_heading; ?></h1>
+
+
+
+
+            </section>
+            <section id="general_notes" class="container">
+                <p><a href="https://github.com/ajaxStardust/AnnieDeBrowsa" target="_blank"><img
+                            src="https://github-readme-stats.vercel.app/api/pin/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true"
+                            alt="Status" /></a></p>
+                <h3 id="wpFormHeader" class="text-h2">path2url v2:</h3>
+                <p class="text-primary">Convert a System Path to an HTTP URL:</p>
+                <p class="indentOne text-secondary smaller">A convenient way to load files that require server-side
+                    scripting to render in your browser (e.g. PHP files)</p>
+                <?php echo '<p><strong>ABSOLUTELOCATION</strong>:</p><p style="margin-top:-1rem;">' . $abspath . '</p>'; ?>
+
+                <form action="<?php $_SERVER['PHP_SELF']; ?>" id="p2u2">
+                    <input type="text" name="path2url">
+                    <input type="submit" name="convert">
+                </form>
+                <p>Enter the complete system file path in the text field
+                    (E.g. <code class="underline">Y:\var\www\html\wsl_workspace\index.php</code>).
+                </p>
+
+                <?php 
+            filter_path_to_url($_GET,$servername,$server_addr);
+            echo '<div class="mt-2 col text-center" id="info_container"><p class="bg-dark text-light">Served by: <span class="bg-dark text-warning">' . $serversoftware . '</span></p>
+                <p class="bg-dark text-light">PHP Version: <span class="text-warning">' . phpversion() . '</span></p>
+                <p class="bg-dark text-light">Server Name: <span class="text-info">' . $servername . '</span></p>
+                <p class="bg-dark text-light">Server Addr: <span class="text-info">' . $server_addr . '</span></p>
+                </div>'; ?>
+
+                <div class="notes">
+
+                    <!-- p class="italic red">Once converted, the <kbd>HTTP://</kbd> URL will be displayed as a hyperlink which
+                    you can click to view the file.</p -->
+                    <p><a href="https://github.com/ajaxStardust" target="_blank"><img
+                                src="https://github-readme-stats.vercel.app/api/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true&amp;show_icons=true"
+                                alt="More" /></a></p>
+
+
+
+                    <p>This <span class="black">WordPressCenter.net <em>path2url</em></span> application uses
+                        conditioinal logic on the path to return a viable HTTP URL. It may not output the desired URL
+                        without some simple code tweaking.</p>
+                    <p class="smaller">NOTE: Should an unexpected System Path result in a <em>bad URL</em>, please
+                        submit it to <a href="https://github.com/ajaxStardust" target="_blank"
+                            title="View original">@ajaxStardust</a> so the application logic might be improved. Thank
+                        you!</span></p>
+
+
+                </div> <!--  $    div   .notes    $   -->
+            </section> <!--    $   section   #general_notes  .container    $   -->
+
+            <section class="container">
+
+
+            </section> <!-- $  section .container          -->
+            <section class="footer px-4">
+                <!--    .FOOTER     -->
+                <div class="row gx-5">
+                    <div class="col">
+                        <div class="p-3 border bg-light"> Based on Notes by <a href="https://github.com/ajaxStardust"
+                                target="_blank" title="View original">@ajaxStardust</a> <em>Laravel</em> notes:</div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border bg-light text-end"><kbd><?php echo $lastMod; ?></kbd></div>
+                    </div>
+                </div>
+            </section>
+    </div> <!--    .content  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
