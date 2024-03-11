@@ -414,11 +414,12 @@ if (is_array($click_url)) {
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
+                            <h5 class="card-title">Nav Go Up</h5>
                             <?php
                         echo '<br>depth: ' .$depth;
 if($depth < 5) {
 
-    // $goUp['url'] = $_SERVER['HTTP_HOST'];
+    
     $goUp['url'] = filter_path($_SERVER['DOCUMENT_ROOT'],$servername,$server_addr);
     echo '<div id="gouptest">Depth < 5<ol>';
 

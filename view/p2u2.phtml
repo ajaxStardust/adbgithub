@@ -234,26 +234,13 @@ $goUp = [];
 
 $goUp["subject"] = $nav_pathInfo['dirname'];
 $goUp["replace"] = '';
-$goUp["search"] = '@^(.*(?=(/).*))@';
+$goUp["search"] = '@^(.*(/)(?=.*))@';
 $goUp["result"] = preg_replace($goUp["search"], $goUp["replace"], $goUp["subject"]);
 $goUp["url"] = str_ireplace($goUp["result"], $goUp["replace"], $goUp["subject"]);
 $goUp['url'] = preg_replace('/([^\/]+\/)+([^\/]+)/','$2',$goUp['url']);
 //$goUp['url'] = filter_path($_SERVER['DOCUMENT_ROOT'],$servername,$server_addr).$goUp['url'];
 
 $depth = substr_count($goUp['subject'], '/');
-echo '<br>depth: ' .$depth;
-if($depth < 5) {
-
-    // $goUp['url'] = $_SERVER['HTTP_HOST'];
-    $goUp['url'] = filter_path($_SERVER['DOCUMENT_ROOT'],$servername,$server_addr);
-    echo '<div id="gouptest">Depth < 5<ol>';
-
-    foreach ($goUp as $guKey => $guVal) {
-        echo '<li>goUp['.$guKey.']: '.$guVal.'</li>';
-    }
-
-    echo '</ol></div>';
-}
 
 
 ?>
@@ -281,10 +268,11 @@ if($depth < 5) {
     .clear {
         clear: none;
     }
-.clear::before {
-	content:'\x0a\x0d';
-clear:both;
-}
+
+    .clear::before {
+        content: '\00000a\00000d';
+        clear: both;
+    }
 
     .regex-input,
     .regex-pattern,
@@ -356,30 +344,22 @@ clear:both;
 
 <body>
     <div id="pagewidth" class="container">
-        <section id="slideshow">
-            <!-- #HEADER -->
-            <section id="header">
-                <h1 class="bg-dark text-light text-end pe-3"><?php echo $page_heading; ?></h1>
-                <p><a href="https://github.com/ajaxStardust/AnnieDeBrowsa" target="_blank"><img
-                            src="https://github-readme-stats.vercel.app/api/pin/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true"
-                            alt="Status" /></a></p>
-            </section>
 
-            <?php echo '<p><strong>ABSOLUTELOCATION</strong>:</p><p style="margin-top:-1rem;">' . $abspath . '</p>'; ?>
-            <div id="quickentry">
-                <form action="<?php $_SERVER['PHP_SELF']; ?>" id="p2u2top" method="GET">
-                    <label for="path2url" class="xhidden">_GET['path2url']:</label>
-                    <input type="text" name="path2url" id="path2url" value="<?php print $enterpathhere; ?>">
-                    <button class="btn btn-primary" type="submit" name="submit">New Hyperlink</button>
-                </form>
-            </div>
-            <?php
-echo '<div class="mt-2 col text-center" id="info_container"><p class="bg-dark text-light">Served by: <span class="bg-dark text-warning">' . $serversoftware . '</span></p>
-                <p class="bg-dark text-light">PHP Version: <span class="text-warning">' . phpversion() . '</span></p>
-                <p class="bg-dark text-light">Server Name: <span class="text-info">' . $servername . '</span></p>
-                <p class="bg-dark text-light">Server Addr: <span class="text-info">' . $server_addr . '</span></p>
-                </div>';
-$path2url = !empty($_GET['path2url']) ? $_GET['path2url'] : ABSOLUTELOCATION;
+        <!-- #HEADER -->
+        <section id="header">
+            <h1 class="bg-dark text-light text-end pe-3"><?php echo $page_heading; ?></h1>
+
+        </section>
+        <section>
+            <div class="row  row-cols-1 row-cols-md-2 g-4">
+                <div class="col">
+                    <div class="card">
+
+
+                        <div class="card-body">
+                            <h5 class="card-title">URL Processing</h5>
+                            <?php 
+                                $path2url = !empty($_GET['path2url']) ? $_GET['path2url'] : ABSOLUTELOCATION;
 $click_url = filter_path_to_url($path2url, $servername, $server_addr);
 if (is_array($click_url)) {
     echo '<div id="click_url" class="clear" style="clear:both;"><ol>';
@@ -391,7 +371,77 @@ if (is_array($click_url)) {
     $click_url = 'not an array';
     echo '<br>not array: <a href="http://localhost">' . $click_url . '</a>';
 }
-$contactSheet = '<div class="demo">
+?>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Get it on GitHub</h5>
+                            <p class="card-text"><a href="https://github.com/ajaxStardust/AnnieDeBrowsa"
+                                    target="_blank"><img
+                                        src="https://github-readme-stats.vercel.app/api/pin/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true"
+                                        alt="Status" /></a></p>
+                            <p class="card-text"><a href="https://github.com/ajaxStardust" target="_blank"><img
+                                        src="https://github-readme-stats.vercel.app/api/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true&amp;show_icons=true"
+                                        alt="More" /></a></p>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+
+
+                        <div class="card-body">
+                            <h5 class="card-title">Process a Path</h5>
+                            <div id="quickentry">
+                                <form action="<?php $_SERVER['PHP_SELF']; ?>" id="p2u2top" method="GET">
+                                    <label for="path2url" class="xhidden">_GET['path2url']:</label>
+                                    <input type="text" name="path2url" id="path2url"
+                                        value="<?php print $enterpathhere; ?>">
+                                    <button class="btn btn-primary" type="submit" name="submit">New
+                                        Hyperlink</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Nav Go Up</h5>
+                            <?php
+                        echo '<br>depth: ' .$depth;
+if($depth < 5) {
+
+    
+    $goUp['url'] = filter_path($_SERVER['DOCUMENT_ROOT'],$servername,$server_addr);
+    echo '<div id="gouptest">Depth < 5<ol>';
+
+    foreach ($goUp as $guKey => $guVal) {
+        echo '<li>goUp['.$guKey.']: '.$guVal.'</li>';
+    }
+
+    echo '</ol></div>';
+}
+?>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </section>
+        <section class="container">
+
+            <?php $contactSheet = '<div class="demo">
         <div class="item">            
             <div class="clearfix" style="max-width:474px;">
             <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
@@ -412,45 +462,58 @@ if (isset($cwThumbs) && is_array($cwThumbs)) {
 $contactSheet .= "</ul> \n </div> \n </div> \n </div> \n";
 if (strlen($contactSheet) > 20) {
     print $contactSheet;
-    print " \n <hr id=\"clearImgShow\" /> \n";
+    
 } else {
     print '<p class="notice">No screenshots to display</p>';
 }
-print '<p class="alt_link">Click to <a href="http://' . $servername . '/screenshots.phtml" title="view full size">select the screenshot</a> you wish to view full size.</p>';
+print '<p class="info">Click to <a href="./screenshots.phtml" title="view full size">select the screenshot</a> you wish to view full size.</p>'; 
+
+?>
+            <div class="col">
+
+                <h5 class="card-title">Server Info</h5>
+                <?php echo '<p><strong>ABSOLUTELOCATION</strong>:</p><p style="margin-top:-1rem;">' . $abspath . '</p>';  
+echo '<div class="container"><div class="bg-dark d-flex justify-content-between flex-wrap" id="info_container"><p class="bg-dark text-light">Served by: <span class="bg-dark text-warning">' . $serversoftware . '</span></p>
+                <p class="bg-dark text-light">PHP Version: <span class="text-warning">' . phpversion() . '</span></p>
+                <p class="bg-dark text-light">Server Name: <span class="text-info">' . $servername . '</span></p>
+                <p class="bg-dark text-light">Server Addr: <span class="text-info">' . $server_addr . '</span></p>
+                </div></div>';
+
+
 ?>
 
-            <section id="general_notes" class="container">
+            </div>
 
-                <p><a href="https://github.com/ajaxStardust" target="_blank"><img
-                            src="https://github-readme-stats.vercel.app/api/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true&amp;show_icons=true"
-                            alt="More" /></a></p>
-
-                <div class="notes">
+            <div class="notes">
 
 
-                    <p>This <span class="black">WordPressCenter.net <em>path2url</em></span> application uses
-                        conditioinal logic on the path to return a viable HTTP URL. It may not output the desired URL
-                        without some simple code tweaking.</p>
-                    <p class="smaller">NOTE: Should an unexpected System Path result in a <em>bad URL</em>, please
-                        submit it to <a href="https://github.com/ajaxStardust" target="_blank"
-                            title="View original">@ajaxStardust</a> so the application logic might be improved. Thank
-                        you!</span></p>
-                </div> <!--  $    div   .notes    $   -->
-            </section> <!--    $   section   #general_notes  .container    $   -->
-            <section class="container">
-            </section> <!-- $  section .container          -->
-            <section class="footer px-4">
-                <!--    .FOOTER     -->
-                <div class="row gx-5">
-                    <div class="col">
-                        <div class="p-3 border bg-light"> Based on Notes by <a href="https://github.com/ajaxStardust"
-                                target="_blank" title="View original">@ajaxStardust</a> <em>Laravel</em> notes:</div>
-                    </div>
-                    <div class="col">
-                        <div class="p-3 border bg-light text-end"><kbd><?php echo $lastMod; ?></kbd></div>
-                    </div>
+                <p>This <span class="black">WordPressCenter.net <em>path2url</em></span> application
+                    uses
+                    conditioinal logic on the path to return a viable HTTP URL. It may not output the
+                    desired URL
+                    without some simple code tweaking.</p>
+                <p class="smaller">NOTE: Should an unexpected System Path result in a <em>bad URL</em>,
+                    please
+                    submit it to <a href="https://github.com/ajaxStardust" target="_blank"
+                        title="View original">@ajaxStardust</a> so the application logic might be
+                    improved. Thank
+                    you!</span></p>
+            </div> <!--  $    div   .notes    $   -->
+        </section> <!--    $   section   #general_notes  .container    $   -->
+        <section class="container">
+        </section> <!-- $  section .container          -->
+        <section class="footer px-4">
+            <!--    .FOOTER     -->
+            <div class="row gx-5">
+                <div class="col">
+                    <div class="p-3 border bg-light"> Based on Notes by <a href="https://github.com/ajaxStardust"
+                            target="_blank" title="View original">@ajaxStardust</a> <em>Laravel</em> notes:</div>
                 </div>
-            </section>
+                <div class="col">
+                    <div class="p-3 border bg-light text-end"><kbd><?php echo $lastMod; ?></kbd></div>
+                </div>
+            </div>
+        </section>
     </div> <!--    .content  -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js">
     </script>
