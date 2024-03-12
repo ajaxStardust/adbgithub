@@ -1,8 +1,5 @@
 <?php
-
-// namespace Trn\Inc\Admin;
-/*echo '<br>@Line: '. __LINE__;
-print_r(get_wpconfig());*/
+ 
 header('Access-Control-Allow-Origin: *');  // ENABLE CORS (Cross-Origin Request) policy allow all
 
 function get_wpconfig()
@@ -173,8 +170,8 @@ $parent_containers = explode(DIRECTORY_SEPARATOR, __DIR__);
 
                 //Now set the request headers.
                 this.server.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-                //this.server.setRequestHeader('Content-length', this.formData.length);
-                //this.server.setRequestHeader('Connection', 'close');
+                this.server.setRequestHeader('Content-length', this.formData.length);
+                this.server.setRequestHeader('Connection', 'close');
                 console.log("XMLHttpRequest created.");
                 return true;
             }
@@ -187,7 +184,7 @@ $parent_containers = explode(DIRECTORY_SEPARATOR, __DIR__);
         };
 
     };
-    console.log(AJAX);
+    console.log(AJAX.server);
     </script>
     <?php if (isset($_REQUEST['variable'])) { echo $_REQUEST['variable']; } ?>
 </head>

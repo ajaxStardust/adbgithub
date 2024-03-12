@@ -21,7 +21,7 @@ function get_my_plugin_root_dir()
 
 $file_depth = preg_replace('@([\x5c\x2f])@', '/', __FILE__);
 $solidus_count = substr_count($file_depth, '/');
-$target_folder = $solidus_count - 8;
+$target_folder = $solidus_count - 5;
 
 $path_to_this_files_dir_without_wp_plugin_dir = str_replace(WP_PLUGIN_DIR, '', __DIR__);
 $plugin_directory_name_only = explode(DIRECTORY_SEPARATOR, $path_to_this_files_dir_without_wp_plugin_dir)[$target_folder];
