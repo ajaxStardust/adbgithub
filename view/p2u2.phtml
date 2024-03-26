@@ -238,9 +238,12 @@ $goUp["search"] = '@^(.*(/)(?=.*))@';
 $goUp["result"] = preg_replace($goUp["search"], $goUp["replace"], $goUp["subject"]);
 $goUp["url"] = str_ireplace($goUp["result"], $goUp["replace"], $goUp["subject"]);
 $goUp['url'] = preg_replace('/([^\/]+\/)+([^\/]+)/','$2',$goUp['url']);
-//$goUp['url'] = filter_path($_SERVER['DOCUMENT_ROOT'],$servername,$server_addr).$goUp['url'];
+
 
 $depth = substr_count($goUp['subject'], '/');
+/* if($depth >= 5) {
+    $goUp['url'] = filter_path($_SERVER['DOCUMENT_ROOT'],$servername,$server_addr);
+} */
 
 
 ?>
@@ -375,12 +378,12 @@ if (is_array($click_url)) {
                         </div>
                     </div>
                 </div>
-                                                <div class="col">
+                <div class="col">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Nav Go Up</h5>
                             <?php
-                        echo '<br>depth: ' .$depth;
+                        echo '<br>This Depth: ' .$depth;
 if($depth < 5) {
 
     

@@ -93,17 +93,17 @@ $goUp = [];
 
 $goUp["subject"] = $nav_pathInfo['dirname'];
 $goUp["replace"] = '';
-$goUp["search"] = '@^(.*(?=(/).*))@';
+$goUp["search"] = '@^(.*(/)(?=.*))@';
 $goUp["result"] = preg_replace($goUp["search"], $goUp["replace"], $goUp["subject"]);
 $goUp["url"] = str_ireplace($goUp["result"], $goUp["replace"], $goUp["subject"]);
-$goUp['url'] = preg_replace('/([^\/]+\/)+([^\/]+)/','$2',$goUp['url']);
-$goUp['url'] = filter_path($_SERVER['DOCUMENT_ROOT'],$servername,$server_addr);
+// $goUp['url'] = preg_replace('/([^\/]+\/)+([^\/]+)/','$2',$goUp['url']);
 
 $depth = substr_count($goUp['subject'], '/');
 // echo '<br>depth: ' .$depth;
 if($depth < 5) {
 
     // $goUp['url'] = $_SERVER['HTTP_HOST'];
+    
     $goUp['url'] = filter_path($_SERVER['DOCUMENT_ROOT'],$servername,$server_addr);
    //  echo '<div id="gouptest">Depth < 5<ol>';
 
@@ -130,6 +130,8 @@ $concatSubdir = "/".$chopThis."/";
 $conSubSearch = "\\";
 $conSubReplace = "/";
 $concatDirs = str_ireplace($conSubSearch, $conSubReplace, $dir.$concatSubdir);
+
+$currentUrlPath = preg_replace('@'.$goUp["result"].'/?$@','',$currentUrlPath);
 
 if (is_dir($concatDirs)) {
     $dh = opendir($concatDirs);
@@ -211,7 +213,7 @@ else {
     if(isset($goUp["url"])){
 
 
-        $htmlPrint[$lc] .= '<li id="goUpItem" class="nav"><a title="crazy" href="//'.$goUp["url"].'">'.$goUp["url"].'</a></li>';
+        $htmlPrint[$lc] .= '<li id="goUpItem" class="nav"><a title="crazy" href="'.$currentUrlPath.'">'.$currentUrlPath.'</a></li>';
     }
 
     $totalObjects = $objNmbr;
@@ -280,10 +282,10 @@ else {
         <!-- close navlist -->
         </nav>';
         ?>
-        <script>
-        font_props( 'font_demo_serif', 'fontFamily' );
-        font_props( 'font_demo_sans', 'fontFamily' );
-        </script>
-        <!-- close leftcol -->
+<script>
+font_props('font_demo_serif', 'fontFamily');
+font_props('font_demo_sans', 'fontFamily');
+</script>
+<!-- close leftcol -->
 <?php
     ksort($htmlPrint);
