@@ -1,0 +1,336 @@
+<?php
+/*
+ * adb_simplest/template.phtml
+ *
+ * Copyright 2023 @ajaxStardust <flux@mx23>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ *
+ *
+ */
+
+header('Access-Control-Allow-Origin: *'); // ENABLE CORS (Cross-Origin Request) policy allow all - CAUTION: not-ready-for-prime-time player
+date_default_timezone_set('EST');
+
+if (!defined('ABSOLUTELOCATION')) {
+    define('ABSOLUTELOCATION', rtrim(dirname(__FILE__), 'public/inc'));
+}
+$abspath = ABSOLUTELOCATION;
+
+$http_type = $_SERVER['SERVER_SOFTWARE'];
+$http_name = $_SERVER['SERVER_NAME'];
+$http_ip = $_SERVER['SERVER_ADDR'];
+$httpname = $http_name;
+if (preg_match('@(10\.0\.0\.\d+|192\.\d+\.\d+\.\d+)@', $http_ip)) {
+    $abspath = '<code class="info">' . $abspath . '</code>';
+} else {
+    $abspath = 'is simply a PHP value which relies on server variables<code>define( ABSOLUTELOCATION , rtrim(dirname(__FILE__), inc))</code>';
+}
+
+$parent_dir = str_ireplace('/var/www/html','',__DIR__);
+
+$page_heading = '&#x201c;Simple Template&#x201d;';
+if($page_heading == '&#x201c;Simple Template&#x201d;'){
+$real_page_heading = pathinfo(__FILE__, PATHINFO_FILENAME);
+}
+else {
+$real_page_heading = $page_heading;
+}
+
+$title = $http_ip.' - '.$parent_dir.' - EditPlus_IV TEMPLATE';
+$lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileImage" content="favicon.webp">
+    <title>
+        <?php print $title; ?>
+    </title>
+    <link rel="icon" type="image/ico" href="favicon.ico" sizes="16x16">
+    <link rel="shortcut icon" type="image/webp" href="favicon.webp">
+    <link rel="icon" href="favicon.ico" sizes="32x32">
+    <link rel="icon" href="favicon.ico" sizes="192x192">
+    <link rel="apple-touch-icon" href="favicon.webp">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- BOOTSTRAP STYLE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="assets/css/notes.css" rel="stylesheet">
+    <style>
+    .tsw {
+        font-family: "roboto";
+        font-size: 1.2rem;
+        font-style: italic;
+    }
+    .S0 {
+        font-family: "roboto mono";
+        font-size: 10pt;
+        font-style: italic;
+    }
+   .S1 {
+        font-family: "roboto mono";
+        color: #000080;
+        font-size: 10pt;
+    }
+    </style>
+</head>
+
+<body>
+
+    <div id="pagewidth" class="container">
+        <!--    :begin    class:content        -->
+
+        <section id="header">
+            <!-- #HEADER -->
+            <h1 class="bg-dark text-light text-end pe-3">
+                <?php print $real_page_heading; ?>
+            </h1>
+        </section>
+        <section id="general_notes">
+            <h2>General Notes</h2>
+            <div class="notes">
+                <!-- ADD NOTES HERE -->
+                <div data-pf_style_display="flex">
+  <div data-pf_style_display="flex">🌐</div>
+  <div data-pf_style_display="block">
+    <div data-pf_style_display="flex">
+      <strong data-pf_style_display="block">System</strong>
+    </div>
+    <div data-pf_style_display="grid">
+      <div data-pf_style_display="block">
+        <div data-pf_style_display="flex"></div>
+        <div data-pf_style_display="flex">
+          <button
+            data-pf_style_display="block"
+            class="mat-mdc-tooltip-trigger toggle-raw-markdown mdc-icon-button mat-mdc-icon-button mat-unthemed mat-mdc-button-base dmat-tooltip dmat-mdc-button ng-star-inserted"
+          >
+            <span data-pf_style_display="block"></span>
+            raw_on
+            <span data-pf_style_display="block"></span>
+            <span data-pf_style_display="block"></span>
+          </button>
+          <button data-pf_style_display="block" type="button">
+            <span data-pf_style_display="block"></span>
+            content_copy
+            <span data-pf_style_display="block"></span>
+            <span data-pf_style_display="block"></span>
+          </button>
+        </div>
+        <div data-pf_style_display="block">
+          <div data-pf_style_display="block">
+            <div data-pf_style_display="block">
+              <p data-pf_style_display="block">
+                The AI assistant is a goal-oriented productivity system
+                responding to the User requests. The User issues tasks and the
+                assistant responds using text. The assistant has no access to
+                external tools and cannot act in the real world.
+              </p>
+              <p data-pf_style_display="block">
+                Unless an alternative preference is explicitly defined in the
+                User request, the output should follow the guidelines below:
+              </p>
+              <ul data-pf_style_display="block">
+                <li data-pf_style_display="list-item">
+                  <strong data-pf_style_display="inline">
+                    🚷 No conversational tone
+                  </strong>
+                  : Should not be phrased as a conversational response. Instead
+                  should strictly fulfill the User request and provide only the
+                  requested information or service. The interaction should not
+                  resemble a conversation between two people; instead the
+                  Assistant acts as a tool.
+                </li>
+                <li data-pf_style_display="list-item">
+                  <strong data-pf_style_display="inline">
+                    😐 No pleasantries
+                  </strong>
+                  : Should not have greetings, pleasantries, and other banter
+                  (no "sure thing!", "I hope this helps!").
+                </li>
+                <li data-pf_style_display="list-item">
+                  <strong data-pf_style_display="inline">
+                    🔇 No acknowledgements
+                  </strong>
+                  : Should not acknowledge or repeat the User request. The
+                  output should only contain the answer without any "Here is
+                  XYZ" preamble.
+                </li>
+                <li data-pf_style_display="list-item">
+                  <strong data-pf_style_display="inline">
+                    🤐 Extremely concise
+                  </strong>
+                  : Should only contain minimal requested information and no
+                  additional context and explanations. The response does not
+                  need to form a sentence, or be understandable out of context.
+                  For example, when the user gives multiple -choice questions,
+                  the response should be only the label.
+                </li>
+                <li data-pf_style_display="list-item">
+                  <strong data-pf_style_display="inline">📘 Markdown</strong>
+                  : Should use Markdown when useful for structuring the
+                  response.
+                </li>
+              </ul>
+              <hr data-pf_style_display="block" />
+              <details data-pf_style_visibility="visible">
+                <summary data-pf_style_display="list-item">
+                  In addition to the requirements specified above, the response
+                  should always obey the Assistant Capabilities and Limitations
+                  [click the arrow for more details]
+                </summary>
+                <ul data-pf_style_display="block">
+                  <li data-pf_style_display="list-item">
+                    CAN do any sort of text based tasks including sharing
+                    information, creative writing, maths and reasoning etc.
+                  </li>
+                  <li data-pf_style_display="list-item">
+                    CANNOT browse the internet
+                  </li>
+                  <li data-pf_style_display="list-item">
+                    CANNOT use tools such as a calculator
+                  </li>
+                  <li data-pf_style_display="list-item">
+                    CANNOT take actions in the real world (e.g. send emails or
+                    book holidays).
+                  </li>
+                  <li data-pf_style_display="list-item">
+                    DOES NOT have any knowledge about recent events within the
+                    last 6-12 months. (If asked about something more recent, the
+                    assistant should politely explain that it doesn't know.)
+                  </li>
+                  <li data-pf_style_display="list-item">
+                    DOES NOT have access to previous conversations that were
+                    ended. It CAN only see the current conversation.
+                  </li>
+                  <li data-pf_style_display="list-item">
+                    DOES NOT have any information about the User.
+                  </li>
+                  <li data-pf_style_display="list-item">
+                    SHOULD NOT pretend to be human, express emotions or
+                    opinions, or build relationships to the user.
+                  </li>
+                </ul>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div data-pf_style_display="flex">
+  <div data-pf_style_display="flex">😀</div>
+  <div data-pf_style_display="block">
+    <div data-pf_style_display="flex">
+      <strong data-pf_style_display="block">User</strong>
+    </div>
+    <div data-pf_style_display="grid">
+      <div data-pf_style_display="block">
+        <div data-pf_style_display="flex"></div>
+        <div data-pf_style_display="flex">
+          <button
+            data-pf_style_display="block"
+            class="mat-mdc-tooltip-trigger toggle-raw-markdown mdc-icon-button mat-mdc-icon-button mat-unthemed mat-mdc-button-base dmat-tooltip dmat-mdc-button ng-star-inserted"
+          >
+            <span data-pf_style_display="block"></span>
+            raw_on
+            <span data-pf_style_display="block"></span>
+            <span data-pf_style_display="block"></span>
+          </button>
+          <button data-pf_style_display="block" type="button">
+            <span data-pf_style_display="block"></span>
+            content_copy
+            <span data-pf_style_display="block"></span>
+            <span data-pf_style_display="block"></span>
+          </button>
+        </div>
+        <div data-pf_style_display="block">
+          <div data-pf_style_display="block">
+            <div data-pf_style_display="block">
+              <p data-pf_style_display="block">
+                True or false: snails have teeth.
+              </p>
+              <p data-pf_style_display="block">
+                Answer and provide additional detail.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+                <!-- END NOTES -->
+
+
+            </div> <!-- $ end .notes div -->
+        </section>
+        <section>
+            <!-- :begin #_GLOSSARY  -->
+            <div>
+                <h2>Further Reading</h2>
+                <h3><?php print $real_page_heading; ?> - Quick Reference</h3>
+                <dl>
+                    <dt class="pointer">Project Tree<span class="normal blue pointer" id="show_g01"
+                            onclick="swap_text('show_g01','glossary_01') ">[toggle...]</span>
+                    </dt>
+                    <dd id="glossary_01" class="displaynone">
+                    <p><kbd>apt-get install tree</kbd></p>
+                    <p>The convenient <code>tree</code> command will generate the file and folder tree. Tree output options include <strong class="text-danger">JSON</strong> and <strong class="text-warning">HTML</strong>. E.g. <code>tree -J /path/to/dir</code> or <code>tree -H /var/www/framework</code>. See <kbd>tree --help</kbd></p>
+                    <p><span class="code"><em><?php print $real_page_heading; ?></em></span> folder structure</p>
+                    <pre>#       /var/www/html/framework_name/
+#       |-- some.file.name
+#       |-- some.ts
+#       |-- some.json
+#       |-- some.js</pre>
+                        
+                    </dd>
+                </dl>
+                <p class="pseudocite">Famous Last Words</p>
+            </div> <!-- $ :end #_glossary -->
+        </section>
+        <footer class="footer px-4">
+            <!--    .FOOTER     -->
+            <div class="row gx-5">
+                <div class="col">
+                    <div class="p-3 border bg-light"> Based on Notes by <a href="https://github.com/ajaxStardust"
+                            target="_blank" title="View original">@ajaxStardust</a> <em>Laravel</em> notes:</div>
+                </div>
+                <div class="col">
+                    <div class="p-3 border bg-light text-end"><kbd>
+                            <?php echo $lastMod; ?>
+                        </kbd></div>
+                </div>
+            </div>
+        </footer>
+    </div><!--    $ :end    END class.content (former id.maincol)    $    -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+    </script>
+    <script src="assets/js/showme-hideme.js"></script>
+
+</body>
+
+</html>

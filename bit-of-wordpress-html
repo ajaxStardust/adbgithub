@@ -1,0 +1,25 @@
+<!-- wp:navigation-link {"label":"New","type":"page","id":7338,"url":"https://localhost/wpcenter/new/","kind":"post-type"} /-->
+
+<!-- wp:navigation-link {"label":"Browser","type":"page","id":2054,"url":"https://localhost/wpcenter/web-browser-extension/","kind":"post-type","isTopLevelLink":true} /-->
+
+<!-- wp:navigation-submenu {"label":"Essential","type":"post","id":1434,"url":"https://localhost/wpcenter/first-steps-after-windows-install/","kind":"post-type"} -->
+<!-- wp:navigation-link {"label":"After Windows Install","type":"post","id":2966,"url":"https://localhost/wpcenter/first-steps-after-windows-install/","kind":"post-type"} /-->
+
+<!-- wp:navigation-link {"label":"Desktop Productivity","type":"post","id":1434,"url":"https://localhost/wpcenter/desktop-productivity-project-management-essential-software/","kind":"post-type"} /-->
+
+<!-- wp:navigation-link {"label":"Web Dev Tools","type":"post","id":1411,"url":"https://localhost/wpcenter/web-development-essential-tools-software/","kind":"post-type"} /-->
+<!-- /wp:navigation-submenu -->
+
+<!-- wp:navigation-link {"label":"Fonts","type":"page","id":1688,"url":"https://localhost/wpcenter/fonts/","kind":"post-type","isTopLevelLink":true} /-->
+
+<!-- wp:navigation-link {"label":"Frequently","type":"page","id":1668,"url":"https://localhost/wpcenter/frequently-referenced-resources/","kind":"post-type","isTopLevelLink":true} /-->
+
+<!-- wp:navigation-link {"label":"Needles","type":"page","id":1680,"url":"https://localhost/wpcenter/needles-and-haystacks/","kind":"post-type","isTopLevelLink":true} /-->
+
+<!-- wp:navigation-link {"label":"Notes","type":"page","id":1707,"url":"https://localhost/wpcenter/better-bookmarks/","kind":"post-type","isTopLevelLink":true} /-->
+
+<!-- wp:navigation-link {"label":"Semantic","type":"page","id":1670,"url":"https://localhost/wpcenter/semantic-markup-and-html/","kind":"post-type","isTopLevelLink":true} /-->
+
+<!-- wp:navigation-link {"label":"Install NGINX","type":"post","id":2976,"url":"https://localhost/wpcenter/complete-step-by-step-guide-install-nginx-stack-on-windows-or-linux/","kind":"post-type"} /-->
+
+<!-- wp:navigation-link {"label":"Install LAMP","type":"page","id":1362,"url":"https://localhost/wpcenter/complete-step-by-step-install-lamp-stack-on-windows-or-linux/","kind":"post-type"} /-->
