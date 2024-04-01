@@ -37,10 +37,10 @@ require_once 'public/inc/nav.inc.php';
     <h2 id="doc_loc_href" title="currentUrlPath.pathInfoBasename"><?php print $currentUrlPath.$pathInfoBasename; ?></h2>
     <ol>
         <li class="float-left larger p-2"><a href="https://localhost/index.php">localhost/index.php</a></li>
-        <li class="float-left larger p-2"><a href="http://mx23kde/index.php">mx23kde/index.php</a></li>
-        <li class="float-left larger p-2"><a href="https://wsldebian/index.php">wsldebian/index.php</a></li>
-        <li class="float-left larger p-2"><a href="https://mx23flux/index.php">mx23flux/index.php</a></li>
+        <li class="float-left larger p-2"><a href="https://atflux/index.php">atflux/index.php</a></li>
+        <li class="float-left larger p-2"><a href="https://mx23/index.php">mx23/index.php</a></li>
         <li class="float-left larger p-2"><a href="https://mylaravel/index.php">mylaravel/index.php</a></li>
+        <li class="float-left larger p-2"><a href="https://mxlinux-21/index.php">mxlinux-21/index.php</a></li>
         <li class="float-left larger p-2"><a href="https://wordpresscenter.net">WordPressCenter.net</a></li>
     </ol>
     <?php
