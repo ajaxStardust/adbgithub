@@ -38,7 +38,7 @@ function clean_url_chars($url_2_convert)
     $url_2_convert = str_ireplace('file://', '', $url_2_convert);
     $url_2_convert = preg_replace('@([\x5c\x2f])@', '/', $url_2_convert);
 
-return $url_2_convert;
+    return $url_2_convert;
 }
 
 function filter_path_to_url($get_path2url, $servername, $server_addr)
@@ -50,45 +50,30 @@ function filter_path_to_url($get_path2url, $servername, $server_addr)
     $filtered_url['servername'] = $servername;
     $filtered_url['server_addr'] = $server_addr;
     if (!empty($get_path2url)) {
-        $filtered_url['html'] = '<div>$_GET[path2url] = <strong class="red">' . $get_path2url . '</strong></div>';
+        $filtered_url['input_string'] = '<strong class="red">' . $get_path2url . '</strong>';
         $filtered_url['strirep'] = clean_url_chars($get_path2url);
-        $filtered_url['html'] .= '<div class="blue">clean_url_chars($_GET[path2url]) { <strong class="red">' . trim($filtered_url["strirep"], "\n\r\t\v\ ") . '</strong> }</div>';
+        $filtered_url['clean_string'] = '<strong class="blue">' . trim($filtered_url['strirep'], "\n\r\t\v\ ") . '</strong>';
 
-        // SET THIS STRING TO THE LAN WINDOWS PATH OF LINUX SYSTEM:
-        if (preg_match('@([\x5c\x2f]{1,2})(wsl\.localhost[\x5c\x2f]{1,2})([^\x5c\x2f]+)@', $filtered_url['strirep'])) {
-            $filtered_url['strirep'] = preg_replace('@([\x5c\x2f])(wsl\.localhost[\x5c\x2f])([^\x5c\x2f]+)@', '', $filtered_url['strirep']);
-            $filtered_url['servername'] = 'wsldebian';
-        } else {
-            $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-            /* $filtered_url['servername'] = empty($filtered_url['server_name']) ? $filtered_url['servername'] : $filtered_url['server_name']; */
-        }
         $filtered_url['nochange'] = $filtered_url['strirep'];
         switch ($filtered_url['strirep']) {
-            case (preg_match('@[Zz]:[\\\\/]@', $filtered_url['strirep']) ? true : false):
-                $filtered_url['html'] .= '<div class="clear" id="filteredurl_' . __LINE__ . '">filtered_url[strirep]: ' . $filtered_url['strirep'] . '</div>';
+            case (preg_match('@[\w]:[\\\\/]@', $filtered_url['strirep']) ? true : false):
+                $filtered_url['html_strirep'] .= '<span class="warning-text" id="filteredurl_' . __LINE__ . '">' . $filtered_url['strirep'] . '</span>';
                 $filtered_url['strirep'] = preg_replace('@([\x5c\x2f])@', '\\', $filtered_url['strirep']);
                 $filtered_url['strirep'] = str_ireplace('Z:\\', '', $filtered_url['strirep']);
                 $filtered_url['servername'] = $_SERVER['HTTP_HOST'];
                 $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-                /* $filtered_url['servername'] = empty($filtered_url['server_name']) ? $filtered_url['servername'] : $filtered_url['server_name']; */
+
                 break;
-            case (preg_match('@[Ww]:[\\\\/]@', $filtered_url['strirep']) ? true : false):
-                $filtered_url['html'] .= '<div class="clear" id="filteredurl_' . __LINE__ . '">filtered_url[strirep]: ' . $filtered_url['strirep'];
-                $filtered_url['strirep'] = preg_replace('@([\x5c\x2f])@', '\\', $filtered_url['strirep']);
-                $filtered_url['strirep'] = str_ireplace('W:\\', '', $filtered_url['strirep']);
-                $filtered_url['servername'] = $_SERVER['HTTP_HOST'];
+            case (preg_match('@/var/www/atkde@', $filtered_url['strirep']) ? true : false):
+                $filtered_url['html_strirep'] .= '<span class="warning-text" id="filteredurl_' . __LINE__ . '">' . $filtered_url['strirep'] . '</span>';
+                $filtered_url['strirep'] = str_ireplace('/var/www/atkde/', '', $filtered_url['strirep']);
+                $filtered_url['servername'] = 'atkde';
                 $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-                break;
-            case (preg_match('@/var/www/flux@', $filtered_url['strirep']) ? true : false):
-                $filtered_url['html'] .= '<div class="clear" id="filteredurl_' . __LINE__ . '">filtered_url[strirep]: ' . $filtered_url['strirep'];
-                $filtered_url['strirep'] = str_ireplace('/var/www/flux/', '', $filtered_url['strirep']);
-                $filtered_url['servername'] = 'mx23';
-                $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-                $filtered_url['all'] = preg_match_all('@(?!=[\\\\/]*)(\/?var)([\\\\/]*www)([\\\\/]*[^\/]+)(?=[\x0A\x0D])?@', $filtered_url['strirep'], $pregall);
+                $filtered_url['all'] = preg_match_all('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', $filtered_url['strirep'], $pregall);
                 if (!defined('PREGALL')) {
                     define('PREGALL', $pregall);
                 }
-                $filtered_url['strirep'] = preg_replace('@(?!=[\\\\/]*)(\/?var)([\\\\/]*www)([\\\\/]*[^\/]+)(?=[\x0A\x0D])?@', '$3', $filtered_url['strirep']);
+                $filtered_url['strirep'] = preg_replace('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', '$3', $filtered_url['strirep']);
                 if (defined('PREGALL')) {
                     $filtered_url['pregall'] = '<div id="pregall_array">';
                     if (is_array(PREGALL)) {
@@ -96,33 +81,30 @@ function filter_path_to_url($get_path2url, $servername, $server_addr)
                         foreach (PREGALL as $pregK => $pregV) {
                             if (is_array($pregV)) {
                                 $filtered_url['pregjson'] = json_encode(PREGALL);
-                                // crazy preg_match_all:
-                                // echo $filtered_url['pregjson'];
+
                                 foreach ($pregV as $prrK => $prrV) {
                                     $filtered_url['pregall'] .= '<li>key[' . $pregK . '][' . $prrK . ']: ' . $prrV . ' @line: ' . __LINE__ . '</li>';
                                 }
                             } else {
                                 $filtered_url['pregall'] .= '<li>key[' . $pregK . ']: ' . $pregV['0'] . ' @line: ' . __LINE__ . '</li>';
-                                //      echo 'print_r[pregV]: ' . var_dump($pregV);
                             }
                         }
                         $filtered_url['pregall'] .= '</ol>';
                     } else {
                         $filtered_url['pregall'] .= PREGALL . '</div>';
                     }
-                    //   echo $filtered_url['pregall'];
                 }
                 break;
-case (preg_match('@/var/www/atflux@', $filtered_url['strirep']) ? true : false):
-                $filtered_url['html'] .= '<div class="clear" id="filteredurl_' . __LINE__ . '">filtered_url[strirep]: ' . $filtered_url['strirep'];
+            case (preg_match('@/var/www/atflux@', $filtered_url['strirep']) ? true : false):
+                $filtered_url['html_strirep'] .= '<span class="warning-text" id="filteredurl_' . __LINE__ . '">' . $filtered_url['strirep'] . '</span>';
                 $filtered_url['strirep'] = str_ireplace('/var/www/atflux/', '', $filtered_url['strirep']);
                 $filtered_url['servername'] = 'atflux';
                 $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-                $filtered_url['all'] = preg_match_all('@(?!=[\\\\/]*)(\/?var)([\\\\/]*www)([\\\\/]*[^\/]+)(?=[\x0A\x0D])?@', $filtered_url['strirep'], $pregall);
+                $filtered_url['all'] = preg_match_all('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', $filtered_url['strirep'], $pregall);
                 if (!defined('PREGALL')) {
                     define('PREGALL', $pregall);
                 }
-                $filtered_url['strirep'] = preg_replace('@(?!=[\\\\/]*)(\/?var)([\\\\/]*www)([\\\\/]*[^\/]+)(?=[\x0A\x0D])?@', '$3', $filtered_url['strirep']);
+                $filtered_url['strirep'] = preg_replace('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', '$3', $filtered_url['strirep']);
                 if (defined('PREGALL')) {
                     $filtered_url['pregall'] = '<div id="pregall_array">';
                     if (is_array(PREGALL)) {
@@ -137,141 +119,95 @@ case (preg_match('@/var/www/atflux@', $filtered_url['strirep']) ? true : false):
                                 }
                             } else {
                                 $filtered_url['pregall'] .= '<li>key[' . $pregK . ']: ' . $pregV['0'] . ' @line: ' . __LINE__ . '</li>';
-                                //      echo 'print_r[pregV]: ' . var_dump($pregV);
                             }
                         }
                         $filtered_url['pregall'] .= '</ol>';
                     } else {
                         $filtered_url['pregall'] .= PREGALL . '</div>';
                     }
-                    //   echo $filtered_url['pregall'];
                 }
                 break;
             case (preg_match('@/var/www/laravel@', $filtered_url['strirep']) ? true : false):
-                $filtered_url['html'] .= '<div class="clear" id="filteredurl_' . __LINE__ . '">filtered_url[strirep]: ' . $filtered_url['strirep'];
+                $filtered_url['html_strirep'] .= '<span class="warning-text" id="filteredurl_' . __LINE__ . '">' . $filtered_url['strirep'] . '</span>';
                 $filtered_url['strirep'] = str_ireplace('/var/www/laravel/', '', $filtered_url['strirep']);
-                if (preg_match('@^([Yy]:)@', $filtered_url['strirep'])) {
-                    $filtered_url['strirep'] = preg_replace('@^(\w:)@', '', $filtered_url['strirep']);
-                    $filtered_url['servername'] = 'mylaravel';
-                    $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-                } else {
-                    $filtered_url['servername'] = 'mylaravel';
-                    $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-                    $filtered_url['strirep'] = preg_replace('@([\\\\/]*var)([\\\\/]*www)([\\\\/]*[^\/]+)(?=[\x0A\x0D])?@', '$3', $filtered_url['strirep']);
+                $filtered_url['servername'] = 'mylaravel';
+                $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
+                $filtered_url['all'] = preg_match_all('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', $filtered_url['strirep'], $pregall);
+                if (!defined('PREGALL')) {
+                    define('PREGALL', $pregall);
                 }
-                $filtered_url['strirep'] = preg_replace('@(?!=[\\\\/]*)(\/?var)([\\\\/]*www)([\\\\/]*[^\/]+)(?=[\x0A\x0D])?@', '$3', $filtered_url['strirep']);
+                $filtered_url['strirep'] = preg_replace('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', '$3', $filtered_url['strirep']);
                 if (defined('PREGALL')) {
                     $filtered_url['pregall'] = '<div id="pregall_array">';
                     if (is_array(PREGALL)) {
                         $filtered_url['pregall'] .= '<ol>';
                         foreach (PREGALL as $pregK => $pregV) {
                             if (is_array($pregV)) {
-                               // $filtered_url['pregjson'] = json_encode(PREGALL);
-                                // crazy preg_match_all:
-                                // echo $filtered_url['pregjson'];
+                                $filtered_url['pregjson'] = json_encode(PREGALL);
+
                                 foreach ($pregV as $prrK => $prrV) {
                                     $filtered_url['pregall'] .= '<li>key[' . $pregK . '][' . $prrK . ']: ' . $prrV . ' @line: ' . __LINE__ . '</li>';
                                 }
                             } else {
                                 $filtered_url['pregall'] .= '<li>key[' . $pregK . ']: ' . $pregV['0'] . ' @line: ' . __LINE__ . '</li>';
-                                //  echo 'print_r[pregV]: ' . var_dump($pregV);
                             }
                         }
-                        $filtered_url['pregall'] .= '</ol></div>';
+                        $filtered_url['pregall'] .= '</ol>';
                     } else {
                         $filtered_url['pregall'] .= PREGALL . '</div>';
                     }
-                    // echo $filtered_url['pregall'];
                 }
-
                 break;
             case (preg_match('@/var/www/html@', $filtered_url['strirep']) ? true : false):
-                $filtered_url['html'] .= '<div class="clear" id="filteredurl_' . __LINE__ . '">filtered_url[strirep]: ' . $filtered_url['strirep'];
+                $filtered_url['html_strirep'] .= '<span class="warning-text" id="filteredurl_' . __LINE__ . '">' . $filtered_url['strirep'] . '</span>';
                 $filtered_url['strirep'] = str_ireplace('/var/www/html/', '', $filtered_url['strirep']);
-                if (preg_match('@^([Yy]:)@', $filtered_url['strirep'])) {
-                    $filtered_url['strirep'] = preg_replace('@^(\w:)@', '', $filtered_url['strirep']);
-                    $filtered_url['servername'] = 'athtml';
-                    $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-                } else {
-                    $filtered_url['servername'] = 'athtml';
-                    $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-                    $filtered_url['strirep'] = preg_replace('@([\\\\/]*var)([\\\\/]*www)([\\\\/]*[^\/]+)(?=[\x0A\x0D])?@', '$3', $filtered_url['strirep']);
+                $filtered_url['servername'] = 'mx23kde';
+                $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
+                $filtered_url['all'] = preg_match_all('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', $filtered_url['strirep'], $pregall);
+                if (!defined('PREGALL')) {
+                    define('PREGALL', $pregall);
                 }
-                $filtered_url['strirep'] = preg_replace('@(?!=[\\\\/]*)(\/?var)([\\\\/]*www)([\\\\/]*[^\/]+)(?=[\x0A\x0D])?@', '$3', $filtered_url['strirep']);
+                $filtered_url['strirep'] = preg_replace('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', '$3', $filtered_url['strirep']);
                 if (defined('PREGALL')) {
                     $filtered_url['pregall'] = '<div id="pregall_array">';
                     if (is_array(PREGALL)) {
                         $filtered_url['pregall'] .= '<ol>';
                         foreach (PREGALL as $pregK => $pregV) {
                             if (is_array($pregV)) {
-                               // $filtered_url['pregjson'] = json_encode(PREGALL);
-                                // crazy preg_match_all:
-                                // echo $filtered_url['pregjson'];
+                                $filtered_url['pregjson'] = json_encode(PREGALL);
+
                                 foreach ($pregV as $prrK => $prrV) {
                                     $filtered_url['pregall'] .= '<li>key[' . $pregK . '][' . $prrK . ']: ' . $prrV . ' @line: ' . __LINE__ . '</li>';
                                 }
                             } else {
                                 $filtered_url['pregall'] .= '<li>key[' . $pregK . ']: ' . $pregV['0'] . ' @line: ' . __LINE__ . '</li>';
-                                //  echo 'print_r[pregV]: ' . var_dump($pregV);
                             }
                         }
-                        $filtered_url['pregall'] .= '</ol></div>';
+                        $filtered_url['pregall'] .= '</ol>';
                     } else {
                         $filtered_url['pregall'] .= PREGALL . '</div>';
                     }
-                    // echo $filtered_url['pregall'];
                 }
-                if(
-                    preg_match('@'.$filtered_url['strirep'].'@',$filtered_url['nochange'])) {
-                    $filtered_url['depth'] = $filtered_url['servername'];
-                }
-
-                break;
-            case (preg_match('/.*mxlinux.*/', $filtered_url['strirep']) ? true : false):
-                $filtered_url['strirep'] = preg_replace('@([\x5c\x2f]*)(mxlinux\-21)([\x5c\x2f]*)(html)@', '\\', $filtered_url['strirep']);
-                $filtered_url['servername'] = $_SERVER['HTTP_HOST'];
-                $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-
-                break;
-            case ((preg_match('/.*mx23.*/', $filtered_url['strirep'])) ? true : false):
-                $filtered_url['strirep'] = preg_replace('@([\/]*var)([\/]*www)([\/]*[^\/]+[\/]?)([\/]*[^\/]+)?(?=[\x0A\x0D])?@', '\\', $filtered_url['strirep']);
-                $filtered_url['servername'] = 'localhost';
-                $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-                break;
-            case (preg_match('@[Vv]:[\x5c\x2f]{1,2}[Dd]evelopment@', $filtered_url['strirep']) ? true : false):
-                $filtered_url['strirep'] = preg_replace('@([\x5c\x2f])@', '/', $filtered_url['strirep']);
-                $filtered_url['strirep'] = str_ireplace('V:/Development/Apache2/htdocs', '', $filtered_url['strirep']);
-                $filtered_url['strirep'] = str_ireplace('V:\Development\Apache2\htdocs', '', $filtered_url['strirep']);
-                $filtered_url['servername'] = $_SERVER['HTTP_HOST'];
-                $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-                break;
-            case (preg_match('@[Vv]:[\x5c\x2f]{1,2}[Dd]evel@', $filtered_url['strirep']) ? true : false):
-                $filtered_url['strirep'] = preg_replace('@([\x5c\x2f])@', '/', $filtered_url['strirep']);
-                $filtered_url['strirep'] = str_ireplace('V:/Devel/Apache2/htdocs', '', $filtered_url['strirep']);
-                $filtered_url['strirep'] = str_ireplace('V:\Devel\Apache2\htdocs', '', $filtered_url['strirep']);
-                $filtered_url['servername'] = $_SERVER['HTTP_HOST'];
-                $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
                 break;
         }
         $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-        $regexsearch = '@([\/]*var)([\/]*www)([\/]*[^\/]+[\/]?)([\/]*[^\/]+)?(?=[\x0A\x0D])?@';
+        $regexsearch = '/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/';
         $replaceref = "'\$4'";
 
-    $filtered_url["pregresult"] = preg_replace($regexsearch, '$4', $filtered_url['strirep']);
-    $filtered_url['depth'] = substr_count($filtered_url['nochange'], '/');
-        if($filtered_url['depth'] < 4) {
-            $filtered_url['url_result'] = $filtered_url['servername'] . '/';
-        $filtered_url['http_url_final'] = '<div id="processed_hyperlink"><strong>Resulting Hyperlink: </strong><a href="//' . $filtered_url['url_result'] . '" title="'
-            . $filtered_url['strirep'] . '" target="_blank">'
-            . $filtered_url['url_result'] . '</a></div>';    
-        }
-        else {
-        $filtered_url['url_result'] = $filtered_url['servername'] . '/' . preg_replace($regexsearch, '$4', $filtered_url['strirep']);
+        $filtered_url['pregresult'] = preg_replace($regexsearch, '$4', $filtered_url['strirep']);
+        $filtered_url['depth'] = substr_count($filtered_url['nochange'], '/');
+        if ($filtered_url['depth'] < 4) {
+            $filtered_url['url_result'] = $_SERVER['REQUEST_SCHEME'] . '://' . $filtered_url['servername'] . '/';
+            $filtered_url['http_url_final'] = '<span id="processed_hyperlink"><strong>Resulting Hyperlink: </strong><a href="' . $filtered_url['url_result'] . '" title="'
+                . $filtered_url['strirep'] . '" target="_blank">'
+                . $filtered_url['url_result'] . '</a></span>';
+        } else {
+            $filtered_url['url_result'] = $_SERVER['REQUEST_SCHEME'] . '://' . $filtered_url['servername'] . '/' . preg_replace($regexsearch, '$4', $filtered_url['strirep']);
 
-        $filtered_url['http_url_final'] = '<div id="processed_hyperlink"><strong>Resulting Hyperlink: </strong><a href="//' . $filtered_url['url_result'] . '" title="'
-            . $filtered_url['strirep'] . '" target="_blank">'
-            . $filtered_url['url_result'] . '</a></div>';
-            }
+            $filtered_url['http_url_final'] = '<span id="processed_hyperlink"><strong>Resulting Hyperlink: </strong><a href="' . $filtered_url['url_result'] . '" title="'
+                . $filtered_url['strirep'] . '" target="_blank">'
+                . $filtered_url['url_result'] . '</a></span>';
+        }
         return $filtered_url;
     }
 }
@@ -307,30 +243,31 @@ $imgDir = $cwThumbsClass->imagesDir;
 $imgNumber = $cwThumbsClass->thumbsCount;
 $enterpathhere = isset($_GET['path2url']) ? $_GET['path2url'] : ABSOLUTELOCATION;
 $nav_pathInfo = pathinfo(__FILE__, PATHINFO_ALL);
+
 function filter_path($url, $servername, $server_addr)
 {
     /**
      * to see everything, uncomment this var
      * $filtered_path = $_SERVER;
      */
-     $filtered_path['url'] = $url;
+    $filtered_path['url'] = $url;
     $filtered_path['servername'] = $servername;
     $filtered_path['server_addr'] = $server_addr;
     $filtered_path['servername'] = !empty($filtered_path['servername']) ? $filtered_path['servername'] : $filtered_path['server_addr'];
     return $filtered_path['servername'];
 }
+
 $goUp = [];
 
-$goUp["subject"] = $nav_pathInfo['dirname'];
-$goUp["replace"] = '';
-$goUp["search"] = '@^(.*(/)(?=.*))@';
-$goUp["result"] = preg_replace($goUp["search"], $goUp["replace"], $goUp["subject"]);
-$goUp["url"] = str_ireplace($goUp["result"], $goUp["replace"], $goUp["subject"]);
-$goUp['url'] = preg_replace('/([^\/]+\/)+([^\/]+)/','$2',$goUp['url']);
-//$goUp['url'] = filter_path($_SERVER['DOCUMENT_ROOT'],$servername,$server_addr).$goUp['url'];
+$goUp['subject'] = $nav_pathInfo['dirname'];
+$goUp['replace'] = '';
+$goUp['search'] = '@^(.*(/)(?=.*))@';
+$goUp['result'] = preg_replace($goUp['search'], $goUp['replace'], $goUp['subject']);
+$goUp['url'] = str_ireplace($goUp['result'], $goUp['replace'], $goUp['subject']);
+$goUp['url'] = preg_replace('/([^\/]+\/)+([^\/]+)/', '$2', $goUp['url']);
+// $goUp['url'] = filter_path($_SERVER['DOCUMENT_ROOT'],$servername,$server_addr).$goUp['url'];
 
 $depth = substr_count($goUp['subject'], '/');
-
 
 ?>
 <!DOCTYPE html>
@@ -346,13 +283,21 @@ $depth = substr_count($goUp['subject'], '/');
     <link rel="icon" type="image/ico" href="favicon.ico">
     <link rel="shortcut icon" type="image/ico" href="favicon.ico">
     <style>
-    /** if needed add style here */
+    .thin {
+        font-weight: 100;
+        font-weight: lighter;
+    }
     </style>
+    <!-- link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <!-- link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css" -->
+    <!-- SPECTRE CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- BOOTSTRAP STYLE -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href="assets/css/notes.css" rel="stylesheet">
     <link href="assets/css/lightslider.css" rel="stylesheet">
+
     <style>
     .clear {
         clear: none;
@@ -436,7 +381,7 @@ $depth = substr_count($goUp['subject'], '/');
 
         <!-- #HEADER -->
         <section id="header">
-            <h1 class="bg-dark text-light text-end pe-3"><?php echo $page_heading; ?></h1>
+            <h1 class="bg-dark text-light text-end pe-3 h1"><?php echo $page_heading; ?></h1>
 
         </section>
         <section>
@@ -446,43 +391,41 @@ $depth = substr_count($goUp['subject'], '/');
 
 
                         <div class="card-body">
-                            <h5 class="card-title">URL Processing</h5>
-                            <?php 
+                            <h5 class="h5">URL Processing</h5>
+                            <?php
                                 $path2url = !empty($_GET['path2url']) ? $_GET['path2url'] : ABSOLUTELOCATION;
-$click_url = filter_path_to_url($path2url, $servername, $server_addr);
-if (is_array($click_url)) {
-    echo '<div id="click_url" class="clear" style="clear:both;"><ol>';
-    foreach ($click_url as $clickkey => $clickval) {
-        echo '<li id="' . $clickkey . '">' . $clickkey . ': ' . $clickval . '</li>';
-    }
-    echo '</ol></div>';
-} else {
-    $click_url = 'not an array';
-    echo '<br>not array: <a href="http://localhost">' . $click_url . '</a>';
-}
-?>
+                                $click_url = filter_path_to_url($path2url, $servername, $server_addr);
+                                if (is_array($click_url)) {
+                                    echo '<div id="click_url" class="clear" style="clear:both;"><ol>';
+                                    foreach ($click_url as $clickkey => $clickval) {
+                                        echo '<li id="' . $clickkey . '"><span class="thin">' . $clickkey . '</span>: ' . $clickval . '</li>';
+                                    }
+                                    echo '</ol></div>';
+                                } else {
+                                    $click_url = 'not an array';
+                                    echo '<br>not array: <a href="http://localhost">' . $click_url . '</a>';
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
-                                                <div class="col">
+                <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Nav Go Up</h5>
+                            <h5 class="h5">Nav Go Up</h5>
                             <?php
-                        echo '<br>depth: ' .$depth;
-if($depth < 5) {
+                                echo '<br>depth: ' . $depth;
+                                if ($depth < 5) {
+                                    $goUp['url'] = filter_path($_SERVER['DOCUMENT_ROOT'], $servername, $server_addr);
+                                    echo '<div id="gouptest">Depth < 5<ol>';
 
-    
-    $goUp['url'] = filter_path($_SERVER['DOCUMENT_ROOT'],$servername,$server_addr);
-    echo '<div id="gouptest">Depth < 5<ol>';
+                                    foreach ($goUp as $guKey => $guVal) {
+                                        echo '<li>goUp[' . $guKey . ']: ' . $guVal . '</li>';
+                                    }
 
-    foreach ($goUp as $guKey => $guVal) {
-        echo '<li>goUp['.$guKey.']: '.$guVal.'</li>';
-    }
-
-    echo '</ol></div>';
-}
-?>
+                                    echo '</ol></div>';
+                                }
+                            ?>
 
                         </div>
                     </div>
@@ -492,7 +435,7 @@ if($depth < 5) {
 
 
                         <div class="card-body">
-                            <h5 class="card-title">Process a Path</h5>
+                            <h5 class="h5">Process a Path</h5>
                             <div id="quickentry">
                                 <form action="<?php $_SERVER['PHP_SELF']; ?>" id="p2u2top" method="GET">
                                     <label for="path2url" class="xhidden">_GET['path2url']:</label>
@@ -509,7 +452,7 @@ if($depth < 5) {
                     <div class="card">
 
                         <div class="card-body">
-                            <h5 class="card-title">Get it on GitHub</h5>
+                            <h5 class="h5">Get it on GitHub</h5>
                             <p class="card-text"><a href="https://github.com/ajaxStardust/AnnieDeBrowsa"
                                     target="_blank"><img
                                         src="https://github-readme-stats.vercel.app/api/pin/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true"
@@ -532,63 +475,53 @@ if($depth < 5) {
         </section>
         <section class="container">
 
-            <?php $contactSheet = '<div class="demo">
+            <?php
+                $contactSheet = '<div class="demo">
         <div class="item">            
             <div class="clearfix" style="max-width:474px;">
             <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
             ';
-if (isset($cwThumbs) && is_array($cwThumbs)) {
-    foreach ($cwThumbs as $cwKey => $cwImg) {
-        $cwimg_path = $imgDir . '/' . $cwImg;
-        $imgCounter = $imgNumber[$cwKey];
-        $caption = preg_replace('/(.*)(vscode_)([^_]+)(_\d+\.png)(.*)/', '$3', $cwImg);
-        $contactSheet .= '<li data-thumb="assets/images/vscode/' . $cwImg . '"> <figure><figcaption class="text-end">' . $caption . '</figcaption><img src="assets/images/vscode/' . $cwImg . '"></figure></li>
+                if (isset($cwThumbs) && is_array($cwThumbs)) {
+                    foreach ($cwThumbs as $cwKey => $cwImg) {
+                        $cwimg_path = $imgDir . '/' . $cwImg;
+                        $imgCounter = $imgNumber[$cwKey];
+                        $caption = preg_replace('/(.*)(vscode_)([^_]+)(_\d+\.png)(.*)/', '$3', $cwImg);
+                        $contactSheet .= '<li data-thumb="assets/images/vscode/' . $cwImg . '"> <figure><figcaption class="text-end">' . $caption . '</figcaption><img src="assets/images/vscode/' . $cwImg . '"></figure></li>
                     ';
-    }
-} else {
-    $contactSheet .= '<li class="bold nobull noBull">Sorry, but there is an error in the source, specific to the image resources contact-sheet previews.</li><li>Specifically, the ADB PHP-class, <em>cwThumbs</em> fails the logical condition of<ul><li><pre>
+                    }
+                } else {
+                    $contactSheet .= '<li class="bold nobull noBull">Sorry, but there is an error in the source, specific to the image resources contact-sheet previews.</li><li>Specifically, the ADB PHP-class, <em>cwThumbs</em> fails the logical condition of<ul><li><pre>
                  does not exist</pre></li><li><pre>
                  is not an array</pre></li><li><pre>has not been properly set</pre></li></ul>' . "\n";
-}
-$contactSheet .= "</ul> \n </div> \n </div> \n </div> \n";
-if (strlen($contactSheet) > 20) {
-    print $contactSheet;
-    
-} else {
-    print '<p class="notice">No screenshots to display</p>';
-}
-print '<p class="info">Click to <a href="./screenshots.phtml" title="view full size">select the screenshot</a> you wish to view full size.</p>'; 
+                }
+                $contactSheet .= "</ul> \n </div> \n </div> \n </div> \n";
+                if (strlen($contactSheet) > 20) {
+                    print $contactSheet;
+                } else {
+                    print '<p class="notice">No screenshots to display</p>';
+                }
+                print '<p class="info">Click to <a href="./screenshots.phtml" title="view full size">select the screenshot</a> you wish to view full size.</p>';
 
-?>
+            ?>
             <div class="col">
 
-                <h5 class="card-title">Server Info</h5>
-                <?php echo '<p><strong>ABSOLUTELOCATION</strong>:</p><p style="margin-top:-1rem;">' . $abspath . '</p>';  
-echo '<div class="container"><div class="bg-dark d-flex justify-content-between flex-wrap" id="info_container"><p class="bg-dark text-light">Served by: <span class="bg-dark text-warning">' . $serversoftware . '</span></p>
+                <h5 class="h5">Server Info</h5>
+                <?php
+                    echo '<p><strong>ABSOLUTELOCATION</strong>:' . $abspath . '</p>';
+                    echo '<div class="container"><div class="bg-dark d-flex justify-content-between flex-wrap" id="info_container"><p class="bg-dark text-light">Served by: <span class="bg-dark text-warning">' . $serversoftware . '</span></p>
                 <p class="bg-dark text-light">PHP Version: <span class="text-warning">' . phpversion() . '</span></p>
                 <p class="bg-dark text-light">Server Name: <span class="text-info">' . $servername . '</span></p>
                 <p class="bg-dark text-light">Server Addr: <span class="text-info">' . $server_addr . '</span></p>
                 </div></div>';
 
-
-?>
+                ?>
 
             </div>
 
             <div class="notes">
 
 
-                <p>This <span class="black">WordPressCenter.net <em>path2url</em></span> application
-                    uses
-                    conditioinal logic on the path to return a viable HTTP URL. It may not output the
-                    desired URL
-                    without some simple code tweaking.</p>
-                <p class="smaller">NOTE: Should an unexpected System Path result in a <em>bad URL</em>,
-                    please
-                    submit it to <a href="https://github.com/ajaxStardust" target="_blank"
-                        title="View original">@ajaxStardust</a> so the application logic might be
-                    improved. Thank
-                    you!</span></p>
+
             </div> <!--  $    div   .notes    $   -->
         </section> <!--    $   section   #general_notes  .container    $   -->
         <section class="container">
