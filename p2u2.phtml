@@ -245,7 +245,7 @@ function clean_url_chars($url_2_convert)
                                 if (preg_match('@[Cc]:[\\\\/]Apache2@', $strirep)) {
                                     $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
                                     $strirep = str_ireplace('C:\\Apache2\\htdocs\\', '', $strirep);
-                                    $servername = 'beelink.localhost';
+                                    $servername = 'beelink.wsldebian';
                                     $servername = !empty($servername) ? $servername : $server_addr;
 
                                     /* $servername = empty($server_name) ? $servername : $server_name; */
