@@ -12,6 +12,7 @@ Clone it into your HTTP server document root, or any directory where you want to
 
 ## Usage
 The app puts an index.php file in the folder root, so do not place this where there is an existing index.php file for example. or, rename the ADB index file, perhaps, to index.phtml, or adb.php. whatever works for you. try it in an empty directory first to get the idea. 
+View a [demo](https://centrewebdesign.com/adb).
 
 ## Support
 The author. Use this repository to get in touch with me. @ajaxStardust

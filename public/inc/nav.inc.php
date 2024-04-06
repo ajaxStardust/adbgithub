@@ -12,8 +12,24 @@ else {
 // initialize counter
 $objNmbr = 0;
 // initialize goUp array():
-$goUp = array("subject" => ' ', "replace" => ' ', "search" => ' ', "result" => ' ', "url" => ' ');
-$nav_pathInfo = pathinfo($_SERVER['PHP_SELF']);
+
+$goUp = [
+    'subject' => NULL,
+    'replace' => NULL,
+    'search' => NULL,
+    'result' => NULL,
+    'url' => NULL
+];
+
+$nav_pathInfo = [
+    'basename' => NULL,
+    'dirname' => NULL,
+    'filename' => NULL,
+    'extension' => NULL
+];
+
+$nav_pathInfo = pathinfo($_SERVER['PHP_SELF'], PATHINFO_ALL);
+
 $filePathArray = pathinfo(__FILE__.$xro);
 /* same as $pi from dochead.inc.php ! - no because other is via _SERVER[script_name] but
  * remember - we are still going off of whatever file is loaded in the browser currently
@@ -59,7 +75,7 @@ $dir = str_ireplace($search, $replace, $subject);
  */
 
 if(empty($parseUrl)){
-    $parseUrl = parse_url($nav_pathInfo['dirname'], PHP_URL_PATH);
+    $parseUrl = @parse_url($nav_pathInfo['dirname'], PHP_URL_PATH);
     $bodyid=rtrim(".",$parseUrl) ? empty($bodyid) : $bodyid = $bodyid;
 
         /**
@@ -231,7 +247,11 @@ else {
     <li id="font_demo_serif">A QuIck Bit oF Valid TeXt bRiEfly</li>
     <li id="font_demo_sans">A QuIck Bit oF Valid TeXt bRiEfly</li>
         </ul>
-
+<form id="check_font" method="post" action="'.$_SERVER['PHP_SELF'].'?check_font=">
+<input type="text" name="font_name" id="font_name">
+<input type="submit" name="submit_font" id="submit_font" value="Check">
+<label for="submit_font">Check Font</label>
+</form>
         <div id="js_return_serif"></div>
         <!-- close navlist -->
         </nav>';

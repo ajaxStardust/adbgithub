@@ -69,9 +69,10 @@ $font_poppins: "Poppins";
 $font_ubuntu: "Ubuntu";
 $font_mada: "Mada";
 $font_droidsans: 'Droid Sans';
-
+$font_allsans01: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+$font_allsans02: Raleway, "Bebas Neue", Ubuntu, Cantarell, system-ui, -apple-system, Roboto, Oxygen, BlinkMac, SystemFont, "Helvetica Neue", sans-serif;
 // DEFAULT _S "TYPOGRAPHY" VARS
-$font__main: $font_opensans, "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+$font__main: $font_allsans02, 
 $font__code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 $font__pre: "Courier 10 Pitch", Courier, monospace;
 $font__nav: $font_opensans;

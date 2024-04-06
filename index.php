@@ -8,7 +8,7 @@
  *
  *      This program, a Web Application written in PHP, HTML, JavaScript,
  *      XML, SVG, and CSS (web programming languages and structured markup)
- *      is distributed under the terms of the GNU General Public License.
+ *      is distributed under the terms of Public License.
  *      The Web Application is not guaranteed, and is available only without
  *      warranty of fitness for a particular purpose; merchantability.
  *
@@ -24,7 +24,7 @@
 /*
  *
  *  DEVELOPMENT HTTP URL:
- *       http://10.0.0.38/adbgithub/index.php
+ *       https://centrewebdesign.com/adb/index.php
  *              -----------------------
  *
  */

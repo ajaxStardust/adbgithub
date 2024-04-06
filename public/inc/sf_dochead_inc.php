@@ -60,11 +60,10 @@ if(empty($_GET['selected_font_name'])){
 		$httpRequest_fontIndex = $_POST['customfontentry'];
 	}
 	else{
-<<<<<<< HEAD
 		$httpRequest_fontIndex = "fantasy";
-=======
+
 		$httpRequest_fontIndex = "fantasy";	
->>>>>>> a5636a2cd6d8c43da9e4d060ab7e8791e9c73ddf
+
 	}
 }
 else
@@ -91,13 +90,11 @@ foreach($defaultFontsArray as $fontsArrayKey_asCssClass => $fontsArrayValue_asFo
 <meta name="keywords" content="windows,mac,linux,fonts,common,similar,equivalent,standard,usual,typical,frequent" />
 <!-- link rel="stylesheet" href="assets/css/safefonts.css" type="text/css" media="screen" charset="UTF-8" -->
 <!-- tempcss -->
-<link rel="stylesheet" href="assets/css/safefontstyle_cssToolbox_akelPadEdit.css" type="text/css" media="screen" charset="UTF-8" />
+<link rel="stylesheet" href="assets/css/safefontstyle.css" type="text/css" media="screen" charset="UTF-8" />
 <link rel="shortcut icon" href="http://WordPressCenter.net/favicon.ico" />
-<<<<<<< HEAD
+
 <script type="text/javascript" src="assets/js/thetoggler.js"></script>
-=======
-<script type="text/javascript" src="js/thetoggler.js"></script>
->>>>>>> a5636a2cd6d8c43da9e4d060ab7e8791e9c73ddf
+
 <style type="text/css">
 /*<![CDATA[*/
 

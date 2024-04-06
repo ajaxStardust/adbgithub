@@ -39,10 +39,21 @@ $rootCss = FALSE;
 /* for future impletation of CSS control - useless idea really */
 
 require $xro.'public/class/class-urlchopper.php';
+require $xro.'public/class/class-cwthumbs.php';
+
 
 $testPath = $_SERVER['SCRIPT_NAME'];
 
 $urlChopper = new urlChopper;
+
+$head_img_obj = new CwThumbs;
+$one_image = $head_img_obj->makeThumbs("assets/screenshots",$none=NULL);
+$many = count($one_image);
+$rand = rand(0,$many) -1;
+if($rand == -1) {
+	$rand = 0;
+}
+// $random_head_img = $one_image[$rand];
 
 $chopThis = $urlChopper->chopUrl($testPath);
 /* what is the point of creating the _chopThis variable? */
@@ -208,13 +219,22 @@ $frameInfo = pathinfo($defaultIframe);
 $frameTitle = $frameInfo['filename'];
 /* create the string for the iFrame title */
 
+if(isset($chopThis) && strlen($chopThis) > 1) {
+
+$pagetitle = $serverName."/".$chopThis."/".$c_trim;
+
+}
+else {
+$pagetitle = $serverName ."/".$c_trim;
+}
+
 /* END PHP and begin HTML for document head */
 ?>
 
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-<title><?php print $chopThis."/".$c_trim; ?></title>
+<title><?php print $pagetitle; ?></title>
 
 <meta charset="UTF-8">
         <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -253,25 +273,94 @@ $frameTitle = $frameInfo['filename'];
     type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
 </script>
-    <!-- Google Analytics 2022.07.24 -->
-    <!-- script async src="https://www.googletagmanager.com/gtag/js?id=G-SE954SRMG8"></script -->
-    <script>
-/*      window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-SE954SRMG8'); */
-    </script>
-    <!-- Google Adsense -->
-    <!-- script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2612637898892107" crossorigin="anonymous"></script -->
     <!-- Bootstrap Css v5 -->
     <!-- link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" -->
+    <!-- link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" -->
+<style>
+<!--
+.hide-show-element {
+  /*
+  *
+  background-color: #eee;
+  height: 400px;
+  position: relative;
+  text-align: center;
+  *
+  */
+   width: 10rem;
+    display: inline-block;
+}
 
+.hide-show-element label:hover {
+    color: #D00;
+}
+
+.hide-show-element input[type='checkbox'] {
+  display: none;
+}
+
+.hide-show-element label {
+    margin: 0 .1em;
+    padding: 0 .3em;
+    border-radius: 3px;
+    border: .1em solid #ccc;
+    color: #333;
+    line-height: 1.625;
+    font-size: .83em;
+    font-family: inherit;
+    background-color: #f7f7f7;
+    box-shadow: 0 .1em 0 rgba(0,0,0,.2),0 0 0 .2em #fff inset;
+}
+
+.hide-show-element label {
+	/* background-color: #a00; */
+	/* border: 1px solid #111; */
+	color: #E8E6FF;
+	cursor: pointer;
+	/* display: block; */
+	/* padding: 20px; */
+    display: inline-block;
+	text-align: center;
+	transition-duration: 0.4s;
+	width: 90%;
+	margin: 0;
+    text-shadow: 0.06rem 0.06rem 0.1rem #33333355;
+}
+.hide-show-element label:after {
+  display: block;
+  content: "Show Controls";
+}
+.hide-show-element input:checked + label {
+  background-color: none;
+  /* border: 1px solid #a00; */
+  color: #3A29BB;
+}
+.hide-show-element input:checked + label:after {
+  content: "Hide Controls";
+}
+
+.test1 {
+  opacity: 0;
+  position: relative;
+  height: 0;
+  transform: rotate(135deg);
+  top: 20%;
+  transition-duration: 0.6s;
+  width: 0;
+}
+
+.hide-show-element input:checked ~ .test1 {
+  filter: grayscale(25%);
+  opacity: 1;
+  height: 200px;
+  transform: rotate(0);
+  width: 8rem;
+}
+
+-->
+</style>
 <?php
 
 /*
@@ -306,6 +395,7 @@ require $xro.'assets/css/style.css.php';
 <object id="svgtitle" class="floatleft transparentback" title="Documents of <?php print $chopThis; ?> container"
         data="assets/css/masthead.php" type="image/svg+xml">
 </object>
+
 </div><!-- $ END Dynamic and SVG HTML node ID#header $ -->
 
 <div id="wrapper" class="unfloat"><!-- ^ id=wrapper ^ -->

@@ -16,11 +16,12 @@
 require '../../public/class/class-urlchopper.php';
 
 $svgPathChopper = new urlChopper;
-$svgTextRaw = $svgPathChopper->svgTextChopper($_SERVER['PHP_SELF']);
+// $svgTextRaw = $svgPathChopper->svgTextChopper($_SERVER['PHP_SELF']);
+$svgTextRaw = dirname(dirname(__FILE__));
 $svgSubject = $svgTextRaw;
 $svgReplace = '';
-$svgPattern = '@/assets@';
-$svgText = preg_replace($svgPattern,$svgReplace,$svgSubject);
+$svgPattern = '/^(.*)(\/)([^\/]+)(\/.*)$/';
+$svgText = preg_replace($svgPattern,'$3',$svgSubject);
 
 if ( (strlen($svgText) < 1) ) {
     $svgText = $_SERVER["SERVER_NAME"];
@@ -34,6 +35,7 @@ if ( (strlen($svgText) < 1) ) {
 	$bottomStroke = 0.030;
 	
 	$tspan = substr_replace($svgText, '', 0, -30);
+	$tspan = $svgText;
 	if(strlen($tspan) > 22){
 		$fontSize = "1.8em";
 		$multiplier = 0.3;
