@@ -141,7 +141,7 @@ function filter_path_to_url($get_path2url,$servername,$server_addr){
                                 if (preg_match('@[Cc]:[\\\\/]Apache2@', $strirep)) {
                                     $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
                                     $strirep = str_ireplace('C:\\Apache2\\htdocs\\', '', $strirep);
-                                    $servername = 'beelink.wsldebian';
+                                    $servername = 'beelink.localhost';
                                     $servername = !empty($servername) ? $servername : $server_addr;
 
                                     /* $servername = empty($server_name) ? $servername : $server_name; */
