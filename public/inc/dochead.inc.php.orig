@@ -220,37 +220,7 @@ if (isset($chopThis) && strlen($chopThis) > 1) {
     $pagetitle = $serverName . '/' . $c_trim;
 }
 
-// new random image play
-// Directory containing header images
-error_reporting(E_ALL);
-$randomnumber = rand(0,2);
-if($randomnumber == 1) {
-    $imageDirectory = 'assets/screenshots/';
-    }
-elseif($randomnumber == 2) {
- $imageDirectory = 'assets/screenshots/';
-}
-else {
- $imageDirectory = 'assets/screenshots/';
-}
-
-
-
-        // Get all files in the directory
-        $files = glob($imageDirectory . '/*');
-
-        // Select a random image file
-        $randomImage = $files[array_rand($files)];
-
-        // Output the image
-
 /* END PHP and begin HTML for document head */
-
-
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -360,23 +330,11 @@ else {
         transform: rotate(0);
         width: 8rem;
     }
-    .randomimage {
-        display:inline-block;
-        max-width:1024;
-        max-height:768;
-    }
-    #jsaffect {
-
-	display: inline-block;
-	flex-direction: unset;
-	border: 0.01rem solid #7fd5ff;
-
-    }
     -->
     </style>
 
     <!-- SPECTRE CSS>
-    <!-- link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
     <!-- link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
     <!-- link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
     <!-- SPECTRE CSS -->
@@ -403,34 +361,9 @@ else {
     <!-- ajaxStardust style_main anniedebrowsa -->
     <script type="text/javascript" src="./assets/js/accessories.js">
     </script>
-<script>
-window.onload = cloneAttributes("jsaffect", "locallinks");
 
-</script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
     </script>
-        <script>
-    $(document).ready(function() {
-        // Function to update the news ticker with a random variable
-        function updateNewsTicker() {
-            $.getJSON('assets/json/bash_variables.json', function(data) {
-                var variables = data.variables;
-
-                // Select a random variable
-                var random_variable_key = Math.floor(Math.random() * Object.keys(variables).length);
-                var random_variable_name = Object.keys(variables)[random_variable_key];
-                var random_variable = variables[random_variable_name];
-
-                $('#news-ticker').text(random_variable_name + ': ' + random_variable.description + ' (Used for: ' + random_variable.used_for + ')');
-            });
-        }
-
-        // Update the news ticker every 5 seconds
-        updateNewsTicker();
-        setInterval(updateNewsTicker, 5000); // Change interval as needed
-    });
-    </script>
-
 </head>
 
 <body id="<?php print $bodyid; ?>">
@@ -458,19 +391,4 @@ print $c_trim . ' of ' . $chopThis;
         <div id="wrapper" class="unfloat">
             <!-- ^ id=wrapper ^ -->
             <div class="content" id="cookieData"></div>
-        <div id="headrandom">
-        <dl>
-            <dt class="keyTerms pointer" id="jsaffect">View <span class="normal blue pointer" id="show_n01"
-                    onclick="swap_text('show_n01','notes_01') ">[toggle img]</span>
-            </dt>
-            <dd id="notes_01" class="displaynone">
-            <figure id="toggle-head"><?php echo '<img src="' . $randomImage . '" alt="Header Image" class="randomimage">'; ?><figcaption><?php echo $imageDirectory; ?></figcaption></figure>
-            <div id="randomslide" class="">
-
-
-    </div>
-            </dd>
-        </dl>
-        	    <marquee id="news-ticker" behavior="scroll" direction="left" scrollamount="4"></marquee>
-</div> <!-- //#headrandom -->
             <!-- div class="content" id="docLinks" style="z-index:9999 !important;"></div -->

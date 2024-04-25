@@ -1,0 +1,79 @@
+{
+  "variables": {
+    "PWD": {
+      "variable_name": "PWD",
+      "description": "The current working directory",
+      "used_for": "To reference the current directory in a script"
+    },
+    "OLDPWD": {
+      "variable_name": "OLDPWD",
+      "description": "The previous working directory",
+      "used_for": "To reference the previous directory in a script"
+    },
+    "HOME": {
+      "variable_name": "HOME",
+      "description": "The user's home directory",
+      "used_for": "To reference the user's home directory in a script"
+    },
+    "USER": {
+      "variable_name": "USER",
+      "description": "The username of the current user",
+      "used_for": "To reference the username in a script"
+    },
+    "HOSTNAME": {
+      "variable_name": "HOSTNAME",
+      "description": "The hostname of the machine",
+      "used_for": "To reference the hostname in a script"
+    },
+    "SHELL": {
+      "variable_name": "SHELL",
+      "description": "The path to the current user's shell",
+      "used_for": "To reference the user's shell in a script"
+    },
+    "PATH": {
+      "variable_name": "PATH",
+      "description": "The list of directories where executable files are located",
+      "used_for": "To specify the search path for executable files in a script"
+    },
+    "TERM": {
+      "variable_name": "TERM",
+      "description": "The type of terminal being used",
+      "used_for": "To determine the terminal type in a script"
+    },
+    "LANG": {
+      "variable_name": "LANG",
+      "description": "The current locale setting",
+      "used_for": "To determine the language and character encoding settings in a script"
+    },
+    "RANDOM": {
+      "variable_name": "RANDOM",
+      "description": "A random integer between 0 and 32767",
+      "used_for": "To generate random numbers in a script"
+    },
+    "UID": {
+      "variable_name": "UID",
+      "description": "The user ID of the current user",
+      "used_for": "To reference the user ID in a script"
+    },
+    "EUID": {
+      "variable_name": "EUID",
+      "description": "The effective user ID of the current user",
+      "used_for": "To reference the effective user ID in a script"
+    },
+    "BASH_VERSION": {
+      "variable_name": "BASH_VERSION",
+      "description": "The version number of the Bash shell",
+      "used_for": "To check the version of Bash in a script"
+    },
+    "BASH": {
+      "variable_name": "BASH",
+      "description": "The path to the Bash executable",
+      "used_for": "To specify the Bash executable in a script"
+    },
+    "BASH_VERSINFO": {
+      "variable_name": "BASH_VERSINFO",
+      "description": "An array containing version information for Bash",
+      "used_for": "To access detailed version information about Bash in a script"
+    }
+  }
+}
