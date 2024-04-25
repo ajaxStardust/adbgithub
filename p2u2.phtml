@@ -25,8 +25,8 @@ $serversoftware = $_SERVER['SERVER_SOFTWARE'];
 $server_name = $_SERVER['SERVER_NAME'] ? $_SERVER['SERVER_NAME'] : $_SERVER['HTTP_HOST'];
 $server_addr = $_SERVER['SERVER_ADDR'] ? $_SERVER['SERVER_ADDR'] : $_SERVER['SERVER_NAME'];
 $servername = $server_name;
-if (preg_match('@10\.0\.0\.\d+|192\.\d+\.\d+\.\d+|127\.\d+\.\d+\.\d+@', $server_addr)) {
-    $abspath = '<code class="info">' . $abspath . '</code>';
+if (preg_match('@::1|10\.0\.0\.\d+|192\.\d\.\d\.\d+|127\.\d\.\d\.\d+@', $server_addr)) {
+  $abspath = '<code class="info">' . $abspath . '</code>';
 } else {
     $abspath = '<div class="info">Uses  PHP Variables like <code>define( ABSOLUTELOCATION , dirname(__FILE__))</code>. E.g. See ABSPATH in WordPress.</div>';
 }
