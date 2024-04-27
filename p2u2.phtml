@@ -639,7 +639,7 @@ $depth = substr_count($goUp['subject'], '/');
 
             <?php
                 $contactSheet = '<div class="demo">
-        <div class="item">
+ <div class="item">
             <div class="clearfix" style="max-width:474px;">
             <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
             ';
@@ -655,6 +655,7 @@ $depth = substr_count($goUp['subject'], '/');
                     $contactSheet .= '<li class="bold nobull noBull">Sorry, but there is an error in the source, specific to the image resources contact-sheet previews.</li><li>Specifically, the ADB PHP-class, <em>cwThumbs</em> fails the logical condition of<ul><li><pre>
                  does not exist</pre></li><li><pre>
                  is not an array</pre></li><li><pre>has not been properly set</pre></li></ul>' . "\n";
+
                 }
                 $contactSheet .= "</ul> \n </div> \n </div> \n </div> \n";
                 if (strlen($contactSheet) > 20) {
@@ -671,6 +672,7 @@ $depth = substr_count($goUp['subject'], '/');
                 <?php
                     echo '<p><strong>ABSOLUTELOCATION</strong>:' . $abspath . '</p>';
                     echo '<div class="container"><div class="bg-dark d-flex justify-content-between flex-wrap" id="info_container"><p class="bg-dark text-light">Served by: <span class="bg-dark text-warning">' . $serversoftware . '</span></p>
+
                 <p class="bg-dark text-light">PHP Version: <span class="text-warning">' . phpversion() . '</span></p>
                 <p class="bg-dark text-light">Server Name: <span class="text-info">' . $servername . '</span></p>
                 <p class="bg-dark text-light">Server Addr: <span class="text-info">' . $server_addr . '</span></p>

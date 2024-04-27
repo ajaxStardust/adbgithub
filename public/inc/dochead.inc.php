@@ -42,7 +42,9 @@ $testPath = $_SERVER['SCRIPT_NAME'];
 $urlChopper = new urlChopper;
 
 $head_img_obj = new CwThumbs;
+
 $one_image = $head_img_obj->makeThumbs('assets/screenshots', $none = NULL);
+
 $many = count($one_image);
 $rand = rand(0, $many) - 1;
 if ($rand == -1) {
@@ -367,9 +369,9 @@ else {
     }
     #jsaffect {
 
-	display: inline-block;
-	flex-direction: unset;
-	border: 0.01rem solid #7fd5ff;
+    display: inline-block;
+    flex-direction: unset;
+    border: 0.01rem solid #7fd5ff;
 
     }
     -->
@@ -430,6 +432,16 @@ window.onload = cloneAttributes("jsaffect", "locallinks");
         setInterval(updateNewsTicker, 5000); // Change interval as needed
     });
     </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<style>
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+</style>
 
 </head>
 
@@ -439,6 +451,7 @@ window.onload = cloneAttributes("jsaffect", "locallinks");
         <img src="<?php echo $xro; ?>assets/css/css-box_novicenotes-dot-net_transp.png" alt="CSS Box-model illustration"
             id="cssBoxImg">
     </figure>
+<<<<<<< HEAD
     <!-- $ cssBoxContainer $ -->
     <div id="pagewidth">
         <!-- ^ id=pagewidth -->
@@ -471,6 +484,9 @@ print $c_trim . ' of ' . $chopThis;
     </div>
             </dd>
         </dl>
-        	    <marquee id="news-ticker" behavior="scroll" direction="left" scrollamount="4"></marquee>
+                <marquee id="news-ticker" behavior="scroll" direction="left" scrollamount="4"></marquee>
+        <span class="material-symbols-outlined">
+movie &#xe02c;
+</span>
 </div> <!-- //#headrandom -->
             <!-- div class="content" id="docLinks" style="z-index:9999 !important;"></div -->

@@ -13,7 +13,7 @@
 */
 
 	/* ................................................................. */
-	
+
 	function redirectPage() {
 		/* @var regExp: assign regular expression to string variable */
 	var initLoc	= {}, prefLoc = {}, regExp;
@@ -22,11 +22,12 @@
 	if (top.location.href === self.location.href) {
 
 		initLoc = self.location.href;
-					
+        prefLoc = 'index.php';
+
 				/* @method replace: regular expression method, replace regExp string in href */
 		initLoc.replace(regExp,'index.php');
 
-		return window.location.href = initLoc.replace(regExp,'index.php');
+		return window.location.href = initLoc.replace(regExp,prefLoc);
 	}
 	else {
 		alert('Not top level page! Use Page-Control: Frame-to-Top');
