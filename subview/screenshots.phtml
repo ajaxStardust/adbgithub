@@ -7,7 +7,7 @@ $serversoftware = $_SERVER['SERVER_SOFTWARE'];
 $server_name = $_SERVER['SERVER_NAME'] ? $_SERVER['SERVER_NAME'] : $_SERVER['SERVER_ADDR'];
 $server_addr = $_SERVER['SERVER_ADDR'] ? $_SERVER['SERVER_ADDR'] : $_SERVER['SERVER_NAME'];
 $servername = $server_name;
-if (preg_match('@::1|10\.0\.0\.\d+|192\.\d\.\d\.\d+|127\.\d\.\d\.\d+@', $server_addr)) {
+if (preg_match('@10\.0\.0\.\d+|192\.\d\.\d\.\d+|127\.\d\.\d\.\d+@', $server_addr)) {
     $abspath = '<code class="info">' . $abspath . '</code>';
 } else {
     $abspath = 'is simply a PHP value which relies on server variables<code>define( ABSOLUTELOCATION , rtrim(dirname(__FILE__), inc))</code>';

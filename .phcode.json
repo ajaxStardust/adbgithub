@@ -1,0 +1,7 @@
+{
+    "livePreviewUseDevServer": false,
+    "livePreviewServerURL": "https://127.0.0.1:80/depthping2/",
+    "livePreviewServerProjectPath": "/",
+    "livePreviewHotReloadSupported": false,
+    "livePreviewFramework": "Custom"
+}

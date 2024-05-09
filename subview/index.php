@@ -1,6 +1,6 @@
 <?php
 
-// namespace adb_simplest; was
+// namespace adb_simplest;
 
 /*
  * index.php
@@ -35,22 +35,15 @@ require_once 'public/inc/backlinks.inc.php';
 <div id="maincol">
     <!--    ^   id:maincol  ^   -->
     <!--    id:doc_loc_href added ID data here for indication of preferred text -->
-    <h2 id="doc_loc_href" title="currentUrlPath.pathInfoBasename"><?php print $currentUrlPath . $pathInfoBasename; ?>
-    </h2>
+    <h2 id="doc_loc_href" title="currentUrlPath.pathInfoBasename"><?php print $currentUrlPath . $pathInfoBasename; ?></h2>
     <?php print $backlinksHtml; ?>
-    <ol id="locallinks">
-        <li class="float-left p-2"><a target="_blank" href="extension://jdoanlopeanabgejgmdncljhkdplcfed/dashboard.html">momentun.chrome</a></li>
-        <li class="float-left p-2"><a target="_blank" href="http://127.0.0.1/index.php">127.0.0.1/index.php</a></li>
-        <li class="float-left p-2"><a target="_blank" href="http://atheat.mxuni/index.php">atheat.mxuni/index.php</a></li>
-        <li class="float-left p-2"><a target="_blank" href="http://atheat/index.php">atheat/index.php</a></li>
-        <li class="float-left p-2"><a target="_blank" href="http://localhost/index.php">localhost/index.php</a></li>
-        <li class="float-left p-2"><a target="_blank" href="http://mx23ahs/index.php">mx23ahs/index.php</a></li>
-        <li class="float-left p-2"><a target="_blank" href="http://mxuni/index.php">mxuni/index.php</a></li>
-        <li class="float-left p-2"><a target="_blank" href="http://mylaravel/index.php">mylaravel/index.php</a></li>
-        <li class="float-left p-2"><a target="_blank" href="http://other.mxuni/index.php">other.mxuni/index.php</a></li>
-        <li class="float-left p-2"><a target="_blank" href="http://start.me">start.me</a></li>
-        <li class="float-left p-2"><a target="_blank" href="http://wordpresscenter.net">WordPressCenter.net</a></li>
-        <li class="float-left p-2"><a target="_blank" href="https://momentun.dash">momentun.dash</a></li>
+    <ol>
+        <li class="float-left p-2"><a href="https://127.0.0.1/index.php">127.0.0.1/index.php</a></li>
+        <li class="float-left p-2"><a href="https://atkde/index.php">atkde/index.php</a></li>
+        <li class="float-left p-2"><a href="https://mx23kde/index.php">mx23kde/index.php</a></li>
+        <li class="float-left p-2"><a href="https://mylaravel/index.php">mylaravel/index.php</a></li>
+        <li class="float-left p-2"><a href="https://mxlinux-21/index.php">mxlinux-21/index.php</a></li>
+        <li class="float-left p-2"><a href="https://wordpresscenter.net">WordPressCenter.net</a></li>
     </ol>
     <?php
         // BEGIN PHP REQUIRE    #pageControls
@@ -87,16 +80,13 @@ require_once 'public/inc/backlinks.inc.php';
     </div>
     <!--    $   id:mainFrameContainer   $   -->
 </div>
-
 <!--    $   id:maincol  $   -->
 <?php  //  PRINT   #navlist ( array from ./inc/nav.inc.php )
 foreach ($htmlPrint as $htmlNavItem) {
     print $htmlNavItem;
 }
 ?>
-<!-- div id="displayHttPath">
-    <?php print $currentUrlPath . $pathInfoBasename; ?>
-</div -->
+<!-- div id="displayHttPath"><?php print $currentUrlPath . $pathInfoBasename; ?></div -->
 
 <?php
 require 'public/inc/footer.inc.php';

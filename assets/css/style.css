@@ -3,6 +3,29 @@
 /** @import url(../css/pma_style.css);  not needed with the relative path like this **/
 /** @import url(../css/pma_style.css); **/
 @import url(pma_style.css);
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 100 700;
+  src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v179/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsI.woff2) format('woff2');
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -moz-font-feature-settings: 'liga';
+  -moz-osx-font-smoothing: grayscale;
+}
+
 
 nav {
   background-color: transparent;
@@ -14,6 +37,34 @@ nav {
   width: 18%;
   z-index: 10;
 }
+
+li.webpicon,
+li.webmicon {
+  list-style-image: none !important;
+}
+
+li.webpicon,
+li.webpicon::before,
+li.webmicon,
+li.webmicon::before {
+  font-family: 'Material Symbols Outlined';
+  color: #d83f3f;
+  content: '\e639';   
+  display: block;
+  list-style-type: none;
+  margin-left: -3rem;
+  padding-left: 0;
+  white-space: pre;
+  font-size: 1.5rem;
+  float: left;
+  font-weight: 500;
+}
+
+li.markdownicon,
+li.mdicon {
+  list-style-image: none !important;
+}
+
 
 li.markdownicon,
 li.mdicon::before {
@@ -2040,9 +2091,10 @@ li.tifficon::before,
 li.tificon::before,
 li.xcf::before,
 li.xcficon::before {
-  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
-  color: #ffc;
-  content: "∠";
+  font-family: 'Material Symbols Outlined';
+  text-shadow: 0.1rem 0.1rem 0.1rem #7373736e;
+  color: #04916e;
+  content: '\efa2';
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;

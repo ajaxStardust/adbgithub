@@ -485,8 +485,6 @@ print $c_trim . ' of ' . $chopThis;
             </dd>
         </dl>
                 <marquee id="news-ticker" behavior="scroll" direction="left" scrollamount="4"></marquee>
-        <span class="material-symbols-outlined">
-movie &#xe02c;
-</span>
+         
 </div> <!-- //#headrandom -->
             <!-- div class="content" id="docLinks" style="z-index:9999 !important;"></div -->

@@ -6,7 +6,6 @@ if (defined('XRO')) {
 } else {
 	$xro = '';
 }
-// require 'public/inc/backlinks.inc.php';
 
 if (isset($_SERVER['SERVER_NAME'])) {
 	$serverName = $_SERVER['SERVER_NAME'];
@@ -27,6 +26,11 @@ foreach ($footParse as $fPkey => $fPval) {
 $footDir = __FILE__;
 $footReplace = '';
 $footHost = str_replace($footFile, $footReplace, $footRoot);
+
+/*
+ * echo '<div>footVars thing<ol><li>footRoot: '.$footRoot.'</li><li>footFile: '.$footFile.'</li><li>footParse: '.$footParse.'</li>
+ * <li>footPath: '.$footPath.'</li><li>footDir: '.$footDir.'</li><li>footHost: '.$footHost.'</li></ol></div>';
+ */
 
 ?>
 
