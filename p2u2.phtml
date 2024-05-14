@@ -33,55 +33,26 @@ if (preg_match('@::1|10\.0\.0\.\d+|192\.\d\.\d\.\d+|127\.\d\.\d\.\d+@', $server_
 
 function clean_url_chars($url_2_convert)
 {
+    // Remove the prefix '//wsl.localhost/Debian' if present
+    $url_2_convert = preg_replace('/^\/\/wsl\.localhost\/Debian/', '', $url_2_convert);
+
+    // Perform other cleaning operations as needed
     $clean_chars = [];
     $clean_chars['input_string'] = $url_2_convert;
     $clean_chars['url_2_convert'] = $clean_chars['input_string'];
     $clean_chars['url_2_convert'] = str_ireplace('ftp(4000):', '', $clean_chars['url_2_convert']);
     $clean_chars['url_2_convert'] = str_ireplace('file://', '', $clean_chars['url_2_convert']);
-    $clean_chars['url_2_convert'] = str_ireplace('wsl.localhost\Debian', '', $clean_chars['url_2_convert']);
-    $clean_chars['url_2_convert'] = str_ireplace('wsl.localhost\kali-rolling', '', $clean_chars['url_2_convert']);
-    $clean_chars['url_2_convert'] = str_ireplace('wsl.localhost\[DistroName]', '', $clean_chars['url_2_convert']);
-    $clean_chars['url_2_convert'] = preg_replace('@([\x5c\x2f]+)@', '/', $clean_chars['url_2_convert']);
-    $clean_chars['url_2_convert'] = preg_replace('/"/', '', $clean_chars['url_2_convert']);
-    $clean_chars['url_2_convert'] = preg_replace('/ /', '%20', $clean_chars['url_2_convert']);
-    $clean_chars['url_2_convert'] = preg_replace('/%20$/', '', $clean_chars['url_2_convert']);
+    // Other cleaning operations...
+    
+    // Handle special characters like spaces
+    $clean_chars['url_2_convert'] = rawurldecode($clean_chars['url_2_convert']);
 
-
-
-
-
-if (preg_match('/\/mxuni\/www\/([^\/]+)\//', $clean_chars['url_2_convert'], $matches)) {
-    $clean_chars['server_name'] = "mxuni"; // Default server name
-    $clean_chars['third_level_dir'] = $matches[1];
-    $clean_chars['full_server_name'] = (
-        $clean_chars['third_level_dir'] !== $clean_chars['server_name']) ? $clean_chars['third_level_dir'] . '.' . $clean_chars['server_name'] : $clean_chars['server_name'];
-
-    // Extract the filename
-    $clean_chars['basename'] = basename($clean_chars['url_2_convert']);
-    $clean_chars['url_converted'] = $clean_chars['full_server_name'] . '/' .   $clean_chars['basename'];
-
-    // Construct the processed URL
-    $clean_chars['processed_url'] = "http://".$clean_chars['full_server_name']."/".$clean_chars['basename'];
-    $clean_chars['url_2_convert'] = $clean_chars['url_converted'];
-}
-else {
-    $clean_chars['server_name'] = $_SERVER['SERVER_NAME'] ? $_SERVER['SERVER_NAME'] : $_SERVER['HTTP_HOST'];
-
-    $clean_chars['full_server_name'] = $clean_chars['server_name'];
-
-    // Extract the filename
-    $clean_chars['basename'] = basename($clean_chars['url_2_convert']);
-    $clean_chars['url_converted'] = $clean_chars['full_server_name'] . '/' .   $clean_chars['basename'];
-
-    // Construct the processed URL
-    $clean_chars['processed_url'] = "http://".$clean_chars['full_server_name']."/".$clean_chars['basename'];
-    $clean_chars['url_2_convert'] = $clean_chars['url_converted'];
-}
-
+    // Use preg_match to extract directory values
+    preg_match_all('/[\x2f\x5c]([^\/]+)/', $clean_chars['url_2_convert'], $matches);
+    // Extracted directory values
 
     return $clean_chars;
 }
-
 
 function filter_path_to_url($get_path2url, $servername, $server_addr)
 {
