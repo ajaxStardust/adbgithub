@@ -1,0 +1,175 @@
+body {
+    font-family: "Segoe UI", "Verdana", "Arial";
+    background-color: #FFFFFF;
+    margin: 20px;
+    color: #575757;
+    width: 760px;
+}
+
+a {
+    color: rgb(19,112,171);
+    font-size: 1em;
+    font-weight: normal;
+    text-decoration: none;
+    margin-left: 0px;
+    vertical-align: top;
+}
+
+a.disabled {
+    display: none;
+    color: #FFFFFF;
+}
+
+a:link, a:visited {
+    color: rgb(19,112,171);
+    text-decoration: none;
+    vertical-align: top;
+}
+
+a:hover {
+    color: rgb(7,74,229);
+    text-decoration: underline;
+    vertical-align: top;
+}
+
+h1 {
+    color: #4465A2;
+    font-size: 1.1em;
+    font-weight: normal;
+    vertical-align: bottom;
+    margin-top: 7px;
+    margin-bottom: 4px;
+}
+
+p {
+    font-size: 0.9em;
+    font-weight: normal;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+ul, ol {
+    font-size: 0.9em;
+    list-style-position: outside;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    line-height: 1.3em;
+}
+
+img.screenshot-thumb {
+    border: 2px solid rgb(19,112,171);
+    width: 756px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+img.screenshot {
+    border: 2px solid rgb(19,112,171);
+    margin-top: 5px;
+}
+
+img.slidescreenshot {
+    border: 2px solid rgb(19,112,171);
+}
+
+div.noscreenshots {
+    padding: 30px 0px 30px 0px;
+    margin-top: 5px;
+    border: 1px solid rgb(19,112,171);
+    text-align: center;
+}
+
+div.slidenoscreenshots {
+    width: 500px;
+    margin-top: 30%;
+    padding: 30px 0px 30px 0px;
+    border: 1px solid rgb(19,112,171);
+    text-align: center;
+}
+
+div.drawing_desktop {
+    border: 2px solid rgb(19,112,171);
+    background-color: white;
+}
+
+div.drawing_widget {
+    border: 1px solid rgb(5,50,100);
+}
+
+div.drawing_toplevel {
+    background-color: rgb(20,110,170);
+}
+
+div.drawing_titlebar {
+    background-color: rgb(10,60,120);
+    color: white;
+    overflow: hidden;
+    font-size: 10px;
+}
+
+div.drawing_parent {
+    background-color: transparent;
+}
+
+div.drawing_target {
+    background-color: rgb(30,140,200);
+    color: white;
+    overflow: hidden;
+    font-size: 10px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #B6BCC6;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.clearfix {
+    overflow: auto;
+}
+
+.left33 {
+    float: left;
+    width: 33%;
+}
+
+span.accessible-text {
+    height: 1px;
+    width: 1px;
+    position: absolute;
+    overflow: hidden;
+    top: -10px;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.commentInputEntityItem-display
+{
+    display: none;
+}
+
+.updateCommentEntityItem-display
+{
+    display: none;
+}

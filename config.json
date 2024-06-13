@@ -1,0 +1,20 @@
+{
+  "servers": [
+    {
+      "name": "mxuni",
+      "path": "//mxuni/www/mxuni"
+    },
+    {
+      "name": "atheat.mxuni",
+      "path": "//mxuni/www/atheat"
+    },
+    {
+      "name": "other.mxuni",
+      "path": "//mxuni/www/other"
+    },
+    {
+      "name": "python.mxuni",
+      "path": "//mxuni/www/python"
+    }
+  ]
+}

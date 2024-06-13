@@ -451,7 +451,7 @@ window.onload = cloneAttributes("jsaffect", "locallinks");
         <img src="<?php echo $xro; ?>assets/css/css-box_novicenotes-dot-net_transp.png" alt="CSS Box-model illustration"
             id="cssBoxImg">
     </figure>
-<<<<<<< HEAD
+
     <!-- $ cssBoxContainer $ -->
     <div id="pagewidth">
         <!-- ^ id=pagewidth -->

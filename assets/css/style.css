@@ -3,12 +3,390 @@
 /** @import url(../css/pma_style.css);  not needed with the relative path like this **/
 /** @import url(../css/pma_style.css); **/
 @import url(pma_style.css);
+
+@import url('https://fonts.googleapis.com/css2?family=Condiment&display=swap');
+.condiment-regular {
+  font-family: "Condiment", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1, h2 {
+  font-family: "Condiment", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 @font-face {
   font-family: 'Material Symbols Outlined';
   font-style: normal;
   font-weight: 100 700;
   src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v179/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsI.woff2) format('woff2');
 }
+
+
+* {
+
+   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   
+}
+
+body {
+
+
+   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 300;
+
+
+    background-color: #FFFFFF;
+
+    margin: 20px;
+
+    color: #575757;
+
+    
+
+}
+
+#pagewidth {
+	min-width: 720px important!;
+}
+
+a {
+
+    color: rgb(19,112,171);
+
+    font-size: 1em;
+
+    font-weight: normal;
+
+    text-decoration: none;
+
+    margin-left: 0px;
+
+    vertical-align: top;
+
+}
+
+
+
+a.disabled {
+
+    display: none;
+
+    color: #FFFFFF;
+
+}
+
+
+
+a:link, a:visited {
+
+    color: rgb(19,112,171);
+
+    text-decoration: none;
+
+    vertical-align: top;
+
+}
+
+
+
+a:hover {
+
+    color: rgb(7,74,229);
+
+    text-decoration: underline;
+
+    vertical-align: top;
+
+}
+
+
+
+h1 {
+
+    color: #4465A2;
+
+    font-size: 1.1em;
+
+    font-weight: normal;
+
+    vertical-align: bottom;
+
+    margin-top: 7px;
+
+    margin-bottom: 4px;
+
+}
+
+
+
+p {
+
+    font-size: 0.9em;
+
+    font-weight: normal;
+
+    margin-top: 1px;
+
+    margin-bottom: 1px;
+
+}
+
+
+
+ul, ol {
+
+    font-size: 0.9em;
+
+    list-style-position: outside;
+
+    margin-top: 1px;
+
+    margin-bottom: 1px;
+
+    padding-top: 1px;
+
+    padding-bottom: 1px;
+
+    line-height: 1.3em;
+
+}
+
+
+
+img.screenshot-thumb {
+
+    border: 2px solid rgb(19,112,171);
+
+    width: 756px;
+
+    margin-top: 5px;
+
+    cursor: pointer;
+
+}
+
+
+
+img.screenshot {
+
+    border: 2px solid rgb(19,112,171);
+
+    margin-top: 5px;
+
+}
+
+
+
+img.slidescreenshot {
+
+    border: 2px solid rgb(19,112,171);
+
+}
+
+
+
+div.noscreenshots {
+
+    padding: 30px 0px 30px 0px;
+
+    margin-top: 5px;
+
+    border: 1px solid rgb(19,112,171);
+
+    text-align: center;
+
+}
+
+
+
+div.slidenoscreenshots {
+
+    width: 500px;
+
+    margin-top: 30%;
+
+    padding: 30px 0px 30px 0px;
+
+    border: 1px solid rgb(19,112,171);
+
+    text-align: center;
+
+}
+
+
+
+div.drawing_desktop {
+
+    border: 2px solid rgb(19,112,171);
+
+    background-color: white;
+
+}
+
+
+
+div.drawing_widget {
+
+    border: 1px solid rgb(5,50,100);
+
+}
+
+
+
+div.drawing_toplevel {
+
+    background-color: rgb(20,110,170);
+
+}
+
+
+
+div.drawing_titlebar {
+
+    background-color: rgb(10,60,120);
+
+    color: white;
+
+    overflow: hidden;
+
+    font-size: 10px;
+
+}
+
+
+
+div.drawing_parent {
+
+    background-color: transparent;
+
+}
+
+
+
+div.drawing_target {
+
+    background-color: rgb(30,140,200);
+
+    color: white;
+
+    overflow: hidden;
+
+    font-size: 10px;
+
+}
+
+
+
+hr {
+
+    display: block;
+
+    height: 1px;
+
+    border: 0;
+
+    border-top: 1px solid #B6BCC6;
+
+    margin: 1em 0;
+
+    padding: 0;
+
+}
+
+
+
+.clearfix {
+
+    overflow: auto;
+
+}
+
+
+
+.left33 {
+
+    float: left;
+
+    width: 33%;
+
+}
+
+
+
+span.accessible-text {
+
+    height: 1px;
+
+    width: 1px;
+
+    position: absolute;
+
+    overflow: hidden;
+
+    top: -10px;
+
+}
+
+
+
+.align-left {
+
+    text-align: left;
+
+}
+
+
+
+.align-center {
+
+    text-align: center;
+
+}
+
+
+
+.align-right {
+
+    text-align: right;
+
+}
+
+
+
+.center-block {
+
+    display: block;
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+}
+
+
+
+.commentInputEntityItem-display
+
+{
+
+    display: none;
+
+}
+
+
+
+.updateCommentEntityItem-display
+
+{
+
+    display: none;
+
+}
+
 
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined';
@@ -44,11 +422,11 @@ li.webmicon {
 }
 
 li.webpicon,
-li.webpicon::before,
+li.webpicon.material-symbols-outlined::before,
 li.webmicon,
-li.webmicon::before {
+li.webmicon.material-symbols-outlined::before {
   font-family: 'Material Symbols Outlined';
-  color: #d83f3f;
+  color: #66cc91;
   content: '\e639';   
   display: block;
   list-style-type: none;
@@ -316,8 +694,7 @@ li.zipicon::before {
 
 li,
 ul.keyTermsList {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
-    "Times New Roman", times, serif;
+  font-family: serif;
 }
 
 ul.keyTermsList {
@@ -710,8 +1087,7 @@ h2,
 h4,
 h5,
 h6 {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
-    "Times New Roman", times, serif;
+  font-family: serif;
 }
 
 h4 {
@@ -725,8 +1101,7 @@ h4 {
 #navlist,
 h3,
 h4.keyTermsHeading {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
-    "Times New Roman", times, serif;
+  font-family: serif;
 }
 
 h4.keyTermsHeading {
@@ -869,8 +1244,7 @@ p.displaynone {
 
 .closeme {
   color: #03f;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
-    "Times New Roman", times, serif;
+  font-family: serif;
   text-align: center;
 }
 
@@ -928,8 +1302,7 @@ p.displaynone {
 .defListTitle {
   border: 0;
   color: #d02;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
-    "Times New Roman", times, serif;
+  font-family: serif;
   font-style: italic;
   margin-bottom: 0.3em;
   width: 50%;
@@ -1061,8 +1434,7 @@ li.hiddenitem {
 
 .serif,
 .serifBold {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
-    "Times New Roman", times, serif;
+  font-family: serif;
 }
 
 .serifBold {
@@ -1087,8 +1459,7 @@ li.hiddenitem {
 }
 
 .tableHeadrow {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
-    "Times New Roman", times, serif;
+  font-family: serif;
   font-size: 1.1em;
   font-weight: 700;
   text-align: center;
@@ -1230,8 +1601,7 @@ li.listheader,
 li.listheaditem {
   background-color: #fff;
   color: purple;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
-    "Times New Roman", times, serif;
+  font-family: serif;
   font-size: 14pt;
   font-style: normal;
   font-variant: small-caps;
@@ -1359,8 +1729,7 @@ ul.keyTermsList li sup {
 }
 
 #accessContainerTrigger {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
-    "Times New Roman", times, serif;
+  font-family: serif;
 }
 
 #accessoryContainer {
@@ -1468,8 +1837,7 @@ ul.keyTermsList li sup {
 
 #displayHttPath,
 #doc_loc_href {
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
-    "Times New Roman", times, serif;
+  font-family: serif;
 }
 
 #displayHttPath {
@@ -1562,8 +1930,7 @@ ul.keyTermsList li sup {
 #frameName {
   background-color: rgba(255, 245, 152, 0.5);
   color: #003c3c;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
-    "Times New Roman", times, serif;
+  font-family: serif;
   font-size: 0.9em;
   font-variant: small-caps;
 }
@@ -1626,8 +1993,7 @@ p#collapser img {
 
 #localScope {
   border: 2em solid #ccc;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
-    "Times New Roman", times, serif;
+  font-family: serif;
   margin: 0 2em;
   width: 30em;
 }
@@ -1787,8 +2153,7 @@ p#collapser img {
   margin: 1em;
   padding: 0.5em;
   color: #000;
-  font-family: Argesta, Didot, GFSDidot, Lora, "Playfair Display", Cambria,
-    "Times New Roman", times, serif;
+  font-family: serif;
   background: 0 0;
   width: 10%;
   left: 45%;
@@ -2091,10 +2456,9 @@ li.tifficon::before,
 li.tificon::before,
 li.xcf::before,
 li.xcficon::before {
-  font-family: 'Material Symbols Outlined';
-  text-shadow: 0.1rem 0.1rem 0.1rem #7373736e;
-  color: #04916e;
-  content: '\efa2';
+  text-shadow: 0.1rem 0.1rem 0.1rem #737373aa;
+  color: #ffc;
+  content: "∠";
   margin-left: -3rem;
   padding-left: 0;
   white-space: pre;
