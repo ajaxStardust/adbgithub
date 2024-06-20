@@ -1,6 +1,7 @@
 <?php
 // ENABLE CORS (Cross-Origin Request) policy allow all
 error_reporting(E_ALL);
+
 header('Access-Control-Allow-Origin: *');
 date_default_timezone_set('America/New_York');
 $lastMod = 'Modified: ' . date('D M j Y G:i:s T', getlastmod());
@@ -43,8 +44,8 @@ function extract_path_components($url)
         for ($loop = 0; $loop < $loop_num; $loop++) {
             // foreach($url as $uKey => $uVal){
 
-            echo '<br>var_dump(url[input_string]): ' .  /* var_dump($url['input_string']) */  '<br>';
-            echo '<br>var_dump(url[url_2_convert]): ' .  /* var_dump($url['url_2_convert']) */   '<br>';
+           // echo '<br>var_dump(url[input_string]): ' .  /* var_dump($url['input_string']) */  '<br>';
+           // echo '<br>var_dump(url[url_2_convert]): ' .  /* var_dump($url['url_2_convert']) */   '<br>';
             preg_match_all($components['pattern'], $url['url_2_convert'], $matches_lvl1);
             $components['component'][$loop] = $matches_lvl1[1][$loop];
             // }
@@ -76,6 +77,22 @@ function clean_url_chars($url_2_convert)
     $clean_chars['url_2_convert'] = preg_replace('/ /', '%20', $clean_chars['url_2_convert']);
     $clean_chars['url_2_convert'] = preg_replace('/%20$/', '', $clean_chars['url_2_convert']);
 
+if (preg_match('/\/mxuni\/www\/([^\/]+)\//', $clean_chars['url_2_convert'], $matches)) {
+    $clean_chars['server_name'] = "mxuni"; // Default server name
+    $clean_chars['third_level_dir'] = $matches[1];
+    $clean_chars['full_server_name'] = (
+        $clean_chars['third_level_dir'] !== $clean_chars['server_name']) ? $clean_chars['third_level_dir'] . '.' . $clean_chars['server_name'] : $clean_chars['server_name'];
+
+    // Extract the filename
+    $clean_chars['basename'] = basename($clean_chars['url_2_convert']);
+
+    $clean_chars['url_converted'] = $clean_chars['full_server_name'] . '/' .   $clean_chars['basename'];
+
+    // Construct the processed URL
+    $clean_chars['processed_url'] = "/".$clean_chars['full_server_name']."/".$clean_chars['basename'];
+    $clean_chars['url_2_convert'] = $clean_chars['processed_url'];
+}
+
     // Clean URL characters
     // Load JSON configuration
     $clean_chars['config_file'] = './config.json';
@@ -83,9 +100,9 @@ function clean_url_chars($url_2_convert)
     $clean_chars['config_data'] = json_decode($clean_chars['config_data']);
     $clean_chars['config_data'] = json_encode($clean_chars['config_data']);
     // $clean_chars['config'] = json_decode($clean_chars['config_data'], true);
-    echo '<br>in ' . __FUNCTION__ . ' var_dump(config_data) @line ' . __LINE__ . '<br>' /* var_dump($clean_chars['config_data']) */ ;
+   // echo '<br>in ' . __FUNCTION__ . ' var_dump(config_data) @line ' . __LINE__ . '<br>' /* var_dump($clean_chars['config_data']) */ ;
     // echo '<br>in '.__FUNCTION__.' var_dump(config_data) @line ' .__LINE__.'<br>'. /* var_dump($clean_chars['config_data']) */ ;
-    echo '<br>in ' . __FUNCTION__ . ' var_dup(url_2_convert) @line ' . __LINE__ . '<br>'  /* var_dump($url_2_convert) */ ;
+   // echo '<br>in ' . __FUNCTION__ . ' var_dup(url_2_convert) @line ' . __LINE__ . '<br>'  /* var_dump($url_2_convert) */ ;
 
     // Your existing cleaning logic here...
 
@@ -121,308 +138,7 @@ function clean_url_chars($url_2_convert)
     return $clean_chars;
 }
 
-function filter_path_to_url($get_path2url, $servername, $server_addr)
-{
-    // Determine the request scheme (http or https)
-    $request_scheme = !empty($_SERVER['REQUEST_SCHEME']) ? $_SERVER['REQUEST_SCHEME'] : 'http';
 
-    // Check if the path appears to be a WSL path
-    $is_wsl_path = preg_match('/wsl\.localhost/', $get_path2url) !== false;
-
-    // If it's not a WSL path, use the new server name
-    if (!$is_wsl_path) {
-        $filtered_url['servername'] = $servername;
-        $filtered_url['server_addr'] = $server_addr;
-    } else {
-        // Use the existing server name if it's a WSL path
-        $filtered_url['servername'] = !empty($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : $_SERVER['HTTP_HOST'];
-    }
-    if (!empty($get_path2url)) {
-        $filtered_url['input_string'] = '<strong class="red">' . $get_path2url . '</strong>';
-        $clean_url_chars = clean_url_chars($get_path2url, $servername);
-        foreach ($clean_url_chars as $cleanKey => $cleanVal) {
-            $filtered_url[$ckeanKey] = $cleanVal;
-        }
-
-        $filtered_url['strirep'] = $clean_url_chars['clean_url'];
-
-        $filtered_url['clean_string'] = '<strong class="blue">' . trim($filtered_url['strirep'], "\n\r\t\v\ ") . '</strong>';
-
-        $filtered_url['nochange'] = $filtered_url['strirep'];
-        switch ($filtered_url['strirep']) {
-            case (preg_match('@[\w]:[\x2f\x5c]+@', $filtered_url['strirep']) ? true : false):
-                $filtered_url['html_strirep'] .= '<span class="warning-text" id="filteredurl_' . __LINE__ . '">' . $filtered_url['strirep'] . '</span>';
-                $filtered_url['strirep'] = preg_replace('@([\x5c\x2f])@', '\\', $filtered_url['strirep']);
-                $filtered_url['strirep'] = str_ireplace('Z:\\', '', $filtered_url['strirep']);
-                $filtered_url['servername'] = $_SERVER['HTTP_HOST'];
-                $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-
-                break;
-            case (preg_match('@/var/www/atkde@', $filtered_url['strirep']) ? true : false):
-                $filtered_url['html_strirep'] .= '<span class="warning-text" id="filteredurl_' . __LINE__ . '">' . $filtered_url['strirep'] . '</span>';
-                $filtered_url['strirep'] = str_ireplace('/var/www/atkde/', '', $filtered_url['strirep']);
-                $filtered_url['servername'] = 'atkde';
-                $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-                $filtered_url['all'] = preg_match_all('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', $filtered_url['strirep'], $pregall);
-                if (!defined('PREGALL')) {
-                    define('PREGALL', $pregall);
-                }
-                $filtered_url['strirep'] = preg_replace('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', '$3', $filtered_url['strirep']);
-                if (defined('PREGALL')) {
-                    $filtered_url['pregall'] = '<div id="pregall_array">';
-                    if (is_array(PREGALL)) {
-                        $filtered_url['pregall'] .= '<ol>';
-                        foreach (PREGALL as $pregK => $pregV) {
-                            if (is_array($pregV)) {
-                                $filtered_url['pregjson'] = json_encode(PREGALL);
-
-                                foreach ($pregV as $prrK => $prrV) {
-                                    $filtered_url['pregall'] .= '<li>key[' . $pregK . '][' . $prrK . ']: ' . $prrV . ' @line: ' . __LINE__ . '</li>';
-                                }
-                            } else {
-                                $filtered_url['pregall'] .= '<li>key[' . $pregK . ']: ' . $pregV['0'] . ' @line: ' . __LINE__ . '</li>';
-                            }
-                        }
-                        $filtered_url['pregall'] .= '</ol>';
-                    } else {
-                        $filtered_url['pregall'] .= PREGALL . '</div>';
-                    }
-                }
-                break;
-            case (preg_match('@/var/www/atheat@', $filtered_url['strirep']) ? true : false):
-                $filtered_url['html_strirep'] .= '<span class="warning-text" id="filteredurl_' . __LINE__ . '">' . $filtered_url['strirep'] . '</span>';
-                $filtered_url['strirep'] = str_ireplace('/var/www/atheat/', '', $filtered_url['strirep']);
-                $filtered_url['servername'] = 'atheat.mxuni';
-                $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-                $filtered_url['all'] = preg_match_all('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', $filtered_url['strirep'], $pregall);
-                if (!defined('PREGALL')) {
-                    define('PREGALL', $pregall);
-                }
-                $filtered_url['strirep'] = preg_replace('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', '$3', $filtered_url['strirep']);
-                if (defined('PREGALL')) {
-                    $filtered_url['pregall'] = '<div id="pregall_array">';
-                    if (is_array(PREGALL)) {
-                        $filtered_url['pregall'] .= '<ol>';
-                        foreach (PREGALL as $pregK => $pregV) {
-                            if (is_array($pregV)) {
-                                $filtered_url['pregjson'] = json_encode(PREGALL);
-                                // crazy preg_match_all:
-                                // echo $filtered_url['pregjson'];
-                                foreach ($pregV as $prrK => $prrV) {
-                                    $filtered_url['pregall'] .= '<li>key[' . $pregK . '][' . $prrK . ']: ' . $prrV . ' @line: ' . __LINE__ . '</li>';
-                                }
-                            } else {
-                                $filtered_url['pregall'] .= '<li>key[' . $pregK . ']: ' . $pregV['0'] . ' @line: ' . __LINE__ . '</li>';
-                            }
-                        }
-                        $filtered_url['pregall'] .= '</ol>';
-                    } else {
-                        $filtered_url['pregall'] .= PREGALL . '</div>';
-                    }
-                }
-                break;
-            case (preg_match('@/var/www/other@', $filtered_url['strirep']) ? true : false):
-                $filtered_url['html_strirep'] .= '<span class="warning-text" id="filteredurl_' . __LINE__ . '">' . $filtered_url['strirep'] . '</span>';
-                $filtered_url['strirep'] = str_ireplace('/var/www/other/', '', $filtered_url['strirep']);
-                $filtered_url['servername'] = 'other.mxuni';
-                $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-                $filtered_url['all'] = preg_match_all('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', $filtered_url['strirep'], $pregall);
-                if (!defined('PREGALL')) {
-                    define('PREGALL', $pregall);
-                }
-                $filtered_url['strirep'] = preg_replace('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', '$3', $filtered_url['strirep']);
-                if (defined('PREGALL')) {
-                    $filtered_url['pregall'] = '<div id="pregall_array">';
-                    if (is_array(PREGALL)) {
-                        $filtered_url['pregall'] .= '<ol>';
-                        foreach (PREGALL as $pregK => $pregV) {
-                            if (is_array($pregV)) {
-                                $filtered_url['pregjson'] = json_encode(PREGALL);
-                                // crazy preg_match_all:
-                                // echo $filtered_url['pregjson'];
-                                foreach ($pregV as $prrK => $prrV) {
-                                    $filtered_url['pregall'] .= '<li>key[' . $pregK . '][' . $prrK . ']: ' . $prrV . ' @line: ' . __LINE__ . '</li>';
-                                }
-                            } else {
-                                $filtered_url['pregall'] .= '<li>key[' . $pregK . ']: ' . $pregV['0'] . ' @line: ' . __LINE__ . '</li>';
-                            }
-                        }
-                        $filtered_url['pregall'] .= '</ol>';
-                    } else {
-                        $filtered_url['pregall'] .= PREGALL . '</div>';
-                    }
-                }
-                break;
-            case (preg_match('@/var/www/laravel@', $filtered_url['strirep']) ? true : false):
-                $filtered_url['html_strirep'] .= '<span class="warning-text" id="filteredurl_' . __LINE__ . '">' . $filtered_url['strirep'] . '</span>';
-                $filtered_url['strirep'] = str_ireplace('/var/www/laravel/', '', $filtered_url['strirep']);
-                $filtered_url['servername'] = 'mylaravel';
-                $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-                $filtered_url['all'] = preg_match_all('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', $filtered_url['strirep'], $pregall);
-                if (!defined('PREGALL')) {
-                    define('PREGALL', $pregall);
-                }
-                $filtered_url['strirep'] = preg_replace('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', '$3', $filtered_url['strirep']);
-                if (defined('PREGALL')) {
-                    $filtered_url['pregall'] = '<div id="pregall_array">';
-                    if (is_array(PREGALL)) {
-                        $filtered_url['pregall'] .= '<ol>';
-                        foreach (PREGALL as $pregK => $pregV) {
-                            if (is_array($pregV)) {
-                                $filtered_url['pregjson'] = json_encode(PREGALL);
-
-                                foreach ($pregV as $prrK => $prrV) {
-                                    $filtered_url['pregall'] .= '<li>key[' . $pregK . '][' . $prrK . ']: ' . $prrV . ' @line: ' . __LINE__ . '</li>';
-                                }
-                            } else {
-                                $filtered_url['pregall'] .= '<li>key[' . $pregK . ']: ' . $pregV['0'] . ' @line: ' . __LINE__ . '</li>';
-                            }
-                        }
-                        $filtered_url['pregall'] .= '</ol>';
-                    } else {
-                        $filtered_url['pregall'] .= PREGALL . '</div>';
-                    }
-                }
-                break;
-            case (preg_match('@/var/www/mxuni@', $filtered_url['strirep']) ? true : false):
-                $filtered_url['html_strirep'] .= '<span class="warning-text" id="filteredurl_' . __LINE__ . '">' . $filtered_url['strirep'] . '</span>';
-                $filtered_url['strirep'] = str_ireplace('/var/www/mxuni/', '', $filtered_url['strirep']);
-                $filtered_url['servername'] = 'mxuni';
-                $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-                $filtered_url['all'] = preg_match_all('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', $filtered_url['strirep'], $pregall);
-                if (!defined('PREGALL')) {
-                    define('PREGALL', $pregall);
-                }
-                $filtered_url['strirep'] = preg_replace('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', '$3', $filtered_url['strirep']);
-                if (defined('PREGALL')) {
-                    $filtered_url['pregall'] = '<div id="pregall_array">';
-                    if (is_array(PREGALL)) {
-                        $filtered_url['pregall'] .= '<ol>';
-                        foreach (PREGALL as $pregK => $pregV) {
-                            if (is_array($pregV)) {
-                                $filtered_url['pregjson'] = json_encode(PREGALL);
-
-                                foreach ($pregV as $prrK => $prrV) {
-                                    $filtered_url['pregall'] .= '<li>key[' . $pregK . '][' . $prrK . ']: ' . $prrV . ' @line: ' . __LINE__ . '</li>';
-                                }
-                            } else {
-                                $filtered_url['pregall'] .= '<li>key[' . $pregK . ']: ' . $pregV['0'] . ' @line: ' . __LINE__ . '</li>';
-                            }
-                        }
-                        $filtered_url['pregall'] .= '</ol>';
-                    } else {
-                        $filtered_url['pregall'] .= PREGALL . '</div>';
-                    }
-                }
-                break;
-            case (preg_match('@/var/www/other@', $filtered_url['strirep']) ? true : false):
-                $filtered_url['html_strirep'] .= '<span class="warning-text" id="filteredurl_' . __LINE__ . '">' . $filtered_url['strirep'] . '</span>';
-                $filtered_url['strirep'] = str_ireplace('/var/www/other/', '', $filtered_url['strirep']);
-                $filtered_url['servername'] = 'other.mxuni';
-                $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-                $filtered_url['all'] = preg_match_all('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', $filtered_url['strirep'], $pregall);
-                if (!defined('PREGALL')) {
-                    define('PREGALL', $pregall);
-                }
-                $filtered_url['strirep'] = preg_replace('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', '$3', $filtered_url['strirep']);
-                if (defined('PREGALL')) {
-                    $filtered_url['pregall'] = '<div id="pregall_array">';
-                    if (is_array(PREGALL)) {
-                        $filtered_url['pregall'] .= '<ol>';
-                        foreach (PREGALL as $pregK => $pregV) {
-                            if (is_array($pregV)) {
-                                $filtered_url['pregjson'] = json_encode(PREGALL);
-
-                                foreach ($pregV as $prrK => $prrV) {
-                                    $filtered_url['pregall'] .= '<li>key[' . $pregK . '][' . $prrK . ']: ' . $prrV . ' @line: ' . __LINE__ . '</li>';
-                                }
-                            } else {
-                                $filtered_url['pregall'] .= '<li>key[' . $pregK . ']: ' . $pregV['0'] . ' @line: ' . __LINE__ . '</li>';
-                            }
-                        }
-                        $filtered_url['pregall'] .= '</ol>';
-                    } else {
-                        $filtered_url['pregall'] .= PREGALL . '</div>';
-                    }
-                }
-                break;
-            case (preg_match('@/var/www/html@', $filtered_url['strirep']) ? true : false):
-                $filtered_url['html_strirep'] = '<span class="warning-text" id="filteredurl_' . __LINE__ . '">' . $filtered_url['strirep'] . '</span>';
-                $filtered_url['strirep'] = str_ireplace('/var/www/html/', '', $filtered_url['strirep']);
-                $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-                $filtered_url['all'] = preg_match_all('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', $filtered_url['strirep'], $pregall);
-                if (!defined('PREGALL')) {
-                    define('PREGALL', $pregall);
-                }
-                $filtered_url['strirep'] = preg_replace('/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/', '$3', $filtered_url['strirep']);
-                if (defined('PREGALL')) {
-                    $filtered_url['pregall'] = '<div id="pregall_array">';
-                    if (is_array(PREGALL)) {
-                        $filtered_url['pregall'] .= '<ol>';
-                        foreach (PREGALL as $pregK => $pregV) {
-                            if (is_array($pregV)) {
-                                $filtered_url['pregjson'] = json_encode(PREGALL);
-
-                                foreach ($pregV as $prrK => $prrV) {
-                                    $filtered_url['pregall'] .= '<li>key[' . $pregK . '][' . $prrK . ']: ' . $prrV . ' @line: ' . __LINE__ . '</li>';
-                                }
-                            } else {
-                                $filtered_url['pregall'] .= '<li>key[' . $pregK . ']: ' . $pregV['0'] . ' @line: ' . __LINE__ . '</li>';
-                            }
-                        }
-                        $filtered_url['pregall'] .= '</ol>';
-                    } else {
-                        $filtered_url['pregall'] .= PREGALL . '</div>';
-                    }
-                }
-                break;
-        }
-        $filtered_url['servername'] = !empty($filtered_url['servername']) ? $filtered_url['servername'] : $filtered_url['server_addr'];
-        $regexsearch = '/(?!=[\x2f\x5c]*)(\/?var)([\x2f\x5c]*www)([\x2f\x5c]*[^\/]+)(?=[\x0A\x0D\x2f\x5c])?(.*)/';
-        $replaceref = "'\$4'";
-
-        $filtered_url['pregresult'] = preg_replace($regexsearch, '$4', $filtered_url['strirep']);
-        $filtered_url['depth'] = substr_count($filtered_url['nochange'], '/');
-        if (!file_exists('/var/www/html/' . $filtered_url['pregresult'])) {
-            if ($filtered_url['depth'] < 5) {
-                $filtered_url['url_result'] = $_SERVER['REQUEST_SCHEME'] . '://' . $filtered_url['servername'] . '/';
-                $filtered_url['http_url_final'] = '<span id="processed_hyperlink"><strong>Resulting Hyperlink: </strong><a href="' . $filtered_url['url_result'] . '" title="'
-                    . $filtered_url['strirep'] . '" target="_blank">'
-                    . $filtered_url['url_result'] . '</a></span>';
-                $filtered_url['http_url_final_alt'] = '<span id="processed_hyperlink_alt"><strong>Alternative Hyperlink: </strong><a href="'
-                    . $_SERVER['REQUEST_SCHEME'] . '://'
-                    . $clean_url_chars['full_server_name']
-                    . '/'
-                    . preg_replace($regexsearch, '$4', $clean_url_chars['basename'])
-                    . '" target="_blank">'
-                    . $_SERVER['REQUEST_SCHEME'] . '://'
-                    . $clean_url_chars['full_server_name']
-                    . '/'
-                    . preg_replace($regexsearch, '$4', $clean_url_chars['basename'])
-                    . '</a> </span>';
-            }
-        } else {
-            $filtered_url['url_result'] = $_SERVER['REQUEST_SCHEME'] . '://' . $filtered_url['servername'] . '/' . preg_replace($regexsearch, '$4', $filtered_url['strirep']);
-
-            $filtered_url['http_url_final'] = '<span id="processed_hyperlink"><strong>Resulting Hyperlink: </strong><a href="' . $filtered_url['url_result'] . '" title="'
-                . $filtered_url['strirep'] . '" target="_blank">'
-                . $filtered_url['url_result'] . '</a></span>';
-            $filtered_url['http_url_final_alt'] = '<span id="processed_hyperlink_alt"><strong>Alternative Hyperlink: </strong><a href="'
-                . $_SERVER['REQUEST_SCHEME'] . '://'
-                . $clean_url_chars['full_server_name']
-                . '/'
-                . $filtered_url['pregresult']
-                . '" target="_blank">'
-                . $_SERVER['REQUEST_SCHEME'] . '://'
-                . $clean_url_chars['full_server_name']
-                . '/'
-                . preg_replace($regexsearch, '$4', $clean_url_chars['basename'])
-                . '</a> </span>';
-        }
-        $filtered_url['matches'] = $clean_url_chars['matches'];
-        return $filtered_url;
-    }
-}
 
 function chop_varwww($regexsearch, $replaceref, $strirep)
 {
@@ -478,10 +194,10 @@ $depth = substr_count($goUp['subject'], '/');
 /** DEBUG OUTPUT */
 // $current_test = filter_path( ABSOLUTELOCATION, $servername, $server_addr );
 $current_test = '/var/www/html/uplab/index.php';
-$debugging_current = extract_path_components(clean_url_chars($current_test));
+// $debugging_current = extract_path_components(clean_url_chars($current_test));
 
-$debugging_abspath = extract_path_components(clean_url_chars(ABSOLUTELOCATION));
-$debugging_navpathdir = extract_path_components($nav_pathInfo['dirname']);
+// $debugging_abspath = extract_path_components(clean_url_chars(ABSOLUTELOCATION));
+// $debugging_navpathdir = extract_path_components($nav_pathInfo['dirname']);
 $debugging_path2url = extract_path_components(clean_url_chars($enterpathhere));
 // $newViableUrl = extract_path_components(clean_url_chars($enterpathhere));
 if(is_array($debugging_path2url['component'])) {
@@ -621,42 +337,65 @@ if(is_array($debugging_path2url['component'])) {
                             <h5 class="h5">New Approach</h5>
                             <div>
                                 <?php
-                                    /*    echo '<br>var_dump(extract_components(debugging_abspath )) @line ' . __LINE__ . '<br>' /* .   var_dump($debugging_abspath) ; */
-                                    /*    echo '<br>var_dump(extract_components(debugging_current)) @line ' . __LINE__ . '<br>' /* .   var_dump($debugging_current) ; */
-                                    /*    echo '<br>var_dump(extract_components(debugging_navpathdir )) @line ' . __LINE__ . '<br>' /* .   var_dump($debugging_navpathdir) ; */
-                                    /*    echo '<br>var_dump(extract_components(debugging_path2url )) @line ' . __LINE__ . '<br>' /* .   var_dump($debugging_path2url) ; */
-                                    /*    echo '<br>debugging_path2url[component][1][3] @line ' . __LINE__ . '<br>' . $debugging_path2url['component'][1][3]; */
+
                                     $extract_components = extract_path_components(clean_url_chars($enterpathhere));
                                     $new_url_concat = '';
+                                    
                                     $feloop = 0;
+                                    $_dynamichost = $_SERVER['HTTP_HOST'];
                                     foreach ($debugging_path2url as $nUrlKey => $nUrlVal) {
-                                        /*    echo '<br>var_dump(nUrlVal) @line ' . __LINE__ . '<br>' /* .   var_dump($nUrlVal) ; */
-                                        echo '<br>nUrlKey : ' . $nUrlKey;
-                                        echo '<br>nUrlVal : ' . $nUrval;
-                                        if ($nUrlKey > 2) {
-                                            if ($feloop > 2) {
-                                                echo '<br>nUrlKey[1][' . $feloop . ']: @' . __LINE__ . ' == ' . $nUrlKey[1][$feloop] . ' is concat to new_url_concat.';
+                                        
+                                        if ($nUrlKey == 'component') {
+                                            $tc = 0;
+                                            foreach($nUrlVal as $this_component => $this_val){
+                                                echo 'this_component: ' . $this_component.': '.$this_val.'<br>';
+                                               
+                                                if($this_component == 0 && preg_match('/\./',$this_val)){
+                                                    
+                                                    $tc = 1;
+
+                                                    // $new_url_concat .= $this_val.'/';
+                                                    $_dynamichost = $nUrlVal[0];
+
+                                                }
+                                                elseif(($_dynamichost != $_SERVER['HTTP_HOST']) && $this_component < 2){
+                                                    $new_url_concat .= $this_val.'/';
+                                                    break;
+
+                                                }
+                                                elseif($this_component > 2){
+                                                    
+                                                    $new_url_concat .= $this_val.'/';
+                                                }
+                                                
                                             }
-                                            /*    echo '<br>nUrlKey > 2 :: var_dump(nUrlVal) @line ' . __LINE__ . '== <br>' /* .   var_dump($nUrlVal) ; */
-              
-                                            /*    echo '<br>var_dump(nUrlVal[$nUrlKey]) @line ' . __LINE__ . ' == <br>' /* .   var_dump($nUrlVal) ; */
-                                            if ($feloop > 2) {
-                                                echo '<br>nUrlVal[0][' . $feloop . ']: @' . __LINE__ . ' == ' . $nUrlVal[0][$feloop] . ' is concat to new_url_concat.';
-                                                $new_url_concat .= $nUrlVal[$feloop];
-                                            } else {
-                                                echo '<br>nUrlVal[0][' . $feloop . ']: @' . __LINE__ . ' == ' . $nUrlVal[0][$feloop] . ' is concat to new_url_concat.';
-                                                $new_url_concat .= $nUrlVal[$feloop];
-                                            }
-              
                                         }
-                                        $new_url_concat .= $nUrlVal[0][$feloop];
+                                        elseif ($nUrlKey == 'component') {
+                                            if ($feloop > 2) {
+                                                echo '<br>nUrlKey['.$nUrlKey.'][' . $feloop . ']: @' . __LINE__ . ' == ' . $nUrlKey[$nUrlKey][$feloop] . ' is concat to new_url_concat.';
+                                            }
+                                            /* echo '<br>nUrlKey > 2 :: var_dump(nUrlVal) @line ' . __LINE__ . '== <br>' /* .   var_dump($nUrlVal) ; */
+
+                                            /* echo '<br>var_dump(nUrlVal[$nUrlKey]) @line ' . __LINE__ . ' == <br>' /* .   var_dump($nUrlVal) ; */
+                                            if ($feloop > 2) {
+                                                echo '<br>nUrlVal['.$nUrlKey.'][' . $feloop . ']: @' . __LINE__ . ' == ' . $nUrlVal[$nUrlKey][$feloop] . ' is concat to new_url_concat.';
+                                                $new_url_concat .= $nUrlVal[$nUrlKey][$feloop];
+                                            } else {
+                                                echo '<br>nUrlVal['.$nUrlKey.'][' . $feloop . ']: @' . __LINE__ . ' == ' . $nUrlVal[0][$feloop] . ' is concat to new_url_concat.';
+                                                $new_url_concat .= $nUrlVal[$nUrlKey][$feloop];
+                                            }
+                                        }
+                                        
                                         $feloop++;
+                                    
                                     }
-                                    echo '<div>
-                                <p>\$new_url_concat: ' . $new_url_concat . '</p>
-                                <p>New URL type:</p>
-                                <p><a href="' . $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/' . $new_url_concat . '" target="_blank">'
-                                        . $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/' . $new_url_concat
+                                    $new_url_concat = rtrim($new_url_concat, '/');
+                                    
+                                echo '<div>
+                                <p>new_url_concat: ' . $new_url_concat . '</p>
+                                <p>New URL Construct:<br> _SRVR[REQUEST_SCHEME] . :// . SRVR[HTTP_HOST] . new_url_concat ==</p>
+                                <p><a href="' . $_SERVER['REQUEST_SCHEME'] . '://' . $_dynamichost . '/' . $new_url_concat . '" target="_blank">'
+                                        . $_SERVER['REQUEST_SCHEME'] . '://' . $_dynamichost . '/' . $new_url_concat
                                         . '</a></p>
                                 </div>';
                                 ?>
