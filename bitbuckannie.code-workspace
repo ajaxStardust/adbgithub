@@ -1,0 +1,141 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Listen for Xdebug",
+				"type": "php",
+				"request": "launch",
+				"port": 9003
+			},
+			{
+				"name": "Launch currently open script",
+				"type": "php",
+				"request": "launch",
+				"program": "${file}",
+				"cwd": "${fileDirname}",
+				"port": 0,
+				"runtimeArgs": [
+					"-dxdebug.start_with_request=yes"
+				],
+				"env": {
+					"XDEBUG_MODE": "debug,develop",
+					"XDEBUG_CONFIG": "client_port=${port}"
+				}
+			},
+			{
+				"name": "Launch Built-in web server",
+				"type": "php",
+				"request": "launch",
+				"runtimeArgs": [
+					"-dxdebug.mode=debug",
+					"-dxdebug.start_with_request=yes",
+					"-S",
+					"other.mxuni:0"
+				],
+				"program": "",
+				"cwd": "${workspaceRoot}",
+				"port": 9003,
+				"serverReadyAction": {
+					"pattern": "Development Server \\(https://other.mxuni:([0-9]+)\\) started",
+					"uriFormat": "https://other.mxuni:%s",
+					"action": "openExternally"
+				}
+			}
+		]
+	},
+	"settings": {
+		"open-php-html-js-in-browser.selectedBrowser": "Ask always...",
+		"open-php-html-js-in-browser.customBrowserPath": "/mnt/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+		"open-php-html-js-in-browser.documentRootFolder": "/var/www/wsldebian/",
+		"open-php-html-js-in-browser.alternativeDocumentRootFolders": [
+			"/var/www/wsldebian/bitbuckannie"
+		],
+		"open-php-html-js-in-browser.urlToOpen": "custom",
+		"open-php-html-js-in-browser.customHost": "wsldebian",
+		"open-php-html-js-in-browser.showStatusBarItem": false,
+		"hide-files.files": [],
+		"autoHide.autoHidePanel": false,
+		"autoHide.autoHideSideBar": true,
+		"open-php-html-js-in-browser.rememberBrowserSelection": false,
+		"openInExternalApp.openMapper": [
+			{
+				"extensionName": "html",
+				
+				"apps": [
+					{
+						"title": "Edge",
+						// On MacOS, openCommand should be 'Google Chrome.app'
+						"openCommand": "/opt/microsoft/msedge/msedge"
+					},
+					{
+						"title": "firefox",
+						// On MacOS, openCommand should be 'Firefox Developer Edition.app'
+						"openCommand": "/opt/bin/firefox",
+						// open in firefox under private mode
+						"args": [
+							"-private-window",
+							"https://other.mxuni/p2u2.phtml?path2url=${file}"
+						]
+					}
+				]
+			},
+			{
+				"extensionName": ["php","phtml"],
+				
+				"apps": [
+					{
+						"title": "Edge",
+						// On MacOS, openCommand should be 'Google Chrome.app'
+						"openCommand": "/opt/microsoft/msedge/msedge",
+						"args": [
+							"-private-window",
+							"https://other.mxuni/p2u2.phtml?path2url=${file}"
+						]
+					},
+					{
+						"title": "firefox",
+						// On MacOS, openCommand should be 'Firefox Developer Edition.app'
+						"openCommand": "firefox",
+						// open in firefox under private mode
+						"args": [
+							"https://other.mxuni/p2u2.phtml?path2url=",
+							"${file}"
+						]
+					}
+				]
+			},
+			{
+				"extensionName": "tsx",
+				// apps can be Object array or just the command you can access from shell
+				"apps": "code"
+			},
+			{
+				"extensionName": "psd",
+				"apps": "/path/to/photoshop.exe"
+			},
+			// like code-runner, you can custom the shell command to open with file
+			{
+				"extensionName": "ts",
+				"apps": [
+					{
+						"title": "run ts file",
+						"shellCommand": "ts-node ${file}"
+					}
+				]
+			},
+			{
+				// shared config, details here: https://github.com/tjx666/open-in-external-app/issues/45
+				"extensionName": "__ALL__",
+				"apps": "MacVim"
+			}
+		],
+		"vsintellicode.java.completionsEnabled": false,
+		"autoHide.autoHideAuxiliaryBar": false,
+	}
+}

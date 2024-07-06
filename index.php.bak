@@ -1,11 +1,12 @@
 <?php
 namespace Bbadb;
 use Bbadb\public\class\Backlinks as Backlinks;
-use Bbadb\public\class\Navfactor as Navfactor;
 use Bbadb\public\class\HtmlDocHead as HtmlDocHead;
-define('ADBLOCTN',__DIR__);
+use Bbadb\public\class\Nav as Nav;
+define('ADBLOCTN', __DIR__);
 
- function namespaceAutoload($rawClass){
+function namespaceAutoload($rawClass)
+{
     $class = str_replace('\\', DIRECTORY_SEPARATOR, $rawClass);
 
     $possiblePaths[] = 'file.php';
@@ -14,11 +15,11 @@ define('ADBLOCTN',__DIR__);
 
     foreach ($possiblePaths as $templatePath) {
         $path = str_replace(["\\", "file"], [DIRECTORY_SEPARATOR, $class], $templatePath);
-        $path = str_replace(__NAMESPACE__.'/','',$path);
+        $path = str_replace(__NAMESPACE__.'/', '', $path);
         $path = strtolower($path);
 
         if (file_exists($path)) {
-            require_once "$path";
+            include_once "$path";
             break;
         }
     }
@@ -29,29 +30,27 @@ spl_autoload_register(__NAMESPACE__."\\namespaceAutoload");
 // require 'public/class/class-html-dochead.php';
 
 $backlinksHtml = new Backlinks;
+$htmlDocHead = new HtmlDocHead(ADBLOCTN);
+$navClass = new Nav;
 
-$hdh = $InstanceOf_htmlDocHead = new HtmlDocHead(ADBLOCTN);
-    // @param mixed $hdh is instance of HtmlDocHead
-    $defaultIframe = $hdh->defaultIframe;
-    $config = $hdh->config['home_urls'];
+ 
 
-$navClass = new Navfactor;
-
+$defaultIframe = $htmlDocHead->defaultIframe;
 //require_once 'public/inc/backlinks.inc.php';
+$htmlDocHead->doctypeHead();
+$htmlDocHead->updateUrlCount($_SERVER['SCRIPT_NAME']); // Example URL
+$htmlDocHead->saveConfig(); // Save the updated counts back to the file
+$config = $htmlDocHead;
 
-$hdh->updateUrlCount($_SERVER['SCRIPT_NAME']); // Example URL
-$hdh->saveConfig(); // Save the updated counts back to the file
-
-$hdh->doctypeHead();
 // Generate URL list items
-$url_listitem = '<ol id="count-clicks-list">';
-foreach ($hdh->config['home_urls'] as $entry) {
+$url_listitem = '<ol>';
+foreach ($htmlDocHead->config['home_urls'] as $entry) {
     $url = $entry['url'];
     $name = $entry['name'];
     $count = $entry['count'];
 
     // Update count for this URL (optional if you want to count display times)
-    // $hdh->updateUrlCount($url);
+    // $htmlDocHead->updateUrlCount($url);
 
     $url_listitem .= '<li class="float-left p-2">';
     $url_listitem .= '<a href="' . $url . '" target="_blank">' . $name . '</a> ';

@@ -1,35 +1,33 @@
 <?php
-
-namespace Bbadb;
-//use Bdadb\namespaceAudoload;
-use Bbadb\public\class\CwThumbs as Slideshow;
-// use Bbadb\public\class\ProcessHead as ProcessHead;
 // ENABLE CORS (Cross-Origin Request) policy allow all
-require 'public/class/processhead.php';
-$HttpHead = new \Bbadb\public\class\ProcessHead;
-$server_addr = $HttpHead->server_addr;
+error_reporting(E_ALL);
 
-    function path2Autoload($rawClass){
-        $class = str_replace('\\', DIRECTORY_SEPARATOR, $rawClass);
+header('Access-Control-Allow-Origin: *');
 
-        $possiblePaths[] = 'file.php';
-        $possiblePaths[] = 'class-file.php';
-        $possiblePaths[] = '..\sys\class\class.file.inc.php';
+date_default_timezone_set('America/New_York');
+$lastMod = 'Modified: ' . date('D M j Y G:i:s T', getlastmod());
+if (!empty($GLOBALS['_REQUEST']['path2url'])) {
+    define('REQUESTURL', $GLOBALS['_REQUEST']['path2url']);
+}
+if (!defined('ADBLOCTN')) {
+    define('ADBLOCTN', dirname(__FILE__));
+}
+$abspath = ADBLOCTN;
+$page_heading = 'Convert System Path to HTTP URL';
+if ($page_heading == '&#x201c;Simple Template&#x201d;') {
+    $real_page_heading = pathinfo(__FILE__, PATHINFO_FILENAME);
+} else {
+    $real_page_heading = $page_heading;
+}
+$pathinfo_basename = pathinfo(__FILE__, PATHINFO_BASENAME);
+$title_name = pathinfo(__FILE__, PATHINFO_FILENAME);
+$title = ADBLOCTN . ' @ ' . $pathinfo_basename;
+$REQUEST_SCHEME = !empty($_SERVER['REQUEST_SCHEME']) ? $_SERVER['REQUEST_SCHEME'] : 'https';
 
-        foreach ($possiblePaths as $templatePath) {
-            $path = str_replace(["\\", "file"], [DIRECTORY_SEPARATOR, $class], $templatePath);
-            $path = str_replace(__NAMESPACE__.'/','',$path);
-            $path = strtolower($path);
-
-            if (file_exists($path)) {
-                require_once "$path";
-                break;
-            }
-        }
-    }
-
-spl_autoload_register(__NAMESPACE__."\\path2Autoload"); 
-
+$serversoftware = $_SERVER['SERVER_SOFTWARE'];
+$server_name = $_SERVER['SERVER_NAME'] ? $_SERVER['SERVER_NAME'] : $_SERVER['HTTP_HOST'];
+$server_addr = $_SERVER['SERVER_ADDR'] ? $_SERVER['SERVER_ADDR'] : $_SERVER['SERVER_NAME'];
+$servername = $server_name;
 if (preg_match('@::1|10\.0\.0\.\d+|192\.\d\.\d\.\d+|127\.\d\.\d\.\d+@', $server_addr)) {
     $abspath = '<code class="info">' . $abspath . '</code>';
 } else {
@@ -148,24 +146,25 @@ function chop_varwww($regexsearch, $replaceref, $strirep)
     return preg_replace($regexsearch, '$4', $strirep);
 }
 
-$Slideshow = new Slideshow;
+require 'public/class/class-cwthumbs.php';
+$cwThumbsClass = new cwThumbs;
 if (isset($_POST['imgDirSearch'])) {
     $newimagesdir = $_POST['imgDirSearch'];
     if (is_dir($newimagesdir)) {
-        $cwThumbs = $Slideshow->makeThumbs($newimagesdir, $none = NULL);
+        $cwThumbs = $cwThumbsClass->makeThumbs($newimagesdir, $none = NULL);
         $number_of = count($cwThumbs);
         $notice_of_images = "<h4>Success:</h4><p>Found $number_of images.</p>";
     } else {
-        $cwThumbs = $Slideshow->makeThumbs('assets/images/vscode', $none = NULL);
+        $cwThumbs = $cwThumbsClass->makeThumbs('assets/images/vscode', $none = NULL);
         $notice_of_images = '<h4>Notice:</h4><p>The directory you entered is not a valid path.</p>';
     }
 } else {
-    $cwThumbs = $Slideshow->makeThumbs('assets/images/vscode', $none = NULL);
+    $cwThumbs = $cwThumbsClass->makeThumbs('assets/images/vscode', $none = NULL);
     $number_of = count($cwThumbs);
     $notice_of_images = "<h4>Info:</h4><p>Found $number_of screenshots.</p>";
 }
-$imgDir = $Slideshow->imagesDir;
-$imgNumber = $Slideshow->thumbsCount;
+$imgDir = $cwThumbsClass->imagesDir;
+$imgNumber = $cwThumbsClass->thumbsCount;
 $enterpathhere = isset($_GET['path2url']) ? $_GET['path2url'] : '\wsl.localhost\Debian\var\www\html\aitrainer';
 $nav_pathInfo = pathinfo(__FILE__, PATHINFO_ALL);
 
