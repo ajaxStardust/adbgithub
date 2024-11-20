@@ -41,7 +41,7 @@ if(isset($dfnCount)) {
 
 if($filename == '') {
 	$dotfilename = $dirname.$extension;
-	$childItems[$objNmbr] = '<li class="dotfilename">';
+	$childItems[$objNmbr] = '<li class="material-symbols-outlined dotfilename">';
 }
 elseif (preg_match_all('/php/i', $extension, $pmAll)) {
 	if (preg_match('/^' . $bodyid . '\.php$/', $basename)) {
@@ -51,29 +51,29 @@ elseif (preg_match_all('/php/i', $extension, $pmAll)) {
     }
 	elseif (preg_match('/^xro\.php$/i', $basename)) {
 		// deprecated [ XRO.php ]
-		$childItems[$objNmbr] = '<li class="hiddenitem">';
+		$childItems[$objNmbr] = '<li class="material-symbols-outlined hiddenitem">';
     }
 	else {
-        $childItems[$objNmbr] = '<li class="phpicon">';
+        $childItems[$objNmbr] = '<li class="material-symbols-outlined phpicon">';
     }
 }
 elseif(preg_match_all('/kpf|komodoproject|clpprj|csprj|session|pnproj|pnprj|project|nppsession|buildpath|cpr|apf|ppg|pnps|prd/i', $extension, $pmAll)){
     $specialExtn[$objNmbr][$extension] = $extension;
 	/* HANDLE _dotfilename files SUCH AS '.buildpath' OR '.project'
 	 * 	SPECIAL TEST FOR _dotfilename LATER IN [ arrayobjectanchor.inc.php ] Line ~57 */
-        $childItems[$objNmbr] = '<li class="projectfile">';
+        $childItems[$objNmbr] = '<li class="material-symbols-outlined projectfile">';
 
 }
 elseif (preg_match_all('/db|sqlite/i', $extension, $pmAll)) {
 /* HANDLE non-image binary objects common to source-code containers, 
  * such as Thumbs.db or sqlite */
-$childItems[$objNmbr] = '<li class="dbicon">';
+$childItems[$objNmbr] = '<li class="material-symbols-outlined dbicon">';
 	if($basename == 'Thumbs.db') {
-		$childItems[$objNmbr] = '<li class="hiddenitem">';
+		$childItems[$objNmbr] = '<li class="material-symbols-outlined hiddenitem">';
 	}
 }
 elseif (preg_match_all('/7z/i', $extension, $pmAll)) {
-	$childItems[$objNmbr] = '<li class="sevenzipicon">';
+	$childItems[$objNmbr] = '<li class="material-symbols-outlined sevenzipicon">';
 }
 else{
 	// $swVal = array('ext' => $extension, 'fn' => $filename, 'bn' => $basename);
@@ -86,14 +86,14 @@ else{
 			//	$swVal['ext'] = $swCase;
 			//	$specialExtn[$objNmbr][$extension] = $swCase;
 			if($extension != 'some val we dont want to see'){
-				$childItems[$objNmbr] = '<li class="nav ' . $extension . 'icon">';
+				$childItems[$objNmbr] = '<li class="material-symbols-outlined nav ' . $extension . 'icon">';
 			}
 		break;
 		default :
 
 			$specialExtn[$objNmbr][$extension] = $extension;
 			if($extension != 'some val we dont want to see'){
-				$childItems[$objNmbr] = '<li class="nav ' . $extension . 'icon">';
+				$childItems[$objNmbr] = '<li class="material-symbols-outlined nav ' . $extension . 'icon">';
 			}
 			$pmAllCollector[$objNmbr] = $pmAll[0];
 	}
@@ -101,7 +101,7 @@ else{
 
 /* else {
 	$specialExtn[$objNmbr][$extension] = $extension;
-	$childItems[$objNmbr] = '<li class="unknown"><!-- '.
+	$childItems[$objNmbr] = '<li class="material-symbols-outlined unknown"><!-- '.
 		$extension.' IS AN UNKNOWN TYPE @ AOP.INC.PHP:235 --> ';
 } */
 

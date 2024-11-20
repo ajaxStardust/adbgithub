@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>URL Processing</title>
+</head>
+<body>
+    <h5>URL Processing</h5>
+
+    <form id="fixtheurl">
+        <select id="prefix">
+            <option value="">NONE</option>
+            <option value="other">other</option>
+            <option value="atheat">atheat</option>
+            <option value="atflux">atflux</option>
+            <option value="laravel">laravel</option>
+            <option value="python">python</option>
+            <option value="mx21">mx21</option>
+        </select>
+        <select id="suffix">
+            <option value="mxuni">mxuni</option>
+            <option value="wsldebian">wsldebian</option>
+            <option value="mxlinux-21">mxlinux-21</option>
+        </select>
+        <input id="newItemInput" />
+        <button type="button" onclick="appendSelectedValue()">Append Selected Value</button>
+        <button type="button" onclick="updateAppendedData()">Update Appended Data</button>
+    </form>
+    <div id="appendedData"></div>
+
+    <script>
+        // Function to append the value of <li id=""> after the selected HTML form option values
+        function appendSelectedValue() {
+            const prefixSelect = document.getElementById('prefix');
+            const suffixSelect = document.getElementById('suffix');
+            const newItemInput = document.getElementById('newItemInput');
+            const appendedDataDiv = document.getElementById('appendedData');
+
+            const prefix = prefixSelect.value;
+            const suffix = suffixSelect.value;
+            const newItemValue = newItemInput.value.trim();
+
+            if (newItemValue) {
+                const listItemID = newItemValue;
+
+                const prefixValue = prefix ? prefix + '.' : '';
+                const appendedValue = prefixValue + suffix + '/' + listItemID;
+
+                newItemInput.value = ''; // Clear input field
+
+                const appendedData = appendedDataDiv.textContent;
+                appendedDataDiv.textContent = appendedData ? appendedData + ' ' + appendedValue : appendedValue;
+            }
+        }
+
+        // Function to update appended data
+        function updateAppendedData() {
+            const prefixSelect = document.getElementById('prefix');
+            const suffixSelect = document.getElementById('suffix');
+            const appendedDataDiv = document.getElementById('appendedData');
+
+            const prefix = prefixSelect.value;
+            const suffix = suffixSelect.value;
+
+            let href = '';
+            if (prefix !== '') {
+                href = prefix + '.' + suffix + '/';
+            } else {
+                href = suffix + '/';
+            }
+
+            const anchor = document.createElement('a');
+            anchor.href = href;
+            anchor.textContent = href;
+            anchor.target = '_blank';
+            
+            appendedDataDiv.innerHTML = '';
+            appendedDataDiv.appendChild(anchor);
+        }
+    </script>
+</body>
+</html>

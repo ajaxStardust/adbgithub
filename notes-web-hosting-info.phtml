@@ -1,0 +1,362 @@
+<?php
+/*
+ * adb_simplest/template.phtml
+ *
+ * Copyright 2023 @ajaxStardust <flux@mx23>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ *
+ *
+ */
+
+header('Access-Control-Allow-Origin: *'); // ENABLE CORS (Cross-Origin Request) policy allow all - CAUTION: not-ready-for-prime-time player
+date_default_timezone_set('EST');
+
+if (!defined('ABSOLUTELOCATION')) {
+    define('ABSOLUTELOCATION', rtrim(dirname(__FILE__), 'public/inc'));
+}
+$abspath = ABSOLUTELOCATION;
+
+$http_type = $_SERVER['SERVER_SOFTWARE'];
+$http_name = $_SERVER['SERVER_NAME'];
+$http_ip = $_SERVER['SERVER_ADDR'];
+$httpname = $http_name;
+if (preg_match('@(10\.0\.0\.\d+|192\.\d+\.\d+\.\d+)@', $http_ip)) {
+    $abspath = '<code class="info">' . $abspath . '</code>';
+} else {
+    $abspath = 'is simply a PHP value which relies on server variables<code>define( ABSOLUTELOCATION , rtrim(dirname(__FILE__), inc))</code>';
+}
+
+$page_heading = '&#x201c;Simple Template&#x201d; ';
+$title = 'Basic TEMPLATE';
+$lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <?php print $title; ?>
+  </title>
+  <link rel="icon" type="image/ico" href="favicon.ico" sizes="16x16">
+  <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+  <link rel="icon" href="./favicon.ico" sizes="32x32">
+  <link rel="icon" href="./favicon.ico" sizes="192x192">
+  <link rel="apple-touch-icon" href="./favicon.ico">
+  <meta name="msapplication-TileImage" content="http://.file./ -->">
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <!-- BOOTSTRAP STYLE -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
+  <link href="assets/css/notes.css" rel="stylesheet" type="text/css">
+    <style>
+    <![CDATA[
+    .tsw {
+      font-family: "source serif pro";
+      font-size: 1.2rem;
+      font-style: italic;
+    }
+
+    /** if needed add style here
+                                ** NOTE THE NEW favICON code here:
+                                **
+                                */
+  </style>
+</head>
+
+<body>
+
+  <div id="pagewidth" class="container"> <!--    :begin    class:content        -->
+
+    <section id="header"> <!-- #HEADER -->
+      <h1 class="bg-dark text-light text-end pe-3">
+        <?php print $page_heading; ?>
+      </h1>
+    </section>
+    <section id="general_notes">
+      <h2>General Notes</h2>
+      <div class="notes">
+<main><div class="container px-4 py-5"><div class="row flex-lg-row-reverse align-items-center g-5 py-5"><div class="col-lg-6"><h1 class="h2 fw-bold mb-3">Web Hosting Geeks</h1>
+        <p class="lead mb-5">The primary source for all things web hosting and servers: 25186 web hosting providers, 23852 customer reviews, how-tos, expert advice, easy to follow guides.<br><br>Trusted by millions of webmasters since 2004.</p>
+
+
+
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_linkedin"></a>
+    <a class="a2a_button_reddit"></a>
+    <a class="a2a_dd a2a_counter" href="https://www.addtoany.com/share"></a>
+</div>
+
+<script async="" src="https://static.addtoany.com/menu/page.js"></script>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+<hr class="my-5">
+
+
+
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-4 col-lg-7 offset-lg-5">
+      <h3>Shared Hosting</h3>
+    </div>
+    <div class="col-md-4 col-lg-4">
+      <img src="https://webhostinggeeks.com/blog/wp-content/uploads/2011/12/shared-hosting-optimized.png" class="img-fluid" alt="Shared hosting">
+    </div>
+    <div class="col-md-8 col-lg-7 offset-lg-1 d-flex align-items-center">
+      <div>
+      <p>Shared hosting is a type of web hosting where multiple websites share the same physical server, making it cost-effective but potentially slower due to shared resources. Ideal type of hosting for small businesses, bloggers, and individuals who are starting out or have low traffic websites.</p>
+      <ul>
+        <li><a href="https://webhostinggeeks.com/blog/what-is-shared-hosting/">What is Shared Hosting</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/how-does-shared-hosting-work/">How does Shared Hosting Work</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/shared-hosting-benefits/">Shared Hosting Benefits</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/shared-hosting-disadvantages/">Shared Hosting Disadvantages</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/shared-hosting-vs-vps-hosting/">Shared Hosting vs VPS Hosting</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/difference-between-shared-and-dedicated-servers/">Shared Hosting vs Dedicated Hosting</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/shared-hosting-vs-cloud-hosting/">Shared Hosting vs Cloud Hosting</a></li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-4 col-lg-7 offset-lg-5">
+      <h3>VPS Hosting</h3>
+    </div>
+    <div class="col-md-4 col-lg-4">
+      <img src="https://webhostinggeeks.com/blog/wp-content/uploads/2011/12/vps-hosting-optimized.png" class="img-fluid" alt="VPS hosting">
+    </div>
+    <div class="col-md-8 col-lg-7 offset-lg-1 d-flex align-items-center">
+      <div>
+      <p>VPS hosting is a hosting type where you have your own allocated server resources on a shared physical server, offering greater flexibility and power than shared hosting without the cost of a dedicated server. Suitable for growing businesses or websites that require more control and resources.</p>
+      <ul>
+        <li><a href="https://webhostinggeeks.com/blog/what-is-vps-hosting/">What is VPS Hosting</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/how-does-vps-hosting-work/">How does VPS Hosting Work</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/benefits-of-vps-hosting/">VPS Hosting Benefits</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/disadvantages-of-vps-hosting/">VPS Hosting Disadvantages</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/vps-hosting-vs-dedicated-server-hosting/">VPS Hosting vs Dedicated Hosting</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/vps-hosting-vs-cloud-hosting/">VPS Hosting vs Cloud Hosting</a></li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-4 col-lg-7 offset-lg-5">
+      <h3>Dedicated Hosting</h3>
+    </div>
+    <div class="col-md-4 col-lg-4">
+      <img src="https://webhostinggeeks.com/blog/wp-content/uploads/2011/12/dedicated-hosting-optimized.png" class="img-fluid" alt="Dedicated hosting">
+    </div>
+    <div class="col-md-8 col-lg-7 offset-lg-1 d-flex align-items-center">
+      <div>
+      <p>Dedicated hosting is a type of hosting where a client has exclusive use of an entire server's resources, offering maximum performance and control but at a higher cost. Ideal for large businesses and high-traffic websites that require high levels of data security and server control.</p>
+      <ul>
+        <li><a href="https://webhostinggeeks.com/blog/what-is-dedicated-server-hosting/">What is Dedicated Hosting</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/how-dedicated-server-hosting-works/">How does Dedicated Hosting Work</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/dedicated-server-advantages/">Dedicated Hosting Benefits</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/disadvantages-of-dedicated-server-hosting/">Dedicated Hosting Disadvantages</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/the-pros-and-cons-of-dedicated-server-hosting-is-it-worth-the-investment/">Dedicated Hosting Pros and Cons</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/dedicated-web-hosting-worth-the-price/">Dedicated Server Costs</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/build-your-own-web-server-at-home-and-host-your-website-for-free/">Building Web Server at Home</a></li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-4 col-lg-7 offset-lg-5">
+      <h3>Cloud Hosting</h3>
+    </div>
+    <div class="col-md-4 col-lg-4">
+      <img src="https://webhostinggeeks.com/blog/wp-content/uploads/2011/12/cloud-hosting-optimized.png" class="img-fluid" alt="Cloud hosting">
+    </div>
+    <div class="col-md-8 col-lg-7 offset-lg-1 d-flex align-items-center">
+      <div>
+      <p>Cloud hosting is a hosting solution where your website is stored on multiple servers in the cloud, offering high scalability, reliability, and performance. Perfect for businesses of all sizes that value uninterrupted uptime and have fluctuating traffic demands.</p>
+      <ul>
+        <li><a href="https://webhostinggeeks.com/blog/what-is-cloud-hosting/">What is Cloud Hosting</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/how-cloud-hosting-works/">How does Cloud Hosting Work</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/advantages-of-cloud-hosting/">Cloud Hosting Benefits</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/disadvantages-of-cloud-hosting/">Cloud Hosting Disadvantages</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/cloud-hosting-vs-cloud-servers/">Cloud Hosting vs Cloud Servers</a></li>
+        <li><a href="https://webhostinggeeks.com/blog/cloud-server-explained-unleashing-the-power-of-modern-computing/">Cloud Server Explained</a></li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+<footer class="container">
+  <footer class="row py-5 my-5 border-top d-flex justify-content-between">
+    <div class="col-md-3">
+      <a href="https://webhostinggeeks.com" class="text-decoration-none link-dark" aria-label="WebHostingGeeks.com" alt="Web Hosting Geeks" title="Web Hosting Geeks"><img width="93px" height="40px" alt="WebHostingGeeks.com" src="https://webhostinggeeks.com/assets/img/brand/whglogo.svg" class="mb-5"></a>
+      <p class="mb-3">Independent hosting research and reviews service backed by real data and user feedback.</p>
+      <p class="mb-5">© 2004 – 2023</p>
+    </div>
+
+    <div class="col-md-3">
+    </div>
+
+
+    <div class="col-md-2">
+      <p class="fw-bold">Blog</p>
+      <ul class="nav flex-row flex-md-column">
+        <li class="nav-item mb-2 me-1"><a href="https://webhostinggeeks.com/blog/category/shared-hosting/" class="nav-link p-0 link-dark">Shared Hosting</a></li>
+        <li class="nav-item mb-2 me-1"><a href="https://webhostinggeeks.com/blog/category/vps-hosting/" class="nav-link p-0 link-dark">VPS Hosting</a></li>
+        <li class="nav-item mb-2 me-1"><a href="https://webhostinggeeks.com/blog/category/dedicated-hosting/" class="nav-link p-0 link-dark">Dedicated Hosting</a></li>
+        <li class="nav-item mb-2 me-1"><a href="https://webhostinggeeks.com/blog/category/cloud-hosting/" class="nav-link p-0 link-dark">Cloud Hosting</a></li>
+        <li class="nav-item mb-2 me-1"><a href="https://webhostinggeeks.com/blog/category/blockchain-hosting/" class="nav-link p-0 link-dark">Blockchain Hosting</a></li>
+        <li class="nav-item mb-2 me-1"><a href="https://webhostinggeeks.com/blog/category/domain-names/" class="nav-link p-0 link-dark">Domain Names</a></li>
+        <li class="nav-item mb-2 me-1"><a href="https://webhostinggeeks.com/blog/category/security-issues/" class="nav-link p-0 link-dark">Security Issues</a></li>
+      </ul>
+    </div>
+
+    <div class="col-md-2">
+      <p class="fw-bold">Tutorials</p>
+      <ul class="nav flex-row flex-md-column">
+        <li class="nav-item mb-2 me-1"><a href="https://webhostinggeeks.com/howto/category/centos/" class="nav-link p-0 link-dark">CentOS</a></li>
+        <li class="nav-item mb-2 me-1"><a href="https://webhostinggeeks.com/howto/category/ubuntu/" class="nav-link p-0 link-dark">Ubuntu</a></li>
+        <li class="nav-item mb-2 me-1"><a href="https://webhostinggeeks.com/howto/category/fedora/" class="nav-link p-0 link-dark">Fedora</a></li>
+        <li class="nav-item mb-2 me-1"><a href="https://webhostinggeeks.com/howto/category/rhel/" class="nav-link p-0 link-dark">RHEL</a></li>
+        <li class="nav-item mb-2 me-1"><a href="https://webhostinggeeks.com/howto/category/nginx/" class="nav-link p-0 link-dark">NGINX</a></li>
+        <li class="nav-item mb-2 me-1"><a href="https://webhostinggeeks.com/howto/category/apache/" class="nav-link p-0 link-dark">Apache</a></li>
+        <li class="nav-item mb-2 me-1"><a href="https://webhostinggeeks.com/howto/category/linux/" class="nav-link p-0 link-dark">Linux</a></li>
+        <li class="nav-item mb-2 me-1"><a href="https://webhostinggeeks.com/howto/category/windows/" class="nav-link p-0 link-dark">Windows</a></li>
+      </ul>
+    </div>
+
+
+    <div class="col-md-2">
+      <p class="fw-bold">Contacts</p>
+      <ul class="nav flex-row flex-md-column">
+        <li class="nav-item mb-2 me-1"><a href="https://www.facebook.com/webhostinggeeks" class="nav-link p-0 link-dark" target="_blank" rel="noopener">Facebook</a></li>
+        <li class="nav-item mb-2 me-1"><a href="https://www.youtube.com/user/webhostinggeeks" class="nav-link p-0 link-dark" target="_blank" rel="noopener">YouTube</a></li>
+        <li class="nav-item mb-2 me-1"><a href="https://twitter.com/webhostgeeks" class="nav-link p-0 link-dark" target="_blank" rel="noopener">Twitter</a></li></ul></div></footer></footer>
+      </div> <!-- $ end .notes div -->
+    </section>
+    <section> <!-- :begin #_GLOSSARY  -->
+      <div>
+        <h2>Glossary:</h2>
+        <h3>Key Terms about <?php print $page_heading; ?></h3>
+        <dl>
+        <dt class="pointer">Show Glossary<span class="normal blue pointer" id="show_g01"
+              onclick="swap_text('show_g01','glossary_01') ">[toggle...]</span>
+          </dt>
+          <dd id="glossary_01" class="displaynone">
+            <p>Maybe this is a note about a framework&apos;s folder structure...</p>
+            <pre>#       /var/www/html/framework_name/
+#       |-- some.file.name
+#       |-- some.ts
+#       |-- some.json
+#       |-- some.js</pre>
+<p>Remember: There are tools, such as the Linux command line tool, <code>tree</code> which can generate the
+                tree in various formats including <strong>JSON and HTML</strong>. E.g. <code>tree -J</code> or <code>tree -H http://path/of/dir</code></p>
+            <p><kbd>apt install tree</kbd></p>
+          </dd>
+        </dl>
+      </div> <!-- $ :end #_glossary -->
+    </section>
+    <footer class="footer px-4"> <!--    .FOOTER     -->
+      <div class="row gx-5">
+        <div class="col">
+          <div class="p-3 border bg-light"> Based on Notes by <a href="https://github.com/ajaxStardust" target="_blank"
+              title="View original">@ajaxStardust</a> <em>Laravel</em> notes:</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light text-end"><kbd>
+              <?php echo $lastMod; ?>
+            </kbd></div>
+        </div>
+      </div>
+    </footer>
+  </div><!--    $ :end    END class.content (former id.maincol)    $    -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+  <script src="assets/js/showme-hideme.js"></script>
+
+</body>
+
+</html>

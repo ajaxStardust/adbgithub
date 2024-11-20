@@ -1,8 +1,9 @@
 <?php
 
-// namespace adb_simplest;
+// namespace adb_simplest; was
+
 /*
- *      index.php
+ * index.php
  *
  *      Developed by @ajaxStardust <ajaxStardust@gmail.com>
  *
@@ -19,83 +20,96 @@
  *      51 Franklin Street, Fifth Floor
  *      Boston, MA 02110-1301
  *      USA
- *
  */
+
 /*
- *
- *  DEVELOPMENT HTTP URL:
+ * DEVELOPMENT HTTP URL:
  *       https://centrewebdesign.com/adb/index.php
  *              -----------------------
- *
  */
 require_once 'public/inc/dochead.inc.php';
 require_once 'public/inc/nav.inc.php';
+require_once 'public/inc/backlinks.inc.php';
+
 ?>
 <div id="maincol">
-                                <!--    ^   id:maincol  ^   -->
+    <!--    ^   id:maincol  ^   -->
     <!--    id:doc_loc_href added ID data here for indication of preferred text -->
-    <h2 id="doc_loc_href" title="currentUrlPath.pathInfoBasename"><?php print $currentUrlPath.$pathInfoBasename; ?></h2>
-<?php
-// BEGIN PHP REQUIRE    #pageControls
-            require 'public/inc/jscontrols.inc.php';
-                if (isset($bnRegExReport)) {
-                    $bnRegExReport .= '</ul>
+    <h2 id="doc_loc_href" title="currentUrlPath.pathInfoBasename"><?php print $currentUrlPath . $pathInfoBasename; ?>
+    </h2>
+    <?php print $backlinksHtml; ?>
+    <ol id="locallinks">
+        <li class="float-left p-2"><a target="_blank" href="extension://jdoanlopeanabgejgmdncljhkdplcfed/dashboard.html">momentun.chrome</a></li>
+        <li class="float-left p-2"><a target="_blank" href="http://127.0.0.1/index.php">127.0.0.1/index.php</a></li>
+        <li class="float-left p-2"><a target="_blank" href="http://atheat.mxuni/index.php">atheat.mxuni/index.php</a></li>
+        <li class="float-left p-2"><a target="_blank" href="http://atheat/index.php">atheat/index.php</a></li>
+        <li class="float-left p-2"><a target="_blank" href="http://localhost/index.php">localhost/index.php</a></li>
+        <li class="float-left p-2"><a target="_blank" href="http://mx23ahs/index.php">mx23ahs/index.php</a></li>
+        <li class="float-left p-2"><a target="_blank" href="http://mxuni/index.php">mxuni/index.php</a></li>
+        <li class="float-left p-2"><a target="_blank" href="http://mylaravel/index.php">mylaravel/index.php</a></li>
+        <li class="float-left p-2"><a target="_blank" href="http://other.mxuni/index.php">other.mxuni/index.php</a></li>
+        <li class="float-left p-2"><a target="_blank" href="http://start.me">start.me</a></li>
+        <li class="float-left p-2"><a target="_blank" href="http://wordpresscenter.net">WordPressCenter.net</a></li>
+        <li class="float-left p-2"><a target="_blank" href="https://momentun.dash">momentun.dash</a></li>
+    </ol>
+    <?php
+        // BEGIN PHP REQUIRE    #pageControls
+        require 'public/inc/jscontrols.inc.php';
+        if (isset($bnRegExReport)) {
+            $bnRegExReport .= '</ul>
                     ';
-                    print $bnRegExReport;
-                }
-            try {
-                require 'public/inc/accessories.inc.php';
-            } catch (\Throwable $th) {
-                throw $th;
-            }
-// END PHP REQUIRE #pageControls
-?>
+            print $bnRegExReport;
+        }
+        try {
+            require 'public/inc/accessories.inc.php';
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+        // END PHP REQUIRE #pageControls
+    ?>
 
     <div id="mainFrameContainer">
-        <?php  
+        <?php
 
-            /**
-               * 
-               * printResults (class-urlchopper.php ) is a near worthless function which basically prints what Xdebug already knows
-               * 
-               */
-                if (!isset($chopThis)) {
-                   $chopThis = $_SERVER['SCRIPT_NAME']; 
-                }
+            /** printResults (class-urlchopper.php ) is a near worthless function which basically prints what Xdebug already knows */
+            if (!isset($chopThis)) {
+                $chopThis = $_SERVER['SCRIPT_NAME'];
+            }
 
-                ?>
+        ?>
         <!--    ^   id:mainFrameContainer   ^   -->
         <div id="frameTitler">Currently Viewing: <span id="frameName"><?php print $defaultIframe; ?></span>
         </div>
-                                            <!--    $   id:frameTitler  $   -->
-        <iframe title="frame content as selected in main navigation" src="<?php print $defaultIframe; ?>" id="mainFrame">
+        <!--    $   id:frameTitler  $   -->
+        <iframe title="frame content as selected in main navigation" src="<?php print $defaultIframe; ?>"
+            id="mainFrame">
         </iframe>
     </div>
     <!--    $   id:mainFrameContainer   $   -->
 </div>
-<!--    $   id:maincol  $   -->
-<?php   //  PRINT   #navlist ( array from ./inc/nav.inc.php )
-        foreach($htmlPrint as $htmlNavItem){
-            print $htmlNavItem;
-        }
-    ?>
-<!-- div id="displayHttPath"><?php print $currentUrlPath.$pathInfoBasename; ?></div -->
 
-    <?php 
-    require 'public/inc/footer.inc.php';
+<!--    $   id:maincol  $   -->
+<?php  //  PRINT   #navlist ( array from ./inc/nav.inc.php )
+foreach ($htmlPrint as $htmlNavItem) {
+    print $htmlNavItem;
+}
+?>
+<!-- div id="displayHttPath">
+    <?php print $currentUrlPath . $pathInfoBasename; ?>
+</div -->
+
+<?php
+require 'public/inc/footer.inc.php';
 ?>
 </div>
 <!--    $   id:wrapper  $   -->
 
 </div>
 <!--    $   id:pagewidth    $   -->
-<script 
-    type="text/javascript"
-    src="./<?php echo $xro; ?>assets/js/showme-hideme.js">
+<script type="text/javascript" src="./<?php echo $xro; ?>assets/js/showme-hideme.js">
 </script>
-<script 
-    type="text/javascript"
-    src="./<?php echo $xro; ?>assets/js/accessories.js">
+<script type="text/javascript" src="./<?php echo $xro; ?>assets/js/accessories.js">
 </script>
 </body>
+
 </html>

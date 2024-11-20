@@ -1,0 +1,74 @@
+<?php
+// ENABLE CORS (Cross-Origin Request) policy allow all
+header('Access-Control-Allow-Origin: *');
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Font Change with Dropdown</title>
+
+<!-- Default font-family style -->
+<style id="fontStyle">
+#targetElement {
+  font-family: Arial, sans-serif; /* Default font family */
+}
+</style>
+
+</head>
+<body>
+
+<!-- Font selection form -->
+<form id="fontForm">
+  <label for="fontSelector">Select a font:</label>
+  <select id="fontSelector" name="fontSelector">
+    <?php
+    // Fetch list of available fonts from Google Fonts API
+    $apiUrl = 'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDCo1j1HiE6mo72_c--5ss0M036cRHEiDo';
+    $fontsData = json_decode(file_get_contents($apiUrl), true);
+    if ($fontsData && isset($fontsData['items'])) {
+      foreach ($fontsData['items'] as $font) {
+        echo "<option value=\"" . $font['family'] . "\">" . $font['family'] . "</option>";
+      }
+    }
+    ?>
+  </select>
+  <button type="button" id="applyFont">Apply Font</button> <!-- Changed type to button -->
+</form>
+
+<!-- Target element to apply the font -->
+<div id="targetElement">
+  This is the target element to apply the new font.
+</div>
+
+<!-- jQuery library (if not already included) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- AJAX script -->
+<script>
+$(document).ready(function() {
+  // AJAX request when Apply Font button is clicked
+  $('#applyFont').click(function() {
+    // Get the selected font from the dropdown
+    var selectedFont = $('#fontSelector').val();
+
+    // Send AJAX request to apply the font
+    $.ajax({
+      type: 'POST',
+      url: 'apply_font.php', // PHP script to handle the request
+      data: { font: selectedFont },
+      success: function(response) {
+        // Update font-family style dynamically
+        $('#fontStyle').text(response); // Use text() to set the content without HTML interpretation
+      },
+      error: function(xhr, status, error) {
+        console.error('AJAX error:', error);
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

@@ -61,7 +61,7 @@ if (isset($childItems[$objNmbr])) {
  *   Developer is left with options for how a page should load
  *   by simply modifying the file extension from PHP or PHTML  
 */
-			$childItems[$objNmbr] .= '<a href="' . $cleanBasename . '" title="' . $cleanBasename . '"><!-- '.__LINE__.' -->' . $filename . '</a> [top]</li>' . "\n";
+			$childItems[$objNmbr] .= '<a href="' . $cleanBasename . '" title="' . $cleanBasename . '" target="_blank"><!-- '.__LINE__.' -->' . $filename . '</a> [php to top]</li>' . "\n";
 		}
 		else {
 	// BASENAME INVALID FOR HTML ATTRIBUTES - FIXed WITH @cleanBasename func

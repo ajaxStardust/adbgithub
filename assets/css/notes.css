@@ -1,17 +1,17 @@
 @charset 'UTF-8';
 /* @import 'iframestyle.css'; */
 
-body,html {
-    background-image: url(backgrounddiagonal.gif);
+body,
+html {
     color: #330;
-    font-family: Poppins,Roboto,Arial,Helvetica,sans-serif;
+    font-family: Poppins, Roboto, Arial, Helvetica, sans-serif;
     font-size: 16px;
     margin: 0;
     padding: 0
 }
 
 dl {
-    margin:0 auto;
+    margin: 0 auto;
     width: 95%;
 }
 
@@ -35,7 +35,9 @@ p {
     padding: .25em 1em
 }
 
-body,html,tbody td {
+body,
+html,
+tbody td {
     background-color: #fafafa
 }
 
@@ -72,12 +74,13 @@ li.imgShowItem img {
     background-repeat: repeat-x
 }
 
-.content form button,.content form input [type=submit] {
+.content form button,
+.content form input [type=submit] {
     background-color: #0000df;
     background-position: bottom;
     color: #fff;
     text-shadow: .1em .1em .2em #88a;
-    border-color: rgba(200,200,255,.6);
+    border-color: rgba(200, 200, 255, .6);
     border-radius: 1em
 }
 
@@ -100,7 +103,8 @@ li.imgShowItem img {
     font-size: 1em
 }
 
-.keyTerms ul li pre,.keyTerms ul li sup code {
+.keyTerms ul li pre,
+.keyTerms ul li sup code {
     font-size: larger
 }
 
@@ -110,9 +114,10 @@ form #mf_body {
     margin: 2px
 }
 
-span.pointer,span.toggler {
+span.pointer,
+span.toggler {
     cursor: pointer;
-    font-family: "liberation mono","dejavu sans mono","lucida console",monospace;
+    font-family: "liberation mono", "dejavu sans mono", "lucida console", monospace;
     font-size: .8em;
     font-variant: small-caps;
     padding-left: 0
@@ -128,28 +133,29 @@ h3:before {
 
 #pagewidth .content dl dt {
     display: inline-block;
-    font-family: "Liberation Serif","DejaVu Serif",Georgia,serif;
+    font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
     padding: 0;
     margin: 0;
-    background-image: -ms-linear-gradient(top,#fff 0%,#d9332c10 100%);
-    background-image: -moz-linear-gradient(top,#fff 0,#d9332c10 100%);
-    background-image: -o-linear-gradient(top,#fff 0,#d9332c10 100%);
-    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#fff),color-stop(1,#d9332c10));
-    background-image: -webkit-linear-gradient(top,#fff 0,#d9332c10 100%);
-    background-image: linear-gradient(to bottom,#fff 0,#d9332c10 100%)
+    background-image: -ms-linear-gradient(top, #fff 0%, #d9332c10 100%);
+    background-image: -moz-linear-gradient(top, #fff 0, #d9332c10 100%);
+    background-image: -o-linear-gradient(top, #fff 0, #d9332c10 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #d9332c10));
+    background-image: -webkit-linear-gradient(top, #fff 0, #d9332c10 100%);
+    background-image: linear-gradient(to bottom, #fff 0, #d9332c10 100%)
 }
 
-#pagewidth .content dl dt:after,#pagewidth .content dl dt:before {
+#pagewidth .content dl dt:after,
+#pagewidth .content dl dt:before {
     content: "  "
 }
 
 .notes dl dt {
-    text-transform:capitalize;
+    text-transform: capitalize;
     font-weight: 700;
     border-right: 3pt dashed #ddd;
     padding-right: 0.5rem !important;
-    background: rgb(255,255,255);
-background: linear-gradient(190deg, rgba(175,175,201,1) 0%, rgba(236,236,236,1) 35%, rgba(255,255,255,1) 100%);
+    background: rgb(255, 255, 255);
+    background: linear-gradient(190deg, rgba(175, 175, 201, 1) 0%, rgba(236, 236, 236, 1) 35%, rgba(255, 255, 255, 1) 100%);
 }
 
 #_notes_dl dd dl dt {
@@ -157,14 +163,15 @@ background: linear-gradient(190deg, rgba(175,175,201,1) 0%, rgba(236,236,236,1) 
 }
 
 #general_notes dl dt {
-    background-image: linear-gradient(to bottom,#fff 0,#d9332c10 100%);
+    background-image: linear-gradient(to bottom, #fff 0, #d9332c10 100%);
 }
 
 dl dd {
     margin: 1em 0 2em 2em
 }
 
-dl,pre {
+dl,
+pre {
     background-color: #fefefe;
     border: .1em dashed #ddd;
     margin: 0 auto;
@@ -184,12 +191,21 @@ pre {
     width: 80%
 }
 
-.keyTerms ul li pre,dl dd dl,dl dd ul,dl dt,h1,h2,h3,h4,h5,h6 {
+.keyTerms ul li pre,
+dl dd dl,
+dl dd ul,
+dl dt,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     background-image: none
 }
 
 dl dd ul {
-    background-color: rgba(255,255,235,.7);
+    background-color: rgba(255, 255, 235, .7);
     list-style-position: inside;
     margin-left: -.5em;
     padding: .2em
@@ -200,26 +216,31 @@ dl dt {
     background-color: #fff
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     /* font-family: "Liberation Serif","DejaVu Serif Condensed",Georgia,serif; */
-    margin:0.5rem auto;
+    margin: 0.5rem auto;
 }
 
 h2 {
-   /* background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(235,235,235,1) 80%, rgba(214,214,214,1) 93%, rgba(173,173,173,1) 100%); */
+    /* background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(235,235,235,1) 80%, rgba(214,214,214,1) 93%, rgba(173,173,173,1) 100%); */
 }
 
- h4:before {
-    content:'\000020';
-    padding-right:0.75rem;
+h4:before {
+    content: '\000020';
+    padding-right: 0.75rem;
 }
 
 h5 {
-    border-right:1rem;
+    border-right: 1rem;
 }
 
 .content code {
-    background-color: #eaeaea
+    background-color: #EAEAEA;
 }
 
 section#footer {
@@ -237,7 +258,9 @@ code {
     white-space: pre
 }
 
-.code,code,pre {
+.code,
+code,
+pre {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
     --dark-blue: #002ead;
@@ -276,21 +299,31 @@ code {
     word-wrap: normal
 }
 
-.code,code {
+.code,
+code {
     border: 0;
     margin: .5em 0 0;
-    padding: .1rem .25rem
+    padding: .1rem .25rem background-color: #afafaf55;
 }
 
-h1,h2,h4,h5,h6 {
+h1,
+h2,
+h4,
+h5,
+h6 {
     /* border-right: 1em solid #f9322c */
     border-right: 1em solid #C00A05;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: #330;
     /* font-family: "Liberation Serif","DejaVu Serif Condensed",Georgia,serif; */
-    text-shadow: 0 .04em 0 rgba(255,255,255,.9);
+    text-shadow: 0 .04em 0 rgba(255, 255, 255, .9);
     padding: .5em .25em;
     background-color: #fefefe;
     background-position: 0 30%;
@@ -308,13 +341,18 @@ h2 {
     border-right-width: 6pt
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     /* font-family: "Liberation Serif","DejaVu Serif Condensed",Georgia,serif; */
-    margin:0.5rem auto;
+    margin: 0.5rem auto;
 }
 
 h2 {
-   background: linear-gradient(175deg, rgba(255,255,255,1) 0%, rgba(236,235,235,1) 80%, rgba(214,214,214,1) 93%, rgba(173,173,173,1) 100%);
+    background: linear-gradient(175deg, rgba(255, 255, 255, 1) 0%, rgba(236, 235, 235, 1) 80%, rgba(214, 214, 214, 1) 93%, rgba(173, 173, 173, 1) 100%);
 }
 
 /* h3:before {
@@ -324,27 +362,27 @@ h2 {
 
 h2 {
     clear: left;
-    border:none;
-    color:#202030;
+    border: none;
+    color: #202030;
     text-shadow: -0.1px 0.1px 1px #666;
-    text-align:center;
+    text-align: center;
     border-left: 6pt solid #3a29bb;
 
 }
 
 h3 {
     clear: left;
-        color:#202030;
+    color: #202030;
     border-right-width: 0.4em;
     text-shadow: -0.1px 0.1px 1px #666;
 }
 
 h4 {
     clear: left;
-        color:#202030;
-    border:none;
+    color: #202030;
+    border: none;
     text-shadow: -0.1px 0.1px 1px #666;
-    border-left:0.2em solid #3a2ab9;
+    border-left: 0.2em solid #3a2ab9;
 }
 
 h5 {
@@ -352,12 +390,22 @@ h5 {
     border-right-width: 1pt
 }
 
-table,td,tfoot,thead,tr {
+table,
+td,
+tfoot,
+thead,
+tr {
     border: .1em #000 outset;
     border-radius: .25em
 }
 
-caption,table,td,tfoot,th,thead,tr {
+caption,
+table,
+td,
+tfoot,
+th,
+thead,
+tr {
     cursor: help;
     padding: .2em .4em .3em;
     margin: auto;
@@ -379,7 +427,7 @@ caption {
 tfoot {
     text-align: right;
     font-style: italic;
-    font-family: "Palatino Linotype",Palatino,"Liberation Serif",serif;
+    font-family: "Palatino Linotype", Palatino, "Liberation Serif", serif;
     background-color: #f0f0ff
 }
 
@@ -390,7 +438,7 @@ tfoot {
 .attn {
     background-color: #dd3;
     color: #003;
-    font-family: "Comic Sans MS","comic sans",cursive
+    font-family: "Comic Sans MS", "comic sans", cursive
 }
 
 .bg_grey {
@@ -422,7 +470,7 @@ tfoot {
     border: .1em dashed #999;
     color: navy;
     display: block;
-    font-family: Arial,"Helvetica",sans-serif;
+    font-family: Arial, "Helvetica", sans-serif;
     font-size: .8em;
     margin: .5em 2em;
     padding: 1.5em;
@@ -433,7 +481,8 @@ tfoot {
     text-align: center
 }
 
-.closeme,.code {
+.closeme,
+.code {
     font-family: monospace
 }
 
@@ -448,7 +497,8 @@ tfoot {
     display: inline-block
 }
 
-.codeComment,.codeHints {
+.codeComment,
+.codeHints {
     color: #c00;
     font-family: monospace;
     font-style: italic;
@@ -457,13 +507,13 @@ tfoot {
 }
 
 .content {
-    background-color: rgba(254,254,255,.7);
+    background-color: rgba(254, 254, 255, .7);
     font-weight: 400;
     margin: .5em auto;
     padding: .5em;
     display: block;
     width: 95%;
-    font-family: scandia-web,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji!important
+    font-family: scandia-web, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji !important
 }
 
 /* .content p * {
@@ -498,12 +548,18 @@ tfoot {
     padding: .2em
 }
 
-.floatLeft,.floatLt,.floatleft,.floatlt {
+.floatLeft,
+.floatLt,
+.floatleft,
+.floatlt {
     float: left;
     position: relative
 }
 
-.floatRight,.floatRt,.floatright,.floatrt {
+.floatRight,
+.floatRt,
+.floatright,
+.floatrt {
     float: right;
     position: relative
 }
@@ -512,7 +568,9 @@ tfoot {
     color: green
 }
 
-.hidden,li.hidden,li.hiddenitem {
+.hidden,
+li.hidden,
+li.hiddenitem {
     visibility: hidden
 }
 
@@ -558,7 +616,7 @@ tfoot {
 .pseudocode {
     background-color: #f0f0ea;
     color: #080;
-    font-family: "Liberation Mono","DejaVu Sans Mono","Lucida Console","Monaco",monospace;
+    font-family: "Liberation Mono", "DejaVu Sans Mono", "Lucida Console", "Monaco", monospace;
     font-size: .9em;
     margin: .2em
 }
@@ -577,20 +635,24 @@ tfoot {
     text-align: right
 }
 
-.sans,.sans-serif,.sanserif {
+.sans,
+.sans-serif,
+.sanserif {
     font-family: sans-serif
 }
 
-.sansSerif,.sansSerifBold {
-    font-family: "DejaVu Sans","Liberation Sans",Arial,"Helvetica",sans-serif
+.sansSerif,
+.sansSerifBold {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, "Helvetica", sans-serif
 }
 
 .sansSerifBold {
     font-weight: 700
 }
 
-.serif,.serifBold {
-    font-family: "DejaVu Serif Condensed","Liberation Serif","Book Antiqua","Palatino Linotype","Palatino",serif
+.serif,
+.serifBold {
+    font-family: "DejaVu Serif Condensed", "Liberation Serif", "Book Antiqua", "Palatino Linotype", "Palatino", serif
 }
 
 .serifBold {
@@ -606,7 +668,8 @@ tfoot {
     width: 80%
 }
 
-.smallCaps,.smallcaps {
+.smallCaps,
+.smallcaps {
     font-variant: small-caps
 }
 
@@ -618,7 +681,8 @@ tfoot {
     text-decoration: line-through
 }
 
-.tableHeadrow,thead {
+.tableHeadrow,
+thead {
     font-family: serif;
     font-size: 1.1em;
     font-weight: 700;
@@ -634,10 +698,11 @@ tfoot {
     white-space: pre
 }
 
-.toggler,.trigger {
+.toggler,
+.trigger {
     color: navy;
     cursor: help;
-    font-family: "Liberation Sans","DejaVu Sans",Arial,Helvetica,sans-serif;
+    font-family: "Liberation Sans", "DejaVu Sans", Arial, Helvetica, sans-serif;
     font-variant: small-caps;
     letter-spacing: .1em;
     line-height: 2em;
@@ -677,7 +742,7 @@ tfoot {
 }
 
 #pagewidth {
-    background-color: rgba(255,255,255,.3);
+    background-color: rgba(255, 255, 255, .3);
     display: block;
     margin: 0 auto;
     padding: 0;
@@ -685,19 +750,38 @@ tfoot {
     position: relative
 }
 
-#dbFormContainer,.align-left,.alignleft,.alignleft *,.left,.left-align,.leftalign {
+#dbFormContainer,
+.align-left,
+.alignleft,
+.alignleft *,
+.left,
+.left-align,
+.leftalign {
     text-align: left
 }
 
-.inline,ul#imgShow {
+.inline,
+ul#imgShow {
     display: inline
 }
 
-#collapser-0,.collapsableDd,.displayNone,.displaynone,.target,li.db .nav,li.exeicon,li.forbidden,li.forbiddenitem,li.hiddenitem {
+#collapser-0,
+.collapsableDd,
+.displayNone,
+.displaynone,
+.target,
+li.db .nav,
+li.exeicon,
+li.forbidden,
+li.forbiddenitem,
+li.hiddenitem {
     display: none
 }
 
-#controList,#urlSplit,li.nobull,ul.nobull li {
+#controList,
+#urlSplit,
+li.nobull,
+ul.nobull li {
     list-style-type: none
 }
 
@@ -744,20 +828,22 @@ li.badpath:after {
     margin: .5em
 }
 
-code, .code  {
-    padding: .5em;
+code,
+.code {
+    padding: 0 .5em 0;
     white-space: pre-wrap;
     display: inline;
     background-color: #ffffff00;
     font-family: monospace
 }
 
-.code:before {
+code:before {
     content: "\00005c";
     color: #7cfc00;
     border: 1px solid red;
     padding: .1rem .25rem 0;
     margin-right: .5rem;
+    background-color: #55555555;
 }
 
 /* h3 {
@@ -765,18 +851,20 @@ code, .code  {
 }
 */
 
-#delimiter_detail, code.code  {
+#delimiter_detail,
+code.code {
     color: #0fa;
     background-color: #333
 }
 
- 
-#delimiter_detail, code.code  {
+
+#delimiter_detail,
+code.code {
     color: #0fa;
     background-color: #333
 }
 
-#header > h1 {
+#header>h1 {
     text-shadow: 0px 0px 3px #000;
     /* font-weight: 600; */
     /* margin: 0.5rem auto; */
@@ -787,7 +875,7 @@ code, .code  {
     text-transform: uppercase;
     font-weight: 700;
     border-left: 4pt solid #f9322c;
-    padding-left: 1em
+    padding-left: 1em !important;
 }
 
 #_notes_dl dd dl dt,
@@ -805,13 +893,91 @@ kbd {
     font-size: .83em;
     font-family: inherit;
     background-color: #f7f7f7;
-    box-shadow: 0 .1em 0 rgba(0,0,0,.2),0 0 0 .2em #fff inset;
+    box-shadow: 0 .1em 0 rgba(0, 0, 0, .2), 0 0 0 .2em #fff inset;
 }
 
-div#info_container  p {
-	float:left;
+div#info_container p {
+    float: left;
 }
 
-div#info_container + dl {
-	clear:left;
-} 
+div#info_container+dl {
+    clear: left;
+}
+
+
+.highlight_background {
+    background-color: yellow;
+    color: black;
+}
+
+.pseudocite {
+    font-family: "source serif pro", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: small;
+    color: #333;
+    border: 1px double #226;
+    background-color: #c3E3c3;
+    padding: 0.3em;
+    font-style: italic;
+    font-style: normal;
+    background: none;
+    border-color: rgba(0, 0, 0, 0.1);
+    border-width: 0.1rem;
+    border-style: double;
+    border-end-end-radius: 15px;
+    border-start-end-radius: 15px;
+    padding-left: 1rem !important;
+    background-image: linear-gradient(0deg, #b2d8fe26 0%, #efefefae 40%, #ffffffff 100%);
+    color: #636363Ed;
+    display: block;
+    position: relative;
+    text-align: left;
+    font-variant: small-caps;
+}
+
+
+.cite {
+    font-family: "source serif pro", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 0.9rem;
+    color: #333;
+    background-color: #D3D3F3;
+    padding: 0.8rem;
+    font-style: italic;
+}
+
+.float-left {
+    float: left;
+    padding: 0.5rem;
+}
+
+.float-right {
+    float: right;
+    padding: 0.5rem;
+}
+
+figcaption {
+    font-family: ui-display;
+}
+
+
+.pseudocite::before,
+.attntop::before {
+    content: "\1F481";
+    position: relative;
+    bottom: 1.25rem;
+    right: 1rem;
+    font-weight: 900;
+    font-size: larger;
+    color: #1e1e1e;
+    text-shadow: 0rem 0.05rem 0.1rem #33333333;
+    top: 0;
+}
+
+.mono,
+.monospace {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.thin {
+    font-weight: 100;
+
+}
