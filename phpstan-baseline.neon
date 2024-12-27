@@ -1,0 +1,46 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Instantiated class Adbiteraonadb\\\\app\\\\classes\\\\Jsonconfigmanager  not found\\.$#"
+			count: 1
+			path: app/classes/Adbsoc.php
+
+		-
+			message: "#^Instantiated class Adbiteraonadb\\\\app\\\\classes\\\\Urlprocessor not found\\.$#"
+			count: 1
+			path: app/classes/Adbsoc.php
+
+		-
+			message: "#^Instantiated class Adbiteraonadb\\\\app\\\\classes\\\\Auxx not found\\.$#"
+			count: 1
+			path: app/classes/Htmldochead.php
+
+		-
+			message: "#^Instantiated class Adbiteraonadb\\\\app\\\\classes\\\\CwThumbs not found\\.$#"
+			count: 1
+			path: app/classes/Htmldochead.php
+
+		-
+			message: "#^Instantiated class Adbiteraonadb\\\\app\\\\classes\\\\Urlprocessor not found\\.$#"
+			count: 1
+			path: app/classes/Htmldochead.php
+
+		-
+			message: "#^Instantiated class Adbiteraonadb\\\\app\\\\classes\\\\Auxx not found\\.$#"
+			count: 1
+			path: app/classes/Navfactor.php
+
+		-
+			message: "#^Instantiated class Adbiteraonadb\\\\app\\\\classes\\\\CwThumbs not found\\.$#"
+			count: 1
+			path: app/views/html-main.page.php
+
+		-
+			message: "#^Instantiated class Adbiteraonadb\\\\public\\\\views\\\\Htmldochead not found\\.$#"
+			count: 1
+			path: app/views/html-main.page.php
+
+		-
+			message: "#^Instantiated class Urlprocessor not found\\.$#"
+			count: 1
+			path: public/assets/css/masthead.php

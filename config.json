@@ -1,20 +1,51 @@
 {
-  "servers": [
-    {
-      "name": "mxuni",
-      "path": "//mxuni/www/mxuni"
-    },
-    {
-      "name": "atheat.mxuni",
-      "path": "//mxuni/www/atheat"
-    },
-    {
-      "name": "other.mxuni",
-      "path": "//mxuni/www/other"
-    },
-    {
-      "name": "python.mxuni",
-      "path": "//mxuni/www/python"
-    }
-  ]
+    "home_urls": [
+        {
+            "url": "https://127.0.0.1/index.php",
+            "name": "Localhost Index",
+            "data": "",
+            "count": 0
+        },
+        {
+            "url": "https://example.org/index.php",
+            "name": "Example.org",
+            "data": "",
+            "count": 0
+        },
+        {
+            "url": "https://github.com/ajaxStardust",
+            "name": "GtHb ajaxStardust",
+            "data": "",
+            "count": 0
+        },
+        {
+            "url": "https://online.bonjourr.fr",
+            "name": "Bonjour Live",
+            "data": "",
+            "count": 0
+        },
+        {
+            "url": "https://laravel.org",
+            "name": "Laravel ",
+            "data": "",
+            "count": 0
+        },       {
+            "url": "https://start.me",
+            "name": "Start Me",
+            "data": "",
+            "count": 0
+        },
+        {
+            "url": "https://wordpresscenter.net",
+            "name": "WP Center",
+            "data": "",
+            "count": 0
+        },
+        {
+            "url": "https://centrewebdesign.com/generative-ai/",
+            "name": "reWeb 365",
+            "data": "",
+            "count": 0
+        }
+    ]
 }

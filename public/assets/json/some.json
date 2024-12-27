@@ -1,0 +1,19 @@
+{
+    "initialize_enviornment": {
+        "lastMod": "Modified: Thu Sep 19 2024 0:31:27 EDT",
+        "REQUESTURL": "\/var\/www\/wsldebian\/adbcollections\/my_Notes\/",
+        "INSTALLED_LOCATION": "\/var\/www\/wsldebian\/piss2us2",
+        "abspathtml": "\/var\/www\/wsldebian\/piss2us2<\/code>",
+        "page_heading": "Convert System Path to HTTP URL",
+        "real_page_heading": "Convert System Path to HTTP URL",
+        "pathinfo_basename": "Environment.php",
+        "title_name": "Environment",
+        "title": "\/var\/www\/wsldebian\/piss2us2 @ Environment.php",
+        "REQUEST_SCHEME": "https",
+        "serversoftware": "nginx\/1.26.0",
+        "server_name": "wsldebian",
+        "server_addr": "127.0.0.1",
+        "servername": "wsldebian"
+    },
+    "pathOps": "\/var\/www\/wsldebian\/piss2us2"
+}

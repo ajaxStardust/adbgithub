@@ -1,0 +1,34 @@
+[
+		{"term": "ROUTING AND RESPONSES",
+			"definition": "<a href=\"#routing\">ROUTING</a> Where we load our views, controllers, etc. \\n #       /laragigs/routes/ \\n #       |-- api.php #       |-- channels.php #       |-- controls.php #       |-- web.php"
+		},
+		{
+			"term": "DIE, DUMP (AND DEBUG)",
+			"definition": "Place either of these in the code to return debugging info: dd($val) or ddd($val)"
+		},
+		{
+			"term": "WILDCARDS",
+			"definition": "using double curly-braces {{ }} we can return the value of a variable. E.g. {{$variable}}"
+		},
+		{
+			"term": "BLADE TEMPLATES (MVC)",
+			"definition": "Allow for the use of {{ }} curly braces in the HTML "
+		},
+		{
+			"term": "DIRECTIVES",
+			"definition": "#       /laragigs/app/Models/ "
+		},
+		{
+			"term": "MIGRATIONS",
+			"definition": "Files that can be executed to create database tables etc. Credentials can be stored in the ENV file. All migrations are a class{} with an up() and a down() method."
+		},
+        {
+            "term": "MODELS (MVC)",
+            "definition": "with User.php, user functionality is built-in to Laravel."
+        },
+        {               
+            "term": "CONTROLLERS (MVC)",
+            "definition": "php artisan make:controller controller_name - creates a file such as ./app/Http/Controllers/ListingController.php"
+        }
+
+]

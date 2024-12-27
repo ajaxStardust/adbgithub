@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.0"
+   width="100%"
+   height="150"
+   id="svg2">
+  <defs
+     id="defs6">
+    <linearGradient
+       id="linearGradient3672">
+      <stop
+         id="stop3674"
+         style="stop-color:#e2e2f2;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3676"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0.60000068" />
+      <stop
+         id="stop3678"
+         style="stop-color:#9c9cac;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3662">
+      <stop
+         id="stop3664"
+         style="stop-color:#e2e2f2;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3666"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0.69999999" />
+      <stop
+         id="stop3668"
+         style="stop-color:#9c9cac;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <filter
+       id="filter4002"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         stdDeviation="2.121839"
+         id="feGaussianBlur4004" />
+    </filter>
+    <linearGradient
+       x1="178.74948"
+       y1="541.79413"
+       x2="178.74948"
+       y2="490.74777"
+       id="linearGradient4012"
+       xlink:href="#linearGradient3964"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(90.008,-0.855)" />
+    <linearGradient
+       id="linearGradient3964">
+      <stop
+         id="stop3966"
+         style="stop-color:#e2e2f2;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3970"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0.85135138" />
+      <stop
+         id="stop3968"
+         style="stop-color:#9c9cac;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="178.74948"
+       y1="541.79413"
+       x2="178.74948"
+       y2="490.74777"
+       id="linearGradient3167"
+       xlink:href="#linearGradient3964"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(90.008,-0.855)" />
+    <linearGradient
+       id="linearGradient3169">
+      <stop
+         id="stop3171"
+         style="stop-color:#e2e2e2;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3173"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0.85135138" />
+      <stop
+         id="stop3175"
+         style="stop-color:#9c9c9c;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="178.74948"
+       y1="541.79413"
+       x2="178.74948"
+       y2="490.74777"
+       id="linearGradient3182"
+       xlink:href="#linearGradient3964"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(90.008,-0.855)" />
+    <linearGradient
+       x1="134.72362"
+       y1="491.72186"
+       x2="134.72362"
+       y2="503.44763"
+       id="linearGradient2832"
+       xlink:href="#linearGradient3662"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.6468531,0,0,3.6468531,-431.03019,-1702.9991)"
+       spreadMethod="reflect" />
+    <linearGradient
+       x1="0.92452002"
+       y1="136.61098"
+       x2="47.338585"
+       y2="136.61098"
+       id="linearGradient3650"
+       xlink:href="#linearGradient3964"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       x1="133.97307"
+       y1="495.00583"
+       x2="133.97307"
+       y2="502.80161"
+       id="linearGradient3670"
+       xlink:href="#linearGradient3672"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.6468531,0,0,3.6468531,-431.03019,-1702.9991)"
+       spreadMethod="reflect" />
+    <filter
+       id="filter3630"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         stdDeviation="0.90110807"
+         id="feGaussianBlur3632" />
+    </filter>
+  </defs>
+  <text
+     x="1.9332228"
+     y="139.98305"
+     transform="matrix(1.1694716,-0.29456694,0,0.85508701,0,0)"
+     id="text4459"
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0pt;text-align:start;text-decoration:none;line-height:100%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;text-anchor:start;opacity:0.5;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;filter:url(#filter3630);font-family:Mekanik LET"><tspan
+       x="1.9332228"
+       y="139.98305"
+       id="tspan3182"
+       style="letter-spacing:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:3;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" /></text>
+  <text
+     x="1.9332228"
+     y="139.98305"
+     transform="matrix(1.1694716,-0.29456694,0,0.85508701,0,0)"
+     id="text2850"
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0pt;text-align:start;text-decoration:none;line-height:100%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:url(#linearGradient3670);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;font-family:Mekanik LET"><tspan
+       x="1.9332228"
+       y="139.98305"
+       id="tspan2852"
+       style="letter-spacing:normal;fill:#000000;fill-opacity:1;stroke:url(#linearGradient3670);stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" /></text>
+</svg>
