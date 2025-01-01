@@ -1,0 +1,282 @@
+<?php
+
+/*
+ * AnnieDeBrowsa/template.phtml
+ *
+ * Copyright 2023 @ajaxStardust <ajaxStardust@duck.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
+
+header('Access-Control-Allow-Origin: *');  // ENABLE CORS (Cross-Origin Request) policy allow all - CAUTION: not-ready-for-prime-time player
+date_default_timezone_set('EST');
+$page_heading = 'Brad Traversy&apos;s Laravel Tutorial - Dec. 01, 2022';
+if ($page_heading == '&#x201c;Simple Template&#x201d;') {
+    $real_page_heading = pathinfo(__FILE__, PATHINFO_FILENAME);
+} else {
+    $real_page_heading = $page_heading;
+}
+$pathinfo_basename = pathinfo(__FILE__, PATHINFO_BASENAME);
+$title_name = pathinfo(__FILE__, PATHINFO_FILENAME);
+$title = 'AnnieDeBrowsa - Filename ' . $pathinfo_basename;
+$lastMod = 'Modified: ' . date('D M j Y G:i:s T', getlastmod());
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileImage" content="favicon.webp">
+    <title>
+        <?php print $title; ?>
+    </title>
+    <link rel="icon" type="image/ico" href="favicon.ico" sizes="16x16">
+    <link rel="shortcut icon" type="image/webp" href="favicon.webp">
+    <link rel="icon" href="favicon.ico" sizes="32x32">
+    <link rel="icon" href="favicon.ico" sizes="192x192">
+    <link rel="apple-touch-icon" href="favicon.webp">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- BOOTSTRAP STYLE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="assets/css/notes.css" rel="stylesheet">
+    <style>
+    .tsw {
+        font-family: "roboto";
+        font-size: 1.2rem;
+        font-style: italic;
+    }
+    .S0 {
+        font-family: "roboto mono";
+        font-size: 10pt;
+        font-style: italic;
+    }
+   .S1 {
+        font-family: "roboto mono";
+        color: #000080;
+        font-size: 10pt;
+    }
+    $red: #f98ca4;
+$blue: #4ad9db;
+$green: #65f283;
+$orange: #f5b10b;
+
+$darkblue: #2f3e9c;
+$darkred: #9e132c;
+$purple:#6e1f58;
+
+$outline: 2px;
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	background:linear-gradient(10deg, rgba(244,235,160,1) 43%,rgba(192,250,202,1) 43%);
+}
+
+h1 {	
+	font-family: 'CoreCircus', sans-serif;
+	text-transform: uppercase;
+	font-size: 16vw;
+	text-align: center;
+	line-height: 1;
+	margin: 0;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	position: absolute;
+	color: $red;
+	text-shadow: 
+			-1px -1px 0 $purple, 1px -1px 0 $purple, -1px 1px 0 $purple, 1px 1px 0 $purple, 
+			1px 0px 0px $green, 0px 1px 0px $green, 2px 1px 0px $green, 1px 2px 0px $green, 3px 2px 0px $green, 2px 3px 0px $green, 4px 3px 0px $green, 3px 4px 0px $green, 5px 4px 0px $green,
+			3px 5px 0px $purple, 6px 5px 0px $purple, 
+			-1px 2px 0 black, 0 3px 0 $purple, 1px 4px 0 $purple, 2px 5px 0px $purple,
+			2px -1px 0 $purple, 3px 0 0 $purple, 4px 1px 0 $purple, 5px 2px 0px $purple, 6px 3px 0 $purple, 7px 4px 0 $purple,
+		10px 10px 4px #dac249;
+	
+	&:after,
+	&:before {
+		content: attr(data-heading);
+		position: absolute;
+		overflow: hidden;
+		left: 0;		
+		width: 100%;
+		top: 0;
+		z-index: 5;
+	}
+	
+	&:before {
+		
+		text-shadow: 
+			-1px -1px 0 $darkred, 1px -1px 0 $darkred, -1px 1px 0 $darkred, 1px 1px 0 $darkred, 
+			1px 0px 0px $orange, 0px 1px 0px $orange, 2px 1px 0px $orange, 1px 2px 0px $orange, 3px 2px 0px $orange, 2px 3px 0px $orange, 4px 3px 0px $orange, 3px 4px 0px $orange, 5px 4px 0px $orange,
+			3px 5px 0px $darkred, 6px 5px 0px $darkred, 
+			-1px 2px 0 black, 0 3px 0 $darkred, 1px 4px 0 $darkred, 2px 5px 0px $darkred,
+			2px -1px 0 $darkred, 3px 0 0 $darkblue, 4px 1px 0 $darkred, 5px 2px 0px $darkred, 6px 3px 0 $darkred, 7px 4px 0 $darkred,
+			10px 10px 4px rgba(#6af177, .8);
+		color: $green;
+		height: 66%;
+	}
+	
+	&:after {
+		height: 33%;
+		color: $blue;
+		text-shadow: 
+			-1px -1px 0 $darkblue, 1px -1px 0 $darkblue, -1px 1px 0 $darkblue, 1px 1px 0 $darkblue, 
+			1px 0px 0px $red, 0px 1px 0px $red, 2px 1px 0px $red, 1px 2px 0px $red, 3px 2px 0px $red, 2px 3px 0px $red, 4px 3px 0px $red, 3px 4px 0px $red, 5px 4px 0px $red,
+			3px 5px 0px $darkblue, 6px 5px 0px $darkblue, 
+			-1px 2px 0 black, 0 3px 0 $darkblue, 1px 4px 0 $darkblue, 2px 5px 0px $darkblue,
+			2px -1px 0 $darkblue, 3px 0 0 $darkblue, 4px 1px 0 $darkblue, 5px 2px 0px $darkblue, 6px 3px 0 $darkblue, 7px 4px 0 $darkblue;
+	}
+}
+
+/*
+ * Webfont: CoreCircus by S-Core
+ * URL: http://www.myfonts.com/fonts/s-core/core-circus/regular/
+ * Copyright: Copyright (c) 2013 by S-Core Co., Ltd.. All rights reserved.
+ * Licensed pageviews: 10,000
+*
+ * Webfont: CoreCircus2DDot1 by S-Core
+ * URL: http://www.myfonts.com/fonts/s-core/core-circus/dot1/
+ * Copyright: Copyright (c) 2013 by S-Core Co., Ltd.. All rights reserved.
+ * Licensed pageviews: 10,000
+*/
+
+@font-face {
+	font-family: 'CoreCircus2DDot1';
+	src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/333BF4_1_0.eot');
+	src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/333BF4_1_0.eot?#iefix') format('embedded-opentype'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/333BF4_1_0.woff2') format('woff2'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/333BF4_1_0.woff') format('woff'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/333BF4_1_0.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'CoreCircus';
+	src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/333BF4_8_0.eot');
+	src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/333BF4_8_0.eot?#iefix') format('embedded-opentype'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/333BF4_8_0.woff2') format('woff2'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/333BF4_8_0.woff') format('woff'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/333BF4_8_0.ttf') format('truetype');}
+
+	
+	@font-face {font-family: 'CoreCircusPierrot4';src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/333BF4_13_0.eot');src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/333BF4_13_0.eot?#iefix') format('embedded-opentype'),url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/333BF4_13_0.woff2') format('woff2'),url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/333BF4_13_0.woff') format('woff'),url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/333BF4_13_0.ttf') format('truetype');}
+        
+        $bg: #e6e2df;
+
+html, body {
+	height: 100%;
+}
+
+body {
+	background: linear-gradient(45deg, $bg 80%,#c2c1bd 100%);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.wrapper {
+	width: 100%;
+	font-family: 'Source Code Pro', monospace;
+	margin: 0 auto;
+	height: 100%;
+	
+	h1 {
+		text-transform: uppercase;
+		transform: translate(-50%, -50%) skew(10deg) rotate(-10deg);
+		font-size: 20vw;
+		top: 50%;
+		left: 50%;
+		margin: 0;
+		position: absolute;
+		text-rendering: optimizeLegibility;
+		font-weight: 900;
+		color: rgba(#ff9eb1, 0.5);
+		text-shadow: 1px 4px 6px $bg, 0 0 0 #66303a, 1px 4px 6px $bg;
+		white-space: nowrap;
+		
+		&:before {
+			content: attr(data-heading);
+			position: absolute;
+			left: 0;
+			top: -4.8%;
+			overflow: hidden;
+			width: 100%;
+			height: 50%;
+			color: #fbf7f4;
+			transform: translate(1.6vw, 0) skew(-13deg) scale(1, 1.2);
+			z-index: 2;
+			text-shadow: 2px -1px 6px rgba(0,0,0,0.2);
+		}
+		
+		&:after {
+			content: attr(data-heading);
+			position: absolute;
+			left: 0;
+			top: 0;
+			overflow: hidden;
+			width: 100%;
+			height: 100%;
+			z-index: 1;
+			color: #d3cfcc;
+			transform: translate(0vw, 0) skew(13deg) scale(1, 0.8);
+			clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0% 100%);
+			text-shadow: 2px -1px 6px rgba(0,0,0,0.3);
+		}
+	}
+}
+    </style>
+    <script>
+        // JS for content editable trick from Chris Coyier
+
+var h1 = document.querySelector("h1");
+
+h1.addEventListener("input", function() {
+  this.setAttribute("data-heading", this.innerText);
+});
+// JS for content editable trick from Chris Coyier
+
+var h1 = document.querySelector("h1");
+
+h1.addEventListener("input", function() {
+  this.setAttribute("data-heading", this.innerText);
+});
+    </script>
+</head>
+
+<body>
+  <!--    ^:begin    id:pagewidth    ^    -->
+  <div id="pagewidth" class="container">
+
+    <!--    ^:begin    class:content    ^    -->
+    <div class="content">
+    <section id="header">  
+        <!--h1 class="bg-dark text-light text-end pe-3"><?php /* print $real_page_heading; */ ?></!--h1 -->
+        <h1 contenteditable data-heading="Piece of Cake">Piece of Cake</h1>
+	</section>
+    <section>
+	<div class="wrapper">
+	<h1 contenteditable data-heading="Folded">Folded</h1>
+</div>
+</section>
+    <section class="footer px-4">                   <!--    .FOOTER     -->
+        <div class="row gx-5">
+            <div class="col"><div class="p-3 border bg-light"><?php print $title_name; ?> is based on Notes by <a href="https://github.com/ajaxStardust" target="_blank" title="View original">@ajaxStardust</a> <em>Laravel</em> notes:</div></div>
+            <div class="col"><div class="p-3 border bg-light text-end"><kbd><?php echo $lastMod; ?></kbd></div></div>
+        </div>
+    </section>      
+    </div>
+    </div><!--    $ :end    END class.content (former id.maincol)    $    -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

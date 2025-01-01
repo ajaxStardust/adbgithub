@@ -1,187 +1,152 @@
 <?php
+// ENABLE CORS (Cross-Origin Request) policy allow all
+error_reporting(E_ALL);
 
-header('Access-Control-Allow-Origin: *');  // ENABLE CORS (Cross-Origin Request) policy allow all
+header('Access-Control-Allow-Origin: *');
 date_default_timezone_set('America/New_York');
 $lastMod = 'Modified: ' . date('D M j Y G:i:s T', getlastmod());
-
+if (!empty($GLOBALS['_REQUEST']['path2url'])) {
+    define('REQUESTURL', $GLOBALS['_REQUEST']['path2url']);
+}
 if (!defined('ABSOLUTELOCATION')) {
-    define('ABSOLUTELOCATION', rtrim(dirname(__FILE__), 'inc'));
+    define('ABSOLUTELOCATION', dirname(__FILE__));
 }
 $abspath = ABSOLUTELOCATION;
-
 $page_heading = 'Convert System Path to HTTP URL';
-$title = 'p2u2 - ' . ABSOLUTELOCATION;
+if ($page_heading == '&#x201c;Simple Template&#x201d;') {
+    $real_page_heading = pathinfo(__FILE__, PATHINFO_FILENAME);
+} else {
+    $real_page_heading = $page_heading;
+}
+$pathinfo_basename = pathinfo(__FILE__, PATHINFO_BASENAME);
+$title_name = pathinfo(__FILE__, PATHINFO_FILENAME);
+$title = ABSOLUTELOCATION . ' @ ' . $pathinfo_basename;
+$REQUEST_SCHEME = !empty($_SERVER['REQUEST_SCHEME']) ? $_SERVER['REQUEST_SCHEME'] : 'https';
+
 $serversoftware = $_SERVER['SERVER_SOFTWARE'];
-$server_name = $_SERVER['SERVER_NAME'] ? $_SERVER['SERVER_NAME'] : $_SERVER['SERVER_ADDR'];
+$server_name = $_SERVER['SERVER_NAME'] ? $_SERVER['SERVER_NAME'] : $_SERVER['HTTP_HOST'];
 $server_addr = $_SERVER['SERVER_ADDR'] ? $_SERVER['SERVER_ADDR'] : $_SERVER['SERVER_NAME'];
 $servername = $server_name;
-if (preg_match('@10\.0\.0\.\d+|192\.\d+\.\d+\.\d+|127\.\d+\.\d+\.\d+@', $server_addr)) {
+if (preg_match('@::1|10\.0\.0\.\d+|192\.\d\.\d\.\d+|127\.\d\.\d\.\d+@', $server_addr)) {
     $abspath = '<code class="info">' . $abspath . '</code>';
 } else {
-    $abspath = 'is simply a PHP value which relies on server variables<code>define( ABSOLUTELOCATION , rtrim(dirname(__FILE__), inc))</code>';
+    $abspath = '<div class="info">Uses  PHP Variables like <code>define( ABSOLUTELOCATION , dirname(__FILE__))</code>. E.g. See ABSPATH in WordPress.</div>';
+}
+
+function extract_path_components($url)
+{
+    $components = [];
+    // Define a regular expression pattern to match directory components
+    $components['pattern'] = '/(?:^|\/)([^\/]+)/';
+    if (is_array($url)) {
+        $loop_num = count($url);
+        $components['component'] = [];
+        for ($loop = 0; $loop < $loop_num; $loop++) {
+            // foreach($url as $uKey => $uVal){
+
+           // echo '<br>var_dump(url[input_string]): ' .  /* var_dump($url['input_string']) */  '<br>';
+           // echo '<br>var_dump(url[url_2_convert]): ' .  /* var_dump($url['url_2_convert']) */   '<br>';
+            preg_match_all($components['pattern'], $url['url_2_convert'], $matches_lvl1);
+            $components['component'][$loop] = $matches_lvl1[1][$loop];
+            // }
+        }
+        // Extract the matched components from the $components['matches2'] array
+    }
+    // Perform the regular expression match
+    // preg_match_all($components['pattern'], $url['input_string'], $components['matches2'][]);
+
+    // Extract the matched components from the $components['matches2'] array
+    // $components['component'] = $components['matches2'][0];
+
+    // Return the extracted components
+    return $components;
 }
 
 function clean_url_chars($url_2_convert)
 {
-    // if(!preg_match('@/var/www/html@', $_GET['path2url'])){
-    if (!empty($_GET['path2url'])) {
-        $url_2_convert = preg_replace('/"/', '', $url_2_convert);
-        $url_2_convert = preg_replace('/ /', '%20', $url_2_convert);
+    $clean_chars = [];
+    $clean_chars['input_string'] = $url_2_convert;
+    $clean_chars['url_2_convert'] = $clean_chars['input_string'];
+    $clean_chars['url_2_convert'] = str_ireplace('ftp(4000):', '', $clean_chars['url_2_convert']);
+    $clean_chars['url_2_convert'] = str_ireplace('file://', '', $clean_chars['url_2_convert']);
+    $clean_chars['url_2_convert'] = str_ireplace('wsl.localhost\Debian', '', $clean_chars['url_2_convert']);
+    $clean_chars['url_2_convert'] = str_ireplace('wsl.localhost\kali-rolling', '', $clean_chars['url_2_convert']);
+    $clean_chars['url_2_convert'] = str_ireplace('wsl.localhost\[DistroName]', '', $clean_chars['url_2_convert']);
+    $clean_chars['url_2_convert'] = preg_replace('@([\x5c\x2f]+)@', '/', $clean_chars['url_2_convert']);
+    $clean_chars['url_2_convert'] = preg_replace('/"/', '', $clean_chars['url_2_convert']);
+    $clean_chars['url_2_convert'] = preg_replace('/ /', '%20', $clean_chars['url_2_convert']);
+    $clean_chars['url_2_convert'] = preg_replace('/%20$/', '', $clean_chars['url_2_convert']);
 
-        $url_2_convert = str_ireplace('file://', '', $url_2_convert);
-        $url_2_convert = preg_replace('@([\x5c\x2f])@', '/', $url_2_convert);
-    }
-    return $url_2_convert;
+if (preg_match('/\/mxuni\/www\/([^\/]+)\//', $clean_chars['url_2_convert'], $matches)) {
+    $clean_chars['server_name'] = "mxuni"; // Default server name
+    $clean_chars['third_level_dir'] = $matches[1];
+    $clean_chars['full_server_name'] = (
+        $clean_chars['third_level_dir'] !== $clean_chars['server_name']) ? $clean_chars['third_level_dir'] . '.' . $clean_chars['server_name'] : $clean_chars['server_name'];
+
+    // Extract the filename
+    $clean_chars['basename'] = basename($clean_chars['url_2_convert']);
+
+    $clean_chars['url_converted'] = $clean_chars['full_server_name'] . '/' .   $clean_chars['basename'];
+
+    // Construct the processed URL
+    $clean_chars['processed_url'] = "/".$clean_chars['full_server_name']."/".$clean_chars['basename'];
+    $clean_chars['url_2_convert'] = $clean_chars['processed_url'];
 }
 
-function filter_path_to_url($get_path2url,$servername,$server_addr){
-                    if (!empty($get_path2url)) {
-                        echo '<br>$_GET[path2url] = <strong class="red">' . $_GET['path2url'] . '</strong><br>';
-                        $strirep = clean_url_chars($_GET['path2url']);
+    // Clean URL characters
+    // Load JSON configuration
+    $clean_chars['config_file'] = './config.json';
+    $clean_chars['config_data'] = file_get_contents($clean_chars['config_file']);
+    $clean_chars['config_data'] = json_decode($clean_chars['config_data']);
+    $clean_chars['config_data'] = json_encode($clean_chars['config_data']);
+    // $clean_chars['config'] = json_decode($clean_chars['config_data'], true);
+   // echo '<br>in ' . __FUNCTION__ . ' var_dump(config_data) @line ' . __LINE__ . '<br>' /* var_dump($clean_chars['config_data']) */ ;
+    // echo '<br>in '.__FUNCTION__.' var_dump(config_data) @line ' .__LINE__.'<br>'. /* var_dump($clean_chars['config_data']) */ ;
+   // echo '<br>in ' . __FUNCTION__ . ' var_dup(url_2_convert) @line ' . __LINE__ . '<br>'  /* var_dump($url_2_convert) */ ;
 
-                        echo '<br>clean_url_chars($_GET[path2url]) { <strong class="red">' . $strirep . '</strong> }<br>';
-                        //   echo '<br>$_SERVER[DOCUMENT_ROOT] = '.$_SERVER['DOCUMENT_ROOT'].' @line: '.__LINE__.'<br>';
-                        // SET THIS STRING TO THE LAN WINDOWS PATH OF LINUX SYSTEM:
-                        if (preg_match('@([\x5c\x2f]{1,2})(wsl\.localhost[\x5c\x2f]{1,2})([^\x5c\x2f]+)@', $strirep)) {
-                            $strirep = preg_replace('@([\x5c\x2f])(wsl\.localhost[\x5c\x2f])([^\x5c\x2f]+)@', '', $strirep);
+    // Your existing cleaning logic here...
 
-                            $servername = 'wsldebian';
-                        } else {
-                            $servername = !empty($servername) ? $servername : $server_addr;
+    // Match the incoming URL with Samba paths in the configuration
+    $fes = 0;
+    if (is_array($clean_chars['config_data'])) {
+        foreach ($clean_chars['config_data'] as $server => $data) {
+            $pattern = str_replace('\\', '\\\\', $server[$fes]);  // Escape backslashes for regex
+            if (preg_match('@' . $pattern . '\/([^\/]+)@', $clean_chars['url_2_convert'], $matches)) {
+                $clean_chars['server_name'] = $server[$fes];
+                $clean_chars['third_level_dir'] = $matches[1];
+                $clean_chars['full_server_name'] = ($clean_chars['third_level_dir'] !== $clean_chars['server_name']) ? $clean_chars['third_level_dir'] . '.' . $clean_chars['server_name'] : $clean_chars['server_name'];
 
-                            /* $servername = empty($server_name) ? $servername : $server_name; */
-                        }
-                        switch ($strirep) {
-                            case (preg_match('@[Zz]:[\\\\/]@', $strirep) ? true : false):
-                                $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
-                                $strirep = str_ireplace('Z:\\', '', $strirep);
-                                $servername = 'mxlinux-21';
-                                $servername = !empty($servername) ? $servername : $server_addr;
-                                /* $servername = empty($server_name) ? $servername : $server_name; */
-                                break;
-                            case (preg_match('@[Ww]:[\\\\/]@', $strirep) ? true : false):
-                                $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
-                                $strirep = str_ireplace('W:\\', '', $strirep);
-                                $servername = 'mx23';
-                                $servername = !empty($servername) ? $servername : $server_addr;
+                // Extract the filename and construct the processed URL
+                $clean_chars['basename'] = basename($clean_chars['url_2_convert']);
+                $clean_chars['processed_url'] = 'http://' . $clean_chars['full_server_name'] . '/' . $clean_chars['basename'];
+                $clean_chars['url_2_convert'] = $clean_chars['processed_url'];
 
-                                /* $servername = empty($server_name) ? $servername : $server_name; */
-                                break;
-                            case (preg_match('@/var/www/html@', $strirep) ? true : false):
-                                $strirep = str_ireplace('/var/www/html/', '', $strirep);
+                // No need to continue matching if a match is found
+                break;
+            }
+            $fes++;
+        }
+    }
 
-                                if (preg_match('@^([Yy]:)@', $strirep)) {
-                                    $strirep = preg_replace('@^(\w:)@', '', $strirep);
-                                    $servername = 'wsldebian';
-                                    $servername = !empty($servername) ? $servername : $server_addr;
+    // Your existing logic for path component extraction, etc.
 
-                                    /* $servername = empty($server_name) ? $servername : $server_name; */
-                                } else {
-                                    $servername = !empty($servername) ? $servername : $server_addr;
+    // Return the cleaned URL characters and extracted path components
+    /*     return [
+            'clean_url' => $clean_chars['url_2_convert'],
+            'path_components' => $path_components
+        ]; */
+    return $clean_chars;
+}
 
-                                    /* $servername = empty($server_name) ? $servername : $server_name; */
-                                }
 
-                                break;
-                            case (preg_match('/.*mxlinux.*/', $strirep) ? true : false):
-                                $strirep = preg_replace('@([\x5c\x2f]*)(mxlinux\-21)([\x5c\x2f]*)(html)@', '\\', $strirep);
-                                $servername = 'mxlinux-21';
-                                $servername = !empty($servername) ? $servername : $server_addr;
 
-                                /* $servername = empty($server_name) ? $servername : $server_name; */
-                                break;
-
-                            case ((preg_match('/.*mx23.*/', $strirep)) ? true : false):
-                                if (preg_match('/[dD]evelopment[\x5c\x2f]/', $strirep)) {
-                                    $pattern = '@([\x5c\x2f]{1,2})(mx23[\x5c\x2f]{1,2})(flux_mount[\x5c\x2f]{1,2})([Dd]evelopment)([\x5c\x2f]{1,2})(Apache2[\x5c\x2f]{1,2})(htdocs[\x5c\x2f]{0,2})@';
-                                    $replace = '';
-                                    $strirep = preg_replace($pattern, $replace, $strirep);
-                                    $servername = 'devalt.mx23';
-                                    $servername = !empty($servername) ? $servername : $server_addr;
-
-                                    /* $servername = empty($server_name) ? $servername : $server_name; */
-                                } elseif (preg_match('/[dD]evel[\x5c\x2f]/', $strirep)) {
-                                    $pattern = '@([\x5c\x2f]{1,2})(mx23[\x5c\x2f]{1,2})(flux_mount[\x5c\x2f]{1,2})([Dd]evel)([\x5c\x2f]{1,2})(Apache2[\x5c\x2f]{1,2})(htdocs[\x5c\x2f]{0,2})@';
-                                    $replace = '';
-                                    $strirep = preg_replace($pattern, $replace, $strirep);
-                                    $servername = 'devel.mx23';
-                                    $servername = !empty($servername) ? $servername : $server_addr;
-
-                                    /* $servername = empty($server_name) ? $servername : $server_name; */
-                                } else {
-                                    $strirep = preg_replace('@([\x5c\x2f]*)(mx23)([\x5c\x2f]*)(html)@', '\\', $strirep);
-                                    $servername = 'mx23';
-                                    $servername = !empty($servername) ? $servername : $server_addr;
-                                    /*
-                                     * $servername = empty($server_name) ? $servername : $server_name;
-                                     */
-                                }
-                                break;
-
-                            case (preg_match('@[Vv]:[\x5c\x2f]{1,2}[Dd]evelopment@', $strirep) ? true : false):
-                                $strirep = preg_replace('@([\x5c\x2f])@', '/', $strirep);
-                                $strirep = str_ireplace('V:/Development/Apache2/htdocs', '', $strirep);
-                                $strirep = str_ireplace('V:\Development\Apache2\htdocs', '', $strirep);
-                                $servername = 'devalt.mx23';
-                                $servername = !empty($servername) ? $servername : $server_addr;
-
-                                /* $servername = empty($server_name) ? $servername : $server_name; */
-                                break;
-                            case (preg_match('@[Vv]:[\x5c\x2f]{1,2}[Dd]evel@', $strirep) ? true : false):
-                                $strirep = preg_replace('@([\x5c\x2f])@', '/', $strirep);
-                                $strirep = str_ireplace('V:/Devel/Apache2/htdocs', '', $strirep);
-                                $strirep = str_ireplace('V:\Devel\Apache2\htdocs', '', $strirep);
-                                $servername = 'devel.mx23';
-                                $servername = !empty($servername) ? $servername : $server_addr;
-
-                                /* $servername = empty($server_name) ? $servername : $server_name; */
-                                break;
-
-                            case (preg_match('@[Cc]:[\\\\/]@', $strirep) ? true : false):
-                                if (preg_match('@[Cc]:[\\\\/]Apache2@', $strirep)) {
-                                    $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
-                                    $strirep = str_ireplace('C:\\Apache2\\htdocs\\', '', $strirep);
-                                    $servername = 'beelink.localhost';
-                                    $servername = !empty($servername) ? $servername : $server_addr;
-
-                                    /* $servername = empty($server_name) ? $servername : $server_name; */
-                                } elseif (preg_match('@[Cc]:[\\\\/]Users@', $strirep)) {
-                                    $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
-                                    $strirep = str_ireplace('C:\\Users\\jsaba\\OneDrive\\Documents\\GitHub\\', '', $strirep);
-                                    $servername = 'github.localhost';
-                                    $servername = !empty($servername) ? $servername : $server_addr;
-
-                                    /* $servername = empty($server_name) ? $servername : $server_name; */
-                                } else {
-                                    $strirep = preg_replace('@([\x5c\x2f])@', '\\', $strirep);
-                                    $strirep = str_ireplace('C:\\Portable\\_temp_\\_Global_Bak_Text_n_IDE\\', '', $strirep);
-                                    $servername = 'portable.localhost';
-                                    $servername = !empty($servername) ? $servername : $server_addr;
-
-                                    /* $servername = empty($server_name) ? $servername : $server_name; */
-                                }
-
-                                $servername = !empty($servername) ? $servername : $server_addr;
-
-                                /* $servername = empty($server_name) ? $servername : $server_name; */
-                                break;
-                        }
-
-                        $strirep = preg_replace('@([\x5c\x2f]+)@', '/', $strirep);
-                        $servername = !empty($servername) ? $servername : $server_addr;
-
-                        /* $servername = empty($server_name) ? $servername : $server_name; */
-
-                        $url_result = 'http://' . $servername . '/' . ltrim($strirep, '/');
-                        $http_url_final = '<br><strong>Click URL:</strong><br> <a href="' . $url_result . '" title="' . $strirep . '" target="_blank">' . $url_result . '</a>';
-                        echo $http_url_final;
-                    }
+function chop_varwww($regexsearch, $replaceref, $strirep)
+{
+    return preg_replace($regexsearch, '$4', $strirep);
 }
 
 require 'public/class/class-cwthumbs.php';
-
 $cwThumbsClass = new cwThumbs;
-
 if (isset($_POST['imgDirSearch'])) {
     $newimagesdir = $_POST['imgDirSearch'];
     if (is_dir($newimagesdir)) {
@@ -197,10 +162,57 @@ if (isset($_POST['imgDirSearch'])) {
     $number_of = count($cwThumbs);
     $notice_of_images = "<h4>Info:</h4><p>Found $number_of screenshots.</p>";
 }
-
 $imgDir = $cwThumbsClass->imagesDir;
 $imgNumber = $cwThumbsClass->thumbsCount;
+$enterpathhere = isset($_GET['path2url']) ? $_GET['path2url'] : '\wsl.localhost\Debian\var\www\html\aitrainer';
+$nav_pathInfo = pathinfo(__FILE__, PATHINFO_ALL);
 
+function filter_path($url, $servername, $server_addr)
+{
+    /**
+     * to see everything, uncomment this var
+     * $filtered_path = $_SERVER;
+     */
+    $filtered_path['url'] = $url;
+    $filtered_path['servername'] = $servername;
+    $filtered_path['server_addr'] = $server_addr;
+    $filtered_path['servername'] = !empty($filtered_path['servername']) ? $filtered_path['servername'] : $filtered_path['server_addr'];
+    return $filtered_path['servername'];
+}
+
+$goUp = [];
+
+$goUp['subject'] = $nav_pathInfo['dirname'];
+$goUp['replace'] = '';
+$goUp['search'] = '@^(.*(/)(?=.*))@';
+$goUp['result'] = preg_replace($goUp['search'], $goUp['replace'], $goUp['subject']);
+$goUp['url'] = str_ireplace($goUp['result'], $goUp['replace'], $goUp['subject']);
+$goUp['url'] = preg_replace('/([^\/]+\/)+([^\/]+)/', '$2', $goUp['url']);
+// $goUp['url'] = filter_path($_SERVER['DOCUMENT_ROOT'],$servername,$server_addr).$goUp['url'];
+
+$depth = substr_count($goUp['subject'], '/');
+/** DEBUG OUTPUT */
+// $current_test = filter_path( ABSOLUTELOCATION, $servername, $server_addr );
+$current_test = '/var/www/html/uplab/index.php';
+// $debugging_current = extract_path_components(clean_url_chars($current_test));
+
+// $debugging_abspath = extract_path_components(clean_url_chars(ABSOLUTELOCATION));
+// $debugging_navpathdir = extract_path_components($nav_pathInfo['dirname']);
+$debugging_path2url = extract_path_components(clean_url_chars($enterpathhere));
+// $newViableUrl = extract_path_components(clean_url_chars($enterpathhere));
+if(is_array($debugging_path2url['component'])) {
+    $desired_components = [];
+    foreach($debugging_path2url['component'] as $key => $val)
+    $desired_components[$key] = $val;
+}
+/*
+ * . '" target="_blank">'
+ * .
+ * . $clean_url_chars['full_server_name']
+ * . '/'
+ * . preg_replace($regexsearch, '$4', $clean_url_chars['basename'])
+ * . '</a>
+ */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -215,16 +227,51 @@ $imgNumber = $cwThumbsClass->thumbsCount;
     <link rel="icon" type="image/ico" href="favicon.ico">
     <link rel="shortcut icon" type="image/ico" href="favicon.ico">
     <style>
-    /** if needed add style here */
+    .thin {
+        font-weight: 100;
+        font-weight: lighter;
+    }
     </style>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <!-- link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css" -->
+    <!-- SPECTRE CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- BOOTSTRAP STYLE -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/notes.css" rel="stylesheet">
+    <link href="assets/css/lightslider.css" rel="stylesheet">
 
-    <link href="assets/css/notes.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="assets/css/lightslider.css">
     <style>
+    .clear {
+        clear: none;
+    }
+
+    .clear::before {
+        content: '\00000a\00000d';
+        clear: both;
+    }
+
+    .regex-input,
+    .regex-pattern,
+    .regex-replace {
+        font-family: consolas, curior, monospace;
+        font-size: smaller;
+    }
+
+    .regex-input {
+        color: red;
+    }
+
+    .regex-pattern {
+        color: blue;
+    }
+
+    .regex-replace {
+        color: green;
+    }
+
     ul {
         list-style: none outside none;
         padding-left: 0;
@@ -272,26 +319,264 @@ $imgNumber = $cwThumbsClass->thumbsCount;
         });
     });
     </script>
-
 </head>
 
 <body>
-
     <div id="pagewidth" class="container">
 
-        <section id="slideshow">
-            <!-- #HEADER -->
-            <h1 class="bg-dark text-light text-end pe-3">Slideshow with Form</h1>
-            <form action="<?php $_SERVER['PHP_SELF']; ?>" id="p2u2top">
-                <input type="text" name="path2url">
-                <input type="submit" name="convert">
-            </form>
+        <!-- #HEADER -->
+        <section id="header">
+            <h1 class="bg-dark text-light text-end pe-3 h1"><?php /*    echo $page_heading; */ ?></h1>
+
+        </section>
+        <section>
+            <div class="row  row-cols-1 row-cols-md-2 g-4">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="h5">New Approach</h5>
+                            <div>
+                                <?php
+
+                                    $extract_components = extract_path_components(clean_url_chars($enterpathhere));
+                                    $new_url_concat = '';
+                                    
+                                    $feloop = 0;
+                                    $_dynamichost = $_SERVER['HTTP_HOST'];
+                                    foreach ($debugging_path2url as $nUrlKey => $nUrlVal) {
+                                        
+                                        if ($nUrlKey == 'component') {
+                                            $tc = 0;
+                                            foreach($nUrlVal as $this_component => $this_val){
+                                                echo 'this_component: ' . $this_component.': '.$this_val.'<br>';
+                                               
+                                                if($this_component == 0 && preg_match('/\./',$this_val)){
+                                                    
+                                                    $tc = 1;
+
+                                                    // $new_url_concat .= $this_val.'/';
+                                                    $_dynamichost = $nUrlVal[0];
+
+                                                }
+                                                elseif(($_dynamichost != $_SERVER['HTTP_HOST']) && $this_component < 2){
+                                                    $new_url_concat .= $this_val.'/';
+                                                    break;
+
+                                                }
+                                                elseif($this_component > 2){
+                                                    
+                                                    $new_url_concat .= $this_val.'/';
+                                                }
+                                                
+                                            }
+                                        }
+                                        elseif ($nUrlKey == 'component') {
+                                            if ($feloop > 2) {
+                                                echo '<br>nUrlKey['.$nUrlKey.'][' . $feloop . ']: @' . __LINE__ . ' == ' . $nUrlKey[$nUrlKey][$feloop] . ' is concat to new_url_concat.';
+                                            }
+                                            /* echo '<br>nUrlKey > 2 :: var_dump(nUrlVal) @line ' . __LINE__ . '== <br>' /* .   var_dump($nUrlVal) ; */
+
+                                            /* echo '<br>var_dump(nUrlVal[$nUrlKey]) @line ' . __LINE__ . ' == <br>' /* .   var_dump($nUrlVal) ; */
+                                            if ($feloop > 2) {
+                                                echo '<br>nUrlVal['.$nUrlKey.'][' . $feloop . ']: @' . __LINE__ . ' == ' . $nUrlVal[$nUrlKey][$feloop] . ' is concat to new_url_concat.';
+                                                $new_url_concat .= $nUrlVal[$nUrlKey][$feloop];
+                                            } else {
+                                                echo '<br>nUrlVal['.$nUrlKey.'][' . $feloop . ']: @' . __LINE__ . ' == ' . $nUrlVal[0][$feloop] . ' is concat to new_url_concat.';
+                                                $new_url_concat .= $nUrlVal[$nUrlKey][$feloop];
+                                            }
+                                        }
+                                        
+                                        $feloop++;
+                                    
+                                    }
+                                    $new_url_concat = rtrim($new_url_concat, '/');
+                                    
+                                echo '<div>
+                                <p>new_url_concat: ' . $new_url_concat . '</p>
+                                <p>New URL Construct:<br> _SRVR[REQUEST_SCHEME] . :// . SRVR[HTTP_HOST] . new_url_concat ==</p>
+                                <p><a href="' . $_SERVER['REQUEST_SCHEME'] . '://' . $_dynamichost . '/' . $new_url_concat . '" target="_blank">'
+                                        . $_SERVER['REQUEST_SCHEME'] . '://' . $_dynamichost . '/' . $new_url_concat
+                                        . '</a></p>
+                                </div>';
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
 
 
-            <?php
-        filter_path_to_url($_GET,$servername,$server_addr);
+                        <div class="card-body">
+                            <h5 class="h5">URL Processing</h5>
+                            <?php $CalculonAndJeff = clean_url_chars($enterpathhere); ?>
+                            <div><?php echo 'calculonandjeff<br>' . "\n" /* .   var_dump($CalculonAndJeff) */ ; ?></div>
+                            <form id="fixtheurl">
+                                <select id="prefix">
+                                    <?php foreach ($CalculonAndJeff as $key => $value): ?>
+                                    <option value="<?php echo $key; ?>"><?php echo $key; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <select id="suffix">
+                                    <?php foreach ($CalculonAndJeff as $key => $value): ?>
+                                    <option value="<?php echo $key; ?>"><?php echo $key; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </form>
+                        </div>
+                        <div>
+                            <h5 class="h5">URL Processing v2</h5>
+                            <div id="click_url" class="clear" style="clear:both;">
+                                <div class="clear" id="listContainer">Iterate over...<br>
+                                    <ol>
+                                        <!-- Iterate over the $CalculonAndJeff array and display URL processing details -->
+                                        <?php foreach ($CalculonAndJeff as $key => $value): ?>
+                                        <li id="<?php echo $key; ?>">
+                                            <span><?php echo $key; ?></span>
+                                            : <?php echo $value; ?>
+                                        </li>
+                                        <?php endforeach; ?>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                        // Function to fetch and populate the dropdowns dynamically
+                        function populateDropdowns() {
+                            // Make an AJAX request to fetch data from the server
+                            // You can use fetch() or XMLHttpRequest to make the request
+
+                            // Example using fetch():
+                            fetch('config.json')
+                                .then(response => response.json())
+                                .then(data => {
+                                    // Populate the prefix dropdown
+                                    const prefixSelect = document.getElementById('prefix');
+                                    const prefixOptions = foreach
+                                    data.prefixOptions.forEach(option => {
+                                        const optionElement = document.createElement('option');
+                                        optionElement.value = option;
+                                        optionElement.textContent = option;
+                                        prefixSelect.appendChild(optionElement);
+                                    });
+
+                                    // Populate the suffix dropdown
+                                    const suffixSelect = document.getElementById('suffix');
+                                    data.suffixOptions.forEach(option => {
+                                        const optionElement = document.createElement('option');
+                                        optionElement.value = option;
+                                        optionElement.textContent = option;
+                                        suffixSelect.appendChild(optionElement);
+                                    });
+                                })
+                                .catch(error => {
+                                    console.error('Error fetching data:', error);
+                                });
+                        }
+
+                        // Call the function to populate dropdowns when the page loads
+                        window.onload = populateDropdowns;
+                        // Existing code...
+
+                        // Add the updateAppendedData function here
+                        function updateAppendedData() {
+                            const prefixSelect = document.getElementById('prefix');
+                            const suffixSelect = document.getElementById('suffix');
+                            const appendedDataDiv = document.getElementById('appendedData');
+
+                            const prefix = prefixSelect.value;
+                            const suffix = suffixSelect.value;
+
+                            let href = '';
+                            if (prefix !== '') {
+                                href += prefix + '.';
+                            }
+                            href += suffix + '/';
+
+                            const anchor = document.createElement('a');
+                            anchor.href = href;
+                            anchor.textContent = href;
+                            anchor.target = '_blank';
+
+                            appendedDataDiv.innerHTML = '';
+                            appendedDataDiv.appendChild(anchor);
+                        }
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="h5">Nav Go Up</h5>
+                        <?php
+                            echo '<br>depth: ' . $depth;
+                            // if ($depth < 5) {
+                            $goUp['url'] = filter_path($_SERVER['DOCUMENT_ROOT'], $servername, $server_addr);
+                            echo '<div id="gouptest">Depth < 5<ol>';
+
+                            foreach ($goUp as $guKey => $guVal) {
+                                $item_class = 'path-' . $guKey;
+                                echo '<li id="' . $guKey . '" class="' . $item_class . '">goUp[' . $guKey . ']: ' . $guVal . '</li>';
+                            }
+
+                            echo '</ol></div>';
+                            $new_go_up = str_ireplace($goUp['result'], '', $filtered_url['pregresult']);
+                            echo '<p>To create a "<span class="serif italic fancy">go up</span>" navigation, we use <pre>str_ireplace($goUp[result] = ' . $goUp['result'] . ", ' ', \$url_processing[pregresult] = " . $filtered_url['pregresult'] . ');</pre> as the part of the path to remove from the current URL in order to "go up" one level. The result would be as follows:</p><p>' . $goUp['url'] . '/' . $new_go_up . '</p>';
+                            // }
+                        ?>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+
+
+                    <div class="card-body">
+                        <h5 class="h5">Process a Path</h5>
+                        <div id="quickentry">
+                            <form action="<?php $_SERVER['PHP_SELF']; ?>" id="p2u2top" method="GET">
+                                <label for="path2url" class="xhidden">_GET['path2url']:</label>
+                                <input type="text" name="path2url" id="path2url" value="<?php print $enterpathhere; ?>">
+                                <button class="btn btn-primary" type="submit" name="submit">New
+                                    Hyperlink</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+
+                    <div class="card-body">
+                        <h5 class="h5">Get it on GitHub</h5>
+                        <p class="card-text"><a href="https://github.com/ajaxStardust/AnnieDeBrowsa"
+                                target="_blank"><img
+                                    src="https://github-readme-stats.vercel.app/api/pin/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true"
+                                    alt="Status" /></a></p>
+                        <p class="card-text"><a href="https://github.com/ajaxStardust" target="_blank"><img
+                                    src="https://github-readme-stats.vercel.app/api/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true&amp;show_icons=true"
+                                    alt="More" /></a></p>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+    </div>
+
+
+    </section>
+    <section class="container">
+
+        <?php
             $contactSheet = '<div class="demo">
-        <div class="item">
+ <div class="item">
             <div class="clearfix" style="max-width:474px;">
             <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
             ';
@@ -300,7 +585,7 @@ $imgNumber = $cwThumbsClass->thumbsCount;
                     $cwimg_path = $imgDir . '/' . $cwImg;
                     $imgCounter = $imgNumber[$cwKey];
                     $caption = preg_replace('/(.*)(vscode_)([^_]+)(_\d+\.png)(.*)/', '$3', $cwImg);
-                    $contactSheet .= '<li data-thumb="assets/images/vscode/' . $cwImg . '"> <figure><figcaption class="text-end">'.$caption.'</figcaption><img src="assets/images/vscode/' . $cwImg . '"></figure></li>
+                    $contactSheet .= '<li data-thumb="assets/images/vscode/' . $cwImg . '"> <figure><figcaption class="text-end">' . $caption . '</figcaption><img src="assets/images/vscode/' . $cwImg . '"></figure></li>
                     ';
                 }
             } else {
@@ -309,90 +594,52 @@ $imgNumber = $cwThumbsClass->thumbsCount;
                  is not an array</pre></li><li><pre>has not been properly set</pre></li></ul>' . "\n";
             }
             $contactSheet .= "</ul> \n </div> \n </div> \n </div> \n";
+            if (strlen($contactSheet) > 20) {
+                print $contactSheet;
+            } else {
+                print '<p class="notice">No screenshots to display</p>';
+            }
+            print '<p class="info">Click to <a href="./screenshots.phtml" title="view full size">select the screenshot</a> you wish to view full size.</p>';
 
-if(strlen($contactSheet) > 20) {
-            print $contactSheet;
-            print " \n <hr id=\"clearImgShow\" /> \n";
-		}
-		else {
-			print '<p class="notice">No screenshots to display</p>';
-		}
-		print '<p class="alt_link">Click to <a href="http://' . $servername . '/screenshots.phtml" title="view full size">select the screenshot</a> you wish to view full size.</p>';
         ?>
-            <section id="header">
-                <h1 class="bg-dark text-light text-end pe-3"><?php echo $page_heading; ?></h1>
+        <div class="col">
 
+            <h5 class="h5">Server Info</h5>
+            <?php
+                echo '<p><strong>ABSOLUTELOCATION</strong>:' . $abspath . '</p>';
+                echo '<div class="container"><div class="bg-dark d-flex justify-content-between flex-wrap" id="info_container"><p class="bg-dark text-light">Served by: <span class="bg-dark text-warning">' . $serversoftware . '</span></p>
 
-
-
-            </section>
-            <section id="general_notes" class="container">
-                <p><a href="https://github.com/ajaxStardust/AnnieDeBrowsa" target="_blank"><img
-                            src="https://github-readme-stats.vercel.app/api/pin/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true"
-                            alt="Status" /></a></p>
-                <h3 id="wpFormHeader" class="text-h2">path2url v2:</h3>
-                <p class="text-primary">Convert a System Path to an HTTP URL:</p>
-                <p class="indentOne text-secondary smaller">A convenient way to load files that require server-side
-                    scripting to render in your browser (e.g. PHP files)</p>
-                <?php echo '<p><strong>ABSOLUTELOCATION</strong>:</p><p style="margin-top:-1rem;">' . $abspath . '</p>'; ?>
-
-                <form action="<?php $_SERVER['PHP_SELF']; ?>" id="p2u2">
-                    <input type="text" name="path2url">
-                    <input type="submit" name="convert">
-                </form>
-                <p>Enter the complete system file path in the text field
-                    (E.g. <code class="underline">Y:\var\www\html\wsl_workspace\index.php</code>).
-                </p>
-
-                <?php
-            filter_path_to_url($_GET,$servername,$server_addr);
-            echo '<div class="mt-2 col text-center" id="info_container"><p class="bg-dark text-light">Served by: <span class="bg-dark text-warning">' . $serversoftware . '</span></p>
                 <p class="bg-dark text-light">PHP Version: <span class="text-warning">' . phpversion() . '</span></p>
                 <p class="bg-dark text-light">Server Name: <span class="text-info">' . $servername . '</span></p>
                 <p class="bg-dark text-light">Server Addr: <span class="text-info">' . $server_addr . '</span></p>
-                </div>'; ?>
+                </div></div>';
 
-                <div class="notes">
+            ?>
 
-                    <!-- p class="italic red">Once converted, the <kbd>HTTP://</kbd> URL will be displayed as a hyperlink which
-                    you can click to view the file.</p -->
-                    <p><a href="https://github.com/ajaxStardust" target="_blank"><img
-                                src="https://github-readme-stats.vercel.app/api/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true&amp;show_icons=true"
-                                alt="More" /></a></p>
+        </div>
+
+        <div class="notes">
 
 
 
-                    <p>This <span class="black">WordPressCenter.net <em>path2url</em></span> application uses
-                        conditioinal logic on the path to return a viable HTTP URL. It may not output the desired URL
-                        without some simple code tweaking.</p>
-                    <p class="smaller">NOTE: Should an unexpected System Path result in a <em>bad URL</em>, please
-                        submit it to <a href="https://github.com/ajaxStardust" target="_blank"
-                            title="View original">@ajaxStardust</a> so the application logic might be improved. Thank
-                        you!</span></p>
-
-
-                </div> <!--  $    div   .notes    $   -->
-            </section> <!--    $   section   #general_notes  .container    $   -->
-
-            <section class="container">
-
-
-            </section> <!-- $  section .container          -->
-            <section class="footer px-4">
-                <!--    .FOOTER     -->
-                <div class="row gx-5">
-                    <div class="col">
-                        <div class="p-3 border bg-light"> Based on Notes by <a href="https://github.com/ajaxStardust"
-                                target="_blank" title="View original">@ajaxStardust</a> <em>Laravel</em> notes:</div>
-                    </div>
-                    <div class="col">
-                        <div class="p-3 border bg-light text-end"><kbd><?php echo $lastMod; ?></kbd></div>
-                    </div>
-                </div>
-            </section>
+        </div> <!--  $    div   .notes    $   -->
+    </section> <!--    $   section   #general_notes  .container    $   -->
+    <section class="container">
+    </section> <!-- $  section .container          -->
+    <section class="footer px-4">
+        <!--    .FOOTER     -->
+        <div class="row gx-5">
+            <div class="col">
+                <div class="p-3 border bg-light"> Based on Notes by <a href="https://github.com/ajaxStardust"
+                        target="_blank" title="View original">@ajaxStardust</a> <em>Laravel</em> notes:</div>
+            </div>
+            <div class="col">
+                <div class="p-3 border bg-light text-end"><kbd><?php echo $lastMod; ?></kbd></div>
+            </div>
+        </div>
+    </section>
     </div> <!--    .content  -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js">
     </script>
 </body>
 

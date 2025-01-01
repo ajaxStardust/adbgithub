@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   contentStyleType="text/css"
+   height="409px"
+   preserveAspectRatio="none"
+   style="width:596px;height:409px;background:#FFFFFF;"
+   version="1.1"
+   viewBox="0 0 596 409"
+   width="596px"
+   zoomAndPan="magnify"
+   id="svg19"
+   sodipodi:docname="plantuml_01_restructure.is.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview19"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.7231544"
+     inkscape:cx="298"
+     inkscape:cy="204.5667"
+     inkscape:window-width="1920"
+     inkscape:window-height="1147"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg19" />
+  <defs
+     id="defs1" />
+  <g
+     id="g19">
+    <!--cluster Adb-->
+    <g
+       id="cluster_Adb">
+      <path
+         d="M8.5,6 L126.791,6 A3.75,3.75 0 0 1 129.291,8.5 L136.291,28.2969 L586.5,28.2969 A2.5,2.5 0 0 1 589,30.7969 L589,399.98 A2.5,2.5 0 0 1 586.5,402.48 L8.5,402.48 A2.5,2.5 0 0 1 6,399.98 L6,8.5 A2.5,2.5 0 0 1 8.5,6 "
+         fill="none"
+         style="stroke:#000000;stroke-width:1.5;"
+         id="path1" />
+      <line
+         style="stroke:#000000;stroke-width:1.5;"
+         x1="6"
+         x2="136.291"
+         y1="28.2969"
+         y2="28.2969"
+         id="line1" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-weight="bold"
+         lengthAdjust="spacing"
+         textLength="117.291"
+         x="10"
+         y="20.9951"
+         id="text1">Adb</text>
+    </g>
+    <!--class Adbsoc-->
+    <g
+       id="elem_Adbsoc">
+      <rect
+         codeLine="2"
+         fill="#F1F1F1"
+         height="64.2969"
+         id="Adbsoc"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="104.832"
+         x="233.58"
+         y="41" />
+      <ellipse
+         cx="258.4462"
+         cy="57"
+         fill="#ADD1B2"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1.0;"
+         id="ellipse1" />
+      <path
+         d="M261.4149,62.6406 Q260.8368,62.9375 260.1962,63.0781 Q259.5555,63.2344 258.8524,63.2344 Q256.3524,63.2344 255.0243,61.5938 Q253.7118,59.9375 253.7118,56.8125 Q253.7118,53.6875 255.0243,52.0313 Q256.3524,50.375 258.8524,50.375 Q259.5555,50.375 260.1962,50.5313 Q260.8524,50.6875 261.4149,50.9844 L261.4149,53.7031 Q260.7899,53.125 260.1962,52.8594 Q259.6024,52.5781 258.9774,52.5781 Q257.6337,52.5781 256.9462,53.6563 Q256.2587,54.7188 256.2587,56.8125 Q256.2587,58.9063 256.9462,59.9844 Q257.6337,61.0469 258.9774,61.0469 Q259.6024,61.0469 260.1962,60.7813 Q260.7899,60.5 261.4149,59.9219 L261.4149,62.6406 Z "
+         fill="#000000"
+         id="path2" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="50.9072"
+         x="274.6386"
+         y="61.8467"
+         id="text2">Adbsoc</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="234.58"
+         x2="337.412"
+         y1="73"
+         y2="73"
+         id="line2" />
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="234.58"
+         x2="337.412"
+         y1="81"
+         y2="81"
+         id="line3" />
+      <ellipse
+         cx="244.58"
+         cy="94.6484"
+         fill="#84BE84"
+         rx="3"
+         ry="3"
+         style="stroke:#038048;stroke-width:1.0;"
+         id="ellipse3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="78.832"
+         x="253.58"
+         y="97.9951"
+         id="text3">getConfig()</text>
+    </g>
+    <!--class Iframe-->
+    <g
+       id="elem_Iframe">
+      <rect
+         codeLine="6"
+         fill="#F1F1F1"
+         height="48"
+         id="Iframe"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="77.6436"
+         x="22.18"
+         y="322.18" />
+      <ellipse
+         cx="37.18"
+         cy="338.18"
+         fill="#ADD1B2"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1.0;"
+         id="ellipse4" />
+      <path
+         d="M40.1488,343.8206 Q39.5706,344.1175 38.93,344.2581 Q38.2894,344.4144 37.5863,344.4144 Q35.0863,344.4144 33.7581,342.7738 Q32.4456,341.1175 32.4456,337.9925 Q32.4456,334.8675 33.7581,333.2113 Q35.0863,331.555 37.5863,331.555 Q38.2894,331.555 38.93,331.7113 Q39.5863,331.8675 40.1488,332.1644 L40.1488,334.8831 Q39.5238,334.305 38.93,334.0394 Q38.3363,333.7581 37.7113,333.7581 Q36.3675,333.7581 35.68,334.8363 Q34.9925,335.8988 34.9925,337.9925 Q34.9925,340.0863 35.68,341.1644 Q36.3675,342.2269 37.7113,342.2269 Q38.3363,342.2269 38.93,341.9613 Q39.5238,341.68 40.1488,341.1019 L40.1488,343.8206 Z "
+         fill="#000000"
+         id="path4" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="45.6436"
+         x="51.18"
+         y="343.0267"
+         id="text4">Iframe</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="23.18"
+         x2="98.8236"
+         y1="354.18"
+         y2="354.18"
+         id="line4" />
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="23.18"
+         x2="98.8236"
+         y1="362.18"
+         y2="362.18"
+         id="line5" />
+    </g>
+    <!--class Navfactor-->
+    <g
+       id="elem_Navfactor">
+      <rect
+         codeLine="9"
+         fill="#F1F1F1"
+         height="80.5938"
+         id="Navfactor"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="146.8594"
+         x="134.57"
+         y="305.89" />
+      <ellipse
+         cx="170.4981"
+         cy="321.89"
+         fill="#ADD1B2"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1.0;"
+         id="ellipse5" />
+      <path
+         d="M173.4668,327.5306 Q172.8887,327.8275 172.2481,327.9681 Q171.6075,328.1244 170.9043,328.1244 Q168.4043,328.1244 167.0762,326.4838 Q165.7637,324.8275 165.7637,321.7025 Q165.7637,318.5775 167.0762,316.9213 Q168.4043,315.265 170.9043,315.265 Q171.6075,315.265 172.2481,315.4213 Q172.9043,315.5775 173.4668,315.8744 L173.4668,318.5931 Q172.8418,318.015 172.2481,317.7494 Q171.6543,317.4681 171.0293,317.4681 Q169.6856,317.4681 168.9981,318.5463 Q168.3106,319.6088 168.3106,321.7025 Q168.3106,323.7963 168.9981,324.8744 Q169.6856,325.9369 171.0293,325.9369 Q171.6543,325.9369 172.2481,325.6713 Q172.8418,325.39 173.4668,324.8119 L173.4668,327.5306 Z "
+         fill="#000000"
+         id="path5" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="68.3525"
+         x="189.1488"
+         y="326.7367"
+         id="text5">Navfactor</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="135.57"
+         x2="280.4294"
+         y1="337.89"
+         y2="337.89"
+         id="line6" />
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="135.57"
+         x2="280.4294"
+         y1="345.89"
+         y2="345.89"
+         id="line7" />
+      <ellipse
+         cx="145.57"
+         cy="359.5384"
+         fill="#84BE84"
+         rx="3"
+         ry="3"
+         style="stroke:#038048;stroke-width:1.0;"
+         id="ellipse7" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="120.8594"
+         x="154.57"
+         y="362.8851"
+         id="text7">buildNavigation()</text>
+      <ellipse
+         cx="145.57"
+         cy="375.8353"
+         fill="#84BE84"
+         rx="3"
+         ry="3"
+         style="stroke:#038048;stroke-width:1.0;"
+         id="ellipse8" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="99.9072"
+         x="154.57"
+         y="379.182"
+         id="text8">getHtmlPrint()</text>
+    </g>
+    <!--class Backlinks-->
+    <g
+       id="elem_Backlinks">
+      <rect
+         codeLine="14"
+         fill="#F1F1F1"
+         height="48"
+         id="Backlinks"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="98.042"
+         x="315.98"
+         y="322.18" />
+      <ellipse
+         cx="330.98"
+         cy="338.18"
+         fill="#ADD1B2"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1.0;"
+         id="ellipse9" />
+      <path
+         d="M333.9488,343.8206 Q333.3706,344.1175 332.73,344.2581 Q332.0894,344.4144 331.3863,344.4144 Q328.8863,344.4144 327.5581,342.7738 Q326.2456,341.1175 326.2456,337.9925 Q326.2456,334.8675 327.5581,333.2113 Q328.8863,331.555 331.3863,331.555 Q332.0894,331.555 332.73,331.7113 Q333.3863,331.8675 333.9488,332.1644 L333.9488,334.8831 Q333.3238,334.305 332.73,334.0394 Q332.1363,333.7581 331.5113,333.7581 Q330.1675,333.7581 329.48,334.8363 Q328.7925,335.8988 328.7925,337.9925 Q328.7925,340.0863 329.48,341.1644 Q330.1675,342.2269 331.5113,342.2269 Q332.1363,342.2269 332.73,341.9613 Q333.3238,341.68 333.9488,341.1019 L333.9488,343.8206 Z "
+         fill="#000000"
+         id="path9" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="66.042"
+         x="344.98"
+         y="343.0267"
+         id="text9">Backlinks</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="316.98"
+         x2="413.022"
+         y1="354.18"
+         y2="354.18"
+         id="line9" />
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="316.98"
+         x2="413.022"
+         y1="362.18"
+         y2="362.18"
+         id="line10" />
+    </g>
+    <!--class HtmlDocFoot-->
+    <g
+       id="elem_HtmlDocFoot">
+      <rect
+         codeLine="17"
+         fill="#F1F1F1"
+         height="48"
+         id="HtmlDocFoot"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="123.2598"
+         x="449.37"
+         y="322.18" />
+      <ellipse
+         cx="464.37"
+         cy="338.18"
+         fill="#ADD1B2"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1.0;"
+         id="ellipse10" />
+      <path
+         d="M467.3388,343.8206 Q466.7606,344.1175 466.12,344.2581 Q465.4794,344.4144 464.7763,344.4144 Q462.2763,344.4144 460.9481,342.7738 Q459.6356,341.1175 459.6356,337.9925 Q459.6356,334.8675 460.9481,333.2113 Q462.2763,331.555 464.7763,331.555 Q465.4794,331.555 466.12,331.7113 Q466.7763,331.8675 467.3388,332.1644 L467.3388,334.8831 Q466.7138,334.305 466.12,334.0394 Q465.5263,333.7581 464.9013,333.7581 Q463.5575,333.7581 462.87,334.8363 Q462.1825,335.8988 462.1825,337.9925 Q462.1825,340.0863 462.87,341.1644 Q463.5575,342.2269 464.9013,342.2269 Q465.5263,342.2269 466.12,341.9613 Q466.7138,341.68 467.3388,341.1019 L467.3388,343.8206 Z "
+         fill="#000000"
+         id="path10" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="91.2598"
+         x="478.37"
+         y="343.0267"
+         id="text10">HtmlDocFoot</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="450.37"
+         x2="571.6298"
+         y1="354.18"
+         y2="354.18"
+         id="line11" />
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="450.37"
+         x2="571.6298"
+         y1="362.18"
+         y2="362.18"
+         id="line12" />
+    </g>
+    <!--class HtmlDocHead-->
+    <g
+       id="elem_HtmlDocHead">
+      <rect
+         codeLine="20"
+         fill="#F1F1F1"
+         height="80.5938"
+         id="HtmlDocHead"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#181818;stroke-width:0.5;"
+         width="130.8564"
+         x="220.57"
+         y="165.29" />
+      <ellipse
+         cx="236.3184"
+         cy="181.29"
+         fill="#ADD1B2"
+         rx="11"
+         ry="11"
+         style="stroke:#181818;stroke-width:1.0;"
+         id="ellipse12" />
+      <path
+         d="M239.2871,186.9306 Q238.709,187.2275 238.0684,187.3681 Q237.4278,187.5244 236.7246,187.5244 Q234.2246,187.5244 232.8965,185.8838 Q231.584,184.2275 231.584,181.1025 Q231.584,177.9775 232.8965,176.3213 Q234.2246,174.665 236.7246,174.665 Q237.4278,174.665 238.0684,174.8213 Q238.7246,174.9775 239.2871,175.2744 L239.2871,177.9931 Q238.6621,177.415 238.0684,177.1494 Q237.4746,176.8681 236.8496,176.8681 Q235.5059,176.8681 234.8184,177.9463 Q234.1309,179.0088 234.1309,181.1025 Q234.1309,183.1963 234.8184,184.2744 Q235.5059,185.3369 236.8496,185.3369 Q237.4746,185.3369 238.0684,185.0713 Q238.6621,184.79 239.2871,184.2119 L239.2871,186.9306 Z "
+         fill="#000000"
+         id="path12" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="97.1934"
+         x="250.4847"
+         y="186.1367"
+         id="text12">HtmlDocHead</text>
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="221.57"
+         x2="350.4264"
+         y1="197.29"
+         y2="197.29"
+         id="line13" />
+      <line
+         style="stroke:#181818;stroke-width:0.5;"
+         x1="221.57"
+         x2="350.4264"
+         y1="205.29"
+         y2="205.29"
+         id="line14" />
+      <ellipse
+         cx="231.57"
+         cy="218.9384"
+         fill="#84BE84"
+         rx="3"
+         ry="3"
+         style="stroke:#038048;stroke-width:1.0;"
+         id="ellipse14" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="103.9541"
+         x="240.57"
+         y="222.2851"
+         id="text14">doctypeHead()</text>
+      <ellipse
+         cx="231.57"
+         cy="235.2353"
+         fill="#84BE84"
+         rx="3"
+         ry="3"
+         style="stroke:#038048;stroke-width:1.0;"
+         id="ellipse15" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="104.8564"
+         x="240.57"
+         y="238.582"
+         id="text15">bodySections()</text>
+    </g>
+    <!--link Adbsoc to HtmlDocHead-->
+    <g
+       id="link_Adbsoc_HtmlDocHead">
+      <path
+         codeLine="25"
+         d="M286,105.72 C286,123.52 286,133.91 286,152.89 "
+         fill="none"
+         id="Adbsoc-to-HtmlDocHead"
+         style="stroke:#181818;stroke-width:1.0;" />
+      <polygon
+         fill="#181818"
+         points="286,164.89,290,158.89,286,152.89,282,158.89,286,164.89"
+         style="stroke:#181818;stroke-width:1.0;"
+         id="polygon15" />
+    </g>
+    <!--link HtmlDocHead to Navfactor-->
+    <g
+       id="link_HtmlDocHead_Navfactor">
+      <path
+         codeLine="26"
+         d="M263.65,246.3 C253.2,264.86 246.6874,276.4435 236.2374,295.0035 "
+         fill="none"
+         id="HtmlDocHead-to-Navfactor"
+         style="stroke:#181818;stroke-width:1.0;" />
+      <polygon
+         fill="#181818"
+         points="230.35,305.46,236.7792,302.1942,236.2374,295.0035,229.8082,298.2693,230.35,305.46"
+         style="stroke:#181818;stroke-width:1.0;"
+         id="polygon16" />
+    </g>
+    <!--link HtmlDocHead to Iframe-->
+    <g
+       id="link_HtmlDocHead_Iframe">
+      <path
+         codeLine="27"
+         d="M220.25,243.57 C188.66,261.76 150.49,284.35 117,305.89 C109.21,310.9 110.8068,309.627 103.1068,315.007 "
+         fill="none"
+         id="HtmlDocHead-to-Iframe"
+         style="stroke:#181818;stroke-width:1.0;" />
+      <polygon
+         fill="#181818"
+         points="93.27,321.88,100.4794,321.7224,103.1068,315.007,95.8974,315.1646,93.27,321.88"
+         style="stroke:#181818;stroke-width:1.0;"
+         id="polygon17" />
+    </g>
+    <!--link HtmlDocHead to Backlinks-->
+    <g
+       id="link_HtmlDocHead_Backlinks">
+      <path
+         codeLine="28"
+         d="M308.64,246.3 C322.59,270.78 334.0567,290.8952 345.8067,311.5052 "
+         fill="none"
+         id="HtmlDocHead-to-Backlinks"
+         style="stroke:#181818;stroke-width:1.0;" />
+      <polygon
+         fill="#181818"
+         points="351.75,321.93,352.2533,314.7365,345.8067,311.5052,345.3034,318.6987,351.75,321.93"
+         style="stroke:#181818;stroke-width:1.0;"
+         id="polygon18" />
+    </g>
+    <!--link HtmlDocHead to HtmlDocFoot-->
+    <g
+       id="link_HtmlDocHead_HtmlDocFoot">
+      <path
+         codeLine="29"
+         d="M350.48,246.3 C390.08,270.7 429.2536,294.8252 462.7036,315.4352 "
+         fill="none"
+         id="HtmlDocHead-to-HtmlDocFoot"
+         style="stroke:#181818;stroke-width:1.0;" />
+      <polygon
+         fill="#181818"
+         points="472.92,321.73,469.91,315.1771,462.7036,315.4352,465.7135,321.9881,472.92,321.73"
+         style="stroke:#181818;stroke-width:1.0;"
+         id="polygon19" />
+    </g>
+    <!--SRC=[TP1B2iCm34JtEOMN_P13z4D9DwNG4yYV69F42hPQ22Lthvq6uv9quSqyUJIZ7aG3Mh63v8QK0xGWENiNZ8aMl8-wHp49ZEsPLdH2MnkzsGPb32zDNci7dPecV_GRl6eGX2wPyATfPP2D1Z9e9wlPlAAklJjZQUb_34bROnk_N15_dL5S4Ealh1J8b42YeA5NKKlREShXeKHCvFFjymNASfTR1P0RHvgAhh3lSLP0QhN2ibh5-040]-->
+  </g>
+</svg>

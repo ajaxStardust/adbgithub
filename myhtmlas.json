@@ -1,0 +1,158 @@
+{
+  "body": {
+    "div": {
+      "@id": "pagewidth",
+      "@class": "container",
+      "#comment": "",
+      "section": [
+        {
+          "@id": "header",
+          "#comment": "",
+          "h1": {
+            "@class": "bg-dark text-light text-end pe-3",
+            "#comment": ""
+          }
+        },
+        {
+          "@id": "general_notes",
+          "div": {
+            "@class": "notes",
+            "#comment": [
+              "",
+              ""
+            ],
+            "h2": "General Notes",
+            "div": {
+              "@class": "notes",
+              "pre": {
+                "@class": "content",
+                "#text": "Notes here"
+              }
+            }
+          }
+        },
+        {
+          "@id": "glossary",
+          "#comment": [
+            "",
+            ""
+          ],
+          "div": {
+            "h2": "Further Reading",
+            "h3": {
+              "#comment": "",
+              "#text": "- Quick Reference"
+            },
+            "dl": {
+              "dt": {
+                "@class": "pointer",
+                "span": {
+                  "@class": "normal blue pointer",
+                  "@id": "show_g01",
+                  "@onclick": "swap_text('show_g01','glossary_01');",
+                  "#text": "[toggle...]"
+                },
+                "#text": "Project Tree"
+              },
+              "dd": {
+                "@id": "glossary_01",
+                "@class": "displaynone",
+                "p": [
+                  {
+                    "kbd": "apt-get install tree"
+                  },
+                  {
+                    "code": [
+                      "tree",
+                      "tree -J /path/to/dir",
+                      "tree -H /var/www/framework"
+                    ],
+                    "strong": [
+                      {
+                        "@class": "text-danger",
+                        "#text": "JSON"
+                      },
+                      {
+                        "@class": "text-warning",
+                        "#text": "HTML"
+                      }
+                    ],
+                    "kbd": "tree --help",
+                    "#text": [
+                      "The convenient",
+                      "command will generate the file and folder tree. Tree output options include",
+                      "and",
+                      ". E.g.",
+                      "or",
+                      ". See"
+                    ]
+                  },
+                  {
+                    "span": {
+                      "@class": "code",
+                      "em": {
+                        "#comment": ""
+                      }
+                    },
+                    "#text": "folder structure"
+                  }
+                ],
+                "pre": "# /var/www/html/framework_name/\n# |-- some.file.name\n# |-- some.ts\n# |-- some.json\n# |-- some.js"
+              }
+            },
+            "p": {
+              "@class": "pseudocite",
+              "#text": "Famous Last Words"
+            }
+          }
+        }
+      ],
+      "footer": {
+        "@class": "footer px-4",
+        "#comment": "",
+        "div": {
+          "@class": "row gx-5",
+          "div": [
+            {
+              "@class": "col",
+              "div": {
+                "@class": "p-3 border bg-light",
+                "a": {
+                  "@href": "https://github.com/ajaxStardust",
+                  "@target": "_blank",
+                  "@title": "View original",
+                  "#text": "@ajaxStardust"
+                },
+                "em": "Laravel",
+                "#text": [
+                  "Based on Notes by",
+                  "notes:"
+                ]
+              }
+            },
+            {
+              "@class": "col",
+              "div": {
+                "@class": "p-3 border bg-light text-end",
+                "kbd": {
+                  "#comment": ""
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "#comment": "",
+    "script": [
+      {
+        "@src": "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js",
+        "@integrity": "sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa",
+        "@crossorigin": "anonymous"
+      },
+      {
+        "@src": "assets/js/showme-hideme.js"
+      }
+    ]
+  }
+}

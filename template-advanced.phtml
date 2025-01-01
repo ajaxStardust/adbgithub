@@ -1,0 +1,249 @@
+<?php
+/*
+ * AnnieDeBrowsa/template.phtml
+ *
+ * Copyright 2023 @ajaxStardust <ajaxStardust@duck.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ *
+ *
+ */
+
+header('Access-Control-Allow-Origin: *'); // ENABLE CORS (Cross-Origin Request) policy allow all - CAUTION: not-ready-for-prime-time player
+date_default_timezone_set('EST');
+$page_heading = 'Brad Traversy&apos;s Laravel Tutorial - Dec. 01, 2022';
+if($page_heading == '&#x201c;Simple Template&#x201d;'){
+    $real_page_heading = pathinfo(__FILE__, PATHINFO_FILENAME);
+    }
+    else {
+    $real_page_heading = $page_heading;
+}
+$pathinfo_basename = pathinfo(__FILE__, PATHINFO_BASENAME);
+$title_name = pathinfo(__FILE__, PATHINFO_FILENAME);
+$title = 'AnnieDeBrowsa - Filename ' . $pathinfo_basename;
+$lastMod = "Modified: " . date("D M j Y G:i:s T", getlastmod());
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileImage" content="favicon.webp">
+    <title>
+        <?php print $title; ?>
+    </title>
+    <link rel="icon" type="image/ico" href="favicon.ico" sizes="16x16">
+    <link rel="shortcut icon" type="image/webp" href="favicon.webp">
+    <link rel="icon" href="favicon.ico" sizes="32x32">
+    <link rel="icon" href="favicon.ico" sizes="192x192">
+    <link rel="apple-touch-icon" href="favicon.webp">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- BOOTSTRAP STYLE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="assets/css/notes.css" rel="stylesheet">
+    <style>
+    .tsw {
+        font-family: "roboto";
+        font-size: 1.2rem;
+        font-style: italic;
+    }
+    .S0 {
+        font-family: "roboto mono";
+        font-size: 10pt;
+        font-style: italic;
+    }
+   .S1 {
+        font-family: "roboto mono";
+        color: #000080;
+        font-size: 10pt;
+    }
+    
+    </style>
+</head>
+
+<body>
+  <!--    ^:begin    id:pagewidth    ^    -->
+  <div id="pagewidth" class="container">
+
+    <!--    ^:begin    class:content    ^    -->
+    <div class="content">
+    <section id="header">  
+        <h1 class="bg-dark text-light text-end pe-3"><?php print $real_page_heading; ?></h1>
+	</section>
+	<section id="json_data">
+		<div class="container" id="json_data_<?php print $title_name; ?>">
+       	<div class="list-container list clear"> 
+	<?php
+ echo '<h3>From JSON file glossary_laravel.json</h3>';
+if(file_exists('assets/json/glossary_laravel.json'))
+{
+    $filename = 'assets/json/glossary_laravel.json';
+    $data = file_get_contents($filename); //data read from json file
+    
+    $users = json_decode($data);  //decode a data
+    $arr = json_decode($data, true);
+    $sort = array();
+    
+    foreach($arr as $k => $v) {
+        $sort['term'][$k] = $v['term'];
+        $sort['definition'][$k] = $v['definition'];
+    }
+
+    //aqui é realizado a ordenação do array
+    array_multisort($sort['term'], SORT_ASC, $sort['term'], SORT_ASC,$arr);
+	echo '<div id="json_out_'. $title_name.'">
+	<ol id="json_data_list01">';
+    //abaixo é listado o resultado ordenado  
+    foreach($arr as $k => $v) {
+        echo '<li><strong>'. $sort['term'][$k] = $v['term'] . '</strong> - ';
+        echo $sort['definition'][$k] = $v['definition'] . '</li>
+        ';
+    }
+echo '</ol>
+</div>';
+}
+ ?>
+
+</div>
+</div>
+</section>
+<section id="general_notes">
+      <div class="row col-md notes"> <!-- ^:begin #general_notes ^ -->
+        <h2><?php print $title_name; ?> : General Notes</h2>
+       <div class="col ">
+        <h3>Views</h3>
+        <p><strong>Remember:</strong> VIEWS don't have to be BLADE templates (though for the most part, they will be)</p>
+        </div>
+        <div class="col ">
+        <h3>Migrations</h3>
+        <p>Migrations in Laravel are files than can be executed to modify the database without need to use <code>$> mysql</code> or e.g. phpMyAdmin. Data can be added to or removed from a database using the <code class="cli">php artisan migrate</code> command with the <code>up</code> or <code>down</code> methods.</p>
+        <p>If a migration fails, or you need to otherwise remove what was changed in the database after a migration command, 
+        </div> 
+      </div> <!-- $ :end #general_notes $ -->
+</section>    
+<section id="glossary_of_<?php print $title_name; ?>">
+      <div id="glossary_container"> <!-- ^:begin #<?php print $title_name; ?>_GLOSSARY ^ -->
+        <h2>Glossary for <?php print $title_name; ?></h2>
+        <dl id="laravel_notes_dl" class="row col-md">
+    <dt id="artisan_cmds">Artisan Commands</dt>
+    <dd class="col"><p>@2:54 - Create a symlink from the storage folder (e.g. images) to the public resources folder.</p>
+    <code>php artisan storage:link</code><p>Then we have to change the path in the web app to point to the new stored image. It must be done in 2 places: the "card" <code>listing-card.blade.php</code>, 
+            <dt id="routing">Routing and Responses</dt>
+            <dd class="col">Where we load our views, controllers, etc.
+                <pre>#       /laragigs/routes/
+#       |-- api.php
+#       |-- channels.php
+#       |-- controls.php
+#       |-- web.php</pre>
+            </dd>
+            <dt>Die, Dump (and Debug)</dt>
+            <dd class="col">Place either of these in the code to return debugging info: <code>dd($val)</code> or <code>ddd($val)</code>
+            </dd>
+            <dt>Wildcards</dt>
+            <dd class="col">using double curly-braces <code>{{ }}</code> we can return the value of a variable. E.g. <code>{{$variable}}</code>
+            <dt>Blade templates (M <span class="red underline">V</span> C)</dt>
+            <dd class="col">Allow for the use of <code>{{ }}</code> curly braces in the HTML
+            <pre>#       /laragigs/resources/views/
+#       |-- welcome.blade.php                
+#       |-- layout.blade.php                
+#       |-- listings.blade.php
+            </pre>
+                <p>These are the files which are the HTML templates. </p>
+            </dd>
+            <dt id="directives_dd">DIRECTIVES</dt>
+            <dd class="col">
+            <div class="dd_div">Loops, Conditionals, and etc in Laravel.</div>
+            <div class="dd_div">Directives begin with the @ symbol. Can be used in Blade templates</div>
+                <p><code class="cli">@yeild('content');</code> is going to render the content in ./views/layout.blade.php</p>
+            </dd>
+            <dt>Models (<span class="red underline">M</span>VC)</dt>
+            <dd>                
+            <pre>#       /laragigs/app/Models/
+#       |-- User.php
+#       |-- Listing.php</pre>
+with User.php, user functionality is built-in to Laravel.
+            </dd>
+            <dt id="migrations">Migrations</dt>
+            <dd class="col">
+                <div class="dd_div">Files that can be executed to create database tables etc. <strong>Credentials</strong> can be stored in the <strong>ENV</strong> file.</div>
+                <div class="dd_div italic">All migrations are a class{} with an up() and a down() method.</div>
+                <div class="dd_div">The following command will create a file under --database > migrations | which will then create the listings table for this tutorial. Copy and paste the following into a terminal. Ensure the terminal is in the root directory of your project.<code class="cli">php artisan make:migration create_listings_table</code></div>
+                <pre>#       /laragigs/database/migrations/
+#       |-- yyyy_mm_dd_create_nameof_table.php
+#       |-- yyyy_mm_dd_create_nameof_table2.php</pre>
+                    <p>Using simple commands, <code>artisan</code> will manage the database. E.g. <code class="cli">php artisan migrate</code> takes the info from the Migrations files and creates database tables. Then a command like <code class="cli">php artisan db:seed</code> will populate the db. If needed, we can use <code class="cli">php artisan migrate:refresh</code> to re-create the tables.</p>
+            </dd>
+            <dt>Factories</dt>
+                    <dd class="col"><pre>#       /laragigs/database/factories/
+#       |-- UserFactory.php</pre>
+                    
+                    <p>Used with DatabaseSeeders file to create data. E.g.</p>
+                        <pre>    public function definition()
+    {
+        return [
+            'name' => $this->faker->name(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
+        ];
+    }</pre>
+    <p>Artisan can also make the ./factories files. E.g. <code class="cli"> php artisan make:factory ListingFactory</code></p>
+</dd>
+        
+            <dt>Seeders</dt>
+            <dd class="col"><pre>#       /laragigs/database/seeders/
+#       |-- DatabaseSeeder.php</pre>
+                    <code class="cli">php artisan db:seed</code>
+            <p>In the DatabaseSeeder.php file is a method:<pre>    public function run()
+    {
+        // \App\Models\User::factory(10)->create();
+    }</pre><p class="pseudocite">The action will seed the database with (10) "fake" users.</p>
+            <dt id="ORM_dt">ORM</dt>
+            <dd class="col"><strong>O</strong>bject <strong>R</strong>elational <strong>M</strong>apper
+                <dl>
+                  <dt id="eloquent">Eloquent</dt>
+                  <dd class="col">Laravel's data model, or ORM. E.g. model name, find, etc.<code class="cli">php artisan make:model name_of_model</code>
+        where the name of the model here is "listing"
+                <p>While creating the listings.blade.php “Blade” template / view... 
+after copy / pasting the HTML from the laragigs-main _templates folder,
+changed the &#x3c;a href ... &#x3e; using what's provided through Eloquent, using the array operator: <code>{{$listing->title}}</code> </p>
+                  </dd>
+                </dl>
+          </dd>
+                
+        </dl>
+        </div> <!-- $ :end #laravel_glossary -->
+        <p class="content footer pseudocite">Transcribed from Brad Traversy&apos;s <a href="https://github.com/bradtraversy/laragigs" target="_blank" title="View original">Largigs</a> Laravel Crash Course.
+        </p>
+      
+        </section>
+    <section class="footer px-4">                   <!--    .FOOTER     -->
+        <div class="row gx-5">
+            <div class="col"><div class="p-3 border bg-light"><?php print $title_name; ?> is based on Notes by <a href="https://github.com/ajaxStardust" target="_blank" title="View original">@ajaxStardust</a> <em>Laravel</em> notes:</div></div>
+            <div class="col"><div class="p-3 border bg-light text-end"><kbd><?php echo $lastMod; ?></kbd></div></div>
+        </div>
+    </section>      
+    </div>
+    </div><!--    $ :end    END class.content (former id.maincol)    $    -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

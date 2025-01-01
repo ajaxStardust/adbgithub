@@ -1,0 +1,26 @@
+{
+"field":"Location",
+"data": "USB SATA Drive Device"
+},
+{
+"field":"Media",
+"data": "USB SATA Drive Device"
+},
+{
+"field": "Context",
+"data": "Web Site Project Files"
+},
+{
+"field":"Type",
+"data": [
+	"Text Files",
+    "Image Files",
+    "Folders",
+    "Version Control",
+    "other"
+    ]
+},
+{
+"field":"Command Line",
+"data":"sudo cp -R /media/xiola/rootMX23/var/www/other/wpcenter/wp-content/plugins/depth-ping/* /var/www/mxuni/wp"
+}

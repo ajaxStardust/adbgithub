@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Ajax Example with Debugging</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    $(function() {
+      $('#submitBtn').click(function() {
+        var userInput = $('#userInput').val();
+        
+        console.log('console.log(userInput):', userInput); // Add a console log to display the user input
+        
+        $.ajax({
+          url: window.location.href,  // Send the AJAX request back to the current page
+          type: 'POST',
+          data: { userInput: userInput },  // Send the user input as data
+          success: function(data) {
+            console.log('console.log(AJAX Success! Data received[data]):', data); // Add a console log to display the received data
+            $('#result').html(data); // Update the result div with the received HTML content
+          }
+        }).fail(function() {
+          console.log('AJAX Error!');
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <form>
+    <label for="userInput">Enter your input:</label><br>
+    <input type="text" id="userInput" name="userInput"><br>
+    <button type="button" id="submitBtn">Submit</button>
+  </form>
+
+  <div id="result">
+    <!-- The content will be updated by the AJAX request -->
+  </div>
+</body>
+</html>

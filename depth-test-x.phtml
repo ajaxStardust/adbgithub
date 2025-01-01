@@ -1,0 +1,275 @@
+<?php
+
+// namespace Trn\Inc\Admin;
+/*echo '<br>@Line: '. __LINE__;
+print_r(get_wpconfig());*/
+header('Access-Control-Allow-Origin: *');  // ENABLE CORS (Cross-Origin Request) policy allow all
+
+function get_wpconfig()
+{
+    $getconfig = [];
+
+    $chdir = chdir('/var/www/atflux/zjvuypqa/public_html');
+    $getconfig['chdir'] = '/var/www/atflux/zjvuypqa/public_html';
+    if (isset($_POST['value'])) {
+        $val = $_POST['value'];
+    }
+    $return = [];
+    ['basename' => $basename, 'dirname' => $dirname] = pathinfo(__FILE__);
+    if ($chdir) {
+        $count = 0;
+        $getconfig['count'] = $count;
+
+        $to_theme = str_ireplace('/var/www/atflux/', '', $getconfig['chdir']);
+        $getconfig['to_theme'] = $to_theme;
+        $return['wp_rootdir'] = str_ireplace('/wp-content/plugins', '', $to_theme);
+        if (str_ireplace('/plugins', '', $to_theme)) {
+            $return['wp_rootdir'] = str_ireplace('/wp-content/plugins', '', $to_theme);
+            $return['sys_path'] = 1;
+            $return['to_theme'] = $to_theme;
+        }
+        $return['getconfig'] = $getconfig;
+        return $return;
+        /* echo "\r\n" . $count; */
+    } else {
+        /*echo '<br>@Line: '. __LINE__;
+        var_dump($basename, $dirname, $chdir);*/
+    }
+}
+
+include $_SERVER['DOCUMENT_ROOT'] . '/' . get_wpconfig()['wp_rootdir'] . '/wp-config.php';
+
+$page_heading = 'Experiment for checking the depth of the plugin';
+$title = 'Depth Test';
+
+/*echo '<br>' . get_wpconfig()['to_theme'];
+
+echo '<br>' . get_wpconfig()['wp_rootdir'];
+
+
+echo '<br>' . $_SERVER['DOCUMENT_ROOT'] . '/' . get_wpconfig()['wp_rootdir'] . '/wp-config.php';*/
+function get_my_plugin_root_dir()
+{
+    // WP_PLUGIN_DIR is /var/www/atflux/_folderName_/wp-content/plugins
+
+    $wp_installed_here = preg_replace('@([\x5c\x2f])@', '/', __FILE__);
+    $wp_plugin_dir = preg_replace('@([\x5c\x2f])@', '/', WP_PLUGIN_DIR);
+    $solidus_count = substr_count($wp_installed_here, '/');
+    $target_folder = $solidus_count - 2;
+
+    $path_to_wpcontent_plugins = str_replace(__DIR__, '', WP_PLUGIN_DIR);
+    $parent_containers = explode(DIRECTORY_SEPARATOR, __DIR__);
+
+    // --------
+
+    $path_to_wpcontent_plugins = str_replace(__DIR__, '', WP_PLUGIN_DIR);
+
+    $wp_installed_here = preg_replace('@([\x5c\x2f])@', '/', __FILE__);
+    $solidus_count = substr_count($wp_installed_here, '/');
+    $target_folder = $solidus_count - 3;  // ENTER HERE THE NUMBER OF SUBDIRECTORIES FROM DOCUMENT_ROOT
+    $parent_containers = explode(DIRECTORY_SEPARATOR, $path_to_wpcontent_plugins)[$target_folder];
+
+    return WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . $parent_containers;
+}
+
+$wp_installed_here = preg_replace('@([\x5c\x2f])@', '/', __FILE__);
+$wp_plugin_dir = preg_replace('@([\x5c\x2f])@', '/', WP_PLUGIN_DIR);
+$solidus_count = substr_count($wp_installed_here, '/');
+$target_folder = $solidus_count - 2;
+
+$path_to_wpcontent_plugins = str_replace(__DIR__, '', WP_PLUGIN_DIR);
+$parent_containers = explode(DIRECTORY_SEPARATOR, __DIR__);
+?>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <?php echo $title; ?>
+    </title>
+    <link rel="icon" type="image/ico" href="favicon.ico">
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- BOOTSTRAP STYLE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
+    <!-- link href="<?php echo get_theme_root_uri(); ?>/css/notes.css" rel="stylesheet" type="text/css" -->
+    <link href="assets/css/notes.css" rel="stylesheet">
+    <style>
+        .red {
+            color: #F00;
+        }
+
+        .keyTerms {
+            background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(235, 235, 255, 1) 80%, rgba(214, 214, 235, 1) 93%, rgba(173, 173, 214, 1) 100%);
+            margin-top: 1rem;
+            padding-top: 0.5rem;
+        }
+        }
+
+        .sys_path {
+            color: #F00 !important;
+        }
+
+        .http_url {
+            color: #00F;
+        }
+
+        .sys_path {
+            color: #F00;
+        }
+
+        ol.array_like_counter {
+            list-style: none;
+            counter-reset: dir-counter -1;
+        }
+
+        ol li {
+            counter-increment: dir-counter;
+        }
+
+        ol li::before {
+            content: counter(dir-counter) ". ";
+            color: green;
+            font-weight: bold;
+            font-family: monospace;
+            font-style: italic;
+        }
+
+        #url_blue {
+            background-color: blue;
+            color: white;
+        }
+
+        #path_red {
+            background-color: red;
+            color: white;
+        }
+    </style>
+<script language="javascript" type="text/javascript">
+var myVariable = prompt('type here');
+
+var params = myVariable;
+
+var AJAX = function (params) {
+    this.server ={};
+    this.url = params.url;
+    this.method = params.method;
+    this.dataType = params.dataType;
+    this.formData = params.formData;
+
+    this.init = function(){
+        if(typeof XMLHttpRequest != 'undefined'){
+            this.server = new XMLHttpRequest();
+
+            //Open first, before setting the request headers.
+            this.server.open(this.method, this.url, true);
+
+            //Now set the request headers.
+            this.server.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            //this.server.setRequestHeader('Content-length', this.formData.length);
+            //this.server.setRequestHeader('Connection', 'close');
+            console.log("XMLHttpRequest created.");
+            return true;
+        }
+    };
+
+    this.send = function(){
+        if(this.init()){
+            this.server.send(this.formData);
+        }
+    };
+
+};
+</script>
+<?php if (isset($_REQUEST['variable'])) { echo $_REQUEST['variable']; } ?>
+</head>
+
+<body>
+
+    <div id="pagewidth" class="container">
+<form id="form1" name="form1"><a onclick="_vals('<?php if (isset($_REQUEST['variable'])) { echo $_REQUEST['variable']; } ?>')" href="#">My Link</a>
+</form>
+        <section id="header">
+            <!-- #HEADER -->
+            <h1 class="bg-dark text-light text-end pe-3"><?php echo $page_heading; ?></h1>
+        </section>
+        <section id="intro">
+            <h2>Figure it out, yo! WP Has the Native Functions for it!</h2>
+            <p>E.g.: The following WordPress native functions should provide you the information you need to acquire the correct paths to use in your custom code, templates, etc. Pay attention to what happens here:</p>
+            <table>
+                <tr>
+                    <td id="path_red">returns SYSTEM PATH</td>
+                    <td id="url_blue">returns HTTP URL</td>
+                </tr>
+            </table>
+        </section>
+        <section id="path_details">
+            <?php
+                echo '<dl id="sortable">';
+                echo '<dt class="keyTerms http_url">get_theme_file_uri():</dt>
+                    <dd>' . get_theme_file_uri() . '</dd>';
+                echo '<dt class="keyTerms http_url">get_parent__file_url():</dt>
+                    <dd>' . get_parent_theme_file_uri() . '</dd>';
+                echo '<dt class="keyTerms http_url">get_template_directory_uri():</dt>
+                    <dd>' . get_template_directory_uri() . '</dd>';
+                echo '<dt class="keyTerms http_url">get_stylesheet_directory_uri():</dt>
+                    <dd>' . get_stylesheet_directory_uri() . '</dd>';
+                echo '<dt class="keyTerms http_url"><strong>get__root_uri():</strong></dt>
+                    <dd><strong> ' . get_theme_root_uri() . '</strong></dd>';
+                echo '<dt class="keyTerms sys_path">$wp_installed_here: </dt>
+                    <dd>';
+                $echo_test = $wp_installed_here ? !get_wpconfig()['sys_path'] == 1 : get_wpconfig()['wp_rootdir'];
+                echo 'get_wpconfig()[wp_rootdir]<br><strong>' . get_wpconfig()['wp_rootdir'] . '</strong>';
+                $echo_more = '<span class="text-warning bg-dark">muted</span>' ? $echo_test == 1 : $wp_installed_here;
+                // echo ' $echo_more: ' . $echo_more . '<br>$echo_test: ' . $echo_test . '</dd>';
+                echo '</dd>';
+                echo '<dt class="keyTerms sys_path">$solidus_count = substr_count($wp_installed_here, "/")</dt><dd>' . $solidus_count = substr_count($wp_installed_here, '/') . '</dd>';
+                echo '<dt class="keyTerms sys_path">__DIR__</dt><dd>' . __DIR__ . '</dd>';
+                echo '<dt class="keyTerms sys_path">$path_to_wpcontent_plugins</dt><dd>' . $path_to_wpcontent_plugins . '</dd>';
+                echo '<dt class="keyTerms http_url">plugin_dir_url("")</dt><dd>' . plugin_dir_url('') . '</dd>';
+                echo '<dt class="keyTerms sys_path">plugin_dir_path(dirname(__FILE__, 1))</dt><dd>' . plugin_dir_path(dirname(__FILE__, 1)) . '</dd>';
+                echo '<dt class="keyTerms http_url">plugins_url()</dt><dd>' . plugins_url() . '</dd>';
+                echo '<dt class="keyTerms sys_path">__FILE__</dt><dd>' . __FILE__ . '</dd>';
+                echo '<dt class="keyTerms">variable: <strong>$parent_containers</strong></dt><dd>';
+                if (is_array($parent_containers)) {
+                    $foreach_HTML = '<code>Array[' . count($parent_containers) . ']</code> :<ol class="array_like_counter">';
+                    foreach ($parent_containers as $dir_name_iterate) {
+                        $foreach_HTML .= '<li>' . $dir_name_iterate . '</li>';
+                    }
+                    $foreach_HTML .= '</ol></dd>';
+                    echo $foreach_HTML;
+                } else {
+                    echo $parent_containers . '</dd>';
+                }
+
+                echo '<dt class="keyTerms sys_path">WP_PLUGIN_DIR</dt><dd>' . WP_PLUGIN_DIR . '</dd>';
+                echo '<dt class="keyTerms sys_path">preg_replace(@.$wp_plugin_dir.@, "", __FILE__)</dt><dd><p>$wp_plugin_dir: ' . $wp_plugin_dir . '</p>'
+                    . str_ireplace($wp_plugin_dir, '', __DIR__)
+                    // preg_replace('@'.$wp_plugin_dir.'@', '', __FILE__)
+                    . '</dd>';
+                echo '<dt class="keyTerms sys_path">$target_folder = $solidus_count - 7:(line26) </dt><dd>' . $target_folder . '</dd>';
+                echo '<dt class="keyTerms">explode(DIRECTORY_SEPARATOR, $path_to_wpcontent_plugins)[$target_folder])</dt><dd>' . explode(DIRECTORY_SEPARATOR, __DIR__)[$target_folder] . '</dd>';
+                echo '<dt class="keyTerms sys_path">function get_my_plugin_root_dir()</dt><dd><span class="red">'
+                    . get_my_plugin_root_dir() . '</span></dd>';
+                echo '</dl>';
+
+            ?>
+        </section>
+
+        <section id="footer">
+            <p class="content footer cite">Based on Notes by <a href="https://github.com/ajaxStardust" target="_blank" title="View original">@ajaxStardust</a> <em>Laravel</em> notes.
+            </p>
+        </section>
+    </div> <!--    .content  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+    </script>
+
+    <script src='<?php echo get__root_uri(); ?>/js/showme-hideme.js'></script>
+</body>
+
+</html>

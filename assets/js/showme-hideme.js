@@ -55,6 +55,7 @@ function toggleSection(thisImage, thisDd) {
 
 }
 
+
 function expandCollapse(details, toggle, txt) {
     var detailSection = document.getElementById(details);
     var toggleImage = document.getElementById(toggle);
@@ -215,16 +216,16 @@ function runStuff() {
     if (phpIframe) {
         phpIframe.onclick = toggleFrame;
     }
-    if(runtimeVal){
-    if (iniVal.innerHtml == runtimeVal.innerHtml) {
-        runtimeVal.style.color = "blue";
-        runtimeVal.style.font = 'normal';
-    } else
-    if (iniVal.innerHtml != runtimeVal.innerHtml) {
-        runtimeVal.style.color = "red";
-        runtimeVal.style.font = 'bold';
+    if (runtimeVal) {
+        if (iniVal.innerHtml == runtimeVal.innerHtml) {
+            runtimeVal.style.color = "blue";
+            runtimeVal.style.font = 'normal';
+        } else
+        if (iniVal.innerHtml != runtimeVal.innerHtml) {
+            runtimeVal.style.color = "red";
+            runtimeVal.style.font = 'bold';
+        }
     }
-}
 
 }
 
@@ -345,21 +346,6 @@ function scanCssLoaders() {
     // remove existing link as appropriate and create the opposite
 }
 
-function toggleSection(thisImage, thisDd) {
-
-    var detailSection, toggleImage;
-    detailSection = thisDd;
-    toggleImage = thisImage;
-
-    if (detailSection.style.display === 'block') {
-        detailSection.style.display = 'none';
-        toggleImage.src = 'assets/css/collapsed.gif';
-    } else {
-        detailSection.style.display = 'block';
-        toggleImage.src = 'assets/css/expanded.gif';
-    }
-
-}
 
 function toggleObject(toggObject) {
     var targetObj;
@@ -404,9 +390,10 @@ function loadIframe(whatclick) {
     jsLoadIframeDump = document.getElementById("jsLoadIframeDump");
     node2style = "navAnchor_" + anchorClicked;
     clickId = document.getElementById(node2style);
+    clickId.setAttribute('class', 'active');
     parentListItem = clickId.parentNode;
     if (clickId.style.backgroundColor !== "navy") {
-        clickId.style.backgroundColor = "rgba(255,255,255,0.0)";
+        clickId.style.backgroundColor = "rgba(255,255,255,0.5)";
         clickId.style.color = "rgba(0,0,0,0.2)";
     }
     if (parentListItem.style.backgroundImage !== "none") {
@@ -481,77 +468,11 @@ function justTitleIt() {
     }
 }
 
-function collapseNav(navDiv) {
-
-    var leftcol, maincol, navImage, toggleTxt, spacer;
-    leftcol = document.getElementById(navDiv);
-    maincol = document.getElementById('maincol');
-    navImage = document.getElementById('navControl');
-    toggleTxt = document.getElementById('navTxt');
-
-    if (navImage.src === ('assets/css/directional-arrow-left.png' || 'assets/css/directional-arrow-right.png')) {
-        spacer = '../';
-    } else {
-        spacer = '';
-    }
-
-    if (leftcol.style.display !== 'none') {
-        leftcol.style.display = 'none';
-        maincol.style.width = '100%';
-        maincol.style.paddingLeft = 0;
-        navImage.src = spacer + 'assets/css/directional-arrow-right.png';
-        toggleTxt.innerHTML = "show";
-    } else {
-        leftcol.style.display = 'block';
-        maincol.style.width = '79%';
-        navImage.src = spacer + 'assets/css/directional-arrow-left.png';
-        toggleTxt.innerHTML = "hide";
-    }
-}
-
-function popMeUp(target) {
-
-    var newWinUp = window.open((target), 'newPopWin', 'height = 500, width = 600, toolbar = no, directories = no, status = no, menubar = no, scrollbars = no, resizable = yes');
-    newWinUp.focus();
-    return false;
-}
-
-function showHide(obj1) {
-
-    var el1 = document.getElementById(obj1);
-    if (el1.style.display !== "block") {
-        el1.style.display = 'block';
-    } else {
-
-        el1.style.display = 'none';
-    }
-}
-
-function goBack() {
-    window.history.back();
-}
-
 function goBackFrame() {
     window.history.back();
 }
 
-function expandCollapse(details, toggle, txt) {
-    var detailSection, toggleImage, toggleText;
-    detailSection = document.getElementById(details);
-    toggleImage = document.getElementById(toggle);
-    toggleText = document.getElementById(txt);
 
-    if (detailSection.style.display === 'block') {
-        detailSection.style.display = 'none';
-        toggleImage.src = 'assets/css/collapsed.gif';
-        toggleText.innerHTML = "more...";
-    } else {
-        detailSection.style.display = 'block';
-        toggleImage.src = 'assets/css/expanded.gif';
-        toggleText.innerHTML = "hide";
-    }
-
-}
 
 function frame2top() {
 

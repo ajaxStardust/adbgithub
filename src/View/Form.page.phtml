@@ -1,0 +1,41 @@
+<div class="card ol-red">
+<h5>Dynamic Drop</h5>
+<div id="demos" class="ol-blue">Mod with JavaScript</div>
+<p class="attention">Leave Subdomain at [none] if none exists.</p>
+    <form id="fixtheurl" class="ol-green">
+        <label for="prefix" class="ol-grey">subdomain</label>
+        <select id="prefix">
+            <option value="">[none]</option>
+            <option value="other">other</option>
+            <option value="atheat">atheat</option>
+            <option value="atflux">atflux</option>
+            <option value="laravel">laravel</option>
+            <option value="python">python</option>
+            <option value="mx21">mx21</option>
+        </select>
+        
+        <label for="prefix">TLD / server_name</label>
+		<div id="infospace">(prefix)
+        <select id="suffix">
+            <option value="mxuni">mxuni</option>
+            <option value="wsldebian">wsldebian</option>
+            <option value="mxlinux-21">bunsen</option>
+        </select>
+		</div>
+        <input id="newItemInput" />
+        <button type="button" onclick="appendSelectedValue()">Append Selected Value</button>
+        <button type="button" onclick="updateAppendedData()">Update Appended Data</button>
+    </form>
+    <div id="appendedData"></div>
+    <div id="oldAppendedData"></div>
+ <h5 class="h5">Process a Path</h5>
+                        <div id="quickentry">
+                            <form action="<?= $_SERVER['PHP_SELF']; ?>" id="p2u2top" method="GET">
+                                <label for="path2url" class="xhidden">_GET['path2url']:</label>
+                                <input type="text" name="path2url" id="path2url" value="<?php print $enterpathhere; ?>">
+                                <button class="btn btn-primary" type="submit" name="submit">New
+                                    Hyperlink</button>
+                            </form>
+                        </div>
+</div>
+    <script src="assets/js/dynamicdrop.js"></script> 
