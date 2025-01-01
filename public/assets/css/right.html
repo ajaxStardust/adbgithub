@@ -1,0 +1,910 @@
+   <html>									
+   <script>									
+   function myScroll()						
+   {											
+    if (document.layers) {//for netscape		
+   	 x  = window.pageXOffset;				
+      y  = window.pageYOffset;				
+    }      									
+    else if (document.all) {//for IE			
+		 x = document.body.scrollLeft;			
+      y = document.body.scrollTop;			
+    }     									
+    parent.left.scrollTo(x,y);				
+   }     									
+   </script>									
+   <script language=JavaScript><!--		
+   if (document.layers) {					
+   document.captureEvents(Event.MOUSEMOVE);	
+   document.onmousemove = myScroll;			
+   }      									
+   //--></script>							
+   <body onscroll=myScroll()>				
+   <form name=rightform> 					
+   <pre>										
+C:\Apache2\htdocs\Documentation.Software\SciTE\css\style.css
+/**
+*
+* STYLESHEET TIDIED IN ONE-CLICK 
+* USING TSW WEBCODER 2007 : TSWARE.NET 
+*
+* */
+
+/* My_Notes/css/style.css */
+
+/* ----------------------------------------------- ELEMENT SELECTORS */
+html {
+	margin: 0;
+	padding:0;
+	color:#333;
+	background-color:#EFEFEF;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #f0f0ea;
+	color: #304;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+code.codelite {
+	background-color: #fffaef;
+	color: #395;
+	line-height: 140%;
+	padding: 0.4em;
+}
+
+code {
+	background-color: inherit;
+	/*  #fafafa  */
+	color: #05c;
+	line-height: 140%;
+	padding: 0.2em;
+}
+
+div.centered {
+	text-align: center;
+	display: block;
+	margin: 0 auto;
+}
+
+div.hiddenPath:before {
+	content: "\ a\ d ";
+}
+
+dl dd dl dd {
+	background-image: inherit;
+}
+
+dl dd dl dt {
+	font-weight: bold;
+}
+
+dl dd dl {
+	background-color: #eee;
+	border: none;
+}
+
+dl dd ul li {
+	text-indent: 0.5em;
+	font-family: arial, helvetica, sans-serif;
+	background-color: transparent;
+}
+
+dl dd ul ul {
+	margin-left: 1em;
+}
+
+dl dd ul {
+	background-color: transparent;
+	padding: 0.2em;
+	list-style-position: inside;
+	margin-left: -0.5em;
+}
+
+dl dd {
+	margin-left: 0em;
+}
+
+dl p {
+	background-color: transparent;
+}
+
+dl {
+	border: 0.2em solid #aaa;
+	padding: 1em;
+	margin: 1em 0 2em 0.5em;
+	width: 36em;
+	font-family: 'Bradley Hand TC', 'Staccato222 BT', cursive;
+	background-image: url(parchment-desat-bg.jpg);
+}
+
+dt code {
+	font-weight: bold;
+	background-color: inherit;
+}
+
+dt.cross {
+	color: #088;
+}
+
+dt.cross {
+	font-family: Arial, arial, Helvetica, sans-serif;
+	margin-top: 1em;
+	cursor: crosshair;
+	letter-spacing: 0.02em;
+}
+
+h1 {
+	text-shadow: 0.08em 0.08em 0.06em #445;
+}
+
+h3 {
+	color: #11A;
+	letter-spacing: -0.02em;
+	border-bottom: 0.15em groove #aaf;
+	width: 90%;
+}
+
+h4.keyTermsHeading {
+	color: #CC3300;
+	font-family: Georgia, "times new roman", times, serif;
+	font-style: oblique;
+	font-style: italic;
+}
+
+hr#clearImgShow {
+	clear: both;
+}
+
+hr.hidden {
+	clear:both;
+	visibility:hidden;
+}
+
+html {
+	margin: 0;
+	padding: 0;
+}
+
+li#goUpItem {
+	list-style-image: url(folder-up.gif);
+	width: 120px;
+}
+
+li.bakicon {
+	list-style-type: none;
+	list-style-image: url(bakicon.gif);
+}
+
+li.cssicon {
+	list-style-image: url(css-icon.gif);
+}
+
+li.db.nav {
+	display: none;
+}
+
+li.exeicon {
+	list-style-image: url(exe-icon.gif);
+}
+
+li.forbidden {
+	list-style-image: url(lock-icon.png);
+}
+
+li.hiddenitem {
+	display: none;
+}
+
+li.htmlicon {
+	list-style-image: url(page_white_code_red.png);
+}
+
+li.imgShowItem a {
+	border: none;
+}
+
+li.imgShowItem img {
+	max-height: 3em;
+	max-width: 5em;
+	border-top: 0.07em;
+	border-right: 0.09em;
+	border-bottom: 0.1em;
+	border-left: 0.2em;
+	border-style: solid;
+	color: #555;
+}
+
+li.jsicon {
+	list-style-image: url(javascript-icon.png);
+}
+
+li.nav.gif, li.nav.png, li.nav.psd, li.nav.bmp, li.nav.jpg, li.nav.ico, li.nav.tga, li.nav.tif, li.nav.tiff {
+	list-style-image: url(thumb-thing.png);
+	padding-left: 0;
+	margin-left: -0.5em;
+	white-space: pre;
+}
+
+li.navnobull {
+	list-style-image: url(folder.gif);
+	width: 120px;
+}
+
+li.nav {
+	list-style-image: url(bullet-arrow.gif);
+	padding-left: 0;
+	margin-left: -0.5em;
+	width: 120px;
+}
+
+li.netcomicon {
+	list-style-type: none;
+	list-style-image: url(netcomicon16.gif);
+}
+
+li.nobull {
+	list-style-type: none;
+}
+
+li.pdficon {
+	list-style-image: url(pdf-icon.gif);
+}
+
+li.phpicon {
+	list-style-image: url(page_white_php.png);
+}
+
+li.proj-in-nav {
+	list-style-type: none;
+	list-style-image: url(project-files.gif);
+	background-color: #aaa;
+	outline:0.2em solid #CCC;
+}
+
+li.shortcutlink {
+	list-style-image: url(link-icon.gif);
+}
+
+li.swficon {
+	list-style-image: url('swf-icon.gif');
+}
+
+li.thumbicon {
+	list-style-type: none;
+	list-style-image: url(thumb-icon.gif);
+}
+
+li.txticon {
+	list-style-image: url(txt-icon.gif);
+}
+
+li.xmlicon {
+	list-style-image: url(xml-icon.gif);
+}
+
+li.zipicon {
+	list-style-image: url(zip-icon.gif);
+}	
+
+#navlist li {
+	border-bottom:0.2em solid #EEE;
+	border-right:0.1em solid #EFEFEF;
+}
+
+#navlist li a {
+	display:block;
+<font style="background : #E8E8E8" color="#008080" >(+)	background: transparent;
+</font>}
+
+<font style="background : #E8E8E8" color="#008080" >(+)#navlist li:hover {
+(+)	background-color: #CCDFFF;
+(+)	font-weight:bold;
+(+)}
+(+)
+</font>li {
+	cursor: pointer;
+}
+
+ol#pathItems {
+	font-size: small;
+	font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+}
+
+ol#readyStateList {
+	background-color: #efe;
+}
+
+p#collapser img {
+	vertical-align: middle;
+}
+
+p#collapser {
+	font-size: x-small;
+	font-variant: small-caps;
+	letter-spacing: 0.3em;
+	clear: right;
+	float: right;
+}
+
+p#jumpBack img {
+}
+
+p#jumpBack {
+	margin: 0 auto;
+	float: right;
+}
+
+p.displaynone {
+	background-color: #FFFFCC;
+	color: #3333CC;
+	font-family: 'Bradley Hand ITC', 'Staccato222 BT', cursive;
+	padding: 1em;
+	float: right;
+	margin-top: -2em;
+	margin-left: 13em;
+	position: absolute;
+	border: 0.1em ridge #F03;
+}
+
+pre {
+	background-color: #e0e0da;
+	border: 3px double #88b;
+	padding: 1em;
+	width: 80%;
+	margin: 0.5em auto;
+	display: block;
+	background-image: url(code-bg.jpg);
+	color: #00C;
+}
+
+p {
+	padding: 0em 0.8em;
+	line-height: 140%;
+}
+
+span.pointer, span.toggler {
+	cursor: pointer;
+	font-family: gothic, monospace;
+	padding-left: 0;
+	font-size: 0.8em;
+	font-variant: small-caps;
+}
+
+ul#imgShow li.imgShowItem {
+	float: left;
+	display: table-cell;
+	margin: 0.1em 0.3em;
+	list-style-type: none;
+	text-indent: 0;
+	padding: 0.1em 0.1em 0.2em 0.4em;
+	background-color: #cdf;
+	outline: 0.05em solid #ccc;
+}
+
+ul#imgShow {
+	display: inline;
+}
+
+ul.keyTermsList li sup {
+	background-color: #fafafa;
+	color: #00F;
+	padding: 0.3em;
+	margin: 0.2em;
+	letter-spacing: 0.15em;
+	border-bottom: 0.18em groove #aaa;
+}
+
+ul.keyTermsList li {
+	list-style-image: url(info-icon.gif);
+}
+
+ul.keyTermsList {
+	background-color: #f8f8f8;
+	padding: 0.8em;
+	font-family: Palatino Linotype, Book Antiqua, Palatino, serif;
+	color: #006;
+}
+
+ul.nobull li {
+	list-style-type: none;
+}
+
+* html p.displaynone {
+	margin-left: 8em;
+	width: 100%;
+}
+
+/* ---------------------------------------------------- ID SELECTORS */
+#aboveFooter {
+	display:block;
+	float:right;
+	margin:1em;
+	padding:1em;
+	font-family:sans-serif;
+}
+
+
+#calContainer #calendarIframe {
+	margin: 0 auto;
+	visibility: hidden;
+}
+
+#calContainer {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#collapser-0 {
+	display: none;
+}
+
+#controList {
+	list-style-type:none;
+	
+}
+
+#controList li {
+	float:left;
+	display:block;
+	padding:0.2em 0.3em;
+	margin:0.5em 1em;
+	border:0.08em solid #FFF;
+	vertical-align: middle;
+}
+
+#controList li * {
+	border:none;	
+}
+
+#cssTips * dd {
+	padding: 0.8em;
+}
+
+#cssTips * dt {
+	margin: 0;
+	padding: 0.3em 0 0.2em 0;
+	font-family: serif;
+	font-style: italic;
+	font-style: oblique;
+	text-align: left;
+	text-indent: 0em;
+}
+
+#cssTips * {
+	width: 85%;
+	margin: 0 auto;
+}
+
+#cssTips dl {
+	font-family: sans-serif;
+	background-color: #FAFAEF;
+}
+
+#dbFormContainer {
+	text-align: left;
+}
+
+#footer p a:hover {
+	color: #aff;
+}
+
+#footer p a:link {
+	color: #FFa;
+}
+
+#footer p a:visited {
+	color: #ddf;
+}
+
+#footer p {
+	display: block;
+	font-family: 'Trebuchet MS', Trebuchet, sans-serif;
+	margin: 0pt auto;
+	padding-top: 1em;
+}
+
+#footer {
+	background-color: #222266;
+	clear: both;
+	color: #9AC4D8;
+	height: 3em;
+	text-align: center;
+}
+
+#foundDirs {
+	background-color: #C02;
+	color: #FFA;
+	list-style-type: upper-roman;
+}
+
+#header {
+	background-color: #F0F0EE;
+	background-image: url(midnightpoole.jpg);
+	background-position: center;
+	background-repeat: repeat-x;
+	clear: both;
+	color: #FFE;
+	font-family: impact, charcoal, sans-serif;
+	height: 10em;
+	text-align: center;
+	vertical-align: middle;
+	text-shadow: 0.08em 0.08em 0.06em #445;
+}
+
+#headimage {
+	background-color: transparent;
+	display: block;
+	float: left;
+	margin: 0.5em 1em;
+	overflow: visible;
+	padding: 0em 1em 0em 0em;
+	position: relative;
+	vertical-align: middle;
+}
+
+#headtext {
+	text-align: center;
+	margin: 0 auto;
+	display: block;
+	padding: 1.6em 0em 0em;
+	font-weight: normal;
+}
+
+#leftcol {
+	width: 29%;
+	display: block;
+	float: left;
+	position: relative;
+	background-color: #FFFFFF;
+	font-family: 'Trebuchet MS', Trebuchet, sans-serif;
+	font-size: 0.9em;
+	z-index: 10;
+}
+
+#maincol .centered dl {
+	display: block;
+	margin: 0 0;
+	text-align: left;
+	background-color: #f0f0f0;
+	background-image: url(parchment-desat-bg.jpg);
+}
+
+#maincol div, #maincol p, #maincol ul, #maincol ol, #maincol dl, #maincol form, #maincol table, #maincol h1, #maincol h2, #maincol h3 {
+	padding-left: 2em;
+}
+
+#maincol div.centered {
+	text-align: center;
+	margin: 0 auto;
+}
+
+#maincol dl dd {
+	border: 0.08em dotted #c55;
+}
+
+#maincol dl dt {
+	font-size: 1.2em;
+}
+
+#maincol dl {
+	background-color: #f5f5ff;
+}
+
+#maincol {
+	background-color: #F5F5F5;
+	display: block;
+	float: right;
+	font-family: 'Trebuchet MS', Trebuchet, sans-serif;
+	position: relative;
+	width: 71%;
+	z-index: 11;
+}
+
+#matchList:before {
+	color: #30F;
+	background-color: #FAFAFA;
+	font-weight: 800;
+	padding: 0.2em;
+	font-family: crisp, 'andale mono', 'bitstream vera sans mono', monospace;
+	content: "Showing: ($ matches as matchKey>$ matchVal): ";
+}
+
+#matchList {
+	font-size: 0.9em;
+	font-family: monospace;
+	color: #0a0;
+	background-color: #FFFFFC;
+	white-space: pre;
+}
+
+#navlist {
+	background-color: #FFF;
+	display: block;
+	border: 1px solid #fff;
+	margin-top: 1em;
+}
+
+#pageControls, #pageControl {
+	font: small-caps x-small sans-serif;
+	background-color: #F5F5F5;
+	display: block;
+	float: left;
+	position: relative;
+}
+
+<font style="background : #E8E8E8" color="#008080" >(+)h1#pageTitle {
+(+)	font-size: 1.5em;
+(+)}
+(+)
+</font>#pagewidth {
+	width: 55em;
+	margin: 0em auto;
+	display: block;
+	background-color: #FFFFFF;
+}
+
+#toBottom {
+	clear: right;
+	margin: 0.2em;
+}
+
+#toTop {
+	float: right;
+	margin: 0.2em;
+}
+
+#maincol {
+	width: 70%;
+	float: right;
+}
+
+#urlSplit li {
+	font-family: 'lucida sans unicode', 'lucida grande', 'lucida', sans-serif;
+	font-size: 0.8em;
+	margin: 0.4em 0.5em;
+}
+
+#urlSplit:before {
+	color: #F03;
+	background-color: #FAFAFA;
+	font-weight: 800;
+	padding: 0.2em;
+	font-family: crisp, 'andale mono', 'bitstream vera sans mono', monospace;
+	font-size-adjust: 0.63;
+	content: "Showing:$ splitKey=>$ splitVal[ preg_split($ matches[ 0] )] ";
+}
+
+#urlSplit {
+	list-style-type: none;
+}
+
+#leftcol dl#alpharrayTest {
+	z-index: 9;
+}
+
+
+
+/* ------------------------------------------------- CLASS SELECTORS */
+
+.antihead {
+	margin-top: -0.5em;
+}
+
+.attn {
+	background-color: #003;
+	color: #dd3;
+	font-family: 'Comic Sans MS', 'comic sans', cursive;
+}
+
+.bottomsmaller:first-letter {
+	font-weight: bold;
+}
+
+.bottomsmaller:first-line {
+	text-decoration: underline;
+}
+
+.bottomsmaller {
+	background-color: #CCDDDD;
+	border: 0.1em dashed #999999;
+	color: #000080;
+	display: block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+	margin: 0.5em 2em;
+	padding: 1.5em;
+	text-align: justify;
+}
+
+.code {
+	font-family: monospace;
+	display:inline-block;
+	background-color:#EEE;
+	color:#337;
+}
+
+.closeme:hover {
+	font-weight: bold;
+	color: #c22;
+	text-align: center;
+}
+
+.closeme {
+	color: #03f;
+	font-family: serif;
+	text-align: center;
+}
+
+.defListTitle {
+	color: #D02;
+	font-family: serif;
+	font-style: italic;
+	width: 50%;
+	border: none;
+	margin-bottom: 0.3em;
+}
+
+.displaynone, .displayNone, .collapsableDd {
+	display: none;
+}
+
+.displaynone {
+	display: none;
+}
+
+.error {
+	display: table-cell;
+	padding: 0.2em;
+	background-color: #0066CC;
+	color: #FFFFFF;
+}
+
+.floatLt, .floatleft, .floatLeft, .floatlt {
+	float: right;
+	position: relative;
+}
+
+.floatRt, .floatright, .floatrt, .floatRight {
+	float: right;
+	position: relative;
+}
+.hidden {
+	visibility: hidden;
+}
+
+
+.italic {
+	font-style: italic;
+}
+
+intraNav {
+	border:none;
+}
+
+intraNav * {
+	border:none;
+}
+
+.keyTerms h4 {
+	border: 0.2em outset #aaa;
+	width: 8em;
+	padding: 0.3em;
+}
+
+.keyTerms ul li pre {
+	font-size: larger;
+	background-image: none;
+}
+
+.keyTerms ul li sup code {
+	font-size: larger;
+}
+
+.keyTerms ul li sup {
+	font-size: 1em;
+}
+
+.keyTerms ul li {
+	font-size: 0.8em;
+	margin-bottom: 2em;
+}
+
+.keyTerms {
+	background-color: #fafafa;
+	margin: 0em 2em;
+	padding: 0.2em 1em;
+	text-align: justify;
+}
+
+.pseudocode {
+	color: #008800;
+	font-family: "Lucida Console", Monaco, monospace;
+	background-color: #F0F0EA;
+	font-size: 0.9em;
+	margin: 0.2em;
+}
+
+.sansSerifBold {
+	font-family: Arial, helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.sansSerif {
+	font-family: arial, helvetica, sans-serif;
+}
+
+.serifBold {
+	font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+	font-weight: bold;
+}
+
+.serif {
+	font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+}
+
+.showMatches {
+	background-color:#DDE;
+	border:0.1em double #996600;
+	padding:0.2em 2em;
+	width:80%;
+	margin:1.5em auto;
+	font-family:monospace;
+}
+
+.testValue {
+	font-size: 0.9em;
+	font-family: monospace;
+	color: #0D0;
+	background-color: #FFD;
+	white-space: pre;
+}
+
+.toggler:hover {
+	visibility: visible;
+	display: inline;
+	color: red;
+	background-color: #FFF;
+	padding: 0.2em 0 0.3em 0;
+}
+
+.toggler {
+	font-family: Arial, "DejaVu Sans Condensed", "Bitstream Vera Sans", "DejaVu Sans", Geneva, Helvetica, sans-serif;
+	font-variant: small-caps;
+	letter-spacing: 0.3em;
+}
+
+.unfloat {
+	display: inline-block;
+}
+
+* html .unfloat {
+	height: 1%;
+}
+
+.unfloat:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+
+/* ----------------------------------------------------- @DIRECTIVES */
+
+@media print {
+	/* hide the left column when printing */
+	leftcoldisplay: none;
+}
+
+
+
+
+   </pre>									
+   </form>									
+   </body>									
+   </html>									

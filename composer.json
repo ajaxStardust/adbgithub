@@ -1,0 +1,9 @@
+{
+    "autoload": {
+        "classmap": ["src/Model", "src/View", "src/Controller"]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "phpstan/phpstan": "^1.12"
+    }
+}

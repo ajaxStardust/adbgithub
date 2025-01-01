@@ -1,0 +1,46 @@
+.clear {
+        clear: none;
+    }
+    .clear::before {
+        content: '\00000a\00000d';
+        clear: both;
+    }
+    .regex-input,
+    .regex-pattern,
+    .regex-replace {
+        font-family: consolas, curior, monospace;
+        font-size: smaller;
+    }
+    .regex-input {
+        color: red;
+    }
+    .regex-pattern {
+        color: blue;
+    }
+    .regex-replace {
+        color: green;
+    }
+    ul {
+        list-style: none outside none;
+        padding-left: 0;
+        margin: 0;
+    }
+    .demo .item {
+        margin-bottom: 60px;
+    }
+    .content-slider li {
+        background-color: #ed3020;
+        text-align: center;
+        color: #FFF;
+    }
+    .content-slider h3 {
+        margin: 0;
+        padding: 70px 0;
+    }
+    .demo {
+        width: 800px;
+    }
+
+.ol-red {
+	outline: #F00 solid 0.1em;
+}

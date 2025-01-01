@@ -1,0 +1,464 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>statecollegeguitarlessons.com/adb/index.php</title>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="assets/css/emeyereset.css" media="all">
+		<link rel="icon" type="image/ico" href="favicon.ico">
+		<link rel="shortcut icon" type="image/ico" href="favicon.ico">
+		<!-- Bootstrap Css v5 -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+		<style>
+<!--
+			    .hide-show-element {
+			        width: 10rem;
+			        display: inline-block;
+			        font-size: 14px;
+			        /* font-family: --bs-font-sans-serif; */
+			        font-family: sans-serif;
+			    }
+			
+			    .hide-show-element label:hover {
+			        color: #D00;
+			    }
+			
+			    .hide-show-element input[type='checkbox'] {
+			        display: none;
+			    }
+			
+			    .hide-show-element label {
+			        margin: 0 .1em;
+			        padding: 0 .3em;
+			        border-radius: 3px;
+			        border: .1em solid #ccc;
+			        color: #333;
+			        line-height: 1.625;
+			        font-size: .83em;
+			        font-family: inherit;
+			        background-color: #f7f7f7;
+			        box-shadow: 0 .1em 0 rgba(0, 0, 0, .2), 0 0 0 .2em #fff inset;
+			    }
+			
+			    .hide-show-element label {
+			        /* background-color: #a00; */
+			        /* border: 1px solid #111; */
+			        color: #E8E6FF;
+			        cursor: pointer;
+			        /* display: block; */
+			        /* padding: 20px; */
+			        display: inline-block;
+			        text-align: center;
+			        transition-duration: 0.4s;
+			        width: 90%;
+			        margin: 0;
+			        text-shadow: 0.06rem 0.06rem 0.1rem #33333355;
+			    }
+			
+			    .hide-show-element label:after {
+			        display: block;
+			        content: "Show Controls";
+			    }
+			
+			    .hide-show-element input:checked+label {
+			        background-color: none;
+			        /* border: 1px solid #a00; */
+			        color: #3A29BB;
+			    }
+			
+			    .hide-show-element input:checked+label:after {
+			        content: "Hide Controls";
+			    }
+			
+			    .test1 {
+			        opacity: 0;
+			        position: relative;
+			        height: 0;
+			        transform: rotate(135deg);
+			        top: 20%;
+			        transition-duration: 0.6s;
+			        width: 0;
+			    }
+			
+			    .hide-show-element input:checked~.test1 {
+			        filter: grayscale(25%);
+			        opacity: 1;
+			        height: 200px;
+			        transform: rotate(0);
+			        width: 8rem;
+			    }
+			    .randomimage {
+			        display:inline-block;
+			        max-width:1024;
+			        max-height:768;
+			    }
+			    #jsaffect {
+			
+			    display: inline-block;
+			    flex-direction: unset;
+			    border: 0.01rem solid #7fd5ff;
+			
+			    }
+			    -->
+		</style>
+		<!-- SPECTRE CSS>
+    <!-- link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <!-- link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <!-- link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    <!-- SPECTRE CSS -->
+		<style>
+			body#index li#indexNav a {
+				/* background-color:#E1EbFF; */
+				background-color:transparent;
+				color:#008;
+				font-weight:bold;
+			}
+			body#index li#indexNav {
+				background-color: rgba(225, 235, 255, 0.6);
+				border:0.2em solid #e1ebff;
+			}
+			body#index li#indexNav:hover {
+				color:#000;
+			}
+		</style>
+		<link id="unlockFrame" rel="stylesheet" type="text/css" href="assets/css/unlockframe.css" media="screen">
+		<link id="style_main" rel="stylesheet" type="text/css" href="assets/css/style.css" media="all">
+		<!-- ajaxStardust style_main anniedebrowsa -->
+		<script type="text/javascript" src="./assets/js/accessories.js">
+		</script>
+		<script>
+			window.onload = cloneAttributes("jsaffect", "locallinks");
+		</script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+		</script>
+		<script>
+			$(document).ready(function() {
+			        // Function to update the news ticker with a random variable
+			        function updateNewsTicker() {
+			            $.getJSON('assets/json/bash_variables.json', function(data) {
+			                var variables = data.variables;
+			
+			                // Select a random variable
+			                var random_variable_key = Math.floor(Math.random() * Object.keys(variables).length);
+			                var random_variable_name = Object.keys(variables)[random_variable_key];
+			                var random_variable = variables[random_variable_name];
+			
+			                $('#news-ticker').text(random_variable_name + ': ' + random_variable.description + ' (Used for: ' + random_variable.used_for + ')');
+			            });
+			        }
+			
+			        // Update the news ticker every 5 seconds
+			        updateNewsTicker();
+			        setInterval(updateNewsTicker, 5000); // Change interval as needed
+			    });
+		</script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+		<style>
+			.material-symbols-outlined {
+			  font-variation-settings:
+			  'FILL' 0,
+			  'wght' 400,
+			  'GRAD' 0,
+			  'opsz' 24
+			}
+		</style>
+	</head>
+
+	<body id="index">
+		<figure id="cssBox_Target" class="target displaynone">
+			<!-- ^ cssBoxContainer ^ --><img src="assets/css/css-box_novicenotes-dot-net_transp.png" alt="CSS Box-model illustration" id="cssBoxImg"> </figure> <!-- $ cssBoxContainer $ -->
+		<div id="pagewidth">
+			<!-- ^ id=pagewidth -->
+			<div id="header" title="index.php of adb Header">
+				<!--     ^   Begin Dynamic and SVG styled Header  ^   --><object id="svgtitle" class="floatleft transparentback" title="Documents of adb container" data="assets/css/masthead.php" type="image/svg+xml"> </object> </div><!-- $ END Dynamic and SVG HTML node ID#header $ -->
+			<div id="wrapper" class="unfloat">
+				<!-- ^ id=wrapper ^ -->
+				<div class="content" id="cookieData"></div>
+				<div id="headrandom">
+					<dl> <dt class="keyTerms pointer" id="jsaffect">View <span class="normal blue pointer" id="show_n01" onclick="swap_text('show_n01','notes_01') ">[toggle img]</span> </dt> <dd id="notes_01" class="displaynone">
+							<figure id="toggle-head"><img src="assets/screenshots//Vivaldi_20240113_001.png" alt="Header Image" class="randomimage"><figcaption>assets/screenshots/</figcaption>
+							</figure>
+							<div id="randomslide" class=""> </div>
+						</dd>
+					</dl>
+					<marquee id="news-ticker" behavior="scroll" direction="left" scrollamount="4"></marquee> <span class="material-symbols-outlined"><a rel="me" href="https://social.vivaldi.net/@ajaxStardust">Mastodon</a></span> </div> <!-- //#headrandom -->
+				<!-- div class="content" id="docLinks" style="z-index:9999 !important;"></div -->
+				<script>
+					font_props( 'font_demo_serif', 'fontFamily' );
+					        font_props( 'font_demo_sans', 'fontFamily' );
+				</script> <!-- close leftcol -->
+				<div id="maincol">
+					<!--    ^   id:maincol  ^   -->
+					<!--    id:doc_loc_href added ID data here for indication of preferred text -->
+					<h2 id="doc_loc_href" title="currentUrlPath.pathInfoBasename">http://statecollegeguitarlessons.com/adb/index.php</h2>
+					<div class="hide-show-element"> <input type="checkbox" id="toggle"> <label for="toggle"></label> <div id="pageControls" class="test1">
+							<header id="pageControlHeader">Page Control</header>
+							<ul id="controList">
+								<li id="toTopJscon"> <a class="intraNav" href="#header"><img src="assets/css/arrow-up.png" alt="jump to top"> <span id="headerJumper">top</span> </a></li>
+								<li id="leftColtrigger" onclick="collapseNav('leftcol')"> <span class="trigger"> <a title="Toggle show / hide HTML id:leftcol (the navigation at left)"> <img id="navControl" src="assets/css/directional-arrow-left.png" alt="collapse navigation"> <span id="navTxt">toggle</span> nav </a></span></li>
+								<li id="pageCon_goBack"> <span class="handler" id="goBackHandler"><a title="JavaScript Function of showme-hideme_js - goBack()" onclick="goBack()"><img src="assets/css/back-matchingred.png" height="16" width="26" alt="History: Go Back" title="Back to previous page"></a></span> </li>
+								<li id="toBottom"> <a class="intraNav" href="#footer"><img src="assets/css/arrow-down.png" alt="jump to bottom"> <span id="footJumper">bottom</span> </a></li>
+								<li id="accessTrigger"><span class="trigger" id="accessContainerTrigger" onclick="showHide('accessContainer')"> toggle acc </span></li>
+								<li class="loader"> <span id="lockFrameLoader" class="cssloader"><a id="lockFrameAnchor" title="Lock main iframe for easier viewing of large images or lengthy text" href="#mainFrameContainer">lock iframe</a> </span> </li>
+								<li class="trigger"> <span id="cssBox_Trigger" class="trigger" onclick="showHide('cssBox_Target')"><a title="Toggle show / hide CSS Box Model illustration"> CSS Box </a></span> </li>
+								<li id="fbloader" class="loader"> <span class="loader"> <a title="Click to activate the portable Firebug Lite script embedded in my javascript container"><img src="assets/css/firebug_icon_oldver.png" alt="launch firebug lite" width="16" height="16"> Firebug <em>Lite</em></a> </span> </li>
+								<li id="iframe2top"><span class="trigger" id="send2top" onclick="frame2top()"><a title="send frame to top">frame2top</a></span></li>
+								<li id="js2index"><a href="index.php" title="index.php" target="_blank">
+										<!-- 64 -->index</a> [php to top]</li>
+							</ul> <!-- temp note: moved css box model image to dochead for now -->
+						</div>
+					</div>
+					<hr class="hidden">
+					<div id="accessContainer" class="target">
+						<!--	^	id:accessContainer	^	-->
+						<h4>CHMOD Assistant</h4> <span class="trigger antihead" id="chmodTrigger" onclick="showHide('chmodContainer')">[toggle]</span> <!--	^	id:chmodContainer	^	-->
+						<div id="chmodContainer" class="target">
+							<p>Ensure files and folders are assigned the proper user permissions:</p>
+							<table id="chmodTableOuter" class="width_200">
+								<caption>change mode helper script outer</caption>
+								<tbody>
+									<tr>
+										<td>
+											<form name="chmod">
+												<table id="chmodTableInner">
+													<caption>change mode helper script form</caption>
+													<colgroup>
+														<col class="width_200">
+														<col class="width_200">
+														<col class="width_150">
+														<col class="width_150">
+													</colgroup>
+													<tbody>
+														<tr class="bg_grey">
+															<td class="bg_white right">
+																<p class="left"><b>Permissions</b></p>
+															</td>
+															<td class="width_40 center">owner</td>
+															<td class="width_40 center">group</td>
+															<td class="center width_40">other</td>
+														</tr>
+														<tr class="bg_grey">
+															<td class="bg_white right">read:&nbsp; </td>
+															<td class="width_40 bg_lightx2grey center"><input type="checkbox" onclick="calc_chmod()" value="" name="owner4"></td>
+															<td class="width_37 bg_white center"><input type="checkbox" onclick="calc_chmod()" value="" name="group4"></td>
+															<td class="bg_lightx2grey center"><input type="checkbox" onclick="calc_chmod()" value="" name="other4"></td>
+														</tr>
+														<tr class="bg_grey">
+															<td class="bg_white right">write:&nbsp; </td>
+															<td class="width_40 bg_lightx2grey center"><input type="checkbox" onclick="calc_chmod()" value="" name="owner2"></td>
+															<td class="width_37 bg_white center"><input type="checkbox" onclick="calc_chmod()" value="" name="group2"></td>
+															<td class="bg_lightx2grey center"><input type="checkbox" onclick="calc_chmod()" value="" name="other2"></td>
+														</tr>
+														<tr class="bg_grey">
+															<td class="bg_white right">execute:&nbsp; </td>
+															<td class="width_40 bg_lightx2grey center"><input type="checkbox" onclick="calc_chmod()" value="" name="owner1"></td>
+															<td class="width_37 bg_white center"><input type="checkbox" onclick="calc_chmod()" value="" name="group1"></td>
+															<td class="bg_lightx2grey center"><input type="checkbox" onclick="calc_chmod()" value="" name="other1"></td>
+														</tr>
+														<tr>
+															<td class="bg_white left">Permissions:</td>
+															<td class="bg_white center" colspan="3"><input type="text" onkeyup="octalchange()" size="5" value="" name="t_total"> </td>
+														</tr>
+														<tr class="bg_grey">
+															<td class="bg_white left" colspan="4"> <input type="text" style="border: 0px none ; font-family: &quot;Courier New&quot;,Courier,mono;" size="12" value="" name="sym_total"> </td>
+														</tr>
+													</tbody>
+												</table>
+											</form>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div> <!--	$	id:chmodContainer	$	-->
+						<h4>HTML Assistant</h4> <span class="trigger antihead" id="w3cHtml_Trigger" onclick="showHide('w3cHtml_Container')">[toggle]</span> <div id="w3cHtml_Container" class="target">
+							<!--	^	id:w3cHtml_Container	^	-->
+							<dl> <dt>Key and Important Elements of the W3C Praxis</dt> <dd>
+									<ul>
+										<li><a onclick="load3rdFrame('http://encyclopedia.thefreedictionary.com/HTML')" id="navAnchor_w3html" href="#mainFrameContainer">HTML</a></li>
+										<li><a onclick="load3rdFrame('http://encyclopedia.thefreedictionary.com/Character+encodings+in+HTML')" id="navAnchor_w3CharEncodings" href="#mainFrameContainer">Character encodings</a></li>
+										<li><a onclick="load3rdFrame('http://encyclopedia.thefreedictionary.com/Dynamic+HTML')" id="navAnchor_w3DynamicHTML" href="#mainFrameContainer">Dynamic HTML</a></li>
+										<li><a onclick="load3rdFrame('http://encyclopedia.thefreedictionary.com/Font+family+%28HTML%29')" id="navAnchor_w3Fontfamily" href="#mainFrameContainer">Font family</a></li>
+										<li><a onclick="load3rdFrame('http://encyclopedia.thefreedictionary.com/HTML+editor')" id="navAnchor_w3HTMLeditor" href="#mainFrameContainer">HTML editor</a></li>
+										<li><a onclick="load3rdFrame('http://encyclopedia.thefreedictionary.com/HTML+element')" id="navAnchor_w3HTMLelement" href="#mainFrameContainer">HTML element</a></li>
+										<li><a onclick="load3rdFrame('http://encyclopedia.thefreedictionary.com/HTML+scripting')" id="navAnchor_w3HTMLscripting" href="#mainFrameContainer">HTML scripting</a></li>
+										<li><a onclick="load3rdFrame('http://encyclopedia.thefreedictionary.com/Comparison+of+layout+engines+%28HTML%29')" id="navAnchor_w3LayoutEngineComp" href="#mainFrameContainer">Layout engine comparison</a></li>
+										<li><a onclick="load3rdFrame('http://encyclopedia.thefreedictionary.com/Style+sheet+%28web+development%29')" id="navAnchor_w3StyleSheets" href="#mainFrameContainer">Style Sheets</a></li>
+										<li><a onclick="load3rdFrame('http://encyclopedia.thefreedictionary.com/Unicode+and+HTML')" id="navAnchor_w3Unicode" href="#mainFrameContainer">Unicode and HTML</a></li>
+										<li><a onclick="load3rdFrame('http://encyclopedia.thefreedictionary.com/World+Wide+Web+Consortium')" id="navAnchor_w3TheW3C" href="#mainFrameContainer">The W3C</a></li>
+										<li><a onclick="load3rdFrame('http://encyclopedia.thefreedictionary.com/Comparison+of+web+browsers')" id="navAnchor_w3WebBrowsersComp" href="#mainFrameContainer">Web browsers comparison</a></li>
+										<li><a onclick="load3rdFrame('http://encyclopedia.thefreedictionary.com/Web+colors')" id="navAnchor_w3WebColors" href="#mainFrameContainer">Web colors</a></li>
+										<li><a onclick="load3rdFrame('http://encyclopedia.thefreedictionary.com/XHTML')" id="navAnchor_w3XHTML" href="#mainFrameContainer">XHTML</a></li>
+									</ul>
+								</dd>
+							</dl>
+						</div> <!--	$	id:w3cHtml_Container	$	-->
+					</div> <!--	$	id:accessContainer	$	-->
+					<div id="mainFrameContainer">
+						<!--    ^   id:mainFrameContainer   ^   -->
+						<div id="frameTitler">Currently Viewing: <span id="frameName">p2u2.phtml</span> </div> <!--    $   id:frameTitler  $   --><iframe title="frame content as selected in main navigation" src="p2u2.phtml" id="mainFrame"> </iframe> </div> <!--    $   id:mainFrameContainer   $   -->
+				</div> <!--    $   id:maincol  $   -->
+				<nav id="leftcol" class="navlist">
+					<ul id="navlist" class="navlist">
+						<li id="goUpItem" class="nav"><a title="crazy" href="//statecollegeguitarlessons.com">statecollegeguitarlessons.com</a></li>
+						<li onclick="showHide('ul_A')" id="li_A" class="toggler"><span style="font-weight:bold;">A</span>: [ view 3 ] <ul id="ul_A" class="alphaNumChildList target">
+								<li class="navnobull" title="assets"><a href="assets">
+										<!-- 124 -->assets</a></li>
+								<li class="material-symbols-outlined nav webpicon"><a title="View about_ntfs_in_fstab.webp in main iFrame" href="#mainFrameContainer" id="navAnchor_about_ntfs_in_fstab.webp" onclick="loadIframe('about_ntfs_in_fstab.webp')">
+										<!-- 81 -->about_ntfs_in_fstab</a> [webp to iframe]</li>
+								<li class="material-symbols-outlined nav webmicon"><a title="View aeolean.webm in main iFrame" href="#mainFrameContainer" id="navAnchor_aeolean.webm" onclick="loadIframe('aeolean.webm')">
+										<!-- 81 -->aeolean</a> [webm to iframe]</li>
+							</ul>
+						</li>
+						<li onclick="showHide('ul_B')" id="li_B" class="toggler"><span style="font-weight:bold;">B</span>: [ view 1 ] <ul id="ul_B" class="alphaNumChildList target">
+								<li class="material-symbols-outlined nav phtmlicon"><a title="View bootstrap_preview.phtml in main iFrame" href="#mainFrameContainer" id="navAnchor_bootstrap_preview.phtml" onclick="loadIframe('bootstrap_preview.phtml')">
+										<!-- 81 -->bootstrap_preview</a> [phtml to iframe]</li>
+							</ul>
+						</li>
+						<li onclick="showHide('ul_C')" id="li_C" class="toggler"><span style="font-weight:bold;">C</span>: [ view 3 ] <ul id="ul_C" class="alphaNumChildList target">
+								<li class="material-symbols-outlined nav htmicon"><a title="View CSATS.htm in main iFrame" href="#mainFrameContainer" id="navAnchor_CSATS.htm" onclick="loadIframe('CSATS.htm')">
+										<!-- 81 -->CSATS</a> [htm to iframe]</li>
+								<li class="material-symbols-outlined phpicon"><a href="commonfonts.php" title="commonfonts.php" target="_blank">
+										<!-- 64 -->commonfonts</a> [php to top]</li>
+								<li class="material-symbols-outlined nav phtmlicon"><a title="View curl_notes.phtml in main iFrame" href="#mainFrameContainer" id="navAnchor_curl_notes.phtml" onclick="loadIframe('curl_notes.phtml')">
+										<!-- 81 -->curl_notes</a> [phtml to iframe]</li>
+							</ul>
+						</li>
+						<li onclick="showHide('ul_D')" id="li_D" class="toggler"><span style="font-weight:bold;">D</span>: [ view 1 ] <ul id="ul_D" class="alphaNumChildList target">
+								<li class="material-symbols-outlined nav phtmlicon"><a title="View definition_list_template.phtml in main iFrame" href="#mainFrameContainer" id="navAnchor_definition_list_template.phtml" onclick="loadIframe('definition_list_template.phtml')">
+										<!-- 81 -->definition_list_template</a> [phtml to iframe]</li>
+							</ul>
+						</li>
+						<li onclick="showHide('ul_E')" id="li_E" class="toggler"><span style="font-weight:bold;">E</span>: [ view 1 ] <ul id="ul_E" class="alphaNumChildList target">
+								<li class="material-symbols-outlined nav htmlicon"><a title="View entities.html in main iFrame" href="#mainFrameContainer" id="navAnchor_entities.html" onclick="loadIframe('entities.html')">
+										<!-- 81 -->entities</a> [html to iframe]</li>
+							</ul>
+						</li>
+						<li onclick="showHide('ul_F')" id="li_F" class="toggler"><span style="font-weight:bold;">F</span>: [ view 2 ] <ul id="ul_F" class="alphaNumChildList target">
+								<li class="material-symbols-outlined nav icoicon"><a title="View favicon.ico in main iFrame" href="#mainFrameContainer" id="navAnchor_favicon.ico" onclick="loadIframe('favicon.ico')">
+										<!-- 81 -->favicon</a> [ico to iframe]</li>
+								<li class="material-symbols-outlined nav icoicon"><a title="View favicon_old.ico in main iFrame" href="#mainFrameContainer" id="navAnchor_favicon_old.ico" onclick="loadIframe('favicon_old.ico')">
+										<!-- 81 -->favicon_old</a> [ico to iframe]</li>
+							</ul>
+						</li>
+						<li onclick="showHide('ul_G')" id="li_G" class="toggler"><span style="font-weight:bold;">G</span>: [ view 3 ] <ul id="ul_G" class="alphaNumChildList target">
+								<li class="material-symbols-outlined nav phtmlicon"><a title="View git_notes.phtml in main iFrame" href="#mainFrameContainer" id="navAnchor_git_notes.phtml" onclick="loadIframe('git_notes.phtml')">
+										<!-- 81 -->git_notes</a> [phtml to iframe]</li>
+								<li class="material-symbols-outlined phpicon"><a href="graphic_design.php" title="graphic_design.php" target="_blank">
+										<!-- 64 -->graphic_design</a> [php to top]</li>
+								<li class="material-symbols-outlined nav phtmlicon"><a title="View graphic_design_stuff.phtml in main iFrame" href="#mainFrameContainer" id="navAnchor_graphic_design_stuff.phtml" onclick="loadIframe('graphic_design_stuff.phtml')">
+										<!-- 81 -->graphic_design_stuff</a> [phtml to iframe]</li>
+							</ul>
+						</li>
+						<li onclick="showHide('ul_I')" id="li_I" class="toggler"><span style="font-weight:bold;">I</span>: [ view 1 ] <ul id="ul_I" class="alphaNumChildList target">
+								<li id="indexNav" class="phpicon"><a href="index.php" title="index.php" target="_blank">
+										<!-- 64 -->index</a> [php to top]</li>
+							</ul>
+						</li>
+						<li onclick="showHide('ul_J')" id="li_J" class="toggler"><span style="font-weight:bold;">J</span>: [ view 2 ] <ul id="ul_J" class="alphaNumChildList target">
+								<li class="material-symbols-outlined nav webmicon"><a title="View jeff_does_dallas.webm in main iFrame" href="#mainFrameContainer" id="navAnchor_jeff_does_dallas.webm" onclick="loadIframe('jeff_does_dallas.webm')">
+										<!-- 81 -->jeff_does_dallas</a> [webm to iframe]</li>
+								<li class="material-symbols-outlined nav phtmlicon"><a title="View jeff_sabarese_guitar_artist_bio.phtml in main iFrame" href="#mainFrameContainer" id="navAnchor_jeff_sabarese_guitar_artist_bio.phtml" onclick="loadIframe('jeff_sabarese_guitar_artist_bio.phtml')">
+										<!-- 81 -->jeff_sabarese_guitar_artist_bio</a> [phtml to iframe]</li>
+							</ul>
+						</li>
+						<li onclick="showHide('ul_M')" id="li_M" class="toggler"><span style="font-weight:bold;">M</span>: [ view 6 ] <ul id="ul_M" class="alphaNumChildList target">
+								<li class="material-symbols-outlined nav phtmlicon"><a title="View micro_syntax-highlighter.phtml in main iFrame" href="#mainFrameContainer" id="navAnchor_micro_syntax-highlighter.phtml" onclick="loadIframe('micro_syntax-highlighter.phtml')">
+										<!-- 81 -->micro_syntax-highlighter</a> [phtml to iframe]</li>
+								<li class="material-symbols-outlined nav svgicon"><a title="View mode_for_guitar.svg in main iFrame" href="#mainFrameContainer" id="navAnchor_mode_for_guitar.svg" onclick="loadIframe('mode_for_guitar.svg')">
+										<!-- 81 -->mode_for_guitar</a> [svg to iframe]</li>
+								<li class="material-symbols-outlined nav svgicon"><a title="View modes_model.svg in main iFrame" href="#mainFrameContainer" id="navAnchor_modes_model.svg" onclick="loadIframe('modes_model.svg')">
+										<!-- 81 -->modes_model</a> [svg to iframe]</li>
+								<li class="material-symbols-outlined nav svgicon"><a title="View modes_model_missing_01.svg in main iFrame" href="#mainFrameContainer" id="navAnchor_modes_model_missing_01.svg" onclick="loadIframe('modes_model_missing_01.svg')">
+										<!-- 81 -->modes_model_missing_01</a> [svg to iframe]</li>
+								<li class="material-symbols-outlined nav svgicon"><a title="View modes_model_missing_02.svg in main iFrame" href="#mainFrameContainer" id="navAnchor_modes_model_missing_02.svg" onclick="loadIframe('modes_model_missing_02.svg')">
+										<!-- 81 -->modes_model_missing_02</a> [svg to iframe]</li>
+								<li class="material-symbols-outlined nav svgicon"><a title="View modes_model_missing_03.svg in main iFrame" href="#mainFrameContainer" id="navAnchor_modes_model_missing_03.svg" onclick="loadIframe('modes_model_missing_03.svg')">
+										<!-- 81 -->modes_model_missing_03</a> [svg to iframe]</li>
+							</ul>
+						</li>
+						<li onclick="showHide('ul_N')" id="li_N" class="toggler"><span style="font-weight:bold;">N</span>: [ view 2 ] <ul id="ul_N" class="alphaNumChildList target">
+								<li class="material-symbols-outlined nav phtmlicon"><a title="View notes_find_and_prune.phtml in main iFrame" href="#mainFrameContainer" id="navAnchor_notes_find_and_prune.phtml" onclick="loadIframe('notes_find_and_prune.phtml')">
+										<!-- 81 -->notes_find_and_prune</a> [phtml to iframe]</li>
+								<li class="material-symbols-outlined nav phtmlicon"><a title="View notes_template.phtml in main iFrame" href="#mainFrameContainer" id="navAnchor_notes_template.phtml" onclick="loadIframe('notes_template.phtml')">
+										<!-- 81 -->notes_template</a> [phtml to iframe]</li>
+							</ul>
+						</li>
+						<li onclick="showHide('ul_O')" id="li_O" class="toggler"><span style="font-weight:bold;">O</span>: [ view 1 ] <ul id="ul_O" class="alphaNumChildList target">
+								<li class="material-symbols-outlined nav webmicon"><a title="View opera_sidebar.webm in main iFrame" href="#mainFrameContainer" id="navAnchor_opera_sidebar.webm" onclick="loadIframe('opera_sidebar.webm')">
+										<!-- 81 -->opera_sidebar</a> [webm to iframe]</li>
+							</ul>
+						</li>
+						<li onclick="showHide('ul_P')" id="li_P" class="toggler"><span style="font-weight:bold;">P</span>: [ view 2 ] <ul id="ul_P" class="alphaNumChildList target">
+								<li class="navnobull" title="public"><a href="public">
+										<!-- 124 -->public</a></li>
+								<li class="material-symbols-outlined nav phtmlicon"><a title="View p2u2.phtml in main iFrame" href="#mainFrameContainer" id="navAnchor_p2u2.phtml" onclick="loadIframe('p2u2.phtml')">
+										<!-- 81 -->p2u2</a> [phtml to iframe]</li>
+							</ul>
+						</li>
+						<li onclick="showHide('ul_R')" id="li_R" class="toggler"><span style="font-weight:bold;">R</span>: [ view 3 ] <ul id="ul_R" class="alphaNumChildList target">
+								<li class="material-symbols-outlined nav icoicon"><a title="View rj_textedit.ico in main iFrame" href="#mainFrameContainer" id="navAnchor_rj_textedit.ico" onclick="loadIframe('rj_textedit.ico')">
+										<!-- 81 -->rj_textedit</a> [ico to iframe]</li>
+								<li class="material-symbols-outlined nav htmlicon"><a title="View rj_textedit.plain.html in main iFrame" href="#mainFrameContainer" id="navAnchor_rj_textedit.plain.html" onclick="loadIframe('rj_textedit.plain.html')">
+										<!-- 81 -->rj_textedit.plain</a> [html to iframe]</li>
+								<li class="material-symbols-outlined nav svgicon"><a title="View rj_textedit.plain.svg in main iFrame" href="#mainFrameContainer" id="navAnchor_rj_textedit.plain.svg" onclick="loadIframe('rj_textedit.plain.svg')">
+										<!-- 81 -->rj_textedit.plain</a> [svg to iframe]</li>
+							</ul>
+						</li>
+						<li onclick="showHide('ul_S')" id="li_S" class="toggler"><span style="font-weight:bold;">S</span>: [ view 3 ] <ul id="ul_S" class="alphaNumChildList target">
+								<li class="material-symbols-outlined nav phtmlicon"><a title="View screenshots.phtml in main iFrame" href="#mainFrameContainer" id="navAnchor_screenshots.phtml" onclick="loadIframe('screenshots.phtml')">
+										<!-- 81 -->screenshots</a> [phtml to iframe]</li>
+								<li class="material-symbols-outlined nav cssicon"><a title="View serif_fonts.css in main iFrame" href="#mainFrameContainer" id="navAnchor_serif_fonts.css" onclick="loadIframe('serif_fonts.css')">
+										<!-- 81 -->serif_fonts</a> [css to iframe]</li>
+								<li class="material-symbols-outlined nav pngicon"><a title="View square-off-plaid.png in main iFrame" href="#mainFrameContainer" id="navAnchor_square-off-plaid.png" onclick="loadIframe('square-off-plaid.png')">
+										<!-- 81 -->square-off-plaid</a> [png to iframe]</li>
+							</ul>
+						</li>
+						<li onclick="showHide('ul_T')" id="li_T" class="toggler"><span style="font-weight:bold;">T</span>: [ view 1 ] <ul id="ul_T" class="alphaNumChildList target">
+								<li class="material-symbols-outlined nav phtmlicon"><a title="View template.phtml in main iFrame" href="#mainFrameContainer" id="navAnchor_template.phtml" onclick="loadIframe('template.phtml')">
+										<!-- 81 -->template</a> [phtml to iframe]</li>
+							</ul>
+						</li>
+						<li onclick="showHide('ul_U')" id="li_U" class="toggler"><span style="font-weight:bold;">U</span>: [ view 1 ] <ul id="ul_U" class="alphaNumChildList target">
+								<li class="material-symbols-outlined nav phtmlicon"><a title="View unicode_misc_symbols.phtml in main iFrame" href="#mainFrameContainer" id="navAnchor_unicode_misc_symbols.phtml" onclick="loadIframe('unicode_misc_symbols.phtml')">
+										<!-- 81 -->unicode_misc_symbols</a> [phtml to iframe]</li>
+							</ul>
+						</li>
+						<li onclick="showHide('ul_V')" id="li_V" class="toggler"><span style="font-weight:bold;">V</span>: [ view 1 ] <ul id="ul_V" class="alphaNumChildList target">
+								<li class="material-symbols-outlined nav phtmlicon"><a title="View vim_notes.phtml in main iFrame" href="#mainFrameContainer" id="navAnchor_vim_notes.phtml" onclick="loadIframe('vim_notes.phtml')">
+										<!-- 81 -->vim_notes</a> [phtml to iframe]</li>
+							</ul>
+						</li>
+						<li onclick="showHide('ul_W')" id="li_W" class="toggler"><span style="font-weight:bold;">W</span>: [ view 1 ] <ul id="ul_W" class="alphaNumChildList target">
+								<li class="material-symbols-outlined nav webmicon"><a title="View WebDeveloperInStatusBar.webm in main iFrame" href="#mainFrameContainer" id="navAnchor_WebDeveloperInStatusBar.webm" onclick="loadIframe('WebDeveloperInStatusBar.webm')">
+										<!-- 81 -->WebDeveloperInStatusBar</a> [webm to iframe]</li>
+							</ul>
+						</li>
+						<li id="navTotal">Objects found: 38</li>
+						<li id="adb_small_logo"><img src="assets/css/adb_logo_shadow.png" style="width:100px;height:80px;" class="floatLt"></li>
+						<li id="font_demo_serif">A QuIck Bit oF Valid TeXt bRiEfly</li>
+						<li id="font_demo_sans">A QuIck Bit oF Valid TeXt bRiEfly</li>
+					</ul>
+					<form id="check_font" method="post" action="/adb/index.php?check_font="> <input type="text" name="font_name" id="font_name"> <input type="submit" name="submit_font" id="submit_font" value="Check"> <label for="submit_font">Check Font</label> </form>
+					<div id="js_return_serif"></div> <!-- close navlist -->
+				</nav><!-- div id="displayHttPath">http://statecollegeguitarlessons.com/adb/index.php</div -->
+				<div id="footer" class="container">
+					<!-- 	^	#footer 	^	-->
+					<div class="vertMid">
+						<!--	^	.vertMid	^	-->
+						<!-- p id="toTop" class="floatRt"></p -->
+						<p id="searchrec">Search privately: <a href="https://duckduckgo.com/goodies" title="Search privately">Duck-Duck-Go for it!</a> </p><object id="duckduckgo" class="transparentback" title="Search at DuckDuckGo.com" data="assets/css/duckduckgo-icon.svg" type="image/svg+xml" height="32" width="32"> </object> </div> <!--	$	.vertMid	$	-->
+				</div> <!-- 	$	#footer 	$	-->
+			</div> <!--    $   id:wrapper  $   -->
+		</div> <!--    $   id:pagewidth    $   -->
+		<script type="text/javascript" src="./assets/js/showme-hideme.js">
+		</script>
+		<script type="text/javascript" src="./assets/js/accessories.js">
+		</script>
+	</body>
+
+</html>

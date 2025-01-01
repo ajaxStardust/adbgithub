@@ -1,0 +1,283 @@
+<?php
+
+namespace P2u2\View;
+
+use P2u2\Model\P2u2 as P2u2;
+use P2u2\Model\Environment as Env;
+use P2u2\Model\Functions as Functions;
+use P2u2\Model\Newmethod as Newmethod;
+use P2u2\Model\Evalpath as Evalpath;
+
+$Env = new Env(NS2_ROOT);
+$initEnv = $Env->whatis(NS2_ROOT);
+// set Env variable array ver01
+$title = $Env->initialize_enviornment['title'];
+
+
+if (isset($_GET['path2url'])) {
+    $path2url = $_GET['path2url'];
+} else {
+    $path2url = NS2_ROOT;
+}
+
+// path sent to process
+$enterpathhere = isset($path2url) ? $path2url : $_SERVER['DOCUMENT_ROOT'] . "/my_Notes/index.php";
+// set Env vars based on enterpathhere
+// DIFF? whatis allows for path
+$whatis = $Env->whatis($enterpathhere);
+
+// P2u2()
+$P2u2 = new P2u2($enterpathhere);
+// P2u2() filtered path to process
+$clean_url = $P2u2->clean_url_chars($enterpathhere);
+// P2u2()
+$extract_components = $P2u2->extract_path_components($P2u2->clean_url_chars($enterpathhere));
+
+// Evalpath()
+$Eval = new Evalpath($enterpathhere);
+// Evalpath()
+$EvalPathHere = $Eval->test_location($enterpathhere);
+
+// Newmethod()
+$Newmethod = new Newmethod($enterpathhere);
+// Newmethod()
+$buildUrl = $Newmethod->buildUrl($enterpathhere);
+// Newmethod()
+$buildUrlLast = $Newmethod->buildUrlLast($enterpathhere);
+// Newmethod()
+$contructNewMethod = $Newmethod->_construct_NewMethod;
+
+// Functions()
+$Functions = new Functions();
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <?php print $whatis['title']; ?>
+    </title>
+    <link rel="icon" type="image/ico" href="favicon.ico">
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    <!-- SPECTRE CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- BOOTSTRAP STYLE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/notes.css" rel="stylesheet">
+    <link href="assets/css/lightslider.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="pagewidth" class="container">
+        <!-- #HEADER -->
+        <section id="header">
+            <h1 class="bg-dark text-light text-end pe-3 h1"><?= $whatis['page_heading']; ?></h1>
+        </section>
+        <section>
+            <div class="row  row-cols-1 row-cols-md-2 g-4">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="h5">New Approach</h5>
+                            <div>
+<!-- new approach -->
+ <?php
+
+                        $trimmed_new_url = str_ireplace('/var/www/' . $contructNewMethod['_dynamichost'], '', $contructNewMethod['new_url_concat']);
+                        $buildByComp = $_SERVER['REQUEST_SCHEME'] . '://' . $contructNewMethod['_dynamichost'] . '/' . ltrim($trimmed_new_url,'/');
+                        $concatThis = $_SERVER['REQUEST_SCHEME'] . '://';
+                        $concatSwitch = $_SERVER['REQUEST_SCHEME'] . '://';
+                        foreach ($P2u2->path_comps['matches'] as $mKey => $mVal) {
+                            echo '<br>path[' . $mKey . ']: ' . $mVal;
+                            if($mVal != 'var' && $mVal != 'www'){
+                                $concatThis .= ltrim($mVal,'/').'/';
+                            }
+                                                        
+                        }
+    
+        $process_location = $Eval->test_location($enterpathhere)['pb'];
+
+                        foreach ($process_location as $mKey => $mVal) {
+                            echo '<br>path[' . $mKey . ']: ' . $mVal;
+                            $concatSwitch .= str_ireplace('/','',$mVal).'/';
+                            
+                        }
+                        // var_dump($process_location);
+                        
+                        echo '<br>Resulting URL buildByComp: <a href="' . $buildByComp . '" target="_blank">' . $buildByComp . '</a>';
+                        echo '<br>Resulting URL concatThis: <a href="' . rtrim($concatThis,'/') . '" target="_blank">' . rtrim($concatThis,'/') . '</a>';
+                       echo '<br>Resulting URL concatSwitch: <a href="' . $concatSwitch . '" target="_blank">' . $concatSwitch . '</a>';
+					  /*  echo '<h4>buildUrl vals:</h4>';
+                       if(is_array($buildUrl)){
+                       foreach($buildUrl as $bKey => $bVal) {
+                        echo '<br>bVal['.$bKey.']: '.$bVal ;
+                       }
+                    } */
+
+
+                        ?>
+                            </div>
+                            <div id="image_look"><dl><dt>Screenshot: </dt><dd><!-- img src="assets/images/look-at-the-code.png" alt="shitface" -->
+                                Could go here if you want
+                            </dd></dl></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <?php
+                            include 'Form.page.phtml';
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+
+            <div class="row  row-cols-1 row-cols-md-2 g-4">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="h5">Clone at GitHub</h5>
+                            <p class="card-text"><a href="https://github.com/ajaxStardust/AnnieDeBrowsa"
+                                    target="_blank"><img
+                                        src="https://github-readme-stats.vercel.app/api/pin/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true"
+                                        alt="Status" /></a></p>
+                            <p class="card-text"><a href="https://github.com/ajaxStardust" target="_blank"><img
+                                        src="https://github-readme-stats.vercel.app/api/?username=ajaxStardust&amp;repo=AnnieDeBrowsa&amp;show_owner=true&amp;show_icons=true"
+                                        alt="More" /></a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    
+                <div class="card">
+                        <div class="card-body">
+                            <h5 class="h5">Nav Go Up</h5>
+                            <!-- php nav goup -->
+                            <ol id="navgoup_demo">
+                                <?php
+                                $goUpArray = $Functions->process_goup();
+                                foreach ($goUpArray as $goUpKey => $goUpVal) {
+                                    echo '<li class="navgoup_item">goUp[' . $goUpKey . ']: ' . $goUpVal . '</li>';
+                                }
+                                ?>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="card">
+                            
+                    <div class="card-body">
+                            <h5 class="h5">URL Processing</h5>
+                            <?php
+
+                            //    echo '<br>get_defined_vars(): ' . print_r(get_defined_vars()); 
+                            $jsonEnv = json_encode($Env);
+                            $try_decode = json_decode($jsonEnv);
+                            //$jsonEnv = json_decode($jsonEnv);
+                            /* echo '<ul>';
+                            foreach($jsonEnv as $jsKey => $jsVal){
+                                echo '<li>'.$jsKey.': '.$jsVal.'</li>';
+                            }
+                            echo '</ul>'; */
+                            //echo '<br><strong class="red">$jsonEnv</strong>: ' . $jsonEnv . '<br>';
+                            //echo '<br>$try_decode[pathOps]: ' . $try_decode["pathOps"] . '<br>';
+                            //echo '<br>constructNewMethod[urlconcat]: ' . $contructNewMethod['new_url_concat'];
+                            echo '<br><strong>NEW!</strong> - $P2u2->clean_chars[url_2_convert]: ' . $P2u2->clean_chars['url_2_convert'];
+							echo '<br>convert2replaced = str_ireplace(/var/www, , P2u2->clean_chars[url_2_convert])' .  $convert2replaced = str_ireplace('/var/www', '', $P2u2->clean_chars['url_2_convert']);
+
+
+
+                            /*                             if (is_array($try_decode)) {
+                                echo '<h3>try_decode array()</h3>';
+                                echo '<ol id="clean_url">';
+                                foreach ($try_decode as $tryKey => $tryVal) {
+                                    echo '<li class="clean_item">' . $tryKey . ': ' . $tryVal . '</li>';
+                                }
+                                echo '</ol>';
+                            }
+ */
+
+
+
+                            ?>
+                            
+
+
+                        </div>
+ 
+
+                    </div>
+                </div>
+                
+                
+
+                
+
+            
+
+
+            </div>
+
+        </section>
+        <section class="container">
+            
+            <?php
+            // require 'LateLogic.page.phtml';
+            ?>
+            <div class="col">
+                <h5 class="h5">Server Info</h5>
+                <?php
+				echo '<br>__FILE__ info shown: ' . __FILE__ ;
+                if (isset($Env->initialize_enviornment['abspathtml'])) {
+                    echo '<p><strong>ABSPATHHTML</strong>:' . $Env->initialize_enviornment['abspathtml'];
+                } else {
+                    echo '<p><strong class="red">$Env->initialize_enviornment[abspathtml] is not set</strong></p>';
+                }
+
+                echo '<div class="container"><div class="bg-dark d-flex justify-content-between flex-wrap" id="info_container"><p class="bg-dark text-light">Served by: <span class="bg-dark text-warning">' . $Env->initialize_enviornment['serversoftware'] . '</span></p>
+        <p class="bg-dark text-light">PHP Version: <span class="text-warning">' . phpversion() . '</span></p>
+        <p class="bg-dark text-light">Server Name: <span class="text-info">' . $Env->initialize_enviornment['server_name'] . '</span></p>
+        <p class="bg-dark text-light">Server Addr: <span class="text-info">' . $Env->initialize_enviornment['server_addr'] . '</span></p>
+        </div></div>';
+                ?>
+            </div>
+            <div class="notes">
+            </div> <!--  $    div   .notes    $   -->
+        </section> <!--    $   section   #general_notes  .container    $   -->
+        <section class="container">
+        </section> <!-- $  section .container          -->
+        <section class="footer px-4">
+            <!--    .FOOTER     -->
+            <div class="row gx-5">
+                <div class="col">
+                    <div class="p-3 border bg-light"> Based on Notes by <a href="https://github.com/ajaxStardust"
+                            target="_blank" title="View original">@ajaxStardust</a> <em>Laravel</em> notes:</div>
+                </div>
+                <div class="col">
+                    <div class="p-3 border bg-light text-end"><kbd><?php echo $whatis['lastMod']; ?></kbd></div>
+                </div>
+            </div>
+        </section>
+    </div> <!--    .content  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="assets/js/lightslider.js"></script>
+    <script src="assets/js/p2u2.js"></script>
+    <script src="assets/js/dynamicdrop.js"></script>
+
+</body>
+
+</html>
