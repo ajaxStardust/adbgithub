@@ -22,7 +22,7 @@ class Navmodel
         $navItems['pathComponents'] = $this->getPathComponents();
         $navItems['pathLastbit'] = $this->getPathLastbit();
         $navItems['pathInfoBasename'] = $this->getPathInfoBasename();
-        $navItems['dirContents'] = $this->Dirhandler_Class->readDirectory();
+        $navItems['dirContents'] = $this->Dirhandler_Class->readDirectory(TEST_DIRECTORY);
 
         // ... (rest of the logic to retrieve navigation items)
 

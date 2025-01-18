@@ -34,6 +34,7 @@ class Navfactor
     public $anPregSearch;
     public $anPregSubject;
     public $anStrposResult;
+    public $makeTogglesReturn;
     public $Auxx;
     public $concatDirs;
     public $concatSubdir;
@@ -62,6 +63,8 @@ class Navfactor
     public $tempTmlPrint;
     public $totalObjects;
     public $htmlCharacterArray;
+
+    public $groupTogglerReturn;
 
     public function __construct($pathOps)
     {
@@ -93,7 +96,7 @@ class Navfactor
             $this->DirReadArray = CONTENTS;
         }
         if (empty($this->DirReadArray)) {
-            $this->DirReadArray = $this->Dirhandler->readDirectory();
+            $this->DirReadArray = $this->Dirhandler->readDirectory(TEST_DIRECTORY);
             if (!defined('CONTENTS')) {
                 define('CONTENTS', $this->DirReadArray);
             }
@@ -191,7 +194,7 @@ class Navfactor
     private function generateHtmlOutput($pathOps)
     {
         $Dirhanlder = new Dirhandler(TEST_DIRECTORY);
-        $DirReadArray = $Dirhanlder->readDirectory();
+        $DirReadArray = $Dirhanlder->readDirectory(TEST_DIRECTORY);
         if (!is_array($this->htmlPrint)) {
             $this->htmlPrint = [];
         }
@@ -209,9 +212,14 @@ class Navfactor
     {
         $this->htmlPrint[] = "<nav id=\"leftcol\" class=\"navlist\"> \n <ul id=\"navlist\" class=\"navlist\"> \n";
         if (isset($this->goUp['url'])) {
-            $this->htmlPrint[] .= '<li id="goUpItem" class="nav"><a title="crazy" href="//' . $this->goUp['url'] . '">' . $this->goUp['url'] . '</a></li>
+            $tempArray = [];
+            $tempArray[] = '<li id="goUpItem" class="nav"><a title="crazy" href="//' . $this->goUp['url'] . '">' . $this->goUp['url'] . '</a></li>
             ';
         }
+        if(isset($tempArray)){
+            $this->htmlPrint[] = array_pop($tempArray) ;
+        }
+       
         return $this->htmlPrint;
     }
 
@@ -225,7 +233,7 @@ class Navfactor
                 $this->firstChar = substr(ucfirst($this->alphaNumVal), 0, 1);
 
                 if (isset($this->htmlPrint[$this->firstChar])) {
-                    $this->dirFirstArray[$this->alphaNumKey] = $this->ulToggleChildren($this->firstChar);
+                    $this->dirFirstArray[$this->alphaNumKey] = $this->groupTogglerReturn;
                 } else {
                     $this->dirFirstArray[$this->alphaNumKey] = $this->processEmptyAlphaNum($alNumArray[$this->alphaNumKey]);
                 }
@@ -253,17 +261,17 @@ class Navfactor
                 $this->htmlPrint["$objectsKey"] .= $objectsVal;
             }
         }
+        $this->htmlPrint[""];
+        // return;
 
-        //      $this->htmlPrint["$this->firstChar"] .= '
-        //    </ul>';
     }
 
-    private function processEmptyAlphaNum($dirItems)
+    private function processEmptyAlphaNum($object)
     {
         if (isset($this->htmlPrint["$this->firstChar"])) {
             @$this->htmlPrint["$this->firstChar"] .= '<ul id="items-of_' . $this->firstChar . '" class="navchilds-top">';
         } else {
-            @$this->htmlPrint["$this->firstChar"] .= $this->ulToggleChildren($this->firstChar);
+            @$this->htmlPrint["$this->firstChar"] .= $this->groupTogglerReturn;
         }
 
         if (is_array($this->alphaNumVal) && (0 != count($this->alphaNumVal))) {
@@ -274,7 +282,7 @@ class Navfactor
         // If it's not an array, use it as the file name (as expected)
         $valueString = $this->alphaNumVal;
 
-        $this->htmlPrint["$this->firstChar"] .= '<li id="item_' . $this->firstChar . $this->alphaNumKey . '" class="navlist-item target-fix"> target: ' . htmlspecialchars($this->firstChar) . ' &#x3d;&#x3e; ' . htmlspecialchars($valueString) . '</li>
+        $this->htmlPrint["$this->firstChar"] .= '<li id="item_' . $this->firstChar . $this->alphaNumKey . '" class="navlist-item target-fix"> target: ' . htmlspecialchars($this->firstChar) . ' &#x3d;&#x3e; ' . htmlspecialchars($object) . '</li>
         ';
         $this->htmlPrint["$this->firstChar"] .= '</ul>';
     }
@@ -352,11 +360,11 @@ class Navfactor
     }
 
     public function groupToggler($items) {
-        return $this->ulToggleChildren($items);
+        $this->groupTogglerReturn =  $this->ulToggleChildren($items);
     }
     public function makeToggles()
     {
-        return $this->processDirectoryStructure($this->DirReadArray, $this->alphaNumFilledKeys, $this->dirObject);
+        $this->makeTogglesReturn = $this->processDirectoryStructure($this->DirReadArray, $this->alphaNumFilledKeys, $this->dirObject);
     }
 
     public function htmlForItem($dirItems)

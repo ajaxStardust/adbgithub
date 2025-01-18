@@ -27,8 +27,9 @@ class Dirhandler
         $this->readDirectory($this->dirPath);
     }
 
-    public function readDirectory(): array
+    public function readDirectory($dirPath): array
     {
+        $this->dirPath = $dirPath;
         /* if(defined('HTMLCHARARRAY')) {
             $this->htmlCharacterArray = HTMLCHARARRAY;
             $this->directoryContents = CONTENTS;

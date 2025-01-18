@@ -21,7 +21,7 @@ class Navcontroller
         $this->Navmodel_Class = new Navmodel(TEST_DIRECTORY);
         $this->Navfactor_Class = new Navfactor(TEST_DIRECTORY);
         $this->Dirhandler_Class = new Dirhandler(TEST_DIRECTORY);
-        $directoryContents = $this->Dirhandler_Class->readDirectory();
+        $directoryContents = $this->Dirhandler_Class->readDirectory(TEST_DIRECTORY);
         // $this->navViewHtml = new Navview($directoryContents);
     }
 
