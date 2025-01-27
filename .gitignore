@@ -1,12 +1,22 @@
 # ---------------- GITIGNORE TEMPLATE ---------------------
 
 # ---------------- NOT PART OF TEMPLATE -------------------
+vendor/
+!vendor/autoload.php
+
+# ---- ASSETS ---- #
+assets/
+!assets/css/
+assets/css/*.png
+assets/css/*.jpg
+assets/css/*.gif
 
 *.off
 index.html
 index.html.php
 prepros.config
 start.me.html
+*.neon
 
 # Logs
 logs
@@ -145,6 +155,7 @@ dist
 
 # other misc
 *.vscode
+.vscode/
 
 ## --------------- WORDPRESS SPECIFIC STUFF ----------------- ##
 
@@ -166,7 +177,7 @@ wp-content/plugins/hello.php
 # wp-content/themes/twenty*
 
 # DO NOT ignore specific themes
-!wp-content/themes/twentytwentythree
+!wp-content/themes/twentytwentyfive
 
 # ignore node dependency directories
 node_modules/

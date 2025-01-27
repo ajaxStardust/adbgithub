@@ -1,10 +1,11 @@
 parameters:
-    level: 1
+    level: 5
     paths:
         - src
         - public
-        - .
     excludePaths:
         - vendor
-        - tests
-        - tmp
+        - public/inc 
+        - public/class
+        - public/views
+

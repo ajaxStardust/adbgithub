@@ -6,6 +6,14 @@
     "**/CVS": true,
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
+    "**/*/*.png": true,
+    "**/*/*.psd": true,
+    "**/*/*.jpg": true,
+    "**/*/*.gif": true,
+    "**/*/*.PNG": true,
+    "**/*/*.PSD": true,
+    "**/*/*.JPG": true,
+    "**/*/*.GIF": true,
     "assets/css/parchmosteven.jpg": true,
     "**/*.png": true,
     "**/*.jpg": true,
@@ -23,5 +31,6 @@
   "open-php-html-js-in-browser.urlToOpen": "custom",
   "open-php-html-js-in-browser.customHost": "mx23ahs",
   "open-php-html-js-in-browser.showStatusBarItem": false,
-  "explorerExclude.backup": {}
+  "explorerExclude.backup": {},
+  "autoHide.autoHideSideBar": false
 }
