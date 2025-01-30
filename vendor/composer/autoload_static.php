@@ -6,6 +6,10 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit78a22536f152d8b0d8eb75cc53ea89c4
 {
+    public static $files = array (
+        '9b38cf48e83f5d8f60375221cd213eee' => __DIR__ . '/..' . '/phpstan/phpstan/bootstrap.php',
+    );
+
     public static $classMap = array (
         'Adb\\Controller\\Navcontroller' => __DIR__ . '/../..' . '/src/Controller/Navcontroller.php',
         'Adb\\Model\\Adbsoc' => __DIR__ . '/../..' . '/src/Model/Adbsoc.php',

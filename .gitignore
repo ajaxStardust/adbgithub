@@ -1,6 +1,9 @@
 # ---------------- GITIGNORE TEMPLATE ---------------------
 
 # ---------------- NOT PART OF TEMPLATE -------------------
+!vendor/autoload.php
+vendor/*
+
 
 *.off
 index.html

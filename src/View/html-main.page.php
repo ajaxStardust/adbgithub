@@ -54,7 +54,7 @@ $processDirectoryStructure = $Navfactor->makeTogglesReturn;
 			$many = count($value);
 			echo '
             <li onclick="showHide(\'ul_' . $key . '\')" id="li_' . $key . '_control" class="toggler"><span style="font-weight:bold;">' . $key . '</span> [ view ' . $many . ' ] 
-            <ul id="'.$many.$key.'" class="inner-list">';
+            <ul id="ul_'.$key.'" class="inner-list">';
 			foreach($value as $target_html){
 				// echo '<br>TEMP<br>'. $target_html;
                 echo  $target_html;
