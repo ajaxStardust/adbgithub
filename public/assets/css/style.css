@@ -2079,6 +2079,7 @@ p#collapser img {
 #navlist li,
 .bottomsmaller:first-line {
   font-variant: small-caps;
+  display:list-item;
 }
 
 #navList li,

@@ -72,7 +72,7 @@ class Dirhandler
                     $characterArray[$firstChar] = [];
                 }
 
-                $characterArray[$firstChar][] = '<li id="item_' . htmlspecialchars($firstChar) . $objKey . '" class="navlist-item target-fix">' . htmlspecialchars($filename) . '</li>
+                $characterArray[$firstChar][] = '<li class="navlist target"><a id="navAnchor_' . htmlspecialchars($filename) . '">'.htmlspecialchars($filename).'</a></li>
             ';
             }
         }
