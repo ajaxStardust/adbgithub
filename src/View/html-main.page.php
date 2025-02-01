@@ -61,9 +61,6 @@ $processDirectoryStructure = $Navfactor->makeTogglesReturn;
 			}
 			echo '</ul>';
 		}
-		else{
-
-		}
 
     }
     // echo 'var_dump(target_html);';
@@ -86,12 +83,11 @@ $processDirectoryStructure = $Navfactor->makeTogglesReturn;
         $Backlinks = json_decode(json_encode($Backlinks));
     */
 
-        // var_dump($Backlinks);
-        // echo '<br>File: '.__FILE__.' at '.__LINE__.' for build_local_urls:<br>';
+   
         echo $build_local_urls;
 
     ?>
-    <div class="info">Change quick links in /config.json </div>
+    <div class="info">Change quick links in <?= JSONCONFIG ?> </div>
 
     <div id="mainFrameContainer">
 

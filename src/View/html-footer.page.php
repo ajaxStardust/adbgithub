@@ -29,6 +29,8 @@ namespace Adb\View;
 <!-- $  id:pagewidth    $ -->
 <script type="text/javascript" src="./assets/js/showme-hideme.js">
 		</script>
+<script type="text/javascript" src="./assets/js/addlistener.js">
+		</script>
 		<!-- script type="text/javascript" src="./assets/js/accessories.js">
 		</!-->
 

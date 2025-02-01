@@ -1103,7 +1103,7 @@ ul.keyTermsList li sup {
     width: 100%
 }
 
-#navList li,#navList li ul li,#pageControls ul li {
+#navlist li,#navlist li ul li,#pageControls ul li {
     background-color: rgba(255,255,255,.1);
     border-color: rgba(220,220,255,.7);
     border-radius: 3em 3em 3em 3em;

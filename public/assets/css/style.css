@@ -2082,8 +2082,8 @@ p#collapser img {
   display:list-item;
 }
 
-#navList li,
-#navList li ul li,
+#navlist li,
+#navlist li ul li,
 #pageControls ul li {
   background-color: rgba(255, 255, 255, 0.1);
   border-color: rgba(220, 220, 255, 0.7);

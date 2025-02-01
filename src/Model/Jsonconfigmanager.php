@@ -10,14 +10,23 @@ class Jsonconfigmanager extends Helpers
     public function __construct()
     {
         if (!$this->config) {
-            $this->jsonFile = $_SERVER['DOCUMENT_ROOT'] . '/giterator/config.json';
+            $this->jsonFile = $_SERVER['DOCUMENT_ROOT'] . '/config.json';
             if (file_exists($this->jsonFile)) {
+                if(!defined('JSONCONFIG')){
+                define('JSONCONFIG',realpath($this->jsonFile));
+                }
                 $this->config = json_decode(file_get_contents($this->jsonFile), true);
             }
             elseif(file_exists('../config.json')){
+                if(!defined('JSONCONFIG')){
+                define('JSONCONFIG',realpath('../config.json'));
+                }
                 $this->config = json_decode(file_get_contents('../config.json'), true);                
             }else{
-                $this->config = json_decode(file_get_contents('https://statecollegeguitarlessons.com/giterator/config.json'), true);
+                if(!defined('JSONCONFIG')){
+                define('JSONCONFIG',realpath('config.json'));
+                }
+                $this->config = json_decode(file_get_contents('config.json'), true);
             }
         }
         

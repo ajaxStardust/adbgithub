@@ -380,11 +380,12 @@ function toggleObjectById(toggObject) {
 }
 
 function loadIframe(whatclick) {
-
     var anchorClicked, clickId, node2style, jsLoadIframeDump, mainFrame, parentListItem, frameName, i, mainFrameStyleStr = '';
 
+    // Use the clicked filename as anchorClicked
     anchorClicked = whatclick;
 
+    // Get references to DOM elements
     mainFrame = document.getElementById("mainFrame");
     frameName = document.getElementById("frameName");
     jsLoadIframeDump = document.getElementById("jsLoadIframeDump");
@@ -392,10 +393,13 @@ function loadIframe(whatclick) {
     clickId = document.getElementById(node2style);
     clickId.setAttribute('class', 'active');
     parentListItem = clickId.parentNode;
+
+    // Update the style of the clicked anchor
     if (clickId.style.backgroundColor !== "navy") {
         clickId.style.backgroundColor = "rgba(255,255,255,0.5)";
         clickId.style.color = "rgba(0,0,0,0.2)";
     }
+
     if (parentListItem.style.backgroundImage !== "none") {
         parentListItem.style.backgroundImage = "none";
         parentListItem.style.backgroundColor = "rgba(205,235,235,0.4)";
@@ -403,13 +407,21 @@ function loadIframe(whatclick) {
         parentListItem.style.firstLetter = "#fff";
         parentListItem.style.border = "none";
     }
-    mainFrame.src = anchorClicked;
-    frameName.innerHTML = anchorClicked;
+
+    // Modify the path here: Remove '/public' from the anchorClicked
+    var filePath = anchorClicked.replace('/public', '');  // This line removes /public from the path
+
+    // Set the iframe's src attribute to the correct path
+    mainFrame.src = filePath;
+
+    // Update the frame name on the page
+    frameName.innerHTML = filePath;
+
+    // Set iframe border style
     if (!mainFrame.style.border || mainFrame.style.borderColor === "purple") {
         mainFrame.style.borderStyle = "ridge";
         mainFrame.style.borderColor = "white";
         mainFrame.style.borderWidth = "0.1rem";
-
     } else if (mainFrame.style.borderColor === "white") {
         mainFrame.style.borderStyle = "ridge";
         mainFrame.style.borderColor = "black";
@@ -420,6 +432,7 @@ function loadIframe(whatclick) {
         mainFrame.style.borderWidth = "0.1rem";
     }
 
+    // Debugging the style properties of the iframe (optional)
     for (i = 0; i < mainFrame.style.length; i++) {
         mainFrameStyleStr += "\n" + 'mainFrame.style[i]:' + mainFrame.style[i].text + "<br />";
     }
@@ -455,6 +468,8 @@ function load3rdFrame(whatclick) {
         mainFrameStyleStr += mainFrame.style[i] + ":" + mainFrame.style[i].text + "<br />";
     }
 }
+
+ 
 
 function justTitleIt() {
 

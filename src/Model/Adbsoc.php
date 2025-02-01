@@ -5,7 +5,7 @@ namespace Adb\Model;
 use Adb\Model\Environmentmanager as Environmentmanager;
 use Adb\Model\Jsonconfigmanager as Jsonconfigmanager;
 use Adb\Model\Localsites as Localsites;
-use Adb\Model\Urlprocessor as Urlprocessorr;
+use Adb\Model\Urlprocessor as Urlprocessor;
 
 #[\AllowDynamicProperties]
 class Adbsoc
@@ -29,7 +29,6 @@ class Adbsoc
         $this->Environmentmanager_class = new Environmentmanager;
         $this->Jsonconfigmanager_class = new Jsonconfigmanager;
         $config = $this->Jsonconfigmanager_class->loadConfig();
-        // $this->Urlprocessor_class = new Urlprocessor;
         $this->Localsites_class = new Localsites();
 
         if (!defined('ADBLOCTN')) {
@@ -49,27 +48,36 @@ class Adbsoc
             $this->pathOps = ADBLOCTN;
             $this->Urlprocessor_class = new Urlprocessor($pathOps);
         }
-        // var_dump(get_defined_vars());
 
-        /*
-         * if (!is_array($this->pathOps)) {
-         *     $this->pass_pathinfo = pathinfo($this->pathOps, PATHINFO_ALL);
-         * }
-         * else {
-         * // $this->pass_pathinfo = pathinfo($this->pathOps);
-         *
-         * die(var_dump($this->pathOps));
-         * }
-         */
         $this->bodyid = pathinfo(($_SERVER['PHP_SELF']), PATHINFO_FILENAME);
         $this->error_reporting = error_reporting(E_ALL);
-
         $this->ini_set = ini_set('display_errors', 1);
-
         $this->last_mod = 'Modified: ' . date('D M j Y G:i:s T', getlastmod());
         $this->server = $this->Environmentmanager_class->getServer();
         $this->document_root = $this->Environmentmanager_class->getDocumentRoot();
         $this->default_tz = $this->Environmentmanager_class->getDefaultTimezone();
+
+        // Define the base directory where your files are located
+        if (!defined('TEST_DIRECTORY')) {
+            define('TEST_DIRECTORY', dirname(__DIR__, 2) . '/src/View');
+        }
+
+        // Instantiate other necessary classes
+        $urlProcessor = new Urlprocessor($this->pathOps);
+
+        // ... rest of the constructor logic
+    }
+
+    public function processUrl($pathOps)
+    {
+        if (!isset($this->Urlprocessor_class)) {
+            $this->Urlprocessor_class = new Urlprocessor($pathOps);
+        }
+            define('TEST_DIRECTORY', dirname(__DIR__, 2) . '/src/View');
+        }
+
+        // Instantiate other necessary classes
+        $urlProcessor = new Urlprocessor();
 
         // ... rest of the constructor logic
     }

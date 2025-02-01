@@ -1,5 +1,7 @@
 <?php
 
+// header('Location: public/index.php');
+
 $uri = urldecode(
     parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
 );
