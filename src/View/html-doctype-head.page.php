@@ -27,13 +27,6 @@ $config = $Adbsoc->getConfig();
 $json_urls = $config['home_urls'];  // Assuming $config contains the parsed JSON data
 $build_local_urls = $Localsites->getSites($json_urls);  // Call the function and output the result
 
-function checkVal($var)
-{
-    if ($var == null) {
-        return '0';
-    }
-    return $var;
-}
 
 ?>
 <!DOCTYPE html>

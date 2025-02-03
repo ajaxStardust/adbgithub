@@ -3,6 +3,7 @@
 # ---------------- NOT PART OF TEMPLATE -------------------
 !vendor/autoload.php
 vendor/
+.scraps/
 
 
 *.off
@@ -210,4 +211,8 @@ nbproject/
 adbfinal00.komodoproject
 trylog.txt
 .komodotools/comm.ktf
-.gitignore
+*error*.txt
+*error.log
+*debug*.log
+*debug*.txt
+

@@ -6,12 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to get the base URL
     function getBaseURL() {
-        const url = window.location.href;
-        const pathArray = window.location.pathname.split('/');
-        const protocol = url.split('/')[0];
-        const host = url.split('/')[2];
-        const baseURL = protocol + '//' + host + '/' + pathArray[1];
-        return baseURL;
+        return window.location.origin;
     }
 
     // Check if navlist exists
@@ -20,12 +15,14 @@ document.addEventListener('DOMContentLoaded', function () {
         navlist.addEventListener('click', function (e) {
             // Check if the clicked element has the "iframe-nav-link" class
             if (e.target && e.target.matches('a.iframe-nav-link')) {
+                e.preventDefault(); // Prevent the default link behavior
+
                 // Get the file path from the data-filepath attribute
                 const filePath = e.target.getAttribute('data-filepath');
 
                 // Construct the URL to the PHP script with the requested file
                 const baseURL = getBaseURL();
-                const fileUrl = baseURL + '/file_loader.php?file=' + encodeURIComponent(filePath);
+                const fileUrl = baseURL + '/public/file_loader.php?file=' + encodeURIComponent(filePath);
 
                 // Debugging output
                 console.log("File path: " + filePath);

@@ -22,23 +22,14 @@ class Navcontroller
         $this->Navfactor_Class = new Navfactor(TEST_DIRECTORY);
         $this->Dirhandler_Class = new Dirhandler(TEST_DIRECTORY);
         $directoryContents = $this->Dirhandler_Class->readDirectory(TEST_DIRECTORY);
-        // $this->navViewHtml = new Navview($directoryContents);
     }
 
     public function displayNavigation()
     {
-        // Create an instance of the Model
-
-        // Get navigation items from the Model
         $navItems = $this->Dirhandler_Class->readDirectory(TEST_DIRECTORY);
         sort($navItems, SORT_ASC);
-        // Create an instance of the View
         $Navview = new Navview($navItems);
-
-        // Render the HTML using the View
         $navHtml = $Navview->renderOne($navItems);
-
-        // Output the rendered HTML (or store it for later use)
         return $navHtml;
     }
 }

@@ -6,5 +6,6 @@ parameters:
         - .
     excludePaths:
         - vendor
-        - tests
-        - tmp
+        - tests ?
+        - tmp ?
+

@@ -2,10 +2,10 @@
 
 namespace Adb\Model;
 
-use Adb\Model\Environmentmanager as Environmentmanager;
-use Adb\Model\Jsonconfigmanager as Jsonconfigmanager;
 use Adb\Model\Localsites as Localsites;
 use Adb\Model\Urlprocessor as Urlprocessor;
+use Adb\Model\Jsonconfigmanager as Jsonconfigmanager;
+use Adb\Model\Environmentmanager as Environmentmanager;
 
 #[\AllowDynamicProperties]
 class Adbsoc
@@ -70,20 +70,10 @@ class Adbsoc
 
     public function processUrl($pathOps)
     {
-        if (!isset($this->Urlprocessor_class)) {
-            $this->Urlprocessor_class = new Urlprocessor($pathOps);
-        }
-            define('TEST_DIRECTORY', dirname(__DIR__, 2) . '/src/View');
+        if(!defined('TEST_DIRECTORY')){
+            define('TEST_DIRECTORY', $pathOps);
         }
 
-        // Instantiate other necessary classes
-        $urlProcessor = new Urlprocessor();
-
-        // ... rest of the constructor logic
-    }
-
-    public function processUrl($pathOps)
-    {
         if (!isset($this->Urlprocessor_class)) {
             $this->Urlprocessor_class = new Urlprocessor($pathOps);
         }
@@ -115,3 +105,4 @@ class Adbsoc
         return $this->Jsonconfigmanager_class->loadConfig();
     }
 }
+
