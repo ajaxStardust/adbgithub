@@ -52,15 +52,19 @@ class Dirhandler
                 $firstChar = strtolower(substr($filename, 0, 1));
                 $this->firstChar = ucfirst($firstChar);
                 $firstChar = $this->firstChar;
-                $nav_pathInfo = pathinfo(__FILE__);
+                $filepath = $baseUrl . '/' . $filename;
+                $nav_pathInfo = pathinfo(realpath($filepath));
 
                 if (!isset($characterArray[$firstChar])) {
                     $characterArray[$firstChar] = [];
                 }
 
-                $filePath = $baseUrl . '/' . $filename;
-                $this->anchor[$objKey] = '<a title="View ' . htmlspecialchars($filename) . ' in main iFrame" href="file_loader.php?file=' . urlencode($filename) . '" id="navAnchor_' . htmlspecialchars($filename) . '" class="iframe-nav-link">
-    ' . $nav_pathInfo['extension'] . '</a>';
+                $this_extension = $nav_pathInfo['extension'] ?? ' ';
+                $this_filename = $nav_pathInfo['filename'] ?? ' ';
+                $this_basename = $nav_pathInfo['basename'] ?? ' ';
+
+                $this->anchor[$objKey] = '<a data-filepath="' . urlencode($this_basename) . '" title="View ' . urlencode($this_filename) . ' in main iFrame" href="file_loader.php?file=' . urlencode($this_filename) . '" id="navAnchor_' . urlencode($this_filename) . '" class="iframe-nav-link">
+    ' . $this_extension . '</a>';
 
                 $characterArray[$firstChar][] = '<li class="navlist target">' . $this->anchor[$objKey] . '</li>';
             }

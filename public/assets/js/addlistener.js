@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const filePath = e.target.getAttribute('data-filepath');
 
                 // Construct the URL to the PHP script with the requested file
-                const baseURL = getBaseURL();
+                const baseURL = window.location.href.split('/').slice(0, -2).join('/');
                 const fileUrl = baseURL + '/public/file_loader.php?file=' + encodeURIComponent(filePath);
 
                 // Debugging output
