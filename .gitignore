@@ -193,6 +193,8 @@ wp-config.php
 nbproject/
 
 # ignore project files
+*.komodoproject
+*.kpf
 *.code-workspace
 *.phprj
 *.workspace
@@ -200,6 +202,8 @@ nbproject/
 *.csprj
 *.pnproj
 *.pnps
+# Komodo IDE / Komodo Edit 'tools' files
+.komodotools/
 
 # ignore archives
 *.7z
@@ -209,10 +213,12 @@ nbproject/
 *.tar
 *.bz
 adbfinal00.komodoproject
-trylog.txt
-.komodotools/comm.ktf
-*error*.txt
+
+*log*.log
+*log*.txt
+
 *error.log
+*error*.txt
+
 *debug*.log
 *debug*.txt
-

@@ -4,6 +4,8 @@ parameters:
         - src
         - public
         - .
+        - vendor/autoload.php
+        - vendor/composer
     excludePaths:
         - vendor
         - tests ?

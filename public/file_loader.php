@@ -19,7 +19,7 @@ set_error_handler(function ($errno, $errstr, $errfile, $errline) {
 set_exception_handler(function ($exception) {
     $logMessage = "\n\nException: " . $exception->getMessage() . " in " . $exception->getFile() . " on line " . $exception->getLine();
     error_log($logMessage, 3, __DIR__ . '/errors.txt');
-    error_log("\nStack trace: " . $exception->getTraceAsString(), 3, __DIR__ . '/errors.txt');
+    error_log("\n\nStack trace: " . $exception->getTraceAsString(), 3, __DIR__ . '/errors.txt');
     header("HTTP/1.0 500 Internal Server Error");
     echo "Internal Server Error.";
 });
@@ -47,12 +47,12 @@ try {
     // Construct the full file path
     $filePath = BASE_DIR . '/' . $requestedFile;
     error_log("\nFull file path: " . $filePath, 3, __DIR__ . '/errors.txt');
-
+    $filePath = realpath($filePath);
     // Check if the file exists and is readable
     if (file_exists($filePath) && is_readable($filePath)) {
         // Serve the file content
         header('Content-Type: ' . mime_content_type($filePath));
-        readfile($filePath);
+        $filePath = realpath($filePath);
         error_log("\nFile served: " . $filePath, 3, __DIR__ . '/errors.txt');
     } else {
         // Return a 404 response if the file is not found
