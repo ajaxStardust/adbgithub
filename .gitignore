@@ -4,6 +4,12 @@
 !vendor/autoload.php
 vendor/
 .scraps/
+!public/assets/css/style.css
+public/assets/css/*.png
+public/assets/css/*.jpg 
+public/assets/css/*.gif 
+public/assets/css/*.psd 
+public/assets/css/*.svg
 
 
 *.off
@@ -222,3 +228,4 @@ adbfinal00.komodoproject
 
 *debug*.log
 *debug*.txt
+
