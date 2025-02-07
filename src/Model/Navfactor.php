@@ -219,7 +219,7 @@ class Navfactor
         if(isset($tempArray)){
             $this->htmlPrint[] = array_pop($tempArray) ;
         }
-       
+
         return $this->htmlPrint;
     }
 

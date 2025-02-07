@@ -1,0 +1,18 @@
+# SciTE session file
+
+buffer.1.path=\\wsl.localhost\Debian\var\www\wsldebian\adbfinal01\public\index.php
+buffer.1.position=508
+buffer.1.scroll=0
+
+buffer.2.path=\\wsl.localhost\Debian\var\www\wsldebian\adbfinal01\src\View\html-main.page.php
+buffer.2.position=406
+buffer.2.scroll=0
+
+buffer.3.path=\\wsl.localhost\Debian\var\www\wsldebian\adbfinal01\src\Model\Navfactor.php
+buffer.3.position=3418
+buffer.3.scroll=63
+
+buffer.4.path=\\wsl.localhost\Debian\var\www\wsldebian\adbfinal01\src\Model\Dirhandler.php
+buffer.4.position=837
+buffer.4.scroll=16
+buffer.4.current=1

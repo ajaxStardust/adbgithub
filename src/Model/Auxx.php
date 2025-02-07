@@ -10,6 +10,7 @@ use Adb\Model\Navsubfactor as Navsubfactor;
 if(!defined('NS_ROOT')) {
     define('NS_ROOT', dirname(NS));
 }
+
 #[\AllowDynamicProperties]
 class Auxx
 {
@@ -54,6 +55,7 @@ class Auxx
         if (!isset($this->alphaNumArray)) {
             $this->alphaNumArray = [];
         }
+
         $this->Navfactor = new Navfactor($this->pathOps);
         $this->Navfactor_class = new Navsubfactor($this->pathOps);
 
@@ -124,7 +126,7 @@ class Auxx
     {
         $this->Navfactor_class = new Navfactor($pathOps);
         $this->Htmldochead_class = new Htmldochead($pathOps);
-        //	note: experimental array value= ".bak", since str_replace, not regex
+        //  note: experimental array value= ".bak", since str_replace, not regex
 
         $invalidCharacters = array('?',
             '[',
@@ -201,7 +203,7 @@ class Auxx
                         }
                     }
                 }
-            
+
          } else {
                 // OBJECT IS A DIRECTORY
                 if($length < 3) {
@@ -291,3 +293,4 @@ class Auxx
         return $this->arrayObjectAnchors;
     }
 }
+

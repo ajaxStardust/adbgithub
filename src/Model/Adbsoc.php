@@ -1,5 +1,4 @@
 <?php
-
 namespace Adb\Model;
 
 use Adb\Model\Localsites as Localsites;

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+﻿document.addEventListener('DOMContentLoaded', function () {
     // Find the parent container of your navigation links (assuming it's a <ul> with id="navlist")
     const navlist = document.getElementById('navlist');
     const mainFrame = document.getElementById('mainFrame');
@@ -23,19 +23,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Construct the URL to the PHP script with the requested file
                 const baseURL = window.location.href.split('/').slice(0, -2).join('/');
                 const fileUrl = baseURL + '/public/file_loader.php?file=' + encodeURIComponent(filePath);
+                const llmDumb = baseURL+"/"+filePath;
 
                 // Debugging output
-                console.log("File path: " + filePath);
-                console.log("File URL: " + fileUrl);
+                console.log("filePath: " + filePath);
+                console.log("baseURL: " + baseURL);
+                console.log("fileUrl: " + fileUrl);
+                console.log('baseURL+filePath!' + baseURL+"/"+filePath)
 
                 // Update the iframe source and the frame name
-                mainFrame.src = fileUrl;
-                frameName.textContent = "Currently Viewing: " + fileUrl;
+                mainFrame.src = llmDumb;
+                console.log("setting mainFrame.src: " + mainFrame.src);
+                frameName.textContent = "Currently Viewing [fileUrl]: " + fileUrl;
+                console.log("frameName.textContent -eq 'Currently Viewing [fileUrl]: '" + fileUrl);
 
                 // Optional: Add active state to clicked link
                 const allLinks = navlist.querySelectorAll('.iframe-nav-link');
                 allLinks.forEach(link => link.classList.remove('active'));  // Remove 'active' from all links
                 e.target.classList.add('active');  // Add 'active' class to the clicked link
+                console.log("e.target: " + e.target);
             }
         });
     } else {
